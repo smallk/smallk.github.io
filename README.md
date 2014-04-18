@@ -1,5 +1,9 @@
-smallk.github.io
+Smallk Start Page
 ================
+
+Smallk home page
+----------------
+(http://smallk.githup.io)
 
 Acknowledgements
 ----------------
