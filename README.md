@@ -3,7 +3,7 @@ Smallk Start Page
 
 Introduction
 ----------------
-Smallk is a high performance software package for low rank matrix approximation via the nonnegative matrix factorization (NMF). The nonnegative matrix factorization (NMF) is 
+Smallk is a high performance software package for low rank matrix approximation via the nonnegative matrix factorization (NMF). NMF is 
 a low-rank approximation where a matrix is approximated 
 by a product of two nonnegative factors. 
 The role of NMF in data analysis has been as significant as the singular value decomposition (SVD) due to the 
