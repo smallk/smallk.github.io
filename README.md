@@ -3,7 +3,7 @@ Smallk Start Page
 
 Smallk home page
 ----------------
-(http://smallk.githup.io)
+http://smallk.githup.io
 
 Acknowledgements
 ----------------
