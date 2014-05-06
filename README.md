@@ -15,7 +15,7 @@ methods developed to date.
 
 Smallk home page
 ----------------
-http://smallk.githup.io
+http://smallk.github.io
 
 Acknowledgements
 ----------------
