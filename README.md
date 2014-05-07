@@ -29,6 +29,6 @@ program manager is
 
 Smallk Copyright and Software License
 ======================================
-Smallk is under copyrigt by the Georgia Institute of Technology, 2014. 
+Smallk is under copyright by the Georgia Institute of Technology, 2014. 
 All source code is released under the 
 [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) license.
