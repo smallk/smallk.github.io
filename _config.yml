@@ -1,0 +1,10 @@
+# Site settings
+title: Smallk
+email: your-email@domain.com
+description: "Smallk"
+baseurl: ""
+url: "http://yourdomain.com"
+
+# Build settings
+markdown: kramdown
+permalink: pretty
