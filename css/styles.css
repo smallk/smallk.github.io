@@ -1,5 +1,7 @@
 body {
   padding:50px;
+  padding-top: 60px;
+  padding-bottom: 20px;
   font:15px/1.5 "Open Sans", Helvetica, "Helvetica Neue", Arial, sans-serif;
   color:#111;
   font-weight:500;
@@ -187,6 +189,7 @@ footer {
   float:left;
   position:fixed;
   bottom:50px;
+  text-align:center;
 }
 
 @media print, screen and (max-width: 960px) {
