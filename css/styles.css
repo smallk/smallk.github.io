@@ -98,6 +98,14 @@ img {
   float:left;
   position:fixed;
 }
+#main-header .page-link {
+	display: block;
+	padding: 8px;
+}
+
+#main-header .page-link.current-page {
+	font-weight: bold;
+}
 
 #main-header ul {
   list-style:none;

@@ -1,13 +1,14 @@
 <header id="main-header">
 	<h1><a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
 	<p></p>
-
-	<p class="view"><a href="https://github.com/smallk">View Smallk's GitHub Profile</a></p>
 	
 	<nav class="site-nav">
       <div class="trigger">
-        {% for page in site.pages %}
-          <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+        {% for looppage in site.pages %}
+          {% if looppage.url == "/" %}
+		  {% else %}
+		  <a class="page-link {% if looppage.permalink == page.url %} current-page {% endif %}" href="{{ looppage.url | prepend: site.baseurl }}">{{ looppage.title }}</a>
+		  {% endif %}
         {% endfor %}
       </div>
     </nav>

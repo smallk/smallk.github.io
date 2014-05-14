@@ -3,7 +3,8 @@ title: Smallk
 email: your-email@domain.com
 description: "Smallk"
 baseurl: ""
-url: "http://yourdomain.com"
+url: "https://smallk.github.io"
+githubproject: "https://github.com/smallk"
 
 # Build settings
 markdown: kramdown
