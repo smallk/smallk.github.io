@@ -1,9 +1,9 @@
-Smallk Start Page
+SmallK Start Page
 ================
 
 Introduction
 ----------------
-Smallk is a high performance software package for low rank matrix approximation via the nonnegative matrix factorization (NMF). NMF is 
+SmallK is a high performance software package for low rank matrix approximation via the nonnegative matrix factorization (NMF). NMF is 
 a low-rank approximation where a matrix is approximated 
 by a product of two nonnegative factors. 
 The role of NMF in data analytics has been as significant as the singular value decomposition (SVD). However, due to 
@@ -13,7 +13,7 @@ problem has proven convergence properties and is one of the most efficient
 methods developed to date.
 
 
-Smallk home page
+SmallK home page
 ----------------
 http://smallk.github.io
 
@@ -27,8 +27,8 @@ Georgia Institute of Technology and our DARPA
 program manager is
 [Dr. Christopher White](http://www.darpa.mil/Our_Work/I2O/Personnel/Dr_Christopher_White.aspx).
 
-Smallk Copyright and Software License
+SmallK Copyright and Software License
 ======================================
-Smallk is under copyright by the Georgia Institute of Technology, 2014. 
+SmallK is under copyright by the Georgia Institute of Technology, 2014. 
 All source code is released under the 
 [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) license.
