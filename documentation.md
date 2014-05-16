@@ -4,6 +4,8 @@ title: Documentation
 permalink: /documentation/
 ---
 
+<p class="body-header-links" style="text-align: center;"><a href="">Installation</a> | <a href="">Tests</a> | <a href="">Tutorials</a></p>
+
 ### I. Introduction
 
 High-dimensional data sets are ubiquitous in data science, and they often present serious problems for researchers. These data sets cannot be directly visualized, and most of the available algorithms used for the analysis and classification of large data sets suffer from the "curse of dimensionality", which sharply reduces the speed and accuracy of these algorithms. In reality, most high-dimensional data sets fill only a subspace of the whole space of possible values. For instance, there are common correlations between the results of various medical diagnostic measurements, and certain values are not likely to occur together. Thus, while the full data space may be high dimensional, the data itself usually occupy regions of much lower intrinsic dimensionality.

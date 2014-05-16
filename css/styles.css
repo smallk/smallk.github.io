@@ -170,6 +170,13 @@ strong {
   display:block;
   color:#222;
 }
+.body-header-links {
+	text-align: center;
+}
+
+.body-header-links a {
+	padding: 5px;
+}
 
 section {
   width:500px;
