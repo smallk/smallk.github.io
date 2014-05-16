@@ -4,4 +4,4 @@ title: Documentation
 permalink: /documentation/
 ---
 
-Page is under construction (page fixed)
+Page is under construction
