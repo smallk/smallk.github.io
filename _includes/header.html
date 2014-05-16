@@ -3,14 +3,20 @@
 	<p></p>
 	
 	<nav class="site-nav">
-      <div class="trigger">
-        {% for looppage in site.pages %}
-          {% if looppage.url == "/" %}
-		  {% else %}
-		  <a class="page-link {% if looppage.permalink == page.url %} current-page {% endif %}" href="{{ looppage.url | prepend: site.baseurl }}">{{ looppage.title }}</a>
-		  {% endif %}
-        {% endfor %}
-      </div>
+      <ul class="site-nav-ul">
+		<li><a class="page-link {% if page.permalink == '/about/' %} current-page {% endif %}" href="/about">About</a></li>
+		<li><a class="page-link {% if page.permalink == '/documentation/' %} current-page {% endif %}" href="/documentation">Documentation</a>
+		{% if page.baselink == '/documentation/' %}
+			<ul>
+				<li><a class="page-link thin {% if page.permalink == '/documentation/installation/' %} current-page {% endif %}" href="/documentation/installation">Installation</a></li>
+				<li><a class="page-link thin {% if page.permalink == '/documentation/tests/' %} current-page {% endif %}" href="/documentation/tests">Tests</a></li>
+				<li><a class="page-link thin {% if page.permalink == '/documentation/tutorials/' %} current-page {% endif %}" href="/documentation/tutorials">Tutorials</a></li>
+			</ul>
+		{% endif %}
+		</li>
+		<li><a class="page-link {% if page.permalink == '/publications/' %} current-page {% endif %}" href="/publications">Publications</a></li>
+		<li><a class="page-link {% if page.permalink == '/repo/' %} current-page {% endif %}" href="/repo">Software Repository</a></li>
+      </ul>
     </nav>
 
 </header>

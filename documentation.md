@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Documentation
+
+baselink: /documentation/
 permalink: /documentation/
 ---
-
-<p class="body-header-links" style="text-align: center;"><a href="">Installation</a> | <a href="">Tests</a> | <a href="">Tutorials</a></p>
 
 ### Introduction
 

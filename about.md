@@ -1,6 +1,8 @@
 ---
 layout: page
 title: About
+
+baselink: /about/
 permalink: /about/
 ---
 

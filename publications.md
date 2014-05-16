@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Publications
+
+baselink: /publications/
 permalink: /publications/
 ---
 
