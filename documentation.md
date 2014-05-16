@@ -4,7 +4,7 @@ title: Documentation
 permalink: /documentation/
 ---
 
-### I. Introduction
+### Introduction
 
 High-dimensional data sets are ubiquitous in data science, and they often present serious problems for researchers. These data sets cannot be directly visualized, and most of the available algorithms used for the analysis and classification of large data sets suffer from the "curse of dimensionality", which sharply reduces the speed and accuracy of these algorithms. In reality, most high-dimensional data sets fill only a subspace of the whole space of possible values. For instance, there are common correlations between the results of various medical diagnostic measurements, and certain values are not likely to occur together. Thus, while the full data space may be high dimensional, the data itself usually occupy regions of much lower intrinsic dimensionality.
 
@@ -14,7 +14,7 @@ The impetus for this document is to provide a step-by-step procedure for the app
 
 Below is a brief description of our fundamental research on NMF algorithms (please see the References section for more detail). Following the brief motivational introduction to the NMF are detailed installation instructions for the NMF software framework.
 
-### I.1 Low-rank approximations and NMF
+### Low-rank approximations and NMF
 
 Algorithms that enable dimension reduction and clustering are two critical areas in data analytics and interactive visual analysis of high-dimensional data. A low-rank approximation framework has the ability to facilitate faster processing times and utilize fewer resources. These approximations provide a natural way to compute only what we need for significant dimension reduction, and are analogous to singular value decomposition (SVD) and principal component analysis (PCA). The algorithm framework also works efficiently for clustering since clustering can be viewed as a specific way of achieving a low-rank approximation so that the clustered structure of the data is well represented in a few basis vectors. 
 
@@ -22,7 +22,7 @@ Matrix factorizations such as the SVD have played a key role as a fundamental to
 
 Our algorithm framework utilizes various constraints on the non-convex optimization problem that gives rise to the nonnegative factors. With these various constraints NMF is a versatile tool for a large variety of data analytics problems. NMF algorithms have been an active area of research for several years. Since much of the data for many important problems in numerous domains is nonnegative NMF is the correct computational model for mining and/or integrating information from such data. NMF also offers enhanced interpretation of results since nonnegativity of the data is preserved.
 
-### II. Nonnegative Matrix Factorization Library
+### Nonnegative Matrix Factorization Library
 
 This library provides routines for nonnegative matrix factorization. Given a nonnegative mxn matrix A, this software computes nonnegative matrices W and H such that
 
@@ -40,7 +40,7 @@ An exact nonnegative factorization of matrix A is generally not possible, so the
 
 The last two, 4 and 5, can be used for flat clustering or for other applications such as image processing, interactive visual analytics, speckle removal from SAR images, recommender systems, information fusion, outlier detection, chemometrics, and many more. 
 
-### III. Prerequisites
+### Prerequisites
 
 The following list is the software packages/libraries required to build the NMF library code:
 
