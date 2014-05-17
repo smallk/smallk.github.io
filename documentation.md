@@ -28,7 +28,7 @@ Our algorithm framework utilizes various constraints on the non-convex optimizat
 
 This library provides routines for nonnegative matrix factorization. Given a nonnegative mxn matrix A, this software computes nonnegative matrices W and H such that
 
-<p style="text-align: center; font-weight: bold;">A&cong;W H</p>
+<p style="text-align: center; font-weight: bold;">A &cong; W H</p>
 
 All matrices are assumed to be in column-major order. Matrix A has m rows and n columns, and can be either sparse or dense. Matrix W has m rows and k columns, and matrix H has k rows and n columns. The value of k is an input parameter to the factorization routines.
 
