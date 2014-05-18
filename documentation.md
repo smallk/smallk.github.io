@@ -32,15 +32,16 @@ This library provides routines for nonnegative matrix factorization. Given a non
 
 All matrices are assumed to be in column-major order. Matrix A has m rows and n columns, and can be either sparse or dense. Matrix W has m rows and k columns, and matrix H has k rows and n columns. The value of k is an input parameter to the factorization routines.
 
-An exact nonnegative factorization of matrix A is generally not possible, so the factorization proceeds iteratively, attempting to globally minimize an objective function. Several NMF algorithms are provided, since no single NMF algorithm is optimal for all data sets or application domains. The supported NMF algorithms are:
+An _exact_ nonnegative factorization of matrix A is generally not possible, so the factorization proceeds iteratively, attempting to globally minimize an objective function. Several NMF algorithms are provided, since no single NMF algorithm is optimal for all data sets or application domains. The supported NMF algorithms are:
 
 1. Rank-2 NMF
 2. Rank-2 NMF for Hierarchical Clustering
 3. Rank-2 NMF for Flat Clustering
-4. Hierarchical Alternating Least Squares (HALS)
-5. Block Principal Pivoting (BPP) NMF
+4. Multiplicative Updating (MU)
+5. Hierarchical Alternating Least Squares (HALS)
+6. Block Principal Pivoting (BPP) NMF
 
-The last two, 4 and 5, can be used for flat clustering and any of the algorithms are suitable in many applications such as image processing, interactive visual analytics, speckle removal from SAR images, recommender systems, information fusion, outlier detection, chemometrics, and many more.
+The algorithms 3, 4, 5 and 6 can be used for flat clustering and any of the algorithms are suitable in many applications such as image processing, interactive visual analytics, speckle removal from SAR images, recommender systems, information fusion, outlier detection, chemometrics, and many more.
 
 ### Prerequisites
 The following list is the software packages/libraries required to build the NMF library code:
