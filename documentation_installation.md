@@ -209,3 +209,38 @@ Download the specified (check the README.html file) distribution of Elemental, u
 **2.12** To test the installation, follow Elemental’s test instructions for the SVD test to verify that Elemental is working correctly.
 
 [back to top](#top)
+
+
+Disclaimer
+----------
+
+This software is a work in progress.  It will be updated throughout the course of the 
+XDATA program with additional algorithms and examples.  The distributed NMF 
+factorization routine uses sequential algorithms, but it replaces the matrices and matrix 
+operations with distributed versions.  The GA Tech research group is working on proper 
+distributed NMF algorithms, and when such algorithms are available they will be added to 
+the library.  Thus the performance of the distributed code should be viewed as being the
+baseline for our future distributed NMF implementations.
+
+<h2 id="contact">Contact Info</h2>
+For comments, questions, bug reports, suggestions, etc., contact:
+
+     Richard Boyd
+     Senior Research Scientist
+	 Cyber Technology and Information Security Laboratory
+     Georgia Tech Research Institute
+     250 14th St NW
+     Atlanta, GA 30318
+     richard.boyd@gtri.gatech.edu
+
+     Barry Drake
+     Senior Research Scientist
+	 Cyber Technology and Information Security Laboratory
+     Georgia Tech Research Institute
+     250 14th St NW
+     Atlanta, GA 30318
+     barry.drake@gtri.gatech.edu
+
+
+
+
