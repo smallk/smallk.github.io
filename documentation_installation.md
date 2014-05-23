@@ -110,7 +110,7 @@ permalink: /documentation/installation/
 			-D MATH_LIBS="/usr/local/flame/lib/libflame.a;-framework Accelerate"
 			-D ELEM_EXAMPLES=ON
 			-D ELEM_TESTS=ON  ..
-V1.9.** Build and install the code as follows:
+**1.9.** Build and install the code as follows:
 		make -j4
 		make install
 **1.10.** Edit the Elemental configuration file as follows:
@@ -239,7 +239,7 @@ For comments, questions, bug reports, suggestions, etc., contact:
      Georgia Tech Research Institute
      250 14th St NW
      Atlanta, GA 30318
-     barry.drake@gtri.gatech.edu
+     barry.drake@gtri.gatech.edu Laboratory
 
 
 
