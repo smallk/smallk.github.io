@@ -66,6 +66,9 @@ permalink: /documentation/installation/
 <h2 id="mac_elemental"> Install Elemental </h2>
 Download the specified (check the README.html file) distribution of Elemental, unzip and untar the distribution, and cd to the untarred directory.
 
+Two versions of Elemental need to be built.  One is a hybrid release build with OpenMP parallelization, and one is the pure release build without OpenMP parallelization.  A separate build folder will be created for each build.  The build that uses internal OpenMP parallelization is called a ‘HybridRelease’ build; the build that doesn’t is called a ‘PureRelease’ build.  The debug build is called a ‘PureDebug’ build.  The HybridRelease build is best for large problems, where the problem size is large enough to overcome the OpenMP parallel overhead. The following is for the 0.83 version of elemental. Set the version to that specified in the README.html file. Note that the files will be installed in **/usr/local/elemental/[version]/[build type]**.
+
+
 ###Here is our suggested installation scheme for Elemental:###
 
 Choose a folder for the root of the Elemental installation.  For our systems, this is
@@ -86,9 +89,7 @@ Inside of this version folder, create two additional folders for each Elemental 
 	/usr/local/elemental/0.83/HybridRelease
 	/usr/local/elemental/0.83/PureRelease
 
-Two versions of Elemental need to be built.  One is a hybrid release build with OpenMP parallelization, and one is the pure release build without OpenMP parallelization.  A separate build folder will be created for each build.  The build that uses internal OpenMP parallelization is called a ‘HybridRelease’ build; the build that doesn’t is called a ‘PureRelease’ build.  The debug build is called a ‘PureDebug’ build.  The HybridRelease build is best for large problems, where the problem size is large enough to overcome the OpenMP parallel overhead. The following is for the 0.83 version of elemental. Set the version to that specified in the README.html file. Note that the files will be installed in **/usr/local/elemental/[version]/[build type]**.
-
-**1.1.**  Run these commands to create the required directories for the build types:
+**1.1.**  Run these commands to create the required directories for the build types:
 		mkdir build_hybrid
 		mkdir build_pure
 ###Perform the HybridRelease build
