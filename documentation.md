@@ -60,7 +60,7 @@ The following list is the software packages/libraries required to build the Smal
   * [OpenMP](http://openmp.org/wp/): (optional) 
   * CMake
 
-Elemental can make use of OpenMP parallelization if available.  This is generally advantageous for large problems.  The SmallK code is also internally parallelized to take full advantage of multiple CPU cores for maximum performance.  SmallK does not currently support distributed computation, but it is planned for future updates.
+Elemental can make use of OpenMP parallelization if available, which is generally advantageous for large problems.  The SmallK code is also internally parallelized to take full advantage of multiple CPU cores for maximum performance.  SmallK does not currently support distributed computation, but this is planned for future updates.
 
 <b>The SmallK software supports the latest stable release of Elemental, version 0.83</b>.
 
