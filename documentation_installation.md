@@ -18,6 +18,7 @@ permalink: /documentation/installation/
     *   [Install the latest GNU compilers](#lin_GNU)
     *   [Install OpenMPI](#lin_open_mpi)
     *   [Install libFlame](#lin_libflame)
+    *   [Install BLAS Library](#lin_blas)
     *   [Install Elemental](#lin_elemental)
 *   [Contact Information](#contact)
 
@@ -89,9 +90,12 @@ Inside of this version folder, create two additional folders for each Elemental 
 	/usr/local/elemental/0.83/HybridRelease
 	/usr/local/elemental/0.83/PureRelease
 
-**1.1.**  Run these commands to create the required directories for the build types:
+
+Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unzip and untar the distribution, and cd to the top-level folder.
+
+**1.1.**  Run these commands to create the required directories for the build types:
 		mkdir build_hybrid
-		mkdir build_pure
+		mkdir build_pure
 ###Perform the HybridRelease build
 **1.2.** The HybridRelease version will be built first.
 		cd build_hybrid
@@ -132,12 +136,11 @@ Inside of this version folder, create two additional folders for each Elemental 
 We strongly recommend using a package manager for your Linux distribution for installation and configuration of the required dependencies.  We cannot provide specific installation commands for every variant of Linux, so we specify the high-level steps below.
 
 <h2 id="lin_GNU"> Install the latest GNU compilers </h2>
-Elemental requires a modern C++ compiler, and the Georgia Tech NMF library requires C++11. We recommend that you install the latest stable version of the GNU compilers (version 4.9 as of this writing) using the appropriate command for your Linux distribution and package manager.Also install the latest version of GNU Fortran, which is needed for the installation of MPI.
-
+We recommend installation of the latest stable release of the GNU C++ compiler, which is g++-4.9 at the time of this writing. Also install the latest version of GNU Fortran, which is needed for the installation of MPI. 
 <h2 id="lin_open_mpi"> Install OpenMPI </h2>
-Download the latest version of OpenMPI, unzip and untar the downloaded zip file, and cd to the untarred directory.  Run configure as follows, all on a single line.  This command assumes that gcc-4.8 has been installed; change the version number if a later version was installed, or if the paths are incorrect for your system:
+Download the latest version of [OpenMPI](http://www.open-mpi.org/), unzip and untar the downloaded zip file, and cd to the untarred directory.  Run configure as follows, all on a single line.  This command assumes that gcc-4.9 has been installed; change the version number if a later version was installed, or if the paths are incorrect for your system:
 
-		./configure --enable-mpi-thread-multiple --prefix=/usr/local  CC=/usr/local/bin/gcc-4.8 CXX=/usr/local/bin/g++-4.8 F77=usr/local/bin/gfortran  FC=/usr/local/bin/gfortran
+		./configure --enable-mpi-thread-multiple --prefix=/usr/local  CC=/usr/local/bin/gcc-4.9 CXX=/usr/local/bin/g++-4.9 F77=usr/local/bin/gfortran-4.9 FC=/usr/local/bin/gfortran-4.9
 
 Wait for the configure script to finish – this could take several minutes. Then build the code as follows:
 		make -j4
@@ -149,14 +152,31 @@ We strongly recommend using a package manager for your Linux distribution for in
 
 <h2 id="lin_libflame"> Install libFlame </h2>
 
-Download the latest version of libFlame, which at the time of this writing was libflame-r11488.tar.gz. Unzip and untar the distribution and cd to the untarred directory.Run configure as follows, suitably modifying the paths as appropriate for your system:
-		./configure --prefix=/usr/local/flame --with-cc=/usr/local/bin/gcc-4.8  --with-ranlib=/usr/local/bin/gcc-ranlib-4.8
+To obtain the latest version of the FLAME library, clone the FLAME git repository with this command:
+		git clone https://github.com/flame/libflame.git
+Run the configure script in the top-level FLAME folder as follows (assuming you want to install to /usr/local/flame; if not, change the prefix path):
+
+		./configure --prefix=/usr/local/flame --with-cc=/usr/local/bin/gcc-4.9
+ --with-ranlib=/usr/local/bin/gcc-ranlib-4.9
 Then build and install the code as follows:
-		make -j4		make install
+		make -j4
+		make install
+
+This completes the installation of the FLAME library.
+
+<h2 id="lin_blas"> Install an accelerated BLAS library </h2>
+
+It is essential to link Elemental with an accelerated BLAS library for maximum performance.  Linking Elemental with a ‘reference’ BLAS implementation will cripple performance, since the reference implementations are designed for correctness not speed.
+
+If you do not have an accelerated BLAS on your system, you can download and build [OpenBLAS](http://www.openblas.net/).  Download the tarball (version 0.2.8 as of this writing), unzip and untar it, and cd into the top-level folder.  Build OpenBLAS with this command, assuming you have a 64-bit system:	make BINARY=64 USE_OPENMP=1Then install it with this command, assuming the installation directory is /usr/local/openblas/0.2.8/:	make PREFIX=/usr/local/openblas/0.2.8/ install
 <h2 id="lin_elemental"> Install Elemental </h2>
 
-Download the specified (check the README.html file) distribution of Elemental, unzip and untar the distribution, and cd to the untarred directory.Three versions of Elemental need to be built.  One is a debug build, one is a release build with OpenMP parallelization, and one is a release build without OpenMP parallelization.  A separate build folder will be created for each build.  The build that uses internal OpenMP parallelization is called a ‘HybridRelease’ build; the build that doesn’t is called a ‘PureRelease’ build.  The debug build is called a ‘PureDebug’ build.  The HybridRelease build is best for large problems, where the problem size is large enough to overcome the OpenMP parallel overhead. The following is for the 0.81 version of elemental. Set the version to that specified in the README.html file. Note that the files will be installed in /usr/local/elemental/<version>/<build type>**2.1.**  Run these commands to create the required directories for the build types:
-		mkdir localbuild_hybridrelease		mkdir localbuild_puredebug
+Download the specified (check the README.html file) distribution of Elemental, unzip and untar the distribution, and cd to the untarred directory.
+Two versions of Elemental need to be built.  One is a debug build, one is a release build with OpenMP parallelization, and one is a release build without OpenMP parallelization.  A separate build folder will be created for each build.  The build that uses internal OpenMP parallelization is called a ‘HybridRelease’ build; the build that doesn’t is called a ‘PureRelease’ build.  The debug build is called a ‘PureDebug’ build.  The HybridRelease build is best for large problems, where the problem size is large enough to overcome the OpenMP parallel overhead. The following is for the 0.81 version of elemental. Set the version to that specified in the README.html file. Note that the files will be installed in /usr/local/elemental/<version>/<build type>
+
+**2.1.**  Run these commands to create the required directories for the build types:
+		mkdir build_hybrid
+		mkdir build_pure
 
 ###Perform the HybridRelease build
 
