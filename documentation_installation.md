@@ -23,7 +23,10 @@ permalink: /documentation/installation/
 
 <h1 id="MacOSX"> How to Install Elemental on MacOSX </h1>
 
-We strongly recommend using Homebrew as the Mac package manager. Homebrew does not require sudo privileges for package installation, unlike other package managers such as MacPorts. Thus the chances of corrupting vital system files are greatly reduced with Homebrew.If you use Homebrew, first make sure that your PATH is configured to search Homebrew’s installation directory first. Homebrew’s default installation location is /usr/local/bin, so that location needs to be first on your path. To check, run this command:	cat /etc/pathsIf the first entry is not /usr/local/bin, edit this file and move /usr/local/bin so that it is on the first line of the file. Save the file, then close the terminal session and start a new terminal session so that the path changes will take effect.
+On MacOSX we recommend using [Homebrew](http://mxcl.github.io/homebrew/) as the package manager. Homebrew does not require sudo privileges for package installation, unlike other package managers such as MacPorts. Thus the chances of corrupting vital system files are greatly reduced with Homebrew.
+If you use Homebrew, ensure that your PATH is configured to search Homebrew’s installation directory first. Homebrew’s default installation location is /usr/local/bin, so that location needs to be first on your path. To check, run this command from a terminal window:
+	cat /etc/paths
+If the first entry is not /usr/local/bin, you will need to edit this file.  This is a system file, so first create a backup. Move the line /usr/local/bin so that it is on the first line of the file. Save the file, then close the terminal session and start a new terminal session so that the path changes will take effect.
 
 [back to top](#top)
 <h2 id="mac_GNU"> Install the latest GNU compilers </h2>
@@ -46,9 +49,14 @@ permalink: /documentation/installation/
 	git clone https://github.com/flame/libflame.git
 Run the configure script in the top-level FLAME folder as follows (assuming the install path is /usr/local/flame):
 	./configure –-prefix=/usr/local/flame –-with-cc=/usr/local/bin/gcc-4.9 –-with-ranlib=/usr/local/bin/gcc-ranlib-4.9
-A complete list of configuration options can be obtained by running ./configure –-help.[back to top](#top)
+A complete list of configuration options can be obtained by running ./configure –-help.
+
+After the configuration process completes, build the FLAME library as follows:
+	make –j4
+	make install
+[back to top](#top)
 <h2 id="mac_elemental"> Install Elemental </h2>
-Download the specified (check the README.html file) distribution of Elemental, unzip and untar the distribution, and cd to the untarred directory.
+Download the specified (check the README.html file) distribution of [Elemental](http://libelemental.org/), unzip and untar the distribution, and cd to the untarred directory.
 
 Two versions of Elemental need to be built.  One is a hybrid release build with OpenMP parallelization, and one is the pure release build without OpenMP parallelization.  A separate build folder will be created for each build.  The build that uses internal OpenMP parallelization is called a ‘HybridRelease’ build; the build that doesn’t is called a ‘PureRelease’ build.  The debug build is called a ‘PureDebug’ build.  The HybridRelease build is best for large problems, where the problem size is large enough to overcome the OpenMP parallel overhead. The following is for the 0.83 version of elemental. Set the version to that specified in the README.html file. Note that the files will be installed in **/usr/local/elemental/[version]/[build type]**.
 
