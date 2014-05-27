@@ -27,42 +27,26 @@ permalink: /documentation/installation/
 
 [back to top](#top)
 <h2 id="mac_GNU"> Install the latest GNU compilers </h2>
-Elemental requires a modern C++ compiler, and the Georgia Tech NMF library requires C++11. We recommend that you install the latest stable version of the GNU compilers (version 4.8.2 as of this writing). To install gcc-4.8, first install the XCode command line tools with this command:
-
-		xcode-select --install
-
-If this command produces an error message, download and install XCode from the AppStore, then repeat the command. The g++-4.8 compiler requires a specific version of ISL (v 0.11), which can be installed with this command:
- 		brew install isl011
-Then use Homebrew to install the latest version of g++-4.8 as follows:
- 		brew tap homebrew/versions
-		brew install gcc48 --enable-cxx --enable-fortran --enable-objc --enable-objcxx
-The Apple-provided gcc and g++ will not be overwritten by this installation.  The new compilers will be installed as gcc-4.8, g++-4.8, etc.
-
-Install the latest version of GNU fortran with this command:
-		brew install gfortran
-The Fortran compiler is needed for the installation of MPI.
+Elemental and SmallK both require a modern C++ compiler compliant with the C++11 standard.  We recommend that you install the latest stable version of the clang and GNU C++ compilers.  To do this, first install the XCode command line tools with this command:	xcode-select --install
+If this command produces an error, download and install XCode from the AppStore, then repeat the command.  If that should still fail, install the command line tools from the XCode preferences menu.  After the installation completes, run this command from a terminal window:
+	clang++ --version
+You should see output similar to this:	Apple LLVM version 5.1 (clang-503.0.40) (based on LLVM 3.4svn)	Target: x86-64-apple-darwin13.2.0	Thread model: posixThe latest version of the GNU compiler at the time of writing is g++-4.9.  This can be installed with Homebrew as follows:
+ 	brew tap homebrew/versions
+	brew install gcc49 --enable-fortran
+The Apple-provided gcc and g++ will not be overwritten by this installation.  The new compilers will be installed into /usr/local/bin as gcc-4.9, g++-4.9, and gfortran-4.9. The Fortran compiler is needed for the installation of MPI.
 
 [back to top](#top)
 <h2 id="mac_open_mpi"> Install OpenMPI </h2>
-Uninstall any existing Homebrew MPI installation. The reason for this is that Elemental can take advantage of MPI multithreading, but Homebrew does not provide an option for building MPI with multithreading support.
-		brew uninstall open-mpi
-Download the latest version of OpenMPI, unzip and untar the downloaded zip file, and cd to the untarred directory.  Run configure as follows, all on a single line (assuming gcc-4.8 has been installed; change the version number if a later version was installed):
-		./configure --enable-mpi-thread-multiple --prefix=/usr/local  CC=/usr/local/bin/gcc-4.8 CXX=/usr/local/bin/g++-4.8 F77=/usr/local/bin/gfortran  FC=/usr/local/bin/gfortran
-Wait for the configure script to finish – this could take several minutes. Then build the code as follows:
-		make -j4
-Install with:
-		make install
-OpenMPI provides many tests to verify the installation; it’s a good idea to run at least some of these tests to ensure that MPI was installed successfully.
+Install the latest version of OpenMPI with Homebrew as follows:	brew install open-mpi –-c++11The Homebrew install formula provides an option for “thread-multiple” support, but do not enable this option, as it is still experimental, not optimized for performance, and may have bugs.
 
 [back to top](#top)
 
 <h2 id="mac_libflame"> Install libFlame </h2>
-Download the latest version of libFlame, which at the time of this writing was libflame-r11488.tar.gz. Unzip and untar the distribution and cd to the untarred directory.Run configure as follows:
-		./configure --prefix=/usr/local/flame --with-cc=/usr/local/bin/gcc-4.8  --with-ranlib=/usr/local/bin/gcc-ranlib-4.8
-Then build and install the code as follows:
-		make -j4
-		make install
-[back to top](#top)
+To obtain the latest version of the FLAME library, clone the FLAME git repository with this command:
+	git clone https://github.com/flame/libflame.git
+Run the configure script in the top-level FLAME folder as follows (assuming the install path is /usr/local/flame):
+	./configure –-prefix=/usr/local/flame –-with-cc=/usr/local/bin/gcc-4.9 –-with-ranlib=/usr/local/bin/gcc-ranlib-4.9
+A complete list of configuration options can be obtained by running ./configure –-help.[back to top](#top)
 <h2 id="mac_elemental"> Install Elemental </h2>
 Download the specified (check the README.html file) distribution of Elemental, unzip and untar the distribution, and cd to the untarred directory.
 
