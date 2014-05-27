@@ -53,7 +53,7 @@ permalink: /documentation/installation/
 
 After the configuration process completes, build the FLAME library as follows:
 	make –j4
-	make install
+	make install
 [back to top](#top)
 <h2 id="mac_elemental"> Install Elemental </h2>
 Download the specified (check the README.html file) distribution of [Elemental](http://libelemental.org/), unzip and untar the distribution, and cd to the untarred directory.
