@@ -48,7 +48,7 @@ SmallK also provides implementations of hierarchical and flat clustering.  These
 		3. Flat Clustering via NMF-BPP or NMF-HALS
 
 These clustering algorithms are suitable in many applications such as image processing, interactive visual analytics, speckle removal from SAR images, recommender systems, information fusion, outlier detection, chemometrics, and many more.
-<p> The SmallK library requires either MacOSX or Linux.  A Windows version may be provided in the future.
+<br>The SmallK library requires either MacOSX or Linux.  A Windows version may be provided in the future.
 ### Prerequisites
 The following list is the software packages/libraries required to build the SmallK NMF library code:
 
