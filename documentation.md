@@ -64,4 +64,4 @@ Elemental can make use of OpenMP parallelization if available, which is generall
 
 <b>The SmallK software supports the latest stable release of Elemental, version 0.83</b>.
 
-Check the documentation links on this page for additional detailed instructions for installation of the NMF library software and dependencies. If desired, Installation instructions for Elemental can be found [here](http://libelemental.org/documentation/).
+Check the documentation links on this page for additional detailed instructions for installation of the SmallK library software and dependencies. If desired, Installation instructions for Elemental can be found [here](http://libelemental.org/documentation/).
