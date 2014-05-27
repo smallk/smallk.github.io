@@ -26,34 +26,42 @@ Our algorithm framework utilizes various constraints on the non-convex optimizat
 
 ### Nonnegative Matrix Factorization Library
 
-This library provides routines for nonnegative matrix factorization. Given a nonnegative mxn matrix A, this software computes nonnegative matrices W and H such that
+The SmallK library provides routines for low-rank matrix approximation via nonnegative matrix factorization (NMF). Given a nonnegative matrix A, the SmallK software computes nonnegative matrices W and H such that
 
 <p style="text-align: center; font-weight: bold;">A &cong; W H</p>
 
-All matrices are assumed to be in column-major order. Matrix A has m rows and n columns, and can be either sparse or dense. Matrix W has m rows and k columns, and matrix H has k rows and n columns. The value of k is an input parameter to the factorization routines.
+Matrix A has m rows and n columns and can be either sparse or dense.  W has m rows and k columns, and H has k rows and n columns. W and H are always dense, even when A is sparse.  The value of k is an input parameter to the factorization routines; typically k << m and k << n.
 
-An _exact_ nonnegative factorization of matrix A is generally not possible, so the factorization proceeds iteratively, attempting to globally minimize an objective function. Several NMF algorithms are provided, since no single NMF algorithm is optimal for all data sets or application domains. The supported NMF algorithms are:
+NMF algorithms seek to approximate matrix A by the product of two much smaller matrices W and H.  The idea is to choose the smallest value of k (width of W and height of H) that gives an acceptable approximation error.  An exact nonnegative factorization of A is generally not possible, so the factorization proceeds iteratively, attempting to globally minimize an objective function.  As the iterations proceed, the SmallK code computes a metric that estimates the progress of the algorithm.  When the metric falls below a user-specified tolerance the iterations stop and convergence is declared.
 
-1. Rank-2 NMF
-2. Rank-2 NMF for Hierarchical Clustering
-3. Rank-2 NMF for Flat Clustering
-4. Multiplicative Updating (MU)
-5. Hierarchical Alternating Least Squares (HALS)
-6. Block Principal Pivoting (BPP) NMF
+The SmallK library provides implementations of several different NMF algorithms.  These algorithms are:
 
-The algorithms 3, 4, 5 and 6 can be used for flat clustering and any of the algorithms are suitable in many applications such as image processing, interactive visual analytics, speckle removal from SAR images, recommender systems, information fusion, outlier detection, chemometrics, and many more.
+		1. Multiplicative Updating (NMF-MU)
+		2. Hierarchical Alternating Least Squares (NMF-HALS)
+		3. Block Principal Pivoting (NMF-BPP)
+		4. Rank2 Specialization (NMF-RANK2)
 
+SmallK also provides implementations of hierarchical and flat clustering.  These routines are:
+
+		1. Hierarchical Clustering via NMF-RANK2
+		2. Flat Clustering via NMF-RANK2
+		3. Flat Clustering via NMF-BPP or NMF-HALS
+
+These clustering algorithms are suitable in many applications such as image processing, interactive visual analytics, speckle removal from SAR images, recommender systems, information fusion, outlier detection, chemometrics, and many more.
+<p> The SmallK library requires either MacOSX or Linux.  A Windows version may be provided in the future.
 ### Prerequisites
-The following list is the software packages/libraries required to build the NMF library code:
+The following list is the software packages/libraries required to build the SmallK NMF library code:
 
 * A modern, C++11-compliant compiler, such as g++ 4.8.2 or later
 * [Elemental](http://libelemental.org/), a high-performance library for dense, distributed linear algebra, which requires:
-  * An MPI installation, such as MPICH2 or [OpenMPI](http://www.open-mpi.org/software/ompi/v1.6/)
+  * An MPI installation, such as [OpenMPI](http://www.open-mpi.org/software/ompi/v1.6/)
   * BLAS implementation, hopefully optimized/tuned for the local system
-  * LAPACK implementation, hopefully optimized/tuned for the local system
-  * [libFLAME](http://www.cs.utexas.edu/~flame/web/libFLAME.html): high performance numerical libraries
-  * [OpenMP](http://openmp.org/wp/): a parallelization API
-  * CMake 2.8.5 or later
-Check the documentation links on this page for additional detailed instructions for installation of the NMF library software and dependencies. If desired, Installation instructions for Elemental can be found here.
+  * [libFLAME](http://www.cs.utexas.edu/~flame/web/libFLAME.html): a high-performance library for dense numerical linear algebra
+  * [OpenMP](http://openmp.org/wp/): (optional) 
+  * CMake
+
+Elemental can make use of OpenMP parallelization if available.  This is generally advantageous for large problems.  The SmallK code is also internally parallelized to take full advantage of multiple CPU cores for maximum performance.  SmallK does not currently support distributed computation, but it is planned for future updates.
+
+<b>The SmallK software supports the latest stable release of Elemental, version 0.83</b>.
 
 Check the documentation links on this page for additional detailed instructions for installation of the NMF library software and dependencies. If desired, Installation instructions for Elemental can be found [here](http://libelemental.org/documentation/0.81/index.html).
