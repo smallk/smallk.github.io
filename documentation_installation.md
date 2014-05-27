@@ -111,7 +111,7 @@ Inside of this version folder, create two additional folders for each Elemental 
 		make -j4
 		make install
 **1.10.** Edit the Elemental configuration file as follows:
-		cd /usr/local/elemental-0.81-PureRelease/conf/
+		cd /usr/local/elemental-0.83-PureRelease/conf/
 **1.11.** Open the ‘elemvariables’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
 		CXX = /usr/local/bin/g++-4.9
 change it to
@@ -127,7 +127,7 @@ Inside of this version folder, create two additional folders for each Elemental 
 We strongly recommend using a package manager for your Linux distribution for installation and configuration of the required dependencies.  We cannot provide specific installation commands for every variant of Linux, so we specify the high-level steps below.
 
 <h2 id="lin_GNU"> Install the latest GNU compilers </h2>
-Elemental requires a modern C++ compiler, and the Georgia Tech NMF library requires C++11. We recommend that you install the latest stable version of the GNU compilers (version 4.8.2 as of this writing) using the appropriate command for your Linux distribution and package manager.Also install the latest version of GNU Fortran, which is needed for the installation of MPI.
+Elemental requires a modern C++ compiler, and the Georgia Tech NMF library requires C++11. We recommend that you install the latest stable version of the GNU compilers (version 4.9 as of this writing) using the appropriate command for your Linux distribution and package manager.Also install the latest version of GNU Fortran, which is needed for the installation of MPI.
 
 <h2 id="lin_open_mpi"> Install OpenMPI </h2>
 Download the latest version of OpenMPI, unzip and untar the downloaded zip file, and cd to the untarred directory.  Run configure as follows, all on a single line.  This command assumes that gcc-4.8 has been installed; change the version number if a later version was installed, or if the paths are incorrect for your system:
