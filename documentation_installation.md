@@ -72,7 +72,11 @@ Choose a folder for the root of the Elemental installation.  For our systems, th
 
 	/usr/local/elemental
 
+At this point an environment variable can be created that points to the above directory, which will be used for the build. At the command line type
 
+	export ELEMENTAL_INSTALL_DIR=/usr/local/elemental
+
+Alternatively, the directory structure can be set up manually.
 Inside this folder create a new folder named with the release version of Elemental:
 
 	/usr/local/elemental/0.83/
