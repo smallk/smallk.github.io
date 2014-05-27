@@ -53,12 +53,20 @@ permalink: /documentation/installation/
 
 After the configuration process completes, build the FLAME library as follows:
 	make –j4
+
+The –j4 option tells Make to use four processes to perform the build.  This number can be increased if you have a more capable system.
+
 	make install
+
+The FLAME library is now installed.
 [back to top](#top)
 <h2 id="mac_elemental"> Install Elemental </h2>
-Download the specified (check the README.html file) distribution of [Elemental](http://libelemental.org/), unzip and untar the distribution, and cd to the untarred directory.
 
-Two versions of Elemental need to be built.  One is a hybrid release build with OpenMP parallelization, and one is the pure release build without OpenMP parallelization.  A separate build folder will be created for each build.  The build that uses internal OpenMP parallelization is called a ‘HybridRelease’ build; the build that doesn’t is called a ‘PureRelease’ build.  The debug build is called a ‘PureDebug’ build.  The HybridRelease build is best for large problems, where the problem size is large enough to overcome the OpenMP parallel overhead. The following is for the 0.83 version of elemental. Set the version to that specified in the README.html file. Note that the files will be installed in **/usr/local/elemental/[version]/[build type]**.
+We strongly recommend that users install both the HybridRelease and PureRelease builds of [Elemental](http://libelemental.org/).  OpenMP is enabled in the HybridRelease build and disabled in the PureRelease build.  So why install both?  For smaller problems the overhead of *OpenMP can actually cause code to run slower* than without it.  Whereas for large problems OpenMP parallelization generally helps, but there is no clear transition point between where it helps and where it hurts.  Thus we encourage users to experiment with both builds to find the one that performs best for their typical problems.
+
+We also recommend that users clearly separate the different build types as well as the versions of Elemental on their systems.  Elemental is under active development, and new releases can introduce changes to the API that are not backwards-compatible with previous releases.  To minimize build problems and overall hassle, we recommend that Elemental be installed so that the different versions and build types are cleanly separated.
+
+Thus, two versions of Elemental need to be built.  One is a hybrid release build with OpenMP parallelization, and the other is the pure release build without OpenMP parallelization.  A separate build folder will be created for each build.  The build that uses internal OpenMP parallelization is called a ‘HybridRelease’ build; the build that doesn’t is called a ‘PureRelease’ build.  The debug build is called a ‘PureDebug’ build.  The HybridRelease build is best for large problems, where the problem size is large enough to overcome the OpenMP parallel overhead. The following is for the 0.83 version of elemental. Set the version to that specified in the README.html file. Note that the files will be installed in **/usr/local/elemental/[version]/[build type]**.
 
 
 ###Here is our suggested installation scheme for Elemental:###
