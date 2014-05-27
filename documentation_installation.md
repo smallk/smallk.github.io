@@ -66,59 +66,56 @@ permalink: /documentation/installation/
 <h2 id="mac_elemental"> Install Elemental </h2>
 Download the specified (check the README.html file) distribution of Elemental, unzip and untar the distribution, and cd to the untarred directory.
 
-Three versions of Elemental need to be built.  One is a debug build, one is a release build with OpenMP parallelization, and one is a release build without OpenMP parallelization.  A separate build folder will be created for each build.  The build that uses internal OpenMP parallelization is called a ‘HybridRelease’ build; the build that doesn’t is called a ‘PureRelease’ build.  The debug build is called a ‘PureDebug’ build.  The HybridRelease build is best for large problems, where the problem size is large enough to overcome the OpenMP parallel overhead. The following is for the 0.81 version of elemental. Set the version to that specified in the README.html file. Note that the files will be installed in /usr/local/elemental/<version>/<build type>
+###Here is our suggested installation scheme for Elemental:###
+
+Choose a folder for the root of the Elemental installation.  For our systems, this is
+
+	/usr/local/elemental
+
+
+Inside this folder create a new folder named with the release version of Elemental:
+
+	/usr/local/elemental/0.83/
+
+Inside of this version folder, create two additional folders for each Elemental build type.  These should be named HybridRelease and PureRelease, to match Elemental's terminology.  Thus the final folder configuration is
+
+	/usr/local/elemental/0.83/HybridRelease
+	/usr/local/elemental/0.83/PureRelease
+
+Two versions of Elemental need to be built.  One is a hybrid release build with OpenMP parallelization, and one is the pure release build without OpenMP parallelization.  A separate build folder will be created for each build.  The build that uses internal OpenMP parallelization is called a ‘HybridRelease’ build; the build that doesn’t is called a ‘PureRelease’ build.  The debug build is called a ‘PureDebug’ build.  The HybridRelease build is best for large problems, where the problem size is large enough to overcome the OpenMP parallel overhead. The following is for the 0.81 version of elemental. Set the version to that specified in the README.html file. Note that the files will be installed in **/usr/local/elemental/[version]/[build type]**.
 
 **1.1.**  Run these commands to create the required directories for the build types:
-		mkdir localbuild_hybridrelease
-		mkdir localbuild_puredebug
+		mkdir build_hybrid
+		mkdir build_pure
 ###Perform the HybridRelease build
 **1.2.** The HybridRelease version will be built first.
-		cd localbuild_hybridrelease
+		cd build_hybrid
 **1.3.** Configure the Elemental HybridRelease build with this command (all one line):
-		cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.81/HybridRelease
- 			-D CMAKE_BUILD_TYPE=HybridRelease
-			-D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.8
- 			-D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.8
-			-D CXX_FLAGS=”-std=c++11 –O3”
-			-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran
-			-D GFORTRAN_LIB=/usr/local/Cellar/gfortran/4.8.2/gfortran/lib/libgfortran.a
-			-D MATH_LIBS="/usr/local/flame/lib/libflame.a;-framework Accelerate"
-			-D ELEM_EXAMPLES=ON
-			-D ELEM_TESTS=ON  ..
+		cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.83/HybridRelease -D CMAKE_BUILD_TYPE=HybridRelease -D 		CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9 -D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9 -D CMAKE_Fortran_COMPILER=/usr/		local/bin/gfortran-4.9 -D MATH_LIBS="/usr/local/flame/lib/libflame.a;-framework Accelerate"  ..
 **1.4.** Build and install the code as follows:
 		make -j4
 		make install
 **1.5.** Edit the Elemental configuration file as follows:
-		cd /usr/local/elemental/0.81/HybridRelease/conf/
+		cd /usr/local/elemental/0.83/HybridRelease/conf/
 **1.6.** Open the ‘elemvariables’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
-		CXX = /usr/local/bin/g++-4.8
+		CXX = /usr/local/bin/g++-4.9
 change it to
-		CXX = /usr/local/bin/g++-4.8 -std=c++11
+		CXX = /usr/local/bin/g++-4.9 -std=c++11
 This will enable the C++11 features in the compiler when building Elemental-based projects.
 ###Perform the PureRelease build
 **1.7.** Change directories to the untarred Elemental folder and run the following commands:
-		cd localbuild_purerelease
+		cd build_pure
 **1.8.** Configure the Elemental PureRelease build with this command (all one line):
-		cmake
-			-D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.81/PureRelease
-			-D CMAKE_BUILD_TYPE=PureRelease
-			-D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.8
-			-D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.8
-			-D CXX_FLAGS=”-std=c++11 –O3”
-			-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran
-			-D GFORTRAN_LIB=/usr/local/Cellar/gfortran/4.8.2/gfortran/lib/libgfortran.a
-			-D MATH_LIBS="/usr/local/flame/lib/libflame.a;-framework Accelerate"
-			-D ELEM_EXAMPLES=ON
-			-D ELEM_TESTS=ON  ..
+		cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.83/PureRelease -D CMAKE_BUILD_TYPE=PureRelease -D 		CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9 -D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9 -D CMAKE_Fortran_COMPILER=/usr/		local/bin/gfortran-4.9 -D MATH_LIBS="/usr/local/flame/lib/libflame.a;-framework Accelerate"  ..
 **1.9.** Build and install the code as follows:
 		make -j4
 		make install
 **1.10.** Edit the Elemental configuration file as follows:
 		cd /usr/local/elemental-0.81-PureRelease/conf/
 **1.11.** Open the ‘elemvariables’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
-		CXX = /usr/local/bin/g++-4.8
+		CXX = /usr/local/bin/g++-4.9
 change it to
-		CXX = /usr/local/bin/g++-4.8 -std=c++11
+		CXX = /usr/local/bin/g++-4.9 -std=c++11
 This will enable the C++11 features in the compiler when building Elemental-based projects.This completes the two builds of Elemental.
 
 **1.12.** To test the installation, follow Elemental’s test instructions for the SVD test to verify that Elemental is working correctly.
