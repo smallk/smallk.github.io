@@ -228,7 +228,7 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 **2.2** Change to the build_hybrid directory.
 		cd build_hybrid
 **2.3** Configure the Elemental HybridRelease build with this command (all one line):
-		cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.83/HybridRelease -D CMAKE_BUILD_TYPE=HybridRelease -D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9 -D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9 -D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-4.9 -D MATH_LIBS="/usr/local/flame/lib/libflame.a;-L/usr/local/openblas/0.2.8/ –lopenblas –lm” –D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON  ..
+		cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.83/HybridRelease -D CMAKE_BUILD_TYPE=HybridRelease -D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9 -D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9 -D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-4.9 -D MATH_LIBS="/usr/local/flame/lib/libflame.a;-L/usr/local/openblas/0.2.8/ –lopenblas –lm" –D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON  ..
 If this command does not work, you may need to define the BLAS_LIBS and/or GFORTRAN_LIB config options.
 **2.4** Build and install the code as follows:
 		make -j4
@@ -248,7 +248,7 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 		cd build_pure
 **2.8** Configure the Elemental PureRelease build with this command (all one line):
 
-		cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.83/PureRelease -D CMAKE_BUILD_TYPE=PureRelease -D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9 -D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9 -D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-4.9 -D MATH_LIBS="/usr/local/flame/lib/libflame.a;-L/usr/local/openblas/0.2.8/ –lopenblas –lm” –D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON  ..
+		cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.83/PureRelease -D CMAKE_BUILD_TYPE=PureRelease -D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9 -D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9 -D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-4.9 -D MATH_LIBS="/usr/local/flame/lib/libflame.a;-L/usr/local/openblas/0.2.8/ –lopenblas –lm" –D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON  ..
 
 If this command does not work, you may need to define the BLAS_LIBS and/or GFORTRAN_LIB config options.
 **2.9** Build and install the code as follows:
@@ -307,6 +307,8 @@ After cloning the repo cd into the top-level SmallK folder.  The makefiles assum
 [--back to top--](#top)
 
 <h2 id="example_api"> Examples of API Usage </h2>
+
+In the examples folder you will find a file called smallk_example.cpp. This file contains several examples of how to use the SmallK library.  Also included in the examples folder is a makefile that you can customize for your use.  Note that the SmallK library must first be installed before the example project can be built.
 
 
 
