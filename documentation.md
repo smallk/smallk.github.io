@@ -24,15 +24,15 @@ Matrix factorizations such as the SVD have played a key role as a fundamental to
 
 Our algorithm framework utilizes various constraints on the non-convex optimization problem that gives rise to the nonnegative factors. With these various constraints NMF is a versatile tool for a large variety of data analytics problems. NMF algorithms have been an active area of research for several years. Since much of the data for many important problems in numerous domains is nonnegative NMF is the correct computational model for mining and/or integrating information from such data. NMF also offers enhanced interpretation of results since nonnegativity of the data is preserved.
 
-### Nonnegative Matrix Factorization Library
+### SmallK Overview
 
-The SmallK library provides routines for low-rank matrix approximation via nonnegative matrix factorization (NMF). Given a nonnegative matrix A, the SmallK software computes nonnegative matrices W and H such that
+The SmallK library provides routines for low-rank matrix approximation via nonnegative matrix factorization (NMF). The term “nonnegative matrices” means that for a given matrix Z all elements of Z are greater than or equal to zero, which we express as <p style="text-align: center; font-weight: bold;">Z &ge; 0</p> Given a nonnegative matrix A, the SmallK software computes nonnegative matrices W and H such that
 
 <p style="text-align: center; font-weight: bold;">A &cong; W H</p>
 
-Matrix A has m rows and n columns and can be either sparse or dense.  W has m rows and k columns, and H has k rows and n columns. W and H are always dense, even when A is sparse.  The value of k is an input parameter to the factorization routines; typically k << m and k << n.
+The matrix A has m rows and n columns and can be either sparse or dense.  W has m rows and k columns, and H has k rows and n columns. W and H are always dense, even when A is sparse.  The value of k is an input parameter to the approximation routines; typically k << m and k << n. k is expressed mathematically as the rank of the low rank approximation.
 
-NMF algorithms seek to approximate matrix A by the product of two much smaller matrices W and H.  The idea is to choose the smallest value of k (width of W and height of H) that gives an acceptable approximation error.  An exact nonnegative factorization of A is generally not possible, so the factorization proceeds iteratively, attempting to globally minimize an objective function.  As the iterations proceed, the SmallK code computes a metric that estimates the progress of the algorithm.  When the metric falls below a user-specified tolerance the iterations stop and convergence is declared.
+NMF algorithms seek to approximate a matrix A by the product of two much smaller matrices W and H.  The idea is to choose the smallest value of k (width of W and height of H) that gives an acceptable approximation error. Due to the nonconvex nature of the optimization problem associated with finding W and H, they can only be approximated after an NMF algorithm satisfies a convergence criterion. Thus, the minimization of the objective function proceeds iteratively, attempting to reach a stationary point, which is the best possible solution.  As the iterations proceed, the SmallK code computes a metric that estimates the progress and, when the metric falls below a user-specified tolerance, the iterations stop and convergence is declared.
 
 The SmallK library provides implementations of several different NMF algorithms.  These algorithms are:
 
@@ -47,8 +47,8 @@ SmallK also provides implementations of hierarchical and flat clustering.  These
 		2. Flat Clustering via NMF-RANK2
 		3. Flat Clustering via NMF-BPP or NMF-HALS
 
-These clustering algorithms are suitable in many applications such as image processing, interactive visual analytics, speckle removal from SAR images, recommender systems, information fusion, outlier detection, chemometrics, and many more.
-<br>The SmallK library requires either MacOSX or Linux.  A Windows version may be provided in the future.
+The suite of SmallK implementations of NMF algorithms are suitable in many applications such as image processing, interactive visual analytics, speckle removal from SAR images, recommender systems, information fusion, outlier detection, chemometrics, and many more.
+<br>The SmallK library requires either MacOSX or Linux.  A Windows version may be provided in the future.
 ### Prerequisites
 The following list is the software packages/libraries required to build the SmallK NMF library code:
 
