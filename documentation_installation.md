@@ -29,7 +29,7 @@ permalink: /documentation/installation/
 	cat /etc/paths
 If the first entry is not /usr/local/bin, you will need to edit this file.  This is a system file, so first create a backup. Move the line /usr/local/bin so that it is on the first line of the file. Save the file, then close the terminal session and start a new terminal session so that the path changes will take effect.
 
-[back to top](#top)
+[--back to top--](#top)
 <h2 id="mac_GNU"> Install the latest GNU compilers </h2>
 Elemental and SmallK both require a modern C++ compiler compliant with the C++11 standard.  We recommend that you install the latest stable version of the clang and GNU C++ compilers.  To do this, first install the XCode command line tools with this command:	xcode-select --install
 If this command produces an error, download and install XCode from the AppStore, then repeat the command.  If that should still fail, install the command line tools from the XCode preferences menu.  After the installation completes, run this command from a terminal window:
@@ -39,11 +39,11 @@ permalink: /documentation/installation/
 	brew install gcc49 --enable-fortran
 The Apple-provided gcc and g++ will not be overwritten by this installation.  The new compilers will be installed into /usr/local/bin as gcc-4.9, g++-4.9, and gfortran-4.9. The Fortran compiler is needed for the installation of MPI.
 
-[back to top](#top)
+[--back to top--](#top)
 <h2 id="mac_open_mpi"> Install OpenMPI </h2>
 Install the latest version of OpenMPI with Homebrew as follows:	brew install open-mpi –-c++11The Homebrew install formula provides an option for “thread-multiple” support, but do not enable this option, as it is still experimental, not optimized for performance, and may have bugs.
 
-[back to top](#top)
+[--back to top--](#top)
 
 <h2 id="mac_libflame"> Install libFlame </h2>
 To obtain the latest version of the FLAME library, clone the FLAME git repository with this command:
@@ -60,7 +60,7 @@ The –j4 option tells Make to use four processes to perform the build.  This nu
 	make install
 
 The FLAME library is now installed.
-[back to top](#top)
+[--back to top--](#top)
 <h2 id="mac_elemental"> Install Elemental </h2>
 
 We strongly recommend that users install both the HybridRelease and PureRelease builds of [Elemental](http://libelemental.org/).  OpenMP is enabled in the HybridRelease build and disabled in the PureRelease build.  So why install both?  For smaller problems the overhead of *OpenMP can actually cause code to run slower* than without it.  Whereas for large problems OpenMP parallelization generally helps, but there is no clear transition point between where it helps and where it hurts.  Thus we encourage users to experiment with both builds to find the one that performs best for their typical problems.
@@ -97,7 +97,7 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 		mkdir build_hybrid
 		mkdir build_pure
 
-[back to top](#top)
+[--back to top--](#top)
 ###Perform the HybridRelease build
 **1.2.** The HybridRelease version will be built first.
 		cd build_hybrid
@@ -114,7 +114,7 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 		CXX = /usr/local/bin/g++-4.9 -std=c++11
 This will enable the C++11 features in the compiler when building Elemental-based projects.
 
-[back to top](#top)
+[--back to top--](#top)
 ###Perform the PureRelease build
 **1.7.** Change directories to the untarred Elemental folder and run the following commands:
 		cd build_pure
@@ -133,7 +133,7 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 
 **1.12.** To test the installation, follow Elemental’s test instructions for the SVD test to verify that Elemental is working correctly.
 
-[back to top](#top)
+[--back to top--](#top)
 
 <h1 id="Linux"> How to Install Elemental on Linux </h1>
 
@@ -152,7 +152,7 @@ We strongly recommend using a package manager for your Linux distribution for in
 		make install
 OpenMPI provides many tests to verify the installation; it’s a good idea to run at least some of these tests to ensure that MPI was installed successfully.
 
-[back to top](#top)
+[--back to top--](#top)
 
 <h2 id="lin_libflame"> Install libFlame </h2>
 
@@ -167,7 +167,7 @@ To obtain the latest version of the FLAME library, clone the FLAME git repositor
 
 This completes the installation of the FLAME library.
 
-[back to top](#top)
+[--back to top--](#top)
 
 <h2 id="lin_blas"> Install an accelerated BLAS library </h2>
 
@@ -181,7 +181,7 @@ Install with this command, assuming the installation directory is /usr/local/ope
 
 		make PREFIX=/usr/local/openblas/0.2.8/ install
 
-[back to top](#top)
+[--back to top--](#top)
 <h2 id="lin_elemental"> Install Elemental </h2>
 
 We strongly recommend that users install both the HybridRelease and PureRelease builds of Elemental.  OpenMP is enabled in the HybridRelease build and disabled in the PureRelease build.  So why install both?  Because for smaller problems the overhead of OpenMP can actually cause code to run slower than without it.  For large problems OpenMP parallelization generally helps, but there is no clear transition point between where it helps and where it hurts.  Thus we encourage users to experiment with both builds to find the one that performs best for their typical problems.
@@ -213,7 +213,7 @@ Inside of this version folder, create two additional folders for each Elemental 
 
 Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unzip and untar the distribution, and cd to the top-level folder.
 
-[back to top](#top)
+[--back to top--](#top)
 
 **2.1.**  Run these commands to create the required directories for the build types:
 		mkdir build_hybrid
@@ -237,7 +237,7 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 		CXX = /usr/local/bin/g++-4.9 -std=c++11
 This will enable the C++11 features in the compiler when building Elemental-based projects.
 
-[back to top](#top)
+[--back to top--](#top)
 
 ###Perform the PureRelease build
 **2.7** Change to the build_pure directory.
@@ -260,7 +260,7 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 
 **2.12** To test the installation, follow Elemental’s [test instructions](http://libelemental.org/documentation/0.83/build.html) for the SVD test to verify that Elemental is working correctly.
 
-[back to top](#top)
+[--back to top--](#top)
 
 
 Disclaimer
