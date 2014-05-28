@@ -20,10 +20,14 @@ permalink: /documentation/installation/
     *   [Install libFlame](#lin_libflame)
     *   [Install BLAS Library](#lin_blas)
     *   [Install Elemental](#lin_elemental)
+*   [SmallK NMF Library Installation](#smalk)
+    *   [Obtain the source code](#source_code)
+    *   [Build the SmallK library](#build_smallk)
+    *   [Examples of API Usage](#example_api)
 *   [Contact Information](#contact)
 
-<h1 id="MacOSX"> How to Install Elemental on MacOSX </h1>
 
+<h1 id="MacOSX"> How to Install Elemental on MacOSX </h1>
 On MacOSX we recommend using [Homebrew](http://mxcl.github.io/homebrew/) as the package manager. Homebrew does not require sudo privileges for package installation, unlike other package managers such as MacPorts. Thus the chances of corrupting vital system files are greatly reduced with Homebrew.
 If you use Homebrew, ensure that your PATH is configured to search Homebrew’s installation directory first. Homebrew’s default installation location is /usr/local/bin, so that location needs to be first on your path. To check, run this command from a terminal window:
 	cat /etc/paths
@@ -261,6 +265,49 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 **2.12** To test the installation, follow Elemental’s [test instructions](http://libelemental.org/documentation/0.83/build.html) for the SVD test to verify that Elemental is working correctly.
 
 [--back to top--](#top)
+
+<h1 id="smallk"> SmallK NMF Library Installation </h1>
+
+<h2 id="source_code"> Obtain the Source Code </h2>
+The source code for the SmallK library can be obtained by cloning the [SmallK](https://github.com/smallk/smallk.github.io) repository on github.
+
+<< Describe how to do this – TBD >>
+
+<h2 id="build_smallk"> Build the SmallK library </h2>
+
+After cloning the repo cd into the top-level SmallK folder.  The makefiles assume that you followed our suggested installation plan for Elemental.  If this is not the case you will need to do one of the following things:
+	1.	Create an environment variable called ELEMENTAL_INSTALL_DIR which 
+				contains the path to the root folder of your Elemental installation
+	2.	Define the variable ELEMENTAL_INSTALL_DIR on the make command line
+	3.	Edit the SmallK makefile so that it can find your Elemental installation
+Assuming that the default install locations are acceptable, build the SmallK code by running this command from the root folder of the distribution:
+		make all
+This will build the SmallK library and several command-line applications.  These are:
+	1.	libsmallk.a, the SmallK library
+	2.	preprocess_tf, a command-line application for processing and scoring term-frequency matrices
+	3.	matrixgen, a command-line application for generating random matrices
+	4.	nmf, a command-line application for NMF
+	5.	hierclust, a command-line application for fast hierarchical clustering
+	6.	flatclust, a command-line application for flat clustering via NMF
+To install the code, run this command to install to the default location, which is /usr/local/smallk:
+		make install
+To install the code to a different location, either create an environment variable called SMALLK_INSTALL_DIR and set it equal to the desired installation location prior to running the install command, or supply a prefix argument:
+		make prefix=/path/to/smallk  install
+Or, as a last resort, you can edit the top-level SmallK makefile to conform to the installation scheme of your system.  You may need root privileges to do the installation, depending on where you choose to install it.To test the installation, run this command:
+		make check
+This will run a series of tests, none of which should report a failure.  Sample output from a run of these tests can be found in section [V.6. SmallK Test Results].
+The command-line applications can be built individually by running the appropriate make command from the top-level smallk folder.  These commands are:
+	To build the smallk library only: 	make libsmallk
+	To build the preprocessor only:		make preprocessor
+ 	To build the matrix generator only:	make matrixgen
+	To build the nmf only:				make nmf
+	To build hierclust only:			make hierclust
+	To build flatclust only:			make flatclustThis completes the SmallK NMF library installation.
+
+[--back to top--](#top)
+
+<h2 id="example_api"> Examples of API Usage </h2>
+
 
 
 Disclaimer
