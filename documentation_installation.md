@@ -283,12 +283,12 @@ After cloning the repo cd into the top-level SmallK folder.  The makefiles assum
 Assuming that the default install locations are acceptable, build the SmallK code by running this command from the root folder of the distribution:
 		make all
 This will build the SmallK library and several command-line applications.  These are:
-	1.	libsmallk.a, the SmallK library
-	2.	preprocess_tf, a command-line application for processing and scoring term-frequency matrices
-	3.	matrixgen, a command-line application for generating random matrices
-	4.	nmf, a command-line application for NMF
-	5.	hierclust, a command-line application for fast hierarchical clustering
-	6.	flatclust, a command-line application for flat clustering via NMF
+	1. libsmallk.a, the SmallK library
+	2. preprocess_tf, a command-line application for processing and scoring term-frequency matrices
+	3. matrixgen, a command-line application for generating random matrices
+	4. nmf, a command-line application for NMF
+	5. hierclust, a command-line application for fast hierarchical clustering
+	6. flatclust, a command-line application for flat clustering via NMF
 To install the code, run this command to install to the default location, which is /usr/local/smallk:
 		make install
 To install the code to a different location, either create an environment variable called SMALLK_INSTALL_DIR and set it equal to the desired installation location prior to running the install command, or supply a prefix argument:
