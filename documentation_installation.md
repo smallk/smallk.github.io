@@ -300,9 +300,9 @@ After cloning the repo cd into the top-level SmallK folder.  The makefiles assum
 	To build the smallk library only: 	make libsmallk
 	To build the preprocessor only:		make preprocessor
  	To build the matrix generator only:	make matrixgen
-	To build the nmf only:				make nmf
-	To build hierclust only:			make hierclust
-	To build flatclust only:			make flatclustThis completes the SmallK NMF library installation.
+	To build the nmf only:			make nmf
+	To build hierclust only:		make hierclust
+	To build flatclust only:		make flatclustThis completes the SmallK NMF library installation.
 
 [--back to top--](#top)
 
