@@ -105,7 +105,7 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 		cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.83/HybridRelease -D CMAKE_BUILD_TYPE=HybridRelease -D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9 -D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9 -D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-4.9 -D MATH_LIBS="/usr/local/flame/lib/libflame.a;-framework Accelerate"  ..
 **1.4.** Build and install the code as follows:
 		make -j4
-		make install
+		make install
 **1.5.** Edit the Elemental configuration file as follows:
 		cd /usr/local/elemental/0.83/HybridRelease/conf/
 **1.6.** Open the ‘elemvariables’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
@@ -122,7 +122,7 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 		cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.83/PureRelease -D CMAKE_BUILD_TYPE=PureRelease -D 		CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9 -D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9 -D CMAKE_Fortran_COMPILER=/usr/		local/bin/gfortran-4.9 -D MATH_LIBS="/usr/local/flame/lib/libflame.a;-framework Accelerate"  ..
 **1.9.** Build and install the code as follows:
 		make -j4
-		make install
+		make install
 **1.10.** Edit the Elemental configuration file as follows:
 		cd /usr/local/elemental-0.83-PureRelease/conf/
 **1.11.** Open the ‘elemvariables’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
