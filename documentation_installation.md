@@ -276,10 +276,10 @@ The source code for the SmallK library can be obtained by cloning the [SmallK](h
 <h2 id="build_smallk"> Build the SmallK library </h2>
 
 After cloning the repo cd into the top-level SmallK folder.  The makefiles assume that you followed our suggested installation plan for Elemental.  If this is not the case you will need to do one of the following things:
-	1.	Create an environment variable called ELEMENTAL_INSTALL_DIR which 
-				contains the path to the root folder of your Elemental installation
-	2.	Define the variable ELEMENTAL_INSTALL_DIR on the make command line
-	3.	Edit the SmallK makefile so that it can find your Elemental installation
+	1. Create an environment variable called ELEMENTAL_INSTALL_DIR which contains the 
+		path to the root folder of your Elemental installation
+	2. Define the variable ELEMENTAL_INSTALL_DIR on the make command line
+	3. Edit the SmallK makefile so that it can find your Elemental installation
 Assuming that the default install locations are acceptable, build the SmallK code by running this command from the root folder of the distribution:
 		make all
 This will build the SmallK library and several command-line applications.  These are:
