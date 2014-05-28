@@ -52,7 +52,7 @@ These clustering algorithms are suitable in many applications such as image proc
 ### Prerequisites
 The following list is the software packages/libraries required to build the SmallK NMF library code:
 
-* A modern, C++11-compliant compiler, such as g++ 4.8.2 or later
+* A modern, C++11-compliant compiler, such as g++ 4.9 or later
 * [Elemental](http://libelemental.org/), a high-performance library for dense, distributed linear algebra, which requires:
   * An MPI installation, such as [OpenMPI](http://www.open-mpi.org/software/ompi/v1.6/)
   * BLAS implementation, hopefully optimized/tuned for the local system
