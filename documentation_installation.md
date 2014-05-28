@@ -284,11 +284,11 @@ After cloning the repo cd into the top-level SmallK folder.  The makefiles assum
 		make all
 This will build the SmallK library and several command-line applications.  These are:
 	1.	libsmallk.a, the SmallK library
-	2.	preprocess_tf, a command-line application for processing and scoring term-frequency matrices
-	3.	matrixgen, a command-line application for generating random matrices
-	4.	nmf, a command-line application for NMF
-	5.	hierclust, a command-line application for fast hierarchical clustering
-	6.	flatclust, a command-line application for flat clustering via NMF
+	2.	preprocess_tf, a command-line application for processing and scoring term-frequency matrices
+	3.	matrixgen, a command-line application for generating random matrices
+	4.	nmf, a command-line application for NMF
+	5.	hierclust, a command-line application for fast hierarchical clustering
+	6.	flatclust, a command-line application for flat clustering via NMF
 To install the code, run this command to install to the default location, which is /usr/local/smallk:
 		make install
 To install the code to a different location, either create an environment variable called SMALLK_INSTALL_DIR and set it equal to the desired installation location prior to running the install command, or supply a prefix argument:
@@ -298,11 +298,11 @@ After cloning the repo cd into the top-level SmallK folder.  The makefiles assum
 This will run a series of tests, none of which should report a failure.  Sample output from a run of these tests can be found in section [V.6. SmallK Test Results].
 The command-line applications can be built individually by running the appropriate make command from the top-level smallk folder.  These commands are:
 	To build the smallk library only: 	make libsmallk
-	To build the preprocessor only:		make preprocessor
- 	To build the matrix generator only:	make matrixgen
-	To build the nmf only:			make nmf
-	To build hierclust only:		make hierclust
-	To build flatclust only:		make flatclustThis completes the SmallK NMF library installation.
+	To build the preprocessor only:		make preprocessor
+	To build the matrix generator only:	make matrixgen
+	To build the nmf only:			make nmf
+	To build hierclust only:		make hierclust
+	To build flatclust only:		make flatclustThis completes the SmallK NMF library installation.
 
 [--back to top--](#top)
 
