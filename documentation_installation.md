@@ -96,6 +96,8 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 **1.1.**  Run these commands to create the required directories for the build types:
 		mkdir build_hybrid
 		mkdir build_pure
+
+[back to top](#top)
 ###Perform the HybridRelease build
 **1.2.** The HybridRelease version will be built first.
 		cd build_hybrid
@@ -111,6 +113,8 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 change it to
 		CXX = /usr/local/bin/g++-4.9 -std=c++11
 This will enable the C++11 features in the compiler when building Elemental-based projects.
+
+[back to top](#top)
 ###Perform the PureRelease build
 **1.7.** Change directories to the untarred Elemental folder and run the following commands:
 		cd build_pure
@@ -163,6 +167,8 @@ To obtain the latest version of the FLAME library, clone the FLAME git repositor
 
 This completes the installation of the FLAME library.
 
+[back to top](#top)
+
 <h2 id="lin_blas"> Install an accelerated BLAS library </h2>
 
 It is essential to link Elemental with an accelerated BLAS library for maximum performance.  Linking Elemental with a ‘reference’ BLAS implementation will cripple performance, since the reference implementations are designed for correctness not speed.
@@ -174,6 +180,8 @@ If you do not have an accelerated BLAS on your system, you can download and buil
 Install with this command, assuming the installation directory is /usr/local/openblas/0.2.8/:
 
 		make PREFIX=/usr/local/openblas/0.2.8/ install
+
+[back to top](#top)
 <h2 id="lin_elemental"> Install Elemental </h2>
 
 We strongly recommend that users install both the HybridRelease and PureRelease builds of Elemental.  OpenMP is enabled in the HybridRelease build and disabled in the PureRelease build.  So why install both?  Because for smaller problems the overhead of OpenMP can actually cause code to run slower than without it.  For large problems OpenMP parallelization generally helps, but there is no clear transition point between where it helps and where it hurts.  Thus we encourage users to experiment with both builds to find the one that performs best for their typical problems.
@@ -205,7 +213,7 @@ Inside of this version folder, create two additional folders for each Elemental 
 
 Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unzip and untar the distribution, and cd to the top-level folder.
 
-
+[back to top](#top)
 
 **2.1.**  Run these commands to create the required directories for the build types:
 		mkdir build_hybrid
@@ -228,6 +236,8 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 change it to
 		CXX = /usr/local/bin/g++-4.9 -std=c++11
 This will enable the C++11 features in the compiler when building Elemental-based projects.
+
+[back to top](#top)
 
 ###Perform the PureRelease build
 **2.7** Change to the build_pure directory.
