@@ -24,7 +24,11 @@ permalink: /documentation/installation/
     *   [Obtain the source code](#source_code)
     *   [Build the SmallK library](#build_smallk)
     *   [Examples of API Usage](#example_api)
+    *   [Matrix file formatsI Usage](#matrix_files)
+    *   [SmallK APII Usage](#smallk_api)
 *   [Contact Information](#contact)
+
+
 
 
 <h1 id="MacOSX"> How to Install Elemental on MacOSX </h1>
@@ -34,7 +38,7 @@ permalink: /documentation/installation/
 If the first entry is not /usr/local/bin, you will need to edit this file.  This is a system file, so first create a backup. Move the line /usr/local/bin so that it is on the first line of the file. Save the file, then close the terminal session and start a new terminal session so that the path changes will take effect.
 
 [--back to top--](#top)
-<h2 id="mac_GNU"> Install the latest GNU compilers </h2>
+<h2 id="mac_GNU"> Mac:Install the latest GNU compilers </h2>
 Elemental and SmallK both require a modern C++ compiler compliant with the C++11 standard.  We recommend that you install the latest stable version of the clang and GNU C++ compilers.  To do this, first install the XCode command line tools with this command:	xcode-select --install
 If this command produces an error, download and install XCode from the AppStore, then repeat the command.  If that should still fail, install the command line tools from the XCode preferences menu.  After the installation completes, run this command from a terminal window:
 	clang++ --version
@@ -44,12 +48,12 @@ permalink: /documentation/installation/
 The Apple-provided gcc and g++ will not be overwritten by this installation.  The new compilers will be installed into /usr/local/bin as gcc-4.9, g++-4.9, and gfortran-4.9. The Fortran compiler is needed for the installation of MPI.
 
 [--back to top--](#top)
-<h2 id="mac_open_mpi"> Install OpenMPI </h2>
+<h2 id="mac_open_mpi"> Mac:Install OpenMPI </h2>
 Install the latest version of OpenMPI with Homebrew as follows:	brew install open-mpi –-c++11The Homebrew install formula provides an option for “thread-multiple” support, but do not enable this option, as it is still experimental, not optimized for performance, and may have bugs.
 
 [--back to top--](#top)
 
-<h2 id="mac_libflame"> Install libFlame </h2>
+<h2 id="mac_libflame"> Mac:Install libFlame </h2>
 To obtain the latest version of the FLAME library, clone the FLAME git repository with this command:
 	git clone https://github.com/flame/libflame.git
 Run the configure script in the top-level FLAME folder as follows (assuming the install path is /usr/local/flame):
@@ -65,7 +69,7 @@ The –j4 option tells Make to use four processes to perform the build.  This nu
 
 The FLAME library is now installed.
 [--back to top--](#top)
-<h2 id="mac_elemental"> Install Elemental </h2>
+<h2 id="mac_elemental"> Mac:Install Elemental </h2>
 
 We strongly recommend that users install both the HybridRelease and PureRelease builds of [Elemental](http://libelemental.org/).  OpenMP is enabled in the HybridRelease build and disabled in the PureRelease build.  So why install both?  For smaller problems the overhead of *OpenMP can actually cause code to run slower* than without it.  Whereas for large problems OpenMP parallelization generally helps, but there is no clear transition point between where it helps and where it hurts.  Thus we encourage users to experiment with both builds to find the one that performs best for their typical problems.
 
@@ -310,7 +314,32 @@ After cloning the repo cd into the top-level SmallK folder.  The makefiles assum
 
 In the examples folder you will find a file called smallk_example.cpp. This file contains several examples of how to use the SmallK library.  Also included in the examples folder is a makefile that you can customize for your use.  Note that the SmallK library must first be installed before the example project can be built.
 
+<h2 id="matrix_files"> Matrix file formats </h2>
 
+The SmallK software supports comma-separated value (CSV) files for dense matrices and MatrixMarket files for sparse matrices.
+
+For example, the 5x3 dense matrix
+
+		42	47	52
+		43	48	53
+		44	49	54
+		45	50	55
+		46	51	56
+
+would be stored in a CSV file as follows:
+	
+		42,47,52
+		43,48,53
+		44,49,54
+		45,50,55
+		46,51,56
+
+The matrix is loaded exactly as it appears in the file.  Internally, SmallK stores dense matrices in column-major order.  Sparse matrices are stored in compressed column format.
+
+<h2 id="smallk_api"> SmallK API </h2>
+
+The SmallK API is an extremely simplistic API for basic NMF and clustering.  Users who require more control over the factorization or clustering algorithms can instead run one of the command-line applications in the SmallK distribution.Documentation for the SmallK API can be found here: 
+<b> >>Under Construction<< </b>
 
 Disclaimer
 ----------
