@@ -35,6 +35,14 @@ permalink: /documentation/installation/
 On MacOSX we recommend using [Homebrew](http://mxcl.github.io/homebrew/) as the package manager. Homebrew does not require sudo privileges for package installation, unlike other package managers such as MacPorts. Thus the chances of corrupting vital system files are greatly reduced with Homebrew.
 If you use Homebrew, ensure that your PATH is configured to search Homebrew’s installation directory first. Homebrew’s default installation location is /usr/local/bin, so that location needs to be first on your path. To check, run this command from a terminal window:
 	cat /etc/paths
+
+We also recommend running the following commands on a daily basis to refresh your brewed installations:
+
+	brew update
+	brew upgrade
+	brew doctor
+
+This will maintain your Homebrew installed software and diagnose any issues with the installations.
 If the first entry is not /usr/local/bin, you will need to edit this file.  This is a system file, so first create a backup. Move the line /usr/local/bin so that it is on the first line of the file. Save the file, then close the terminal session and start a new terminal session so that the path changes will take effect.
 
 [--back to top--](#top)
