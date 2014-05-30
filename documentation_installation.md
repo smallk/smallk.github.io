@@ -307,7 +307,7 @@ After cloning the repo cd into the top-level SmallK folder.  The makefiles assum
 		make prefix=/path/to/smallk  install
 Or, as a last resort, you can edit the top-level SmallK makefile to conform to the installation scheme of your system.  You may need root privileges to do the installation, depending on where you choose to install it.To test the installation, run this command:
 		make check
-This will run a series of tests, none of which should report a failure.  Sample output from a run of these tests can be found in section [V.6. SmallK Test Results].
+This will run a series of tests, none of which should report a failure.  Sample output from a run of these tests can be found in section [SmallK Test Results](http://smallk.github.io/documentation/tests/#smalk_tests).
 The command-line applications can be built individually by running the appropriate make command from the top-level smallk folder.  These commands are:
 	To build the smallk library only: 	make libsmallk
 	To build the preprocessor only:		make preprocessor
