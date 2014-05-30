@@ -21,11 +21,11 @@ Acknowledgements
 ----------------
 
 This work was funded by the DARPA XDATA program under AFRL Contract
-FA8750-13-C-0002. Our
-XDATA principal investigator is [Prof. Haesun Park](http://www.cc.gatech.edu/~hpark/) of
-Georgia Institute of Technology and our DARPA
+FA8750-13-C-0002. Our DARPA
 program manager is
-[Dr. Christopher White](http://www.darpa.mil/Our_Work/I2O/Personnel/Dr_Christopher_White.aspx).
+[Dr. Christopher White](http://www.darpa.mil/Our_Work/I2O/Personnel/Dr_Christopher_White.aspx) and our
+XDATA principal investigator is [Prof. Haesun Park](http://www.cc.gatech.edu/~hpark/) of the 
+Georgia Institute of Technology.
 
 SmallK Copyright and Software License
 ======================================
