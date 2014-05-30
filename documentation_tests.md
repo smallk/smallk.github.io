@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Tests - Documentation
+title: Tests
 
 baselink: /documentation/
 permalink: /documentation/tests/
