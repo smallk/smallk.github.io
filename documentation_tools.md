@@ -2,7 +2,7 @@
 layout: page
 title: Command Line Tools
 
-baselink: /documentation/
+baselink: /tools/
 permalink: /documentation/tools/
 ---
 
