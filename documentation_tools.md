@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Command Line Tools
+title: SmallK Command Line Tools
 
 baselink: /tools/
 permalink: /documentation/tools/
@@ -9,30 +9,27 @@ permalink: /documentation/tools/
 <h1 id="top">Contents</h1>
 ---------------------
 
-*   [SmallK Command Line Tools](#smallk_tools)
-    *   [Preprocessor](#preproc)
-		* [Overview](#overview)
-		* [Input Files](#input_files)
-		* [Command Line Options](#cmd_options)
-		* [Sample Run](#sample_run)
-    *   [Matrixgen](#matrix_gen)
-		* [Overview](#overview_matgen)
-		* [Command Line Options](#cmd_options_matgen)
-		* [Sample Run](#sample_run_matgen)
-    *   [NMF](#nmf)
-		* [Overview](#overview_nmf)
-		* [Command Line Options](#cmd_options_nmf)
-		* [Sample Run](#sample_run_nmf)
-    *   [Hierclust](#hier)
-		* [Overview](#overview_hier)
-		* [Command Line Options](#cmd_options_hier)
-		* [Sample Run](#sample_run_hier)
-    *   [Flatclust](#flat)
-		* [Overview](#overview_flat)
-		* [Command Line Options](#cmd_options_flat)
-		* [Sample Run](#sample_run_flat)
-    *   [Install libFlame](#mac_libflame)
-    *   [Install Elemental](#mac_elemental)
+* [Preprocessor](#preproc)
+	* [Overview](#overview)
+	* [Input Files](#input_files)
+	* [Command Line Options](#cmd_options)
+	* [Sample Run](#sample_run)
+* [Matrixgen](#matrix_gen)
+	* [Overview](#overview_matgen)
+	* [Command Line Options](#cmd_options_matgen)
+	* [Sample Run](#sample_run_matgen)
+* [NMF](#nmf)
+	* [Overview](#overview_nmf)
+	* [Command Line Options](#cmd_options_nmf)
+	* [Sample Run](#sample_run_nmf)
+* [Hierclust](#hier)
+	* [Overview](#overview_hier)
+	* [Command Line Options](#cmd_options_hier)
+	* [Sample Run](#sample_run_hier)
+* [Flatclust](#flat)
+	* [Overview](#overview_flat)
+	* [Command Line Options](#cmd_options_flat)
+	* [Sample Run](#sample_run_flat)
 
 <h1 id="smallk_tools"> SmallK Command Line Tools </h1>
 
