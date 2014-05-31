@@ -105,9 +105,9 @@ Here is a sample run of the preprocessor using the data provided in the smallk d
 	Starting iterations...
     		[1] height: 39771, width: 11237, nonzeros: 877453
 	Iterations finished.
-    New height: 39727
-    New width: 11237
-    New nonzero count: 877374
+	New height: 39727
+	New width: 11237
+	New nonzero count: 877374
 	Processing time: 0.074s.
 
 	Writing output matrix reduced_matrix.mtx
