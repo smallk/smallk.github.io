@@ -31,11 +31,9 @@ permalink: /documentation/tools/
 	* [Command Line Options](#cmd_options_flat)
 	* [Sample Run](#sample_run_flat)
 
-<h1 id="smallk_tools"> SmallK Command Line Tools </h1>
+<h1 id="preproc"> Preprocessor </h1>
 
-<h2 id="preproc"> Preprocessor </h2>
-
-<h3 id="overview"> Overview </h3>
+<h2 id="overview"> Overview </h2>
 
 The preprocessor prunes rows and columns from term-frequency matrices, attempting to generate a result matrix that is more suitable for clustering.  It also computes tf-idf weights for the remaining entries.  Therefore the input matrix consists of nonnegative integers, and the output matrix consists of floating point numbers between 0.0 and 1.0.  The MatrixMarket file format is used for the input and output matrices.
 
@@ -47,7 +45,7 @@ Whenever columns (documents) are pruned the preprocessor checks the remaining co
 
 If the preprocessor should prune all rows or columns, it writes an error message to the screen and terminates without generating any output.
 
-<h3 id="input_files"> Input Files </h3>
+<h2 id="input_files"> Input Files </h2>
 
 The preprocessor requires three input files: a matrix file, a dictionary file, and a document file.  The matrix file contains a sparse matrix in MatrixMarket format (.mtx).  This is a term-frequency matrix, and all entries should be positive integers. The preprocessor can also read in matrices containing floating-point inputs, but only if ‘boolean mode’ is enabled; this will be described below.  The preprocessor does not support dense matrices, since the typical matrices encountered in topic modeling problems are extremely sparse, with occupancies generally less than 1%.
 
@@ -61,38 +59,38 @@ The second file required by the preprocessor is a ‘dictionary file’.  This i
 		...
 
 The third file required by the preprocessor is a ‘documents file’.  This is another simple ASCII text file containing one entry per line.  Entries represent document names or other unique identifiers.  The smallk/data folder also contains a sample documents file called ‘documents.txt’.  The first few entries of this file are:
-<h3 id="cmd_options"> Command Line Options </h3>
+<h2 id="cmd_options"> Command Line Options </h2>
 
-<h3 id="sample_run"> Sample Run </h3>
+<h2 id="sample_run"> Sample Run </h2>
 
-<h2 id="matrix_gen"> Matrixgen </h2>
+<h1 id="matrix_gen"> Matrixgen </h1>
 
-<h3 id="overview_matgen"> Overview </h3>
+<h2 id="overview_matgen"> Overview </h2>
 
-<h3 id="cmd_options_matgen"> Command Line Options </h3>
+<h2 id="cmd_options_matgen"> Command Line Options </h2>
 
-<h3 id="sample_run_matgen"> Sample Run </h3>
+<h2 id="sample_run_matgen"> Sample Run </h2>
 
-<h2 id="nmf"> NMF </h2>
+<h1 id="nmf"> NMF </h2>
 
-<h3 id="overview_nmf"> Overview </h3>
+<h2 id="overview_nmf"> Overview </h2>
 
-<h3 id="cmd_options_nmf"> Command Line Options </h3>
+<h2 id="cmd_options_nmf"> Command Line Options </h2>
 
-<h3 id="sample_run_nmf"> Sample Run </h3>
+<h2 id="sample_run_nmf"> Sample Run </h2>
 
-<h2 id="hier"> Hierclust </h2>
+<h1 id="hier"> Hierclust </h1>
 
-<h3 id="overview_hier"> Overview </h3>
+<h2 id="overview_hier"> Overview </h2>
 
-<h3 id="cmd_options_hier"> Command Line Options </h3>
+<h2 id="cmd_options_hier"> Command Line Options </h2>
 
-<h3 id="sample_run_hier"> Sample Run </h3>
+<h2 id="sample_run_hier"> Sample Run </h2>
 
-<h2 id="flat"> Flatclust </h2>
+<h1 id="flat"> Flatclust </h1>
 
-<h3 id="overview_flat"> Overview </h3>
+<h2 id="overview_flat"> Overview </h2>
 
-<h3 id="cmd_options_flat"> Command Line Options </h3>
+<h2 id="cmd_options_flat"> Command Line Options </h2>
 
-<h3 id="sample_run_flat"> Sample Run </h3>
+<h2 id="sample_run_flat"> Sample Run </h2>
