@@ -58,7 +58,8 @@ The second file required by the preprocessor is a ‘dictionary file’.  This i
 		circuit
 		...
 
-The third file required by the preprocessor is a ‘documents file’.  This is another simple ASCII text file containing one entry per line.  Entries represent document names or other unique identifiers.  The smallk/data folder also contains a sample documents file called ‘documents.txt’.  The first few entries of this file are:
+The third file required by the preprocessor is a ‘documents file’.  This is another simple ASCII text file containing one entry per line.  Entries represent document names or other unique identifiers.  The smallk/data folder also contains a sample documents file called ‘documents.txt’.  The first few entries of this file are:[--back to top--](#top)
+
 <h2 id="cmd_options"> Command Line Options </h2>
 
 The preprocessor binary is called ‘preprocess_tf’, to emphasize the fact that it operates on term-frequency matrices.  If the binary is run with no arguments, it prints out the following information:
@@ -116,6 +117,7 @@ Here is a sample run of the preprocessor using the data provided in the smallk d
 	Writing documents file reduced_documents.txt
 	Dictionary + documents write time: 0.08s.
 
+[--back to top--](#top)
 
 <h1 id="matrix_gen"> Matrixgen </h1>
 
@@ -166,9 +168,9 @@ Suppose we want to generate a matrix of uniformly-distributed random numbers.  T
 
 	./matrixgen –-height 100 –-width 16 –-filename w_init.csv
 
+[--back to top--](#top)
 
 <h1 id="nmf"> NMF </h1>
-
 
 <h2 id="overview_nmf"> Overview </h2>
 
@@ -239,6 +241,7 @@ The –-matrixfile and –-k options are required; all others are optional and h
  			convergence
 	16. –-verbose: whether to display updates to the screen as the iterations progress 
 
+[--back to top--](#top)
 
 <h2 id="sample_run_nmf"> Sample Runs </h2>
 
@@ -257,6 +260,8 @@ To repeat the previous experiment but with new names for the output files, we wo
 
 		nmf/bin/nmf –-matrixfile data/reuters.mtx –-k 16 –-algorithm HALS –-tol 1.0e-4 
 			–-miniter 10 –-outfile_W w_hals.csv –outfile_H h_hals.csv
+
+[--back to top--](#top)
 
 
 <h1 id="hier"> Hierclust </h1>
