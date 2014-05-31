@@ -74,13 +74,13 @@ The preprocessor binary is called ‘preprocess_tf’, to emphasize the fact tha
 
 Only the first parameter, --indir, is required.  All remaining params are optional and have the default values indicated.The meanings of the various options are as follows:
 
-	1.	--indir: path to the folder containing the files ‘matrix.mtx’, ‘dictionary.txt’, and ‘documents.txt’
-	2.	–-outdir: path to the folder to into which results should be written
-	3.	–-docs_per_term: any rows whose entries sum to less than this value will be pruned
-	4.	–-terms_per_doc: any columns whose entries sum to less than this value will be pruned
-	5.	–-maxiter: perform no more than this many iterations
-	6.	–-precision: the number of digits of precision with which to write the output matrix
-	7.	–-boolean_mode:  all nonzero matrix elements will be treated as if they had the value 1.0.  In other words, the
+	1. --indir: path to the folder containing the files ‘matrix.mtx’, ‘dictionary.txt’, and ‘documents.txt’
+	2. –-outdir: path to the folder to into which results should be written
+	3. –-docs_per_term: any rows whose entries sum to less than this value will be pruned
+	4. –-terms_per_doc: any columns whose entries sum to less than this value will be pruned
+	5. –-maxiter: perform no more than this many iterations
+	6. –-precision: the number of digits of precision with which to write the output matrix
+	7. –-boolean_mode:  all nonzero matrix elements will be treated as if they had the value 1.0.  In other words, the
 			preprocessor will ignore the actual frequency counts and treat all nonzero entries as if they were 1.0.
 
 <h2 id="sample_run"> Sample Runs </h2>
@@ -151,14 +151,14 @@ The --height, --width, and –-filename options are required.  All others are op
 
 The meanings of the various options are as follows:
 
-	1.  --height: number of rows in the generated matrix
-	2.  –-width: number of columns in the generated matrix
-	3.  –-filename: name of the output file
-	4.  –-type: the type of matrix to be generated; the default is a uniformly-distributed random matrix
-	5.  –-rng_center: random number distribution will be centered on this value
-	6.  –-rng_radius: random numbers will span this distance to either side of the center value
-	7.  –-precision: the number of digits of precision with which to write the output matrix
-	8.  –-nz_per_col:  number of nonzero entries per sparse matrix column; valid only for SPARSE type
+	1. --height: number of rows in the generated matrix
+	2. –-width: number of columns in the generated matrix
+	3. –-filename: name of the output file
+	4. –-type: the type of matrix to be generated; the default is a uniformly-distributed random matrix
+	5. –-rng_center: random number distribution will be centered on this value
+	6. –-rng_radius: random numbers will span this distance to either side of the center value
+	7. –-precision: the number of digits of precision with which to write the output matrix
+	8. –-nz_per_col:  number of nonzero entries per sparse matrix column; valid only for SPARSE type
 
 <h2 id="sample_run_matgen"> Sample Runs </h2>
 
@@ -217,7 +217,8 @@ The –-matrixfile and –-k options are required; all others are optional and h
 	4.  –-stopping: the method used to terminate the iterations; use PG_RATIO unless you have a specific reason not to
 	5.  –-tol: tolerance value used to terminate iterations; when the progress metric falls below this value iterations
  			will stop; typical values are in the 1.0e-3 or 1.0e-4 range
-	6.  –-tolcount: a positive integer representing the number of successive iterations for which the progress metric 		must have a value <= tolerance; default is 1, which means the iterations will terminate on the first iteration 		with: progress_metric <= tolerance 
+	6.  –-tolcount: a positive integer representing the number of successive iterations for which the progress metric
+ 			must have a value <= tolerance; default is 1, which means the iterations will terminate on the first 			iteration with: progress_metric <= tolerance 
 	7.  –-infile_W: CSV file containing the mxk initial values for matrix W; if omitted, W is randomly initialized
 	8.  –-infile_H:  CSV file containing the kxn initial values for matrix H; if omitted, H is randomly initialized
 	9.  –-outfile_W: filename for the computed W factor; default is w.csv
@@ -228,7 +229,7 @@ The –-matrixfile and –-k options are required; all others are optional and h
 	13. –-outprecision: matrices W and H will be written to disk using this many digits of precision
 	14. –-maxthreads: the maximum number of threads to use; the default is to use as many threads as the hardware can
 		 	support (your number may differ from that shown) 
-	15.  –-normalize: whether to normalize the columns of the W matrix and correspondingly scale the rows of H after
+	15. –-normalize: whether to normalize the columns of the W matrix and correspondingly scale the rows of H after
  			convergence
 	16. –-verbose: whether to display updates to the screen as the iterations progress 
 
