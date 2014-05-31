@@ -173,7 +173,6 @@ Suppose we want to generate a matrix of uniformly-distributed random numbers.  T
 
 The NMF command line application performs nonnegative matrix factorization on dense or sparse matrices. If the input matrix is denoted by A, nonnegative matrix factors Wand H are computed such that A ~ WH. Matrix A can be either dense or sparse; matrices Wand H are always dense. Matrix A has m rows and n columns; matrix W has m rows and k columns; matrix H has k rows and n columns. Parameter k is a positive integer and is typically much less than either m or n.
 
-
 <h2 id="cmd_options_nmf"> Command Line Options </h2>
 
 
