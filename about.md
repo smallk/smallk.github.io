@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: <u>About</u>
 
 baselink: /about/
 permalink: /about/
