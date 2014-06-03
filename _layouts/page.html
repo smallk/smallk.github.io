@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+  {% include head.html %}
+
+    <body>
+		{% include beforewrapper.html %}
+		
+		<div class="wrapper">
+
+		{% include header.html %}
+
+		<section>
+		  <h2>{{ page.title }}</h2>
+		  {{ content }}
+		</section>
+
+		{% include footer.html %}
+
+		</div>
+		<script src="{{ "/javascripts/scale.fix.js" | prepend: site.baseurl }}"></script>
+	
+    </body>
+</html>
