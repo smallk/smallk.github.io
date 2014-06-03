@@ -18,7 +18,7 @@ permalink: /documentation/tools/
 	* [Overview](#overview_matgen)
 	* [Command Line Options](#cmd_options_matgen)
 	* [Sample Runs](#sample_run_matgen)
-* [NMF](#nmf)
+* [Nonnegative Matrix Factorization](#nmf)
 	* [Overview](#overview_nmf)
 	* [Command Line Options](#cmd_options_nmf)
 	* [Sample Runs](#sample_run_nmf)
@@ -171,7 +171,7 @@ Suppose we want to generate a matrix of uniformly-distributed random numbers.  T
 
 [--back to top--](#top)
 
-<h1 id="nmf"> NMF </h1>
+<h1 id="nmf"> Nonnegative Matrix Factorization (NMF) </h1>
 
 <h2 id="overview_nmf"> Overview </h2>
 
