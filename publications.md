@@ -1,6 +1,6 @@
 ---
 layout: page
-title: <u>Publications</u>
+title: Publications
 
 baselink: /publications/
 permalink: /publications/

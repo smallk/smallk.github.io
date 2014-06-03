@@ -1,6 +1,6 @@
 ---
 layout: page
-title: <u>Software Repository</u>
+title: Software Repository
 
 baselink: /repo/
 permalink: /repo/

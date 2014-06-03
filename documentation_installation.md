@@ -1,6 +1,6 @@
 ---
 layout: page
-title: <u>Installation</u>
+title: Installation
 
 baselink: /documentation/
 permalink: /documentation/installation/
