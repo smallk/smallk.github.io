@@ -9,5 +9,3 @@ githubproject: "https://github.com/smallk"
 # Build settings
 markdown: kramdown
 permalink: pretty
-
-include: pages
