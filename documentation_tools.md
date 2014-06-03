@@ -276,8 +276,8 @@ To repeat the previous experiment but with new names for the output files, we wo
 
 First, we briefly describe the algorithm and the references section provides pointers to papers with detailed descriptions of the algorithms.  NMF-RANK2 for hierarchical clustering generates a binary tree of items. We refer to a node in the binary tree and the items associated with the node interchangeably. This method begins by placing all data items in the root node. The number of leaf nodes to generate is specified (user input). The algorithm proceeds with the following steps, repeated until the maximum number of leaf nodes, max_leaf_nodes, is reached:
 
-	1.  Pick the leaf node with the highest score (at the very beginning where only a root node is present, 
-		just pick the root node)
+	1.  Pick the leaf node with the highest score (at the very beginning where only a 
+		root node is present, just pick the root node)
 	2.  Apply NMF-RANK2 to the node selected in step 1, and generate two new leaf nodes
 	3.  Compute a score for each of the two leaf nodes generated in step 2
 	4.  Repeat until the desired number of leaf nodes has been generated
@@ -286,10 +286,9 @@ Step 2 implements the details of the node splitting into child nodes. Outlier de
 
 The parameter trial_allowance is the number of times that the program will try to split a node into two meaningful clusters. In each trial, the program will check if one of the two generated leaf nodes is an outlier set. If the outlier set is detected, the program will delete the items in the outlier set from the node being split and continue to the next trial. If all the trials are finished and the program still cannot find two meaningful clusters for this node, all the deleted items are “recycled” and placed into this node again, and this node will be labeled as a “permanent leaf node” that cannot be picked in step 1 in later iterations.
 
-The parameter unbalanced is a threshold parameter to determine whether two generated leaf nodes are unbalanced. Suppose two potential leaf nodes L and R are generated from the selected node and L has fewer items than R. Let us denote the number of items in a node N as |N|. L and R are called unbalanced if 
+The parameter unbalanced is a threshold parameter to determine whether two generated leaf nodes are unbalanced. Suppose two potential leaf nodes L and R are generated from the selected node and L has fewer items than R. Let us denote the number of items in a node N as <span style="font-weight: bold;">&#124;N&#124;</span>. L and R are called unbalanced if 
 
 <p style="text-align: center; font-weight: bold;">|L| &lt unbalanced * (|L|+|R|)</p>
-
 
 Note that if L and R are unbalanced, the potential node L with fewer items is not necessarily regarded as an outlier set. Please see the referenced paper for more details [3].
 
