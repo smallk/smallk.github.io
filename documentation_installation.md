@@ -10,16 +10,16 @@ permalink: /documentation/installation/
 ---------------------
 
 *   [How to Install Elemental on MacOSX](#MacOSX)
-    *   [Install the latest GNU compilers](#mac_GNU)
-    *   [Install OpenMPI](#mac_open_mpi)
-    *   [Install libFlame](#mac_libflame)
-    *   [Install Elemental](#mac_elemental)
+    *   [Mac:Install the latest GNU compilers](#mac_GNU)
+    *   [Mac:Install OpenMPI](#mac_open_mpi)
+    *   [Mac:Install libFlame](#mac_libflame)
+    *   [Mac:Install Elemental](#mac_elemental)
 *   [How to Install Elemental on Linux](#Linux)
-    *   [Install the latest GNU compilers](#lin_GNU)
-    *   [Install OpenMPI](#lin_open_mpi)
-    *   [Install libFlame](#lin_libflame)
-    *   [Install BLAS Library](#lin_blas)
-    *   [Install Elemental](#lin_elemental)
+    *   [Linux:Install the latest GNU compilers](#lin_GNU)
+    *   [Linux:Install OpenMPI](#lin_open_mpi)
+    *   [Linux:Install libFlame](#lin_libflame)
+    *   [Linux:Install BLAS Library](#lin_blas)
+    *   [Linux:Install Elemental](#lin_elemental)
 *   [SmallK NMF Library Installation](#smalk)
     *   [Obtain the source code](#source_code)
     *   [Build the SmallK library](#build_smallk)
@@ -62,7 +62,11 @@ This will maintain your Homebrew installed software and diagnose any issues with
 [--back to top--](#top)
 
 <h2 id="mac_libflame"> Mac:Install libFlame </h2>
-To obtain the latest version of the FLAME library, clone the FLAME git repository with this command:
+Next we detail the installation of the high performance numerical library libflame. The library can be gotten from the libflame git repository on github.
+
+It’s important to perform the git clone into a subdirectory NOT called ‘flame’ since this can cause name conflicts with the installation. We normally do a git clone into a directory called ‘libflame’. However, other directory names will work as well, but not ‘flame’.
+
+To obtain the latest version of the FLAME library, clone the FLAME git repository with this command:
 	git clone https://github.com/flame/libflame.git
 Run the configure script in the top-level FLAME folder as follows (assuming the install path is /usr/local/flame):
 	./configure –-prefix=/usr/local/flame –-with-cc=/usr/local/bin/gcc-4.9 –-with-ranlib=/usr/local/bin/gcc-ranlib-4.9
@@ -155,7 +159,7 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 
 We strongly recommend using a package manager for your Linux distribution for installation and configuration of the required dependencies.  We cannot provide specific installation commands for every variant of Linux, so we specify the high-level steps below.
 
-<h2 id="lin_GNU"> Install the latest GNU compilers </h2>
+<h2 id="lin_GNU"> Linux:Install the latest GNU compilers </h2>
 We recommend installation of the latest stable release of the GNU C++ compiler, which is g++-4.9 at the time of this writing. Also install the latest version of GNU Fortran, which is needed for the installation of MPI. 
 <h2 id="lin_open_mpi"> Install OpenMPI </h2>
 Download the latest version of [OpenMPI](http://www.open-mpi.org/), unzip and untar the downloaded zip file, and cd to the untarred directory.  Run configure as follows, all on a single line.  This command assumes that gcc-4.9 has been installed; change the version number if a later version was installed, or if the paths are incorrect for your system:
@@ -170,7 +174,11 @@ We strongly recommend using a package manager for your Linux distribution for in
 
 [--back to top--](#top)
 
-<h2 id="lin_libflame"> Install libFlame </h2>
+<h2 id="lin_libflame"> Linux:Install libFlame </h2>
+
+Next we detail the installation of the high performance numerical library libflame. The library can be gotten from the libflame git repository on github.
+
+It’s important to perform the git clone into a subdirectory NOT called ‘flame’ since this can cause name conflicts with the installation. We normally do a git clone into a directory called ‘libflame’. However, other directory names will work as well, but not ‘flame’.
 
 To obtain the latest version of the FLAME library, clone the FLAME git repository with this command:
 		git clone https://github.com/flame/libflame.git
@@ -185,7 +193,7 @@ This completes the installation of the FLAME library.
 
 [--back to top--](#top)
 
-<h2 id="lin_blas"> Install an accelerated BLAS library </h2>
+<h2 id="lin_blas"> Linux:Install an accelerated BLAS library </h2>
 
 It is essential to link Elemental with an accelerated BLAS library for maximum performance.  Linking Elemental with a ‘reference’ BLAS implementation will cripple performance, since the reference implementations are designed for correctness not speed.
 
@@ -198,7 +206,7 @@ Install with this command, assuming the installation directory is /usr/local/ope
 		make PREFIX=/usr/local/openblas/0.2.8/ install
 
 [--back to top--](#top)
-<h2 id="lin_elemental"> Install Elemental </h2>
+<h2 id="lin_elemental"> Linux:Install Elemental </h2>
 
 We strongly recommend that users install both the HybridRelease and PureRelease builds of Elemental.  OpenMP is enabled in the HybridRelease build and disabled in the PureRelease build.  So why install both?  Because for smaller problems the overhead of OpenMP can actually cause code to run slower than without it.  For large problems OpenMP parallelization generally helps, but there is no clear transition point between where it helps and where it hurts.  Thus we encourage users to experiment with both builds to find the one that performs best for their typical problems.
 
