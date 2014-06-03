@@ -322,6 +322,7 @@ Running the hierclust application with no command line parameters will cause the
 		./hierclust 
 
 Usage: ./hierclust
+
         --matrixfile <filename>     Filename of the matrix to be factored.
                                     Either CSV format for dense or MatrixMarket format for sparse.
         --dictfile <filename>       The name of the dictionary file.
@@ -429,6 +430,7 @@ Running the flatclust application with no command line parameters will cause the
 		./flatclust 
 
 Usage: ./flatclust
+
         --matrixfile <filename>      Filename of the matrix to be factored.
                                      Either CSV format for dense or MatrixMarket format for sparse.
         --dictfile <filename>        The name of the dictionary file.
