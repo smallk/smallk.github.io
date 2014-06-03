@@ -286,7 +286,12 @@ Step 2 implements the details of the node splitting into child nodes. Outlier de
 
 The parameter trial_allowance is the number of times that the program will try to split a node into two meaningful clusters. In each trial, the program will check if one of the two generated leaf nodes is an outlier set. If the outlier set is detected, the program will delete the items in the outlier set from the node being split and continue to the next trial. If all the trials are finished and the program still cannot find two meaningful clusters for this node, all the deleted items are “recycled” and placed into this node again, and this node will be labeled as a “permanent leaf node” that cannot be picked in step 1 in later iterations.
 
-The parameter unbalanced is a threshold parameter to determine whether two generated leaf nodes are unbalanced. Suppose two potential leaf nodes L and R are generated from the selected node and L has fewer items than R. Let us denote the number of items in a node N as |N|. L and R are called unbalanced if |L| < unbalanced * (|L|+|R|). Note that if L and R are unbalanced, the potential node L with fewer items is not necessarily regarded as an outlier set. Please see the referenced paper for more details [3].
+The parameter unbalanced is a threshold parameter to determine whether two generated leaf nodes are unbalanced. Suppose two potential leaf nodes L and R are generated from the selected node and L has fewer items than R. Let us denote the number of items in a node N as |N|. L and R are called unbalanced if 
+
+<p style="text-align: center; font-weight: bold;">|L| &lt unbalanced * (|L|+|R|)</p>
+
+
+Note that if L and R are unbalanced, the potential node L with fewer items is not necessarily regarded as an outlier set. Please see the referenced paper for more details [3].
 
 Internally, NMF-RANK2 is applied to each leaf node to compute the score in step 3. The computed result matrices W and H in step 3 are cached so that we can avoid duplicate work in step 2 in later iterations.
 The score for each leaf node is based on a modified version of the NDCG (Normalized Discounted Cumulative Gain) measure, a common measure in the information retrieval community. A leaf node is associated with a “topic vector”, and we can define “top terms” based on the topic vector. A leaf node will receive a high score if its top terms are a good combination of the top terms of its two potential children; otherwise it receives a low score.
@@ -352,24 +357,33 @@ Usage: ./hierclust
 
 The –-matrixfile, --dictfile, and –-clusters options are required; all others are optional and have the default values indicated.  The meanings of the various options are as follows:
 
-1.  --matrixfile: Filename of the matrix to be factored.  CSV files are supported for dense matrices and MTX files for sparse matrices.
-2.  –-dictfile: absolute or relative path to the dictionary file
-3.  –-clusters: the number of leaf nodes (clusters) to generate
-4.  –-infile_W: CSV file containing the mx(4*clusters) initial values for matrix W; if omitted, W is randomly initialized
-5.  –-infile_H:  CSV file containing the (4*clusters)xn initial values for matrix H; if omitted, H is randomly initialized
-6.  –-tol: tolerance value for each internal NMF-RANK2 factorization; the stopping criterion is the ratio of projected gradient method
-7.  –-outdir: path to the folder into which to write the output files; if omitted results will be written to the current directory
-8.  –-miniter: minimum number of iterations to perform before checking progress on each NMF-RANK2 factorization
-9.  –-maxiter: the maximum number of iterations to perform on each NMF-RANK2 factorization
-10. –-maxterms: the number of dictionary keywords to include in each node
-11. –-maxthreads: the maximum number of threads to use; the default is to use as many threads as the hardware can support (your number may differ from that shown) 
-12. –-unbalanced: threshold value for declaring leaf node imbalance (see explanation above)
-13. –-trial_allowance: maximum number of split attempts for any node (see explanation above)
-14. –-flat: whether to generate a flat clustering result in addition to the hierarchical clustering result
-15. –-verbose: whether to display updates to the screen as the iterations progress
-16. –-format: file format to use for the clustering results
-17. –-treefile: name of the output file for the factorization tree; uses the format specified by the format parameter
-18. –-assignfile: name of the output file for the cluster assignments
+	1.  --matrixfile: Filename of the matrix to be factored.  CSV files are supported for dense matrices 
+		and MTX files for sparse matrices.
+	2.  –-dictfile: absolute or relative path to the dictionary file
+	3.  –-clusters: the number of leaf nodes (clusters) to generate
+	4.  –-infile_W: CSV file containing the mx(4*clusters) initial values for matrix W; if omitted, 
+		W is randomly initialized
+	5.  –-infile_H:  CSV file containing the (4*clusters)xn initial values for matrix H; if omitted, 
+		H is randomly initialized
+	6.  –-tol: tolerance value for each internal NMF-RANK2 factorization; the stopping criterion is the 
+		ratio of projected gradient method
+	7.  –-outdir: path to the folder into which to write the output files; if omitted results will be 
+		written to the current directory
+	8.  –-miniter: minimum number of iterations to perform before checking progress on each NMF-RANK2 
+		factorization
+	9.  –-maxiter: the maximum number of iterations to perform on each NMF-RANK2 factorization
+	10. –-maxterms: the number of dictionary keywords to include in each node
+	11. –-maxthreads: the maximum number of threads to use; the default is to use as many threads as 
+		the hardware can support (your number may differ from that shown) 
+	12. –-unbalanced: threshold value for declaring leaf node imbalance (see explanation above)
+	13. –-trial_allowance: maximum number of split attempts for any node (see explanation above)
+	14. –-flat: whether to generate a flat clustering result in addition to the hierarchical clustering 
+		result
+	15. –-verbose: whether to display updates to the screen as the iterations progress
+	16. –-format: file format to use for the clustering results
+	17. –-treefile: name of the output file for the factorization tree; uses the format specified by 
+		the format parameter
+	18. –-assignfile: name of the output file for the cluster assignments
 
 <h2 id="sample_run_hier"> Sample Runs </h2>
 
