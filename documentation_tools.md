@@ -290,7 +290,7 @@ The parameter unbalanced is a threshold parameter to determine whether two gener
 
 <p style="text-align: center; font-weight: bold;">|L| &lt; unbalanced * (|L|+|R|)</p>
 
-Note that if L and R are unbalanced, the potential node L with fewer items is not necessarily regarded as an outlier set. Please see the referenced paper for more details [3].
+Note that if L and R are unbalanced, the potential node L with fewer items is not necessarily regarded as an outlier set. Please see the referenced paper for more details [[3](http://smallk.github.io/publications/)].
 
 Internally, NMF-RANK2 is applied to each leaf node to compute the score in step 3. The computed result matrices W and H in step 3 are cached so that we can avoid duplicate work in step 2 in later iterations.
 The score for each leaf node is based on a modified version of the NDCG (Normalized Discounted Cumulative Gain) measure, a common measure in the information retrieval community. A leaf node is associated with a “topic vector”, and we can define “top terms” based on the topic vector. A leaf node will receive a high score if its top terms are a good combination of the top terms of its two potential children; otherwise it receives a low score.
