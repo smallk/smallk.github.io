@@ -10,5 +10,5 @@ githubproject: "https://github.com/smallk"
 markdown: kramdown
 permalink: pretty
 
-include: _pages
+include: pages
 exclude: README.md
