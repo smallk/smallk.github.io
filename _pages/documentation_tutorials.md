@@ -1,6 +1,6 @@
 ---
 layout: page
-title: <u>Tutorials</u>
+title: Tutorials
 
 baselink: /documentation/
 permalink: /documentation/tutorials/
