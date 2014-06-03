@@ -6,8 +6,6 @@ baselink: /publications/
 permalink: /publications/
 ---
 
-Page is under construction
-
 1. [Jingu Kim and Haesun Park, "Fast nonnegative matrix factorization: An active-set-like method and comparisons", SIAM Journal on Scientific Computing, 33(6), pp. 3261-3281, 2011.](http://www.cc.gatech.edu/~hpark/papers/SISC_082117RR_Kim_Park.pdf)
 
 2. [J. Kim, Y. He, and H. Park, "Algorithms for nonnegative matrix and tensor factorizations: A unified view based on block coordinate descent framework", Journal of Global Optimization, 2013.](http://www.cc.gatech.edu/~hpark/papers/jgo.pdf) 
