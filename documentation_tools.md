@@ -58,7 +58,17 @@ The second file required by the preprocessor is a ‘dictionary file’.  This i
 		circuit
 		...
 
-The third file required by the preprocessor is a ‘documents file’.  This is another simple ASCII text file containing one entry per line.  Entries represent document names or other unique identifiers.  The smallk/data folder also contains a sample documents file called ‘documents.txt’.  The first few entries of this file are:[--back to top--](#top)
+The third file required by the preprocessor is a ‘documents file’.  This is another simple ASCII text file containing one entry per line.  Entries represent document names or other unique identifiers.  The smallk/data folder also contains a sample documents file called ‘documents.txt’.  The first few entries of this file are:		52828-11101.txt
+		51820-10202.txt
+		104595-959.txt
+		60259-3040.txt
+ 		...
+
+These are the unique document identifiers for the user who generated the file.  Your identifiers will likely have a different format.
+
+Finally, the preprocessor requires these files to have the following names: matrix.mtx, dictionary.txt, and documents.txt.  The input folder containing these files can be specified on the command line (described below).  The output of the preprocessor is a new set of files called ‘reduced_matrix.mtx’, ‘reduced_dictionary.txt’, and ‘reduced_documents.txt’.
+
+[--back to top--](#top)
 
 <h2 id="cmd_options"> Command Line Options </h2>
 
@@ -217,6 +227,8 @@ Running the nmf application with no command line parameters will cause the appli
         [--verbose  1]           Whether to print updates to the screen. 
                                      1 == print updates, 0 == silent
 
+[--back to top--](#top)
+
 The –-matrixfile and –-k options are required; all others are optional and have the default values indicated.  The meanings of the various options are as follows:
 
 	1.  --matrixfile: Filename of the matrix to be factored.  CSV files are supported for dense 
@@ -314,6 +326,7 @@ The other output file contains information for each node in the factorization bi
 
 The node id values and the left or right child indicators can be used to unambiguously reconstruct the factorization tree. 
 
+[--back to top--](#top)
 
 <h2 id="cmd_options_hier"> Command Line Options </h2>
 
@@ -382,6 +395,8 @@ The –-matrixfile, --dictfile, and –-clusters options are required; all other
 		the format parameter
 	18. –-assignfile: name of the output file for the cluster assignments
 
+[--back to top--](#top)
+
 <h2 id="sample_run_hier"> Sample Runs </h2>
 
 The smallk distribution contains a ‘data’ directory with a matrix file ‘reuters.mtx’ and an associated dictionary file ‘reuters_dictionary.txt’.  These files are derived from the popular Reuters data set used in machine learning experiments.  
@@ -405,6 +420,7 @@ To generate a flat clustering result (in addition to the hierarchical clustering
 Two additional files will be generated this time (along with tree_10.json and assignments_10.csv): ‘clusters_10.json’, which contains the flat clustering results, and ‘assignments_flat_10.csv’, which contains the flat clustering assignments.
 
 
+[--back to top--](#top)
 
 <h1 id="flat"> Flatclust </h1>
 
@@ -486,6 +502,8 @@ The –-matrixfile, --dictfile, and –-clusters options are required; all other
 		format parameter
 	16. –-assignfile: name of the output file for the cluster assignments
 
+[--back to top--](#top)
+
 <h2 id="sample_run_flat"> Sample Runs </h2>
 
 The smallk distribution contains a ‘data’ directory with a matrix file ‘reuters.mtx’ and an associated dictionary file ‘reuters_dictionary.txt’.  These files are derived from the popular Reuters data set used in machine learning experiments.  
@@ -502,5 +520,6 @@ If we want to instead generate 10 clusters, each with 8 terms, using JSON output
 
 Two files will be generated: clusters_10.json and assignments_10.csv.  The json file will have 8 keywords per node, whereas the clusters_10.xml file will have only 5.
 
+[--back to top--](#top)
 
 
