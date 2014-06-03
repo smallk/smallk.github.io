@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Command Line Tools
+title: <u> Command Line Tools </u>
 
 baselink: /documentation/
 permalink: /documentation/tools/
