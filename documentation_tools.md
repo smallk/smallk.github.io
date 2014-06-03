@@ -319,10 +319,7 @@ The node id values and the left or right child indicators can be used to unambig
 
 Running the hierclust application with no command line parameters will cause the application to display all params that it supports.  These are:
 
-		./hierclust 
-
-Usage: ./hierclust
-
+	Usage: ./hierclust
         --matrixfile <filename>     Filename of the matrix to be factored.
                                     Either CSV format for dense or MatrixMarket format for sparse.
         --dictfile <filename>       The name of the dictionary file.
@@ -427,10 +424,7 @@ The second file contains the node information.  This file is much simpler than t
 
 Running the flatclust application with no command line parameters will cause the application to display all params that it supports.  These are:
 
-		./flatclust 
-
-Usage: ./flatclust
-
+	Usage: ./flatclust
         --matrixfile <filename>      Filename of the matrix to be factored.
                                      Either CSV format for dense or MatrixMarket format for sparse.
         --dictfile <filename>        The name of the dictionary file.
