@@ -288,7 +288,7 @@ The parameter trial_allowance is the number of times that the program will try t
 
 The parameter unbalanced is a threshold parameter to determine whether two generated leaf nodes are unbalanced. Suppose two potential leaf nodes L and R are generated from the selected node and L has fewer items than R. Let us denote the number of items in a node N as <span style="font-weight: bold;">&#124;N&#124;</span>. L and R are called unbalanced if 
 
-<p style="text-align: center; font-weight: bold;">|L| &lt unbalanced * (|L|+|R|)</p>
+<p style="text-align: center; font-weight: bold;">|L| &lt; unbalanced * (|L|+|R|)</p>
 
 Note that if L and R are unbalanced, the potential node L with fewer items is not necessarily regarded as an outlier set. Please see the referenced paper for more details [3].
 
