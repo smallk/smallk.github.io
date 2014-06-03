@@ -1,6 +1,6 @@
 ---
 layout: page
-title: SmallK Command Line Tools
+title: Command Line Tools
 
 baselink: /documentation/
 permalink: /documentation/tools/
