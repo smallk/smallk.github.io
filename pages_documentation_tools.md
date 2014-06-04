@@ -85,15 +85,16 @@ The preprocessor binary is called ‘preprocess_tf’, to emphasize the fact tha
 
 Only the first parameter, --indir, is required.  All remaining params are optional and have the default values indicated.The meanings of the various options are as follows:
 
-	1. --indir: path to the folder containing the files ‘matrix.mtx’, ‘dictionary.txt’, and ‘documents.txt’
+	1. --indir: path to the folder containing the files ‘matrix.mtx’, ‘dictionary.txt’, 
+		and ‘documents.txt’
 	2. –-outdir: path to the folder to into which results should be written
 	3. –-docs_per_term: any rows whose entries sum to less than this value will be pruned
 	4. –-terms_per_doc: any columns whose entries sum to less than this value will be pruned
 	5. –-maxiter: perform no more than this many iterations
 	6. –-precision: the number of digits of precision with which to write the output matrix
-	7. –-boolean_mode:  all nonzero matrix elements will be treated as if they had the value 1.0.  In other 
-		words, the preprocessor will ignore the actual frequency counts and treat all nonzero entries 
-		as if they were 1.0.
+	7. –-boolean_mode:  all nonzero matrix elements will be treated as if they had the 
+		value 1.0.  In other words, the preprocessor will ignore the actual frequency 
+		counts and treat all nonzero entries as if they were 1.0.
 
 <h2 id="sample_run"> Sample Runs </h2>
 
