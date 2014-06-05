@@ -171,7 +171,8 @@ The meanings of the various options are as follows:
 	4. –-type: the type of matrix to be generated; the default is a uniformly-distributed 
 		random matrix
 	5. –-rng_center: random number distribution will be centered on this value
-	6. –-rng_radius: random numbers will span this distance to either side of the center value
+	6. –-rng_radius: random numbers will span this distance to either side of the center 
+		value
 	7. –-precision: the number of digits of precision with which to write the output matrix
 	8. –-nz_per_col:  number of nonzero entries per sparse matrix column; valid only for 
 		SPARSE type
