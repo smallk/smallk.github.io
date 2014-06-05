@@ -323,7 +323,8 @@ The other output file contains information for each node in the factorization bi
 	2.  level: the level in the tree at which this node appears; the root is at level 0, 
 		the children of the root are at level 1, etc.
 	3.  label: the cluster label for this node (meaningful only for leaf nodes)
-	4.  parent_id: the unique id of the parent of this node (the root node has parent_id == 0)
+	4.  parent_id: the unique id of the parent of this node 
+		(the root node has parent_id == 0)
 	5.  parent_label: the cluster label of the parent of this node
 	6.  left_child: a Boolean value indicating whether this node is the left or right child 
 		of its parent
