@@ -320,15 +320,17 @@ The hierclust application generates two output files.  One file contains the ass
 The other output file contains information for each node in the factorization binary tree.  The items in this file are:
 
 	1.  id: a unique id for this node
-	2.  level: the level in the tree at which this node appears; the root is at level 0, the children 
-		of the root are at level 1, etc.
+	2.  level: the level in the tree at which this node appears; the root is at level 0, 
+		the children of the root are at level 1, etc.
 	3.  label: the cluster label for this node (meaningful only for leaf nodes)
 	4.  parent_id: the unique id of the parent of this node (the root node has parent_id == 0)
 	5.  parent_label: the cluster label of the parent of this node
-	6.  left_child: a Boolean value indicating whether this node is the left or right child of its parent
-	7.  left_child_label: the cluster label of the left child of this node (leaf nodes have -1 for this value)
-	8.  right_child_label: the cluster label of the right child of this node (leaf nodes have -1 
-		for this value)
+	6.  left_child: a Boolean value indicating whether this node is the left or right child 
+		of its parent
+	7.  left_child_label: the cluster label of the left child of this node 
+		(leaf nodes have -1 for this value)
+	8.  right_child_label: the cluster label of the right child of this node 
+		(leaf nodes have -1 for this value)
 	9.  doc_count: the number of documents that this node represents
 	10. top_terms: the highest probability dictionary terms for this node
 
