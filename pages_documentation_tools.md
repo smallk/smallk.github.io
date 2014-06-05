@@ -235,32 +235,36 @@ Running the nmf application with no command line parameters will cause the appli
 
 The –-matrixfile and –-k options are required; all others are optional and have the default values indicated.  The meanings of the various options are as follows:
 
-	1.  --matrixfile: Filename of the matrix to be factored.  CSV files are supported for dense 
+	1.  --matrixfile: Filename of the matrix to be factored.  CSV files are supported for 
+		dense 
 		matrices and MTX files for sparse matrices.
 	2.  –-k: the width of the W matrix (identical to the height of the H matrix)
 	3.  –-algorithm: identifier for the factorization algorithm
-	4.  –-stopping: the method used to terminate the iterations; use PG_RATIO unless you have a specific 
-		reason not to
-	5.  –-tol: tolerance value used to terminate iterations; when the progress metric falls below this 
+	4.  –-stopping: the method used to terminate the iterations; use PG_RATIO unless you 
+		have a specific reason not to
+	5.  –-tol: tolerance value used to terminate iterations; when the progress metric falls 
+		below this 
 		value iterations will stop; typical values are in the 1.0e-3 or 1.0e-4 range
-	6.  –-tolcount: a positive integer representing the number of successive iterations for which the 
-		progress metric must have a value <= tolerance; default is 1, which means the iterations will 
-		terminate on the first iteration with: progress_metric <= tolerance 
-	7.  –-infile_W: CSV file containing the mxk initial values for matrix W; if omitted, W is randomly 
-		initialized
-	8.  –-infile_H:  CSV file containing the kxn initial values for matrix H; if omitted, H is randomly 
-		initialized
+	6.  –-tolcount: a positive integer representing the number of successive iterations 
+		for which the progress metric must have a value <= tolerance; default is 1, which 
+		means the iterations will terminate on the first iteration with: 
+		progress_metric <= tolerance 
+	7.  –-infile_W: CSV file containing the mxk initial values for matrix W; if omitted, 
+		W is randomly initialized
+	8.  –-infile_H:  CSV file containing the kxn initial values for matrix H; if omitted, 
+		H is randomly initialized
 	9.  –-outfile_W: filename for the computed W factor; default is w.csv
 	10. –-outfile_H: filename for the computed H factor; default is h.csv
-	11. –-miniter: the minimum number of iterations to perform before checking progress; for smaller 
-		tolerance values,
- 			you may want to increase this number to avoid needless progress checks
+	11. –-miniter: the minimum number of iterations to perform before checking progress; 
+		for smaller tolerance values, you may want to increase this number to avoid 
+		needless progress checks
 	12. –-maxiter: the maximum number of iterations to perform
-	13. –-outprecision: matrices W and H will be written to disk using this many digits of precision
-	14. –-maxthreads: the maximum number of threads to use; the default is to use as many threads as 
-		the hardware can support (your number may differ from that shown) 
-	15. –-normalize: whether to normalize the columns of the W matrix and correspondingly scale the 
-		rows of H after convergence
+	13. –-outprecision: matrices W and H will be written to disk using this many digits of 
+		precision
+	14. –-maxthreads: the maximum number of threads to use; the default is to use as many 
+		threads as the hardware can support (your number may differ from that shown) 
+	15. –-normalize: whether to normalize the columns of the W matrix and correspondingly 
+		scale the rows of H after convergence
 	16. –-verbose: whether to display updates to the screen as the iterations progress 
 
 [--back to top--](#top)
@@ -338,7 +342,8 @@ Running the hierclust application with no command line parameters will cause the
 
 	Usage: ./hierclust
         --matrixfile <filename>     Filename of the matrix to be factored.
-                                    Either CSV format for dense or MatrixMarket format for sparse.
+                                    Either CSV format for dense or MatrixMarket format for 
+									sparse.
         --dictfile <filename>       The name of the dictionary file.
         --clusters <integer>        The number of clusters to generate.
         [--infile_W  (empty)]       Dense m x (4*clusters) matrix to initialize W, CSV file.
@@ -371,32 +376,35 @@ Running the hierclust application with no command line parameters will cause the
 
 The –-matrixfile, --dictfile, and –-clusters options are required; all others are optional and have the default values indicated.  The meanings of the various options are as follows:
 
-	1.  --matrixfile: Filename of the matrix to be factored.  CSV files are supported for dense matrices 
-		and MTX files for sparse matrices.
+	1.  --matrixfile: Filename of the matrix to be factored.  CSV files are supported for 
+		dense matrices and MTX files for sparse matrices.
 	2.  –-dictfile: absolute or relative path to the dictionary file
 	3.  –-clusters: the number of leaf nodes (clusters) to generate
-	4.  –-infile_W: CSV file containing the mx(4*clusters) initial values for matrix W; if omitted, 
-		W is randomly initialized
-	5.  –-infile_H:  CSV file containing the (4*clusters)xn initial values for matrix H; if omitted, 
-		H is randomly initialized
-	6.  –-tol: tolerance value for each internal NMF-RANK2 factorization; the stopping criterion is the 
-		ratio of projected gradient method
-	7.  –-outdir: path to the folder into which to write the output files; if omitted results will be 
-		written to the current directory
-	8.  –-miniter: minimum number of iterations to perform before checking progress on each NMF-RANK2 
+	4.  –-infile_W: CSV file containing the mx(4*clusters) initial values for matrix W; 
+		if omitted, W is randomly initialized
+	5.  –-infile_H:  CSV file containing the (4*clusters)xn initial values for matrix H; 
+		if omitted, H is randomly initialized
+	6.  –-tol: tolerance value for each internal NMF-RANK2 factorization; the stopping 
+		criterion is the ratio of projected gradient method
+	7.  –-outdir: path to the folder into which to write the output files; if omitted 
+		results will be written to the current directory
+	8.  –-miniter: minimum number of iterations to perform before checking progress on 
+		each NMF-RANK2 factorization
+	9.  –-maxiter: the maximum number of iterations to perform on each NMF-RANK2 
 		factorization
-	9.  –-maxiter: the maximum number of iterations to perform on each NMF-RANK2 factorization
 	10. –-maxterms: the number of dictionary keywords to include in each node
-	11. –-maxthreads: the maximum number of threads to use; the default is to use as many threads as 
-		the hardware can support (your number may differ from that shown) 
-	12. –-unbalanced: threshold value for declaring leaf node imbalance (see explanation above)
-	13. –-trial_allowance: maximum number of split attempts for any node (see explanation above)
-	14. –-flat: whether to generate a flat clustering result in addition to the hierarchical clustering 
-		result
+	11. –-maxthreads: the maximum number of threads to use; the default is to use as many 
+		threads as the hardware can support (your number may differ from that shown) 
+	12. –-unbalanced: threshold value for declaring leaf node imbalance 
+		(see explanation above)
+	13. –-trial_allowance: maximum number of split attempts for any node 
+		(see explanation above)
+	14. –-flat: whether to generate a flat clustering result in addition to the hierarchical 
+		clustering result
 	15. –-verbose: whether to display updates to the screen as the iterations progress
 	16. –-format: file format to use for the clustering results
-	17. –-treefile: name of the output file for the factorization tree; uses the format specified by 
-		the format parameter
+	17. –-treefile: name of the output file for the factorization tree; uses the format 
+		specified by the format parameter
 	18. –-assignfile: name of the output file for the cluster assignments
 
 [--back to top--](#top)
@@ -446,7 +454,8 @@ Running the flatclust application with no command line parameters will cause the
 
 	Usage: ./flatclust
         --matrixfile <filename>      Filename of the matrix to be factored.
-                                     Either CSV format for dense or MatrixMarket format for sparse.
+                                     Either CSV format for dense or MatrixMarket format for 
+									sparse.
         --dictfile <filename>        The name of the dictionary file.
         --clusters <integer>         The number of clusters to generate.
         [--algorithm  BPP]           The NMF algorithm to use: 
@@ -482,28 +491,28 @@ Running the flatclust application with no command line parameters will cause the
 
 The –-matrixfile, --dictfile, and –-clusters options are required; all others are optional and have the default values indicated.  The meanings of the various options are as follows:
 
-	1.  --matrixfile: Filename of the matrix to be factored.  CSV files are supported for dense matrices 
-		and MTX files for sparse matrices.
+	1.  --matrixfile: Filename of the matrix to be factored.  CSV files are supported 
+		for dense matrices and MTX (matrix market) files for sparse matrices.
 	2.  –-dictfile: absolute or relative path to the dictionary file
 	3.  –-clusters: the number of clusters to generate (equivalent to the NMF ‘k’ value)
 	4.  –-algorithm: the factorization algorithm to use 
-	5.  –-infile_W: CSV file containing the m x ‘clusters’ initial values for matrix W; if omitted, 
-		W is randomly initialized
-	6.  –-infile_H:  CSV file containing the ‘clusters’ x n initial values for matrix H; if omitted, 
-		H is randomly initialized
+	5.  –-infile_W: CSV file containing the m x ‘clusters’ initial values for matrix W; 
+		if omitted, W is randomly initialized
+	6.  –-infile_H:  CSV file containing the ‘clusters’ x n initial values for matrix H; 
+		if omitted, H is randomly initialized
 	7.  –-tol: tolerance value for the factorization; the stopping criterion is the ratio of 
 		projected gradient method
-	8.  –-outdir: path to the folder into which to write the output files; if omitted results will be 
-		written to the current directory
+	8.  –-outdir: path to the folder into which to write the output files; if omitted 
+		results will be written to the current directory
 	9.  –-miniter: minimum number of iterations to perform before checking progress 
 	10. –-maxiter: the maximum number of iterations to perform 
 	11. –-maxterms: the number of dictionary keywords to include in each node
-	12. –-maxthreads: the maximum number of threads to use; the default is to use as many threads as 
-		the hardware can support (your number may differ from that shown) 
+	12. –-maxthreads: the maximum number of threads to use; the default is to use as many 
+		threads as the hardware can support (your number may differ from that shown) 
 	13. –-verbose: whether to display updates to the screen as the iterations progress
 	14. –-format: file format to use for the clustering results
-	15. –-clustfile: name of the output file for the nodes; uses the format specified by the 
-		format parameter
+	15. –-clustfile: name of the output file for the nodes; uses the format specified 
+		by the format parameter
 	16. –-assignfile: name of the output file for the cluster assignments
 
 [--back to top--](#top)
