@@ -294,9 +294,10 @@ Download the 0.83 release of [Elemental](http://libelemental.org/releases/), unz
 <h1 id="smallk"> SmallK NMF Library Installation </h1>
 
 <h2 id="source_code"> Obtain the Source Code </h2>
-The source code for the SmallK library can be obtained by cloning the [SmallK](https://github.com/smallk/smallk.github.io) repository on github.
+The source code for the SmallK library can be obtained by downloading from the [SmallK](https://github.com/smallk/smallk.github.io/tree/master/code) repository on github.
 
-<< Describe how to do this – TBD >>
+Once downloaded uncompress and follow the installation instructions below.
+
 
 <h2 id="build_smallk"> Build the SmallK library </h2>
 
@@ -423,6 +424,8 @@ Returns the patch version number of the library as an unsigned integer.
 
 Returns the version of the library as a string, formatted as major.minor.patch.
 
+[--back to top--](#top)
+
 <h4 id="common_funcs"> Common functions </h4>
 
 	unsigned int GetOutputPrecision()
@@ -461,7 +464,7 @@ Sets an upper limit to the number of threads used for NMF and clustering computa
 
 Resets all state variables to their default values. 
 
-
+[--back to top--](#top)
 
 
 	void SeedRNG(const int seed)
@@ -483,6 +486,8 @@ Returns a string indicating the directory into which output files will be writte
 	void SetOutputDir(const std::string& outdir)
 
 Sets the directory into which output files should be written. The ‘outdir’ argument can either be an absolute or relative path.  The default is the current directory.
+
+[--back to top--](#top)
 
 <h4 id="nmf_funcs"> NMF functions </h4>
 
@@ -523,6 +528,8 @@ Clustering Functions
 
 Loads the dictionary used for clustering. The dictionary is an ASCII file of text strings as described in the preprocessor input files section below.  If the dictionary file cannot be loaded a std::runtime_error exception is thrown.
 
+[--back to top--](#top)
+
 	unsigned int GetMaxTerms()
 
 Returns the number of highest-probability dictionary terms to store per cluster. The default value is 5.
@@ -559,6 +566,8 @@ The content of the files is described below in the section on the hierclust comm
 
 This function performs hierarchical clustering on the loaded matrix, exactly as described for HierNmf2. In addition, it also computes a flat clustering result.  Thus four output files are generated.  The flat clustering result files are ‘assignments_flat_N.csv’ and ‘clusters_N.{json, xml}’.  The cluster file contents are documented below in the section on the flatclust command line application.
 
+[--back to top--](#top)
+
 
 Disclaimer
 ----------
@@ -590,6 +599,7 @@ For comments, questions, bug reports, suggestions, etc., contact:
      Atlanta, GA 30318
      barry.drake@gtri.gatech.edu Laboratory
 
+[--back to top--](#top)
 
 
 
