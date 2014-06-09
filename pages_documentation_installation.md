@@ -26,6 +26,10 @@ permalink: /documentation/installation/
     *   [Examples of API Usage](#example_api)
     *   [Matrix file formatsI Usage](#matrix_files)
     *   [SmallK APII Usage](#smallk_api)
+        *    [Enumerations](#enums)
+        * [API functions](#api_functions)
+            * [Initialization and cleanup](#init_cleanup)
+            * [Versioning ](#versions)
 *   [Contact Information](#contact)
 
 
@@ -354,8 +358,72 @@ The matrix is loaded exactly as it appears in the file.  Internally, SmallK stor
 
 <h2 id="smallk_api"> SmallK API </h2>
 
-The SmallK API is an extremely simplistic API for basic NMF and clustering.  Users who require more control over the factorization or clustering algorithms can instead run one of the command-line applications in the SmallK distribution.Documentation for the SmallK API can be found here: 
-<b> >>Under Construction<< </b>
+The SmallK API is an extremely simplistic API for basic NMF and clustering.  Users who require more control over the factorization or clustering algorithms can instead run one of the command-line applications in the SmallK distribution.
+
+The SmallK API is exposed by the file smallk.hpp, which can be found in this location: SMALLK_INSTALL_DIR/include/smallk.hpp.  All API functions are contained within the smallk namespace. 
+
+An example of how to use the API can be found in the file examples/smallk_example.cpp.
+
+The smallk library maintains a set of state variables that are used to control the Nmf and clustering routines.  Once set, the state variables maintain their values until changed by an API function.  For instance, one state variable represents the matrix to be factored (or used for clustering).  The API provides a function to load this matrix; once loaded, it can be repeatedly factored without the need for reloading.  The state variables and their default values are documented below.
+
+All computations with the smallk library are performed in double precision.
+<h3 id="enums"> Enumerations </h3>
+
+The SmallK API provides two enumerated types, one for the supported NMF algorithms and one for the clustering file output format.  These are:
+
+	enum Algorithm
+	{
+    		MU,      // Multiplicative Updating, Lee & Seung
+    		BPP,     // Block Principal Pivoting, Kim and Park
+    		HALS,    // Hierarchical Alternating Least Squares, Cichocki & Pan
+    		RANK2    // Rank2, Kuang and Park
+	};
+
+The default NMF algorithm is BPP.  The Rank2 algorithm is optimized for two-column or two-row matrices and is the underlying factorization routine for the clustering code.
+
+	enum OutputFormat
+	{
+    		XML,  // Extensible Markup Language
+    		JSON  // JavaScript Object Notation
+	};
+
+<h3 id="api_functions"> API functions </h3>
+
+<h4 id="init_cleanup"> Initialization and cleanup </h4>
+
+	void Initialize(int& argc,     // in
+ 		char**& argv)  // in
+
+Call this function first, before all others in the API; initializes Elemental and the smallk library.
+
+	bool IsInitialized()
+    
+Returns true if the library has been initialized via a call to Initialize(), false otherwise.
+
+Call this function last, after all others in the API; performs cleanup for Elemental and the smallk library.
+
+	void Finalize()
+
+<h4 id="versions"> Versioning </h4>
+
+	unsigned int GetMajorVersion()
+
+Returns the major release version number of the library as an unsigned integer.
+
+	unsigned int GetMinorVersion()
+
+Returns the minor release version number of the library as an unsigned integer.
+
+	unsigned int GetPatchLevel()
+
+Returns the patch version number of the library as an unsigned integer.
+
+	std::string GetVersionString()
+
+Returns the version of the library as a string, formatted as major.minor.patch.
+
+
+
 
 Disclaimer
 ----------
