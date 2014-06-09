@@ -34,13 +34,13 @@ h3, h4, h5, h6 {
 }
 
 a {
-  color:#002c56;
+  color:#004b92;
   font-weight:400;
   text-decoration:none;
 }
 
 a:hover {
-  color: #004b92;
+  color: #456EA8;
 }
 
 a small {
