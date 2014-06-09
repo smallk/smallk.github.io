@@ -30,8 +30,9 @@ permalink: /documentation/installation/
         * [API functions](#api_functions)
             * [Initialization and cleanup](#init_cleanup)
             * [Versioning ](#versions)
+            * [Common functions](#common_funcs)
+            * [NMF functions](#nmf_funcs)
 *   [Contact Information](#contact)
-
 
 
 
@@ -422,7 +423,141 @@ Returns the patch version number of the library as an unsigned integer.
 
 Returns the version of the library as a string, formatted as major.minor.patch.
 
+<h4 id="common_funcs"> Common functions </h4>
 
+	unsigned int GetOutputPrecision()
+
+Returns the floating point precision with which numerical output will be written (i.e., the computed W and H matrix factors from the Nmf routine).  The default precision is six digits. 
+
+	void SetOutputPrecision(const unsigned int num_digits)
+
+Sets the floating point precision with which numerical output will be written.  Input values should be within the range [1, precision(double)].  Any inputs outside of this range will be adjusted. 
+
+	unsigned int GetMaxIter()
+
+Returns the maximum number of iterations allowed for NMF computations.  The default value is 5000.
+
+	void SetMaxIter(const unsigned int max_iterations = 5000)
+
+Sets the maximum number of iterations allowed for NMF computations.  The default of 5000 should be more than sufficient for most computations. 
+
+	unsigned int GetMinIter()
+
+Returns the minimum number of NMF iterations. The default value is 5.
+
+	void SetMinIter(const unsigned int min_iterations = 5)
+
+Sets the minimum number of NMF iterations to perform before checking for convergence. The convergence and progress estimation routines are non-trivial calculations, so increasing this value may result in faster performance. 
+
+	unsigned int GetMaxThreads()
+
+Returns the maximum number of threads used for NMF or clustering computations. The default value is hardware-dependent, but is generally the maximum number allowed by the hardware.
+
+	void SetMaxThreads(const unsigned int max_threads);
+
+Sets an upper limit to the number of threads used for NMF and clustering computations.  Inputs that exceed the capabilities of the hardware will be adjusted. This function is provided for scaling and performance studies.  
+
+	void Reset()
+
+Resets all state variables to their default values. 
+
+
+
+
+	void SeedRNG(const int seed)
+
+Seeds the random number generator (RNG) within the smallk library. Normally this RNG is seeded from the system time whenever the library is initialized.  The RNG is the ‘19937’ Mersenne Twister implementation provided by the C++ standard library.
+
+	void LoadMatrix(const std::string& filepath)
+
+Loads a matrix contained in the given file.  The file must either be a comma-separated value (.CSV) file for a dense matrix, or a MatrixMarket-format file (.MTX) for a sparse matrix. If the matrix cannot be loaded the library throws a std::runtime_error exception.
+
+	bool IsMatrixLoaded()
+
+Returns true if a matrix is currently loaded, false if not.
+
+	std::string GetOuputDir()
+
+Returns a string indicating the directory into which output files will be written.  The default is the current directory.
+
+	void SetOutputDir(const std::string& outdir)
+
+Sets the directory into which output files should be written. The ‘outdir’ argument can either be an absolute or relative path.  The default is the current directory.
+
+<h4 id="nmf_funcs"> NMF functions </h4>
+
+	void Nmf(const unsigned int k, 
+ 		const Algorithm algorithm     = Algorithm::BPP,
+ 		const std::string& initfile_w = std::string(“”),
+ 		const std::string& initfile_h = std::string(“”))
+
+This function nonnegatively factors the loaded input matrix A as follows: A ~ WH.  If a matrix is not currently loaded a std::logic_error exception will be thrown.  The default algorithm is NMF-BPP; provide one of the enumerated algorithm values to use a different algorithm.
+
+Matrix A has dimension mxn; matrix W has dimension mxk; matrix H has dimension kxn.  The value of k is provided as an argument.
+
+Optional initializer matrices can be provided for the W and H factors via the ‘initfile_w’ and ‘initfile_h’ arguments. These files must contain fully dense matrices in .CSV format.  The W matrix initializer must have dimension mxk, and the H matrix initializer must have dimension kxn. If the initializer matrices do not match these dimensions exactly a std::logic_error exception is thrown.  If initializers are not provided, matrices W and H will be randomly initialized.
+
+The computed factors W and H will be written to the output directory in the files ‘w.csv’ and ‘h.csv’.
+    
+Exceptions will be thrown (either from Elemental or smallk) in case of error.
+
+
+	const double* LockedBufferW(unsigned int& ldim, unsigned int& height, unsigned int& width)
+
+This function returns a READONLY pointer to the buffer containing the W factor computed by the Nmf routine, along with buffer and matrix dimensions.  The ‘ldim’, ‘height’, and ‘width’ arguments are all out parameters.  The buffer has a height of ‘ldim’ and a width of ‘width’.  The matrix W has the same width but a height of ‘height’, which may differ from ldim.  The W matrix is stored in the buffer in column-major order.  See the examples/smallk_example.cpp file for an illustration of how to use this function. 
+
+	const double* LockedBufferH(unsigned int& ldim, unsigned int& height, unsigned int& width)
+
+Same as LockedBufferW, but for the H matrix.
+
+	double GetNmfTolerance()
+
+Returns the tolerance value used to determine NMF convergence. The default value is 0.005. 
+
+	void SetNmfTolerance(const double tol=0.005)
+
+Sets the tolerance value used to determine NMF convergence.  The NMF algorithms are iterative, and at each iteration a progress metric is computed and compared with the tolerance value.  When the metric falls below the tolerance value the iterations stop and convergence is declared.  The tolerance value should satisfy 0.0 < tolerance < 1.0.  Any inputs outside this range will cause a std::logic_error exception to be thrown.
+Clustering Functions
+
+	void LoadDictionary(const std::string& filepath)
+
+Loads the dictionary used for clustering. The dictionary is an ASCII file of text strings as described in the preprocessor input files section below.  If the dictionary file cannot be loaded a std::runtime_error exception is thrown.
+
+	unsigned int GetMaxTerms()
+
+Returns the number of highest-probability dictionary terms to store per cluster. The default value is 5.
+
+	void SetMaxTerms(const unsigned int max_terms = 5)
+
+Sets the number of highest-probability dictionary terms to store per cluster.
+    
+	OutputFormat GetOutputFormat()
+
+Returns a member of the OutputFormat enumerated type; this is the file format for the clustering results.  The default output format is JSON.
+
+	void SetOutputFormat(const OutputFormat = OutputFormat::JSON)
+
+Sets the output format for the clustering result file. The argument must be one of the values in the OutputFormat enumerated type.
+
+	double GetHierNmf2Tolerance()
+
+Returns the tolerance value used by the NMF-RANK2 algorithm for hierarchical clustering.  The default value is 1.0e-4.
+
+	void SetHierNmf2Tolerance(const double tol=1.0e-4)
+
+Sets the tolerance value used by the NMF-RANK2 algorithm for hierarchical clustering.  The tolerance value should satisfy 0.0 < tolerance < 1.0.  Any inputs outside this range will cause a std::logic_error exception to be thrown.
+
+	void HierNmf2(const unsigned int num_clusters)
+
+This function performs hierarchical clustering on the loaded matrix, generating the number of clusters specified by the ‘num_clusters’ argument.  For an overview of the hierarchical clustering process, see the description below for the hierclust command line application.
+
+This function generates two output files in the output directory: ‘assignments_N.csv’ and ‘tree_N.{json, xml}’.  Here N is the number of clusters specified as an argument, and the tree file can be in either JSON XML format.
+
+The content of the files is described below in the section on the hierclust command line application.
+
+	void HierNmf2WithFlat(const unsigned int num_clusters)
+
+This function performs hierarchical clustering on the loaded matrix, exactly as described for HierNmf2. In addition, it also computes a flat clustering result.  Thus four output files are generated.  The flat clustering result files are ‘assignments_flat_N.csv’ and ‘clusters_N.{json, xml}’.  The cluster file contents are documented below in the section on the flatclust command line application.
 
 
 Disclaimer
