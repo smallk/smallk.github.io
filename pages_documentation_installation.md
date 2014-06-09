@@ -301,7 +301,7 @@ Once downloaded uncompress and follow the installation instructions below.
 
 <h2 id="build_smallk"> Build the SmallK library </h2>
 
-After cloning the repo cd into the top-level SmallK folder.  The makefiles assume that you followed our suggested installation plan for Elemental.  If this is not the case you will need to do one of the following things:
+After downloading and unpacking the code tarball cd into the top-level SmallK folder.  The makefiles assume that you followed our suggested installation plan for Elemental.  If this is not the case you will need to do one of the following things:
 	1. Create an environment variable called ELEMENTAL_INSTALL_DIR which contains the 
 		path to the root folder of your Elemental installation
 	2. Define the variable ELEMENTAL_INSTALL_DIR on the make command line
