@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Quick Start Guide
+title: Quick Start
 
 baselink: /documentation/
 permalink: /documentation/quickstart/
