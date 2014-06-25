@@ -1,12 +1,10 @@
 ---
 layout: page
-title: Software Repository
+title: Getting the code and instructions
 
 baselink: /repo/
 permalink: /repo/
 ---
-
-## Getting the code and instructions
 
 These are ways to get the code:
 
