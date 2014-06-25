@@ -6,7 +6,6 @@ baselink: /documentation/
 permalink: /documentation/tests/
 ---
 
-<h1 id="top">Contents</h1>
 ---------------------
 
 Below we provide example output for many of the tests that can be run in the SmallK library. This will provide guidance for identifying issues with your installation. Of course results will vary on different machines.
