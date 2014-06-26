@@ -6,8 +6,6 @@ baselink: /documentation/
 permalink: /documentation/quickstart/
 ---
 
-Page under construction
-
 <h1 id="top">Contents</h1>
 ---------------------
 
