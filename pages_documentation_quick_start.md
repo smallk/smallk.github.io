@@ -16,10 +16,6 @@ Page under construction
 *   [Load a Matrix](#load_matrix)
 *   [Perform NMF on the Loaded Matrix](#run_nmf)
     *   [NMF-BPP](#bpp)
-    *   [Build the SmallK library](#build_smallk)
-    *   [Examples of API Usage](#example_api)
-    *   [Matrix file formatsI Usage](#matrix_files)
-    *   [SmallK APII Usage](#smallk_api)
 *   [Contact Information](#contact)
 
 
