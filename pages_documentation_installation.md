@@ -573,6 +573,40 @@ This function performs hierarchical clustering on the loaded matrix, exactly as 
 <h1 id="vagrant"> Installation in a Vagrant Virtual Machine </h1>
 
 
+The complete stack of software dependencies for SmallK as well as SmallK itself can be rapidly set up and configured through use of Vagrant and VirtualBox and the files included in the reposititory. To deploy the SmallK VM:
+
+**1.** Install [Vagrant](http://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
+
+**2.** From within the vagrant/ directory in the repository, run:
+		
+		vagrant up
+		
+This can take as long as an hour to build the VM, which will be based on a minimal Ubuntu 14.04 installation. The VagrantFile can be customized in many ways to change the specifications for the VM that is built. See more information [here](http://docs.vagrantup.com/v2/).
+
+**3.** Once the VM has been built, run:
+
+		vagrant ssh
+		
+This will drop you into the command line of the VM that was just created. From there, you can navigate to /home/vagrant/smallk-1.1.0 and run
+
+		make check
+		
+to verify your installation was successful. In case you need it, the username/password for the VM created will be vagrant/vagrant.
+
+**4.** When you are ready to shut down the VM, run one of the following:
+
+		vagrant suspend # this command will save the current running state of the machine
+		vagrant halt # this command will gracefully shut down the machine
+		vagrant destroy #this command will remove the VM from your machine
+
+If you want to work with the VM again, from any of the above states you can run
+
+		vagrant up
+		
+again and the VM will be resumed or recreated.
+
+
+
 [--back to top--](#top)
 
 Disclaimer
