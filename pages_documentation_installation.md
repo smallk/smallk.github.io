@@ -24,7 +24,7 @@ permalink: /documentation/installation/
     *   [Obtain the source code](#source_code)
     *   [Build the SmallK library](#build_smallk)
     *   [Examples of API Usage](#example_api)
-    *   [Matrix file formatsI Usage](#matrix_files)
+    *   [Matrix file formats Usage](#matrix_files)
     *   [SmallK APII Usage](#smallk_api)
         *    [Enumerations](#enums)
         * [API functions](#api_functions)
