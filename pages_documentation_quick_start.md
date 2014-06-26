@@ -22,8 +22,6 @@ Page under construction
 *   [Flat Clustering](#flat)
 *   [Contact Information](#contact)
 
-
-
 <h1 id="intro"> Introduction </h1>
 
 This document describes how to use the SmallK library to perform nonnegative matrix factorization (NMF), hierarchical clustering, and flat clustering. It is assumed that the library has been installed properly, that all tests have passed, and that the user has created the SMALLK_INSTALL_DIR environment variable as described in the documentation. 
