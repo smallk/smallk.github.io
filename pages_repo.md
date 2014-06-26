@@ -6,7 +6,7 @@ baselink: /repo/
 permalink: /repo/
 ---
 
-These are ways to get the code:
+These are the ways to obtain the code:
 
 1. The SmallK code tarball is at [SmallK](https://github.com/smallk/smallk.github.io/tree/master/code).
 2. There is also a code repository [here](https://github.com/smallk/smallk).
