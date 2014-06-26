@@ -41,6 +41,8 @@ All of the examples described in this document use a matrix derived from Reuters
 
 The SmallK documentation contains complete descriptions of all SmallK functions mentioned in this guide.
 
+[--back to top--](#top)
+
 <h1 id="load_matrix"> Load a Matrix </h1>
 
 Suppose you want to perform NMF or clustering on a matrix. The first action to take is to load the matrix into SmallK using the *LoadMatrix* function. This function accepts either dense matrices in CSV format or sparse matrices in MatrixMarket format.  Since we want to perform NMF and clustering on the Reuters matrix, we need to supply the path to the Reuters matrix file (reuters.mtx) as an argument to LoadMatrix.  This path has already been setup in the code; the appropriate string variable is called ‘filepath_matrix’.  Enter the following line after the opening brace of the try block after line 61:
