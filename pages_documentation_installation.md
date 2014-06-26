@@ -32,11 +32,13 @@ permalink: /documentation/installation/
             * [Versioning ](#versions)
             * [Common functions](#common_funcs)
             * [NMF functions](#nmf_funcs)
+*   [Installation in a Vagrant Virtual Machine](#vagrant)
 *   [Contact Information](#contact)
 
 
 
 <h1 id="MacOSX"> How to Install Elemental on MacOSX </h1>
+
 On MacOSX we recommend using [Homebrew](http://mxcl.github.io/homebrew/) as the package manager. Homebrew does not require sudo privileges for package installation, unlike other package managers such as MacPorts. Thus the chances of corrupting vital system files are greatly reduced with Homebrew.
 If you use Homebrew, ensure that your PATH is configured to search Homebrew’s installation directory first. Homebrew’s default installation location is /usr/local/bin, so that location needs to be first on your path. To check, run this command from a terminal window:
 	cat /etc/paths
@@ -568,6 +570,10 @@ This function performs hierarchical clustering on the loaded matrix, exactly as 
 
 [--back to top--](#top)
 
+<h1 id="vagrant"> Installation in a Vagrant Virtual Machine </h1>
+
+
+[--back to top--](#top)
 
 Disclaimer
 ----------
