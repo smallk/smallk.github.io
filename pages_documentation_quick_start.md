@@ -154,21 +154,22 @@ baseline for our future distributed NMF implementations.
 
 For comments, questions, bug reports, suggestions, etc., contact:
 
-     Richard Boyd
-     Senior Research Scientist
-	 Cyber Technology and Information Security Laboratory
-     Georgia Tech Research Institute
-     250 14th St NW
-     Atlanta, GA 30318
-     richard.boyd@gtri.gatech.edu
+Richard Boyd <br>
+Senior Research Scientist <br>
+Cyber Technology and Information Security Laboratory <br>
+Georgia Tech Research Institute <br>
+250 14th St NW <br>
+Atlanta, GA 30318 <br>
+<span><a href="mailto:richard.boyd@gtri.gatech.edu">richard.boyd@gtri.gatech.edu</a></span>
 
-     Barry Drake
-     Senior Research Scientist
-	 Cyber Technology and Information Security Laboratory
-     Georgia Tech Research Institute
-     250 14th St NW
-     Atlanta, GA 30318
-     barry.drake@gtri.gatech.edu Laboratory
+Barry Drake <br>
+Senior Research Scientist <br>
+Cyber Technology and Information Security Laboratory <br>
+Georgia Tech Research Institute <br>
+250 14th St NW <br>
+Atlanta, GA 30318 <br>
+<span><a href="mailto:barry.drake@gtri.gatech.edu">barry.drake@gtri.gatech.edu</a></span>
+
 
 [--back to top--](#top)
 
