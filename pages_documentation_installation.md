@@ -595,7 +595,7 @@ to verify your installation was successful. In case you need it, the username/pa
 
 **4.** When you are ready to shut down the VM, run one of the following:
 
-		vagrant suspend # this command will save the current running state of the machine
+		vagrant suspend # this command will save the current running state
 		vagrant halt # this command will gracefully shut down the machine
 		vagrant destroy #this command will remove the VM from your machine
 
