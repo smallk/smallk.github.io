@@ -338,6 +338,360 @@ After downloading and unpacking the code tarball cd into the top-level SmallK fo
 
 In the examples folder you will find a file called smallk_example.cpp. This file contains several examples of how to use the SmallK library.  Also included in the examples folder is a makefile that you can customize for your use.  Note that the SmallK library must first be installed before the example project can be built.
 
+As an example of how to use the sample project, assume the smallk software has been installed into /usr/local/smallk.  Also assume that the user chose to create the recommended environment variable SMALLK_INSTALL_DIR that stores the location of the top-level install folder, i.e. the user’s .bashrc file contains this statement:
+
+		export SMALLK_INSTALL_DIR=/usr/local/smallk 
+
+To build the smallk example project, open a terminal window and cd to the smallk/examples folder and run this command: 
+
+		make
+
+To run the example project, run this command:
+
+		./bin/example ../data
+
+The output will be similar to the following (it won’t be identical because some problems are randomly initialized):
+
+
+	Smallk major version: 1
+	Smallk minor version: 0
+	Smallk patch level:   0
+	Smallk version string: 1.0.0
+	Loading matrix...
+
+	************************************************************
+	*                                                          *
+	*                Running NMF-BPP using k=32                *
+	*                                                          *
+	************************************************************
+	Initializing matrix W...
+	Initializing matrix H...
+
+                parameters: 
+
+             algorithm: Nonnegative Least Squares with Block Principal Pivoting
+    stopping criterion: Ratio of Projected Gradients
+                height: 12411
+                 width: 7984
+                     k: 32
+               miniter: 5
+               maxiter: 5000
+                   tol: 0.005
+            matrixfile: ../data/reuters.mtx
+            maxthreads: 8
+
+	1:  progress metric:    (min_iter)
+	2:  progress metric:    (min_iter)
+	3:  progress metric:    (min_iter)
+	4:  progress metric:    (min_iter)
+	5:  progress metric:    (min_iter)
+	6:  progress metric:    0.0747031
+	7:  progress metric:    0.0597987
+	8:  progress metric:    0.0462878
+	9:  progress metric:    0.0362883
+	10: progress metric:    0.030665
+	11: progress metric:    0.0281802
+	12: progress metric:    0.0267987
+	13: progress metric:    0.0236731
+	14: progress metric:    0.0220778
+	15: progress metric:    0.0227083
+	16: progress metric:    0.0244029
+	17: progress metric:    0.0247552
+	18: progress metric:    0.0220007
+	19: progress metric:    0.0173831
+	20: progress metric:    0.0137033
+
+	Solution converged after 39 iterations.
+
+	Norms for matrix W: 
+	|| W ||_max = 0.993468
+	|| W ||_1   = 29.8208
+	|| W ||_oo  = 2.09451
+	|| W ||_F   = 5.65685
+
+	Norms for matrix H: 
+	|| H ||_max = 0.978103
+	|| H ||_1   = 2.17622
+	|| H ||_oo  = 362.929
+	|| H ||_F   = 35.0604
+
+	Elapsed wall clock time: 4.354 sec.
+
+	Writing output files...
+
+	************************************************************
+	*                                                          *
+	*               Running NMF-HALS using k=16                *
+	*                                                          *
+	************************************************************
+	Initializing matrix W...
+	Initializing matrix H...
+
+                parameters: 
+
+             algorithm: HALS
+    stopping criterion: Ratio of Projected Gradients
+                height: 12411
+                 width: 7984
+                     k: 16
+               miniter: 5
+               maxiter: 5000
+                   tol: 0.005
+            matrixfile: ../data/reuters.mtx
+            maxthreads: 8
+
+	1:  progress metric:    (min_iter)
+	2:  progress metric:    (min_iter)
+	3:  progress metric:    (min_iter)
+	4:  progress metric:    (min_iter)
+	5:  progress metric:    (min_iter)
+	6:  progress metric:    0.710219
+	7:  progress metric:    0.580951
+	8:  progress metric:    0.471557
+	9:  progress metric:    0.491855
+	10: progress metric:    0.531999
+	11: progress metric:    0.353302
+	12: progress metric:    0.201634
+	13: progress metric:    0.1584
+	14: progress metric:    0.142572
+	15: progress metric:    0.12588
+	16: progress metric:    0.113239
+	17: progress metric:    0.0976934
+	18: progress metric:    0.0821207
+	19: progress metric:    0.0746089
+	20: progress metric:    0.0720616
+	40: progress metric:    0.0252854
+	60: progress metric:    0.0142085
+	80: progress metric:    0.0153269
+
+	Solution converged after 88 iterations.
+
+	Norms for matrix W: 
+	|| W ||_max = 0.827214
+	|| W ||_1   = 37.8456
+	|| W ||_oo  = 1.448
+	|| W ||_F   = 4
+
+	Norms for matrix H: 
+	|| H ||_max = 0.910506
+	|| H ||_1   = 1.66199
+	|| H ||_oo  = 437.44
+	|| H ||_F   = 31.9322
+
+	Elapsed wall clock time: 1.560 sec.
+
+	Writing output files...
+
+	************************************************************
+	*                                                          *
+	*       Running NMF-RANK2 with W and H initializers        *
+	*                                                          *
+	************************************************************
+	Initializing matrix W...
+	Initializing matrix H...
+
+                parameters: 
+
+             algorithm: Rank 2
+    stopping criterion: Ratio of Projected Gradients
+                height: 12411
+                 width: 7984
+                     k: 2
+               miniter: 5
+               maxiter: 5000
+                   tol: 0.005
+            matrixfile: ../data/reuters.mtx
+            maxthreads: 8
+
+	1:  progress metric:    (min_iter)
+	2:  progress metric:    (min_iter)
+	3:  progress metric:    (min_iter)
+	4:  progress metric:    (min_iter)
+	5:  progress metric:    (min_iter)
+	6:  progress metric:    0.0374741
+	7:  progress metric:    0.0252389
+	8:  progress metric:    0.0169805
+	9:  progress metric:    0.0113837
+	10: progress metric:    0.00761077
+	11: progress metric:    0.0050782
+	12: progress metric:    0.00338569
+
+	Solution converged after 12 iterations.
+
+	Norms for matrix W: 
+	|| W ||_max = 0.395894
+	|| W ||_1   = 12.5708
+	|| W ||_oo  = 0.57522
+	|| W ||_F   = 1.41421
+
+	Norms for matrix H: 
+	|| H ||_max = 0.861319
+	|| H ||_1   = 0.884251
+	|| H ||_oo  = 1018.43
+	|| H ||_F   = 23.6581
+
+	Elapsed wall clock time: 0.028 sec.
+
+	Writing output files...
+
+	************************************************************
+	*                                                          *
+	*       Repeating the previous run with tol = 1.0e-5       *
+	*                                                          *
+	************************************************************
+	Initializing matrix W...
+	Initializing matrix H...
+
+                parameters: 
+
+             algorithm: Rank 2
+    stopping criterion: Ratio of Projected Gradients
+                height: 12411
+                 width: 7984
+                     k: 2
+               miniter: 5
+               maxiter: 5000
+                   tol: 1e-05
+            matrixfile: ../data/reuters.mtx
+            maxthreads: 8
+
+	1:  progress metric:    (min_iter)
+	2:  progress metric:    (min_iter)
+	3:  progress metric:    (min_iter)
+	4:  progress metric:    (min_iter)
+	5:  progress metric:    (min_iter)
+	6:  progress metric:    0.0374741
+	7:  progress metric:    0.0252389
+	8:  progress metric:    0.0169805
+	9:  progress metric:    0.0113837
+	10: progress metric:    0.00761077
+	11: progress metric:    0.0050782
+	12: progress metric:    0.00338569
+	13: progress metric:    0.00225761
+	14: progress metric:    0.00150429
+	15: progress metric:    0.00100167
+	16: progress metric:    0.000666691
+	17: progress metric:    0.000443654
+	18: progress metric:    0.000295213
+	19: progress metric:    0.000196411
+	20: progress metric:    0.000130604
+
+	Solution converged after 27 iterations.
+
+	Norms for matrix W: 
+	|| W ||_max = 0.397027
+	|| W ||_1   = 12.1767
+	|| W ||_oo  = 0.575946
+	|| W ||_F   = 1.41421
+
+	Norms for matrix H: 
+	|| H ||_max = 0.863855
+	|| H ||_1   = 0.886461
+	|| H ||_oo  = 1021.75
+	|| H ||_F   = 23.6601
+
+	Elapsed wall clock time: 0.061 sec.
+
+	Writing output files...
+	Minimum value in W matrix: 0.
+	Maximum value in W matrix: 0.397027.
+
+	************************************************************
+	*                                                          *
+	*      Running HierNMF2 with 5 clusters, JSON format       *
+	*                                                          *
+	************************************************************
+	loading dictionary...
+	creating random W initializers...
+	creating random H initializers...
+
+            parameters: 
+
+                height: 12411
+                 width: 7984
+            matrixfile: ../data/reuters.mtx
+              dictfile: ../data/reuters_dictionary.txt
+                   tol: 0.0001
+               miniter: 5
+               maxiter: 5000
+              maxterms: 5
+            maxthreads: 8
+	[1] [2] [3] [4] 
+
+	Elapsed wall clock time: 391 ms.
+	9/9 factorizations converged.
+
+	Writing output files...
+
+	************************************************************
+	*                                                          *
+	* Running HierNMF2 with 10 clusters, 12 terms, XML format  *
+	*                                                          *
+	************************************************************
+	creating random W initializers...
+	creating random H initializers...
+
+            parameters: 
+
+                height: 12411
+                 width: 7984
+            matrixfile: ../data/reuters.mtx
+              dictfile: ../data/reuters_dictionary.txt
+                   tol: 0.0001
+               miniter: 5
+               maxiter: 5000
+              maxterms: 12
+            maxthreads: 8
+	[1] [2] [3] [4] [5] [6] dropping 20 items ...
+	[7] [8] [9] 
+
+	Elapsed wall clock time: 837 ms.
+	21/21 factorizations converged.
+
+	Writing output files...
+
+	************************************************************
+	*                                                          *
+	*  Running HierNmf2 with 18 clusters, 8 terms, with flat   *
+	*                                                          *
+	************************************************************
+	creating random W initializers...
+	creating random H initializers...
+
+            parameters: 
+
+                height: 12411
+                 width: 7984
+            matrixfile: ../data/reuters.mtx
+              dictfile: ../data/reuters_dictionary.txt
+                   tol: 0.0001
+               miniter: 5
+               maxiter: 5000
+              maxterms: 8
+            maxthreads: 8
+	[1] [2] [3] [4] [5] [6] dropping 20 items ...
+	[7] [8] [9] dropping 25 items ...
+	[10] [11] [12] [13] [14] [15] [16] [17] 
+
+	Running NNLS solver...
+	1:  progress metric:    1
+	2:  progress metric:    0.264152
+	3:  progress metric:    0.0760648
+	4:  progress metric:    0.0226758
+	5:  progress metric:    0.00743562
+	6:  progress metric:    0.00280826
+	7:  progress metric:    0.00103682
+	8:  progress metric:    0.000361738
+	9:  progress metric:    0.000133087
+	10: progress metric:    5.84849e-05
+
+	Elapsed wall clock time: 1.362 s.
+	40/40 factorizations converged.
+
+	Writing output files...
+
+The output files are written to the default directory or the directory specified on the command line.
+
 <h2 id="matrix_files"> Matrix file formats </h2>
 
 The SmallK software supports comma-separated value (CSV) files for dense matrices and MatrixMarket files for sparse matrices.
