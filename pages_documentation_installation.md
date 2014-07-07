@@ -596,7 +596,6 @@ Note: the output will be *similar* to the following not identical since some pro
 	Minimum value in W matrix: 0.
 	Maximum value in W matrix: 0.397027.
 
-[--back to top--](#top)
 
 	************************************************************
 	*                                                          *
