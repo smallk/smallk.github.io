@@ -350,7 +350,7 @@ To run the example project, run this command:
 
 		./bin/example ../data
 
-The output will be similar to the following (it won’t be identical because some problems are randomly initialized):
+Note: the output will be *similar* to the following not identical since some problems are randomly initialized:
 
 
 	Smallk major version: 1
@@ -596,6 +596,8 @@ The output will be similar to the following (it won’t be identical because som
 	Minimum value in W matrix: 0.
 	Maximum value in W matrix: 0.397027.
 
+[--back to top--](#top)
+
 	************************************************************
 	*                                                          *
 	*      Running HierNMF2 with 5 clusters, JSON format       *
@@ -692,6 +694,8 @@ The output will be similar to the following (it won’t be identical because som
 
 The output files are written to the default directory or the directory specified on the command line.
 
+[--back to top--](#top)
+
 <h2 id="matrix_files"> Matrix file formats </h2>
 
 The SmallK software supports comma-separated value (CSV) files for dense matrices and MatrixMarket files for sparse matrices.
@@ -713,6 +717,8 @@ would be stored in a CSV file as follows:
 		46,51,56
 
 The matrix is loaded exactly as it appears in the file.  Internally, SmallK stores dense matrices in column-major order.  Sparse matrices are stored in compressed column format.
+
+[--back to top--](#top)
 
 <h2 id="smallk_api"> SmallK API </h2>
 
