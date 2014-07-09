@@ -61,10 +61,10 @@ chown -R vagrant.vagrant /home/vagrant/Elemental-0.84-p1
 # SmallK
 mkdir /home/vagrant/smallk
 git clone https://github.com/smallk/smallk.github.io.git /home/vagrant/smallk
-tar -zxvf /home/vagrant/smallk/code/libsmallk-1.1.0.tar.gz -C /home/vagrant/
-cd /home/vagrant/libsmallk-1.1.0
+tar -zxvf /home/vagrant/smallk/code/libsmallk-1.2.0.tar.gz -C /home/vagrant/
+cd /home/vagrant/libsmallk-1.2.0
 make all
 make install
 make check
-chown -R vagrant.vagrant /home/vagrant/libsmallk-1.1.0
+chown -R vagrant.vagrant /home/vagrant/libsmallk-1.2.0
 
