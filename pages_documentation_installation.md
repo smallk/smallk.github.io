@@ -168,7 +168,7 @@ We strongly recommend using a package manager for your Linux distribution for in
 
 <h2 id="lin_GNU"> Linux:Install the latest GNU compilers </h2>
 We recommend installation of the latest stable release of the GNU C++ compiler, which is g++-4.9 at the time of this writing. Also install the latest version of GNU Fortran, which is needed for the installation of MPI. 
-<h2 id="lin_open_mpi"> Install OpenMPI </h2>
+<h2 id="lin_open_mpi"> Linux:Install OpenMPI </h2>
 Download the latest version of [OpenMPI](http://www.open-mpi.org/), unzip and untar the downloaded zip file, and cd to the untarred directory.  Run configure as follows, all on a single line.  This command assumes that gcc-4.9 has been installed; change the version number if a later version was installed, or if the paths are incorrect for your system:
 
 		./configure --enable-mpi-thread-multiple --prefix=/usr/local  CC=/usr/local/bin/gcc-4.9 CXX=/usr/local/bin/g++-4.9 F77=usr/local/bin/gfortran-4.9 FC=/usr/local/bin/gfortran-4.9
