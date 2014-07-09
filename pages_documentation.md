@@ -65,6 +65,6 @@ The following list is the software packages/libraries required to build the Smal
 
 Elemental can make use of OpenMP parallelization if available, which is generally advantageous for large problems.  The SmallK code is also internally parallelized to take full advantage of multiple CPU cores for maximum performance.  SmallK does not currently support distributed computation, but this is planned for future updates.
 
-<b>The SmallK software supports the latest stable release of Elemental, version 0.83</b>.
+<b>The SmallK software supports the latest stable release of Elemental, version 0.84</b>.
 
 Check the documentation links on this page for additional detailed instructions for installation of the SmallK library software and dependencies. If desired, Installation instructions for Elemental can be found [here](http://libelemental.org/documentation/).
