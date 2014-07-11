@@ -25,6 +25,6 @@ If the SmallK library is used to obtain results for publication, please use the 
   		howpublished = {\url{http://smallk.github.io/}},
   		month        = June,
   		year         = 2014
-		}
+	}
 
 
