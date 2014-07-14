@@ -21,9 +21,9 @@ If the SmallK library is used to obtain results for publication, please use the 
   		author       = {Richard Boyd and Barry Drake and Da Kuang and 
 						Haesun Park},
   		title        = {SmallK is a {C++}{/}{P}ython high-performance software
-						library for nonnegative matrix factorization (NMF) and
-						hierarchical and flat clustering using the NMF; 
-						current version 1.2.0},
+						library for nonnegative matrix factorization
+						(NMF) and hierarchical and flat clustering using 
+						the NMF; current version 1.2.0},
   		howpublished = {\url{http://smallk.github.io/}},
   		month        = June,
   		year         = 2014
