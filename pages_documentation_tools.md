@@ -9,6 +9,8 @@ permalink: /documentation/tools/
 <h1 id="top">Contents</h1>
 ---------------------
 
+* [Introduction](#intro)
+
 * [Preprocessor](#preproc)
 	* [Overview](#overview)
 	* [Input Files](#input_files)
@@ -30,6 +32,16 @@ permalink: /documentation/tools/
 	* [Overview](#overview_flat)
 	* [Command Line Options](#cmd_options_flat)
 	* [Sample Runs](#sample_run_flat)
+
+<h1 id="intro"> Introduction </h1>
+The SmallK library provides a number of algorithm implementations for performing various data analytics tasks such as topic modeling, clustering, and dimension reduction.  This section will provide more in-depth description of the tools available with examples that can be expanded/modified for other application domains.
+
+Before diving into the various tools, it will be helpful to set up the command line environment to easily run the various executables that comprise the SmallK library. First the command line needs to know where to find the executable files to run the tools. Since while installing SmallK  ‘make_install’ was run, the executables are located in /usr/local/smallk/bin. Thus, this should be added to the ‘$PATH’ system variable or added to the environment. The following command line performs the task of modifying the path avoiding the need to cd into directories were the tools are located:
+
+		export PATH=/usr/local/smallk/bin:$PATH
+
+This allows the tools to be executed from any directory.
+
 
 <h1 id="preproc"> Preprocessor </h1>
 
@@ -74,7 +86,7 @@ Finally, the preprocessor requires these files to have the following names: matr
 
 The preprocessor binary is called ‘preprocess_tf’, to emphasize the fact that it operates on term-frequency matrices.  If the binary is run with no arguments, it prints out the following information:
 
-	./preprocess_tf
+	preprocess_tf
 		--indir <path>
 		[--outdir (defaults to current directory)]
 		[--docs_per_term 3]
@@ -100,7 +112,7 @@ Only the first parameter, --indir, is required.  All remaining params are option
 
 Here is a sample run of the preprocessor using the data provided in the smallk distribution.  This run was performed from the top-level smallk folder after building the code:
 
-	./preprocessor/bin/preprocess_tf --indir data
+	preprocessor/bin/preprocess_tf --indir data
 
       Command line options: 
 
@@ -141,9 +153,9 @@ The matrix generator application is a simple tool for generating simple matrices
 
 Running the matrixgen binary with no options generates the following output:
 
-	./matrixgen 
+	matrixgen 
 
-	Usage: ./matrixgen
+	Usage: matrixgen
          	--height <number of rows> 
          	--width  <number of cols> 
          	--filename <path> 
@@ -181,7 +193,7 @@ The meanings of the various options are as follows:
 
 Suppose we want to generate a matrix of uniformly-distributed random numbers.  The matrix should have a height of 100 and a width of 16, and should be written to a file called ‘w_init.csv’.  Use the matrix generator as follows:
 
-	./matrixgen –-height 100 –-width 16 –-filename w_init.csv
+	matrixgen –-height 100 –-width 16 –-filename w_init.csv
 
 [--back to top--](#top)
 
@@ -200,7 +212,7 @@ Matrix A can be either dense or sparse; matrices W and H are always dense. Matri
 
 Running the nmf application with no command line parameters will cause the application to display all params that it supports. These are:
 
-	Usage: ./nmf
+	Usage: nmf
         --matrixfile <filename>  Filename of the matrix to be factored.
                                  Either CSV format for dense or MatrixMarket format for sparse.
         --k <integer value>      The common dimension for factors W and H.
@@ -343,7 +355,7 @@ The node id values and the left or right child indicators can be used to unambig
 
 Running the hierclust application with no command line parameters will cause the application to display all params that it supports.  These are:
 
-	Usage: ./hierclust
+	Usage: hierclust
         --matrixfile <filename>     Filename of the matrix to be factored.
                                     Either CSV format for dense or MatrixMarket format for 
 									sparse.
@@ -455,7 +467,7 @@ The second file contains the node information.  This file is much simpler than t
 
 Running the flatclust application with no command line parameters will cause the application to display all params that it supports.  These are:
 
-	Usage: ./flatclust
+	Usage: flatclust
         --matrixfile <filename>      Filename of the matrix to be factored.
                                      Either CSV format for dense or MatrixMarket format for 
 									sparse.
