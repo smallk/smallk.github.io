@@ -57,6 +57,8 @@ Whenever columns (documents) are pruned the preprocessor checks the remaining co
 
 If the preprocessor should prune all rows or columns, it writes an error message to the screen and terminates without generating any output.
 
+[--back to top--](#top)
+
 <h2 id="input_files"> Input Files </h2>
 
 The preprocessor requires three input files: a matrix file, a dictionary file, and a document file.  The matrix file contains a sparse matrix in MatrixMarket format (.mtx).  This is a term-frequency matrix, and all entries should be positive integers. The preprocessor can also read in matrices containing floating-point inputs, but only if ‘boolean mode’ is enabled; this will be described below.  The preprocessor does not support dense matrices, since the typical matrices encountered in topic modeling problems are extremely sparse, with occupancies generally less than 1%.
