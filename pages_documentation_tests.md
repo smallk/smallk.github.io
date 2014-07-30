@@ -63,18 +63,6 @@ After building the smallk library, the ‘make check’ command will run a bash 
 
 	Solution converged after 12 iterations.
 
-	Norms for matrix W: 
-	|| W ||_max = 0.395894
-	|| W ||_1   = 12.5708
-	|| W ||_oo  = 0.57522
-	|| W ||_F   = 1.41421
-
-	Norms for matrix H: 
-	|| H ||_max = 0.861319
-	|| H ||_1   = 0.884251
-	|| H ||_oo  = 1018.43
-	|| H ||_F   = 23.6581
-
 	Elapsed wall clock time: 0.033 sec.
 
 	Writing output files...
@@ -185,18 +173,6 @@ After building the smallk library, the ‘make check’ command will run a bash 
 
 	Solution converged after 12 iterations.
 
-	Norms for matrix W: 
-	|| W ||_max = 0.395894
-	|| W ||_1   = 12.5708
-	|| W ||_oo  = 0.57522
-	|| W ||_F   = 1.41421
-
-	Norms for matrix H: 
-	|| H ||_max = 0.861319
-	|| H ||_1   = 0.884251
-	|| H ||_oo  = 1018.43
-	|| H ||_F   = 23.6581
-
 	Elapsed wall clock time: 0.031 sec.
 
 	Writing output files...
@@ -306,24 +282,6 @@ After building the smallk library, the ‘make check’ command will run a bash 
 	2160:   progress metric:    0.000104838
 
 	Solution converged after 2175 iterations.
-
-	Norms for matrix W: 
-	|| W ||_max = 0.228042
-	|| W ||_1   = 12.0591
-	|| W ||_oo  = 0.806898
-	|| W ||_F   = 4
-
-	Norms for matrix H: 
-	|| H ||_max = 3.56479
-	|| H ||_1   = 12.3864
-	|| H ||_oo  = 193.987
-	|| H ||_F   = 61.6609
-
-	Norms for the residual: 
-	||A - W H||_max = 0.762511
-	||A - W H||_1   = 63.9005
-	||A - W H||_oo  = 62.4803
-	||A - W H||_F   = 66.4552
 
 	Elapsed wall clock time: 0.997 sec.
 

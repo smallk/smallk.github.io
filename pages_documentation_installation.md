@@ -439,18 +439,6 @@ Note: the output will be *similar* to the following not identical since some pro
 
 	Solution converged after 39 iterations.
 
-	Norms for matrix W: 
-	|| W ||_max = 0.993468
-	|| W ||_1   = 29.8208
-	|| W ||_oo  = 2.09451
-	|| W ||_F   = 5.65685
-
-	Norms for matrix H: 
-	|| H ||_max = 0.978103
-	|| H ||_1   = 2.17622
-	|| H ||_oo  = 362.929
-	|| H ||_F   = 35.0604
-
 	Elapsed wall clock time: 4.354 sec.
 
 	Writing output files...
@@ -502,18 +490,6 @@ Note: the output will be *similar* to the following not identical since some pro
 
 	Solution converged after 88 iterations.
 
-	Norms for matrix W: 
-	|| W ||_max = 0.827214
-	|| W ||_1   = 37.8456
-	|| W ||_oo  = 1.448
-	|| W ||_F   = 4
-
-	Norms for matrix H: 
-	|| H ||_max = 0.910506
-	|| H ||_1   = 1.66199
-	|| H ||_oo  = 437.44
-	|| H ||_F   = 31.9322
-
 	Elapsed wall clock time: 1.560 sec.
 
 	Writing output files...
@@ -553,18 +529,6 @@ Note: the output will be *similar* to the following not identical since some pro
 	12: progress metric:    0.00338569
 
 	Solution converged after 12 iterations.
-
-	Norms for matrix W: 
-	|| W ||_max = 0.395894
-	|| W ||_1   = 12.5708
-	|| W ||_oo  = 0.57522
-	|| W ||_F   = 1.41421
-
-	Norms for matrix H: 
-	|| H ||_max = 0.861319
-	|| H ||_1   = 0.884251
-	|| H ||_oo  = 1018.43
-	|| H ||_F   = 23.6581
 
 	Elapsed wall clock time: 0.028 sec.
 
@@ -613,18 +577,6 @@ Note: the output will be *similar* to the following not identical since some pro
 	20: progress metric:    0.000130604
 
 	Solution converged after 27 iterations.
-
-	Norms for matrix W: 
-	|| W ||_max = 0.397027
-	|| W ||_1   = 12.1767
-	|| W ||_oo  = 0.575946
-	|| W ||_F   = 1.41421
-
-	Norms for matrix H: 
-	|| H ||_max = 0.863855
-	|| H ||_1   = 0.886461
-	|| H ||_oo  = 1021.75
-	|| H ||_F   = 23.6601
 
 	Elapsed wall clock time: 0.061 sec.
 
