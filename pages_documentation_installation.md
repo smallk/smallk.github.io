@@ -9,11 +9,13 @@ permalink: /documentation/installation/
 <h1 id="top">Contents</h1>
 ---------------------
 *   [Quickstart: Vagrant Virtual Machine](#vagrant)
+*   [Standard Build Instructions](#standard)
+    *   [Prerequisites](#pre)
 *   [How to Install Elemental on MacOSX](#MacOSX)
-    *   [Mac:Install the latest GNU compilers](#mac_GNU)
-    *   [Mac:Install OpenMPI](#mac_open_mpi)
-    *   [Mac:Install libFlame](#mac_libflame)
-    *   [Mac:Install Elemental](#mac_elemental)
+    *   [OSX:Install the latest GNU compilers](#mac_GNU)
+    *   [OSX:Install OpenMPI](#mac_open_mpi)
+    *   [OSX:Install libFlame](#mac_libflame)
+    *   [OSX:Install Elemental](#mac_elemental)
 *   [How to Install Elemental on Linux](#Linux)
     *   [Linux:Install the latest GNU compilers](#lin_GNU)
     *   [Linux:Install OpenMPI](#lin_open_mpi)
@@ -72,6 +74,26 @@ again and the VM will be resumed or recreated.
 
 [--back to top--](#top)
 
+<h1 id="standard"> Standard Build Instructions </h1>
+
+<h2 id="pre"> Prerequisites </h2>
+* A modern C++ compiler that supports the C++11 standard, such as the latest release of the GNU or clang compilers
+* [Elemental](http://libelemental.org/), a high-performance library for dense, distributed linear algebra, 
+which requires:
+	* An MPI installation, such as [OpenMPI](http://www.open-mpi.org/software/ompi/v1.6/)
+	* A BLAS implementation, preferably optimized/tuned for the local system
+	* [libFLAME](http://www.cs.utexas.edu/~flame/web/libFLAME.html): a high-performance library for dense linear algebra
+	* [OpenMP](http://openmp.org/wp/): (optional)
+	* CMake 
+
+Elemental can make use of OpenMP parallelization if available.  This is generally advantageous for large problems.  The SmallK code is also internally parallelized to take full advantage of multiple CPU cores for maximum performance.  SmallK does not currently support distributed computation. However, future updates are planned that provide this capability.
+
+**The SmallK software supports the latest stable release of Elemental, version 0.84.**
+
+**A note of caution: copying the command lines from this document and pasting them into a terminal may result in the commands not properly executing due to how Word interprets the double dash --, “double quotes”, and perhaps other characters or symbols.**
+
+[--back to top--](#top)
+
 <h1 id="MacOSX"> How to Install Elemental on MacOSX </h1>
 
 On MacOSX we recommend using [Homebrew](http://mxcl.github.io/homebrew/) as the package manager. Homebrew does not require sudo privileges for package installation, unlike other package managers such as MacPorts. Thus the chances of corrupting vital system files are greatly reduced with Homebrew.
@@ -88,7 +110,7 @@ This will maintain your Homebrew installed software and diagnose any issues with
 If the first entry is not /usr/local/bin, you will need to edit this file.  This is a system file, so first create a backup. Move the line /usr/local/bin so that it is on the first line of the file. Save the file, then close the terminal session and start a new terminal session so that the path changes will take effect.
 
 [--back to top--](#top)
-<h2 id="mac_GNU"> Mac:Install the latest GNU compilers </h2>
+<h2 id="mac_GNU"> OSX:Install the latest GNU compilers </h2>
 Elemental and SmallK both require a modern C++ compiler compliant with the C++11 standard.  We recommend that you install the latest stable version of the clang and GNU C++ compilers.  To do this, first install the XCode command line tools with this command:	xcode-select --install
 If this command produces an error, download and install XCode from the AppStore, then repeat the command.  If that should still fail, install the command line tools from the XCode preferences menu.  After the installation completes, run this command from a terminal window:
 	clang++ --version
@@ -103,7 +125,7 @@ This will maintain your Homebrew installed software and diagnose any issues with
 
 [--back to top--](#top)
 
-<h2 id="mac_libflame"> Mac:Install libFlame </h2>
+<h2 id="mac_libflame"> OSX:Install libFlame </h2>
 Next we detail the installation of the high performance numerical library libflame. The library can be gotten from the libflame git repository on github.
 
 It’s important to perform the git clone into a subdirectory NOT called ‘flame’ since this can cause name conflicts with the installation. We normally do a git clone into a directory called ‘libflame’. However, other directory names will work as well, but not ‘flame’.
@@ -123,7 +145,7 @@ The –j4 option tells Make to use four processes to perform the build.  This nu
 
 The FLAME library is now installed.
 [--back to top--](#top)
-<h2 id="mac_elemental"> Mac:Install Elemental </h2>
+<h2 id="mac_elemental"> OSX:Install Elemental </h2>
 
 We strongly recommend that users install both the HybridRelease and PureRelease builds of [Elemental](http://libelemental.org/).  OpenMP is enabled in the HybridRelease build and disabled in the PureRelease build.  So why install both?  For smaller problems the overhead of *OpenMP can actually cause code to run slower* than without it.  Whereas for large problems OpenMP parallelization generally helps, but there is no clear transition point between where it helps and where it hurts.  Thus we encourage users to experiment with both builds to find the one that performs best for their typical problems.
 
