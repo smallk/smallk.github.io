@@ -90,7 +90,7 @@ Elemental can make use of OpenMP parallelization if available.  This is generall
 
 **The SmallK software supports the latest stable release of Elemental, version 0.84.**
 
-**A note of caution: copying the command lines from this document and pasting them into a terminal may result in the commands not properly executing due to how Word interprets the double dash --, “double quotes”, and perhaps other characters or symbols.**
+**A note of caution: copying the command lines from this website and pasting them into a terminal may result in the commands not properly executing due to how characters are interpreted: the double dash --, “double quotes”, etc.**
 
 [--back to top--](#top)
 
