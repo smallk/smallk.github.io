@@ -296,7 +296,7 @@ Download the 0.84 release of [Elemental](http://libelemental.org/releases/), unz
 		make -j4
 		make install
 **2.5** Edit the Elemental configuration file as follows:
-		cd /usr/local/elemental/0.81/HybridRelease/conf/
+		cd /usr/local/elemental/0.84/HybridRelease/conf/
 **2.6** Open the ‘elemvariables’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
 		CXX = /usr/local/bin/g++-4.9
 change it to
@@ -317,7 +317,7 @@ Download the 0.84 release of [Elemental](http://libelemental.org/releases/), unz
 		make -j4
 		make install
 **2.10** Edit the Elemental configuration file as follows:
-		cd /usr/local/elemental-0.81-PureRelease/conf/
+		cd /usr/local/elemental-0.84-PureRelease/conf/
 **2.11** Open the ‘elemvariables’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
 		CXX = /usr/local/bin/g++-4.9
 change it to
