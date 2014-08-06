@@ -170,7 +170,7 @@ Download the 0.84 release of [Elemental](http://libelemental.org/releases/), unz
 		make install
 **1.5.** Edit the Elemental configuration file as follows:
 		cd /usr/local/elemental/0.84/HybridRelease/conf/
-**1.6.** Open the ‘elemvariables’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
+**1.6.** Open the ‘ElemVars’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
 		CXX = /usr/local/bin/g++-4.9
 change it to
 		CXX = /usr/local/bin/g++-4.9 -std=c++11
@@ -187,7 +187,7 @@ Download the 0.84 release of [Elemental](http://libelemental.org/releases/), unz
 		make install
 **1.10.** Edit the Elemental configuration file as follows:
 		cd /usr/local/elemental/0.84-PureRelease/conf/
-**1.11.** Open the ‘elemvariables’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
+**1.11.** Open the ‘ElemVars’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
 		CXX = /usr/local/bin/g++-4.9
 change it to
 		CXX = /usr/local/bin/g++-4.9 -std=c++11
@@ -297,7 +297,7 @@ Download the 0.84 release of [Elemental](http://libelemental.org/releases/), unz
 		make install
 **2.5** Edit the Elemental configuration file as follows:
 		cd /usr/local/elemental/0.84/HybridRelease/conf/
-**2.6** Open the ‘elemvariables’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
+**2.6** Open the ‘ElemVars’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
 		CXX = /usr/local/bin/g++-4.9
 change it to
 		CXX = /usr/local/bin/g++-4.9 -std=c++11
@@ -318,7 +318,7 @@ Download the 0.84 release of [Elemental](http://libelemental.org/releases/), unz
 		make install
 **2.10** Edit the Elemental configuration file as follows:
 		cd /usr/local/elemental-0.84-PureRelease/conf/
-**2.11** Open the ‘elemvariables’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
+**2.11** Open the ‘ElemVars’ file in a text editor and add the string -std=c++11 to the CXX macro line. For instance, if the CXX macro is
 		CXX = /usr/local/bin/g++-4.9
 change it to
 		CXX = /usr/local/bin/g++-4.9 -std=c++11
