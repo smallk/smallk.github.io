@@ -120,7 +120,7 @@ This will maintain your Homebrew installed software and diagnose any issues with
 The Apple-provided gcc and g++ will not be overwritten by this installation.  The new compilers will be installed into /usr/local/bin as gcc-4.9, g++-4.9, and gfortran-4.9. The Fortran compiler is needed for the installation of MPI.
 
 [--back to top--](#top)
-<h2 id="mac_open_mpi"> Mac:Install OpenMPI </h2>
+<h2 id="mac_open_mpi"> OSX:Install OpenMPI </h2>
 Install the latest version of OpenMPI with Homebrew as follows:	brew install open-mpi –-c++11The Homebrew install formula provides an option for “thread-multiple” support, but do not enable this option, as it is still experimental, not optimized for performance, and may have bugs.
 
 [--back to top--](#top)
