@@ -40,27 +40,44 @@ permalink: /documentation/installation/
 <h1 id="vagrant"> Quickstart: Vagrant Virtual Machine </h1>
 Installing SmallK into a virtual machine is intended for those who are not doing development and/or do not have a reason to do the full installation on Linux or OSX outlined in sections Mac:Install and Linux:Install.
 
-The complete stack of software dependencies for SmallK as well as SmallK itself can be rapidly set up and configured through use of Vagrant and VirtualBox and the files included in the repository. To deploy the SmallK VM:
+The complete stack of software dependencies for SmallK as well as SmallK itself can be rapidly set up and configured through use of Vagrant and VirtualBox and the files included in the repository.
 
-**1.** Install [Vagrant](http://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
+The Vagrant install has been tested on Linux Ubuntu 14.04, Mac OSX Mavericks 10.9, and Windows 7. 
+
+
+**1.** Install [Vagrant](http://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). 
+
+_[Note: For Windows, ensure that you have a VirtualBox version >= 4.3.12. After installing Vagrant, you may need to log out and log back in to ensure that you can run vagrant commands in the command prompt.]_
 
 **2.** From within the vagrant/ directory in the repository, run:
 		
 		vagrant up
 		
-This can take as long as an hour to build the VM, which will be based on a minimal Ubuntu 14.04 installation. The VagrantFile can be customized in many ways to change the specifications for the VM that is built. See more information [here](http://docs.vagrantup.com/v2/).
+This can take as long as an hour to build the VM, which will be based on a minimal Ubuntu 14.04 installation. The VagrantFile can be customized in many ways to change the specifications for the VM that is built. See more information [here](http://docs.vagrantup.com/v2/). The default configuration provides the VM with 4 GB of memory and 2 CPUs. Increasing these allocations will improve the performance of the application. This can be done by modifiying this line in the Vagrantfile:
+
+		vb.customize ["modifyvm", :id, "--memory", "4056", "--cpus", "2"]
 
 **3.** Once the VM has been built, run:
 
 		vagrant ssh
-		
-This will drop you into the command line of the VM that was just created. From there, you can navigate to /home/vagrant/smallk-1.1.0 and run
+
+_[Note: For Windows, you will need an ssh client in order to run the above command. This can be obtained via [CygWin](https://www.cygwin.com/), [MinGW](http://sourceforge.net/projects/mingw/files/), or [Git](http://git-scm.com/downloads). If you would like to use PuTTY to connect to your virtual machine, follow [these](https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Connect-to-Your-Vagrant-Virtual-Machine-with-PuTTY) instructions.]_
+
+This will drop you into the command line of the VM that was just created. From there, you can navigate to /home/vagrant/smallk and run
 
 		make check
 		
 to verify your installation was successful. In case you need it, the username/password for the VM created will be vagrant/vagrant.
 
-**4.** When you are ready to shut down the VM, run one of the following:
+**4.** If you would like to build the Cython modules in order to use Python to access the SmallK library, run the following command inside the VM:
+
+		/vagrant/setup.sh
+
+This will compile the Cython shared libraries for each of the SmallK components. To test, run the python test script included in each Cython module. For example, from inside smallk/pysmallk/cython/hierclust/ run:
+
+		python test_hierclust.py --matrixfile data/reuters.mtx --dictfile data/reuters_dictionary.txt --clusters 16
+
+**5.** When you are ready to shut down the VM, run one of the following:
 
 		vagrant suspend # this command will save the current running state
 		vagrant halt # this command will gracefully shut down the machine
