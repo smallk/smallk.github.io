@@ -44,6 +44,7 @@ ln -s /usr/local/openblas/0.2.9/lib/libopenblas.so /usr/local/lib/libopenblas.so
 ln -s /usr/local/openblas/0.2.9/lib/libopenblas.so.0 /usr/local/lib/libopenblas.so.0
 chown -R vagrant.vagrant /home/vagrant/xianyi-OpenBLAS-347dded
 
+
 # Elemental
 mkdir /usr/local/elemental
 export ELEMENTAL_INSTALL_DIR=/usr/local/elemental
@@ -60,11 +61,14 @@ chown -R vagrant.vagrant /home/vagrant/Elemental-0.84-p1
 
 # SmallK
 mkdir /home/vagrant/smallk
-git clone https://github.com/smallk/smallk.github.io.git /home/vagrant/smallk
-tar -zxvf /home/vagrant/smallk/code/libsmallk-1.2.0.tar.gz -C /home/vagrant/
-cd /home/vagrant/libsmallk-1.2.0
+git clone https://github.com/smallk/smallk.git /home/vagrant/smallk
+cd /home/vagrant/smallk
 make all
 make install
 make check
-chown -R vagrant.vagrant /home/vagrant/libsmallk-1.2.0
+chown -R vagrant.vagrant /home/vagrant/smallk
+
+# prepare setup script
+
+chmod +x /vagrant/setup.sh
 
