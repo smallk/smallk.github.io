@@ -38,7 +38,7 @@ permalink: /documentation/installation/
 
 
 <h1 id="vagrant"> Quickstart: Vagrant Virtual Machine </h1>
-Installing SmallK into a virtual machine is intended for those who are not doing development and/or do not have a reason to do the full installation on Linux or OSX outlined in sections Mac:Install and Linux:Install.
+Installing SmallK into a virtual machine is intended for those who are not doing development and/or do not have a reason to do the full installation on Linux or OSX outlined in sections Mac:Install and Linux:Install (Windows full installation coming soon).
 
 The complete stack of software dependencies for SmallK as well as SmallK itself can be rapidly set up and configured through use of Vagrant and VirtualBox and the files included in the repository.
 
