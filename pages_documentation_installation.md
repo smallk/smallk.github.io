@@ -297,8 +297,8 @@ You should see something similar to the following:	lapack_opt_info:
 	    If you are using OpenBLAS, you should see that indicated as well. 
 ###Install Cython: a Python interface to C/C++First install the Python Package Index utility, pip. Many Python packages are configured to use this package manager, Cython being one.
 	brew install pipTo install Cython:
-	pip install cythonThe Makefile assumes an installation path of /usr/local/lib/python2.7/site-packages for the compiled library file. If you are not using brew to install your packages, you will need to tell the Makefile where the appropriate site-packages directory is located on your system. Setting the SITE_PACKAGES_DIR command line variable when running make accomplishes this.
-<h2 id="lin_python"> Linux:Intall Python libraries</h2>
+	pip install cythonThe Makefile assumes an installation path of /usr/local/lib/python2.7/site-packages for the compiled library file. If you are not using brew to install your packages, you will need to tell the Makefile where the appropriate site-packages directory is located on your system. Setting the SITE_PACKAGES_DIR command line variable when running make accomplishes this. Also, make sure that there is not another site-packages directory in your PATH before the site-packages you intend to use since ‘make install’ will copy pysmallk.so to /usr/local/lib/python2.7/site-packages by default. Other Python distributions will probably interfere with the pysmallk installation.
+<h2 id="lin_python"> Linux:Intall Python libraries</h2>
 The Python libraries can easily be installed via pip and apt-get with the following commands:
 	pip install numpy	apt-get install python-scipy	pip install cython[--back to top--](#top)
 
@@ -341,10 +341,10 @@ To install the code to a different location, either create an environment variab
 	To build the smallk library only: 		make libsmallk
 	To build the preprocessor only:			make preprocessor
 	To build the matrix generator only:		make matrixgen
-	To build the nmf only:					make nmf
-	To build hierclust only:				make hierclust
-	To build flatclust only:				make flatclust
-	To build pysmallk only:					make pysmallk*Note: Pysmallk requires builds of libsmallk, preprocessor, matrixgen, hierclust, and flatclust.* This completes the SmallK NMF library installation.
+	To build the nmf only:				make nmf
+	To build hierclust only:			make hierclust
+	To build flatclust only:			make flatclust
+	To build pysmallk only:				make pysmallk*Note: Pysmallk requires builds of libsmallk, preprocessor, matrixgen, hierclust, and flatclust.* This completes the SmallK NMF library installation.
 
 [--back to top--](#top)
 
@@ -665,7 +665,7 @@ The output files are written to the default directory or the directory specified
 
 <h2 id="matrix_files"> Matrix file formats </h2>
 
-The SmallK software supports comma-separated value (CSV) files for dense matrices and MatrixMarket files for sparse matrices.
+The SmallK software supports comma-separated value (CSV) files for dense matrices and [Matrix Market](http://math.nist.gov/MatrixMarket/formats.html) files for sparse matrices.
 
 For example, the 5x3 dense matrix
 
@@ -683,7 +683,7 @@ would be stored in a CSV file as follows:
 		45,50,55
 		46,51,56
 
-The matrix is loaded exactly as it appears in the file.  Internally, SmallK stores dense matrices in column-major order.  Sparse matrices are stored in compressed column format.
+The matrix is loaded exactly as it appears in the file.  **Internally, SmallK stores dense matrices in column-major order**.  Sparse matrices are stored in **compressed column format**.
 
 [--back to top--](#top)
 
