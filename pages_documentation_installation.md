@@ -25,7 +25,7 @@ permalink: /documentation/installation/
 *   [Installation of Python libraries](#python_install)
     *   [OSX:Install Python libraries](#osx_python)
     *   [Linux:Install Python libraries](#lin_python)
-*   [SmallK NMF Library Installation](#smalk)
+*   [Building and Installing the SmallK Source Code](#smalk)
     *   [Obtain the source code](#source_code)
     *   [Build the SmallK library](#build_smallk)
     *   [Examples of API Usage](#example_api)
@@ -303,7 +303,7 @@ The Python libraries can easily be installed via pip and apt-get with the follow
 	pip install numpy	apt-get install python-scipy	pip install cython[--back to top--](#top)
 
 
-<h1 id="smallk"> SmallK NMF Library Installation </h1>
+<h1 id="smallk"> Building and Installing the SmallK Source Code </h1>
 
 <h2 id="source_code"> Obtain the Source Code </h2>
 The source code for the SmallK library can be downloaded from the [SmallK repository](https://github.com/smallk/smallk.github.io/tree/master/code) on github.
@@ -330,11 +330,11 @@ After downloading and unpacking the code tarball cd into the top-level SmallK di
 	7. pysmallk.so, the Python-wrapped SmallK library, making SmallK available via Python
 To install the code, run this command to install to the default location, which is /usr/local/smallk:
 		make install
-This will install the files listed above into the /usr/local/smallk/bin directory, which needs to be on your path to run the executables from anywhere on your system and avoid prepending with the entire path.
-
-To install the code to a different location, either create an environment variable called SMALLK_INSTALL_DIR and set it equal to the desired installation location prior to running the install command, or supply a prefix argument:
+This will install the binary files listed above into the /usr/local/smallk/bin directory, which needs to be on your path to run the executables from anywhere on your system and avoid prepending with the entire path. This will install pysmallk.so into the site-packages directory associated with the Python binary, which is determined by ‘brew install python’ as discussed above. To install the binary code to a different location, either create an environment variable called SMALLK_INSTALL_DIR and set it equal to the desired installation location prior to running the install command, or supply a prefix argument:
 		make prefix=/path/to/smallk  install
-Or, as a last resort, you can edit the top-level SmallK makefile to conform to the installation scheme of your system.  You may need root privileges to do the installation, depending on where you choose to install it.To test the installation, run this command:
+To install the Python library to a different location, create an environment variable called SITE_PACKAGES_DIR and set it equal to the desired installation location prior to running the install command, or supply this as an argument for make:
+	make SITE_PACKAGES_DIR=/path/to/site-packages installOr, as a last resort, you can edit the top-level SmallK makefile to conform to the installation scheme of your system.  You may need root privileges to do the installation, depending on where you choose to install it.
+To test the installation, run this command:
 		make check
 This will run a series of tests, none of which should report a failure.  Sample output from a run of these tests can be found in section [SmallK Test Results](http://smallk.github.io/documentation/tests/#smalk_tests).
 The command-line applications can be built individually by running the appropriate make command from the top-level smallk folder.  These commands are:
