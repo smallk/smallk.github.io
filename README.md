@@ -20,7 +20,7 @@ SmallK home page
 Acknowledgements
 ----------------
 
-This work was funded by the DARPA XDATA program under AFRL Contract
+This work was funded in part by the DARPA XDATA program under contract
 FA8750-12-2-0309. Our DARPA
 program manager is
 [Dr. Christopher White](http://www.darpa.mil/Our_Work/I2O/Personnel/Dr_Christopher_White.aspx) and our
