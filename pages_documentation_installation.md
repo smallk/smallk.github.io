@@ -25,7 +25,7 @@ permalink: /documentation/installation/
 *   [Installation of Python libraries](#python_install)
     *   [OSX:Install Python libraries](#osx_python)
     *   [Linux:Install Python libraries](#lin_python)
-*   [Building and Installing the SmallK Source Code](#smalk)
+*   [Build and Installation of SmallK](#smalk)
     *   [Obtain the source code](#source_code)
     *   [Build the SmallK library](#build_smallk)
     *   [Examples of API Usage](#example_api)
@@ -298,7 +298,7 @@ We strongly recommend using a package manager for your Linux distribution for in
 Download the latest version of [OpenMPI](http://www.open-mpi.org/), unzip and untar the downloaded zip file, and cd to the untarred directory.  Run configure as follows, all on a single line.  This command assumes that gcc-4.9 has been installed; change the version number if a later version was installed, or if the paths are incorrect for your system:
 
 		./configure --enable-mpi-thread-multiple --prefix=/usr/local CC=/usr/local/bin/
-		gcc-4.9 CXX=/usr/local/bin/g++-4.9 F77=usr/local/bin/gfortran-4.9 FC=/usr/local/bin/		
+		gcc-4.9 CXX=/usr/local/bin/g++-4.9 F77=usr/local/bin/gfortran-4.9 FC=/usr/local/bin/
 		gfortran-4.9
 
 Wait for the configure script to finish – this could take several minutes. Then build the code as follows:
@@ -306,9 +306,7 @@ We strongly recommend using a package manager for your Linux distribution for in
 Install with:
 		make install
 OpenMPI provides many tests to verify the installation; it’s a good idea to run at least some of these tests to ensure that MPI was installed successfully.
-
-[--back to top--](#top)
-
+<br>[--back to top--](#top)
 <h2 id="lin_libflame"> Linux:Install libFlame </h2>
 
 Next we detail the installation of the high performance numerical library libflame. The library can be gotten from the libflame git repository on github.
@@ -316,53 +314,147 @@ Next we detail the installation of the high performance numerical library libfla
 It’s important to perform the git clone into a subdirectory NOT called ‘flame’ since this can cause name conflicts with the installation. We normally do a git clone into a directory called ‘libflame’. However, other directory names will work as well, but not ‘flame’.
 
 To obtain the latest version of the FLAME library, clone the FLAME git repository with this command:
-	git clone https://github.com/flame/libflame.git
+
+		git clone https://github.com/flame/libflame.git
 Run the configure script in the top-level FLAME folder as follows (assuming you want to install to /usr/local/flame; if not, change the prefix path):
 
-	./configure --prefix=/usr/local/flame --with-cc=/usr/local/bin/gcc-4.9 --with-ranlib=/usr/local/bin/gcc-ranlib-4.9
+		./configure --prefix=/usr/local/flame --with-cc=/usr/local/bin/gcc-4.9 
+			--with-ranlib=/usr/local/bin/gcc-ranlib-4.9
 A complete list of configuration options can be obtained by running
- 	./configure –-helpThen build and install the code as follows:
 
-	make -j4
-	make install
+		./configure –-help
+
+Then build and install the code as follows:
+
+		make -j4
+		make install
 
 This completes the installation of the FLAME library.
-
-[--back to top--](#top)
+<br>[--back to top--](#top)
 
 <h2 id="lin_blas"> Linux:Install an accelerated BLAS library </h2>
 
-It is essential to link Elemental with an accelerated BLAS library for maximum performance. Linking Elemental with a ‘reference’ BLAS implementation will cripple performance, since the reference implementations are designed for correctness not speed. If you do not have an accelerated BLAS on your system, you can download and build OpenBLAS. Download, unzip, and untar the tarball (version 0.2.8 as of this writing) and cd into the top-level folder. Build OpenBLAS with this command, assuming you have a 64-bit system:	make BINARY=64 USE_OPENMP=1Install with this command, assuming the installation directory is /usr/local/openblas/0.2.8/:	make PREFIX=/usr/local/openblas/0.2.8/ installThis completes the installation of OpenBLAS.
-[--back to top--](#top)
+It is essential to link Elemental with an accelerated BLAS library for maximum performance. Linking Elemental with a ‘reference’ BLAS implementation will cripple performance, since the reference implementations are designed for correctness not speed. If you do not have an accelerated BLAS on your system, you can download and build OpenBLAS. Download, unzip, and untar the tarball (version 0.2.8 as of this writing) and cd into the top-level folder. Build OpenBLAS with this command, assuming you have a 64-bit system:	make BINARY=64 USE_OPENMP=1Install with this command, assuming the installation directory is /usr/local/openblas/0.2.8/:	make PREFIX=/usr/local/openblas/0.2.8/ installThis completes the installation of OpenBLAS.<br>[--back to top--](#top)
 <h2 id="lin_elemental"> Linux:Install Elemental </h2>
 
 ###Here is our suggested installation scheme for Elemental:###
 
 We strongly recommend that users install both the HybridRelease and PureRelease builds of Elemental. OpenMP is enabled in the HybridRelease build and disabled in the PureRelease build. So why install both? For smaller problems the overhead of OpenMP can actually cause code to run slower than without it. On the other hand, for large problems, OpenMP parallelization generally helps. However, there is no clear transition point between where it helps and where it hurts. Thus, we encourage users to experiment with both builds to find the one that performs best for their typical problems.We also recommend that users clearly separate the different build types as well as the versions of Elemental on their systems. Elemental is under active development, and new releases can introduce changes to the API that are not backwards compatible with previous releases. To minimize build problems and overall hassle, we recommend that Elemental be installed so that the different versions and build types are cleanly separated.Here is our recommended installation scheme for Elemental:Choose a folder for the root of the Elemental installation. For our systems, this is
-		/usr/local/elemental
+
+		/usr/local/elemental
 	
 
-Download the 0.84 release of [Elemental](http://libelemental.org/releases/), unzip and untar the distribution, and cd to the top-level folder.
-
-[--back to top--](#top)
+Download the desired release of [Elemental](http://libelemental.org/releases/) (0.84-pl at this writing), unzip and untar the distribution, and cd to the top-level folder. We will designate the version with a <version> place holder.
 
 Run these commands to create the required directories for the build types:
-		mkdir build_hybrid
+
+		mkdir build_hybrid
 		mkdir build_pure
 
 ###HybridRelease build
+From the Elemental-<version> folder, run the following command to create a local build folder for the HybridRelease build:
 
-From the Elemental-0.84-p1 folder, run the following command to create a local build folder for the HybridRelease build:	mkdir build_hybrid	cd build_hybridFor the first step of the installation, we need to fix a few problems with the CMake configuration files. Open the following file in a text editor:	Elemental-0.84-p1/cmake/tests/OpenMP.cmakeOn the first line of the file, change	if(HYBRID)to this:	if(ELEM_HYBRID)Next, open this file in a text editor:	Elemental-0.84-p1/cmake/tests/Math.cmakeNear the first line of the file, change	if(PURE)to this:	if(ELEM_PURE)Save both files.Run the following command to create a local build folder for the HybridRelease build:	mkdir build_hybrid	cd build_hybridUse the following CMake command for the HybridRelease build:	cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.84-p1/HybridRelease  	-D CMAKE_BUILD_TYPE=HybridRelease -D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9  	-D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9  	-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-4.9  	-D MATH_LIBS="/usr/local/flame/lib/libflame.a;-L/usr/local/openblas/0.2.8/ –lopenblas –lm" 	–D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON  .. Note that we have installed g++-4.9 into /usr/local/bin and libFLAME into /usr/local/flame. Alter these paths, if necessary, to match the installation location on your system.If this command does not work on your system, you may need to define the BLAS_LIBS and/or GFORTRAN_LIB config options.Once the CMake configuration step completes, you can build Elemental from the generated Makefiles with the following command:	make –j4The –j4 option tells Make to use four processes to perform the build. This number can be increased if you have a more capable system.After the build completes, install elemental as follows:	make install
-As a final step, if you installed a version of Elemental other than one of the 0.84 series releases, edit the file /usr/local/elemental/<version>/HybridRelease/conf/ElemVars and replace the line 	CXX = /usr/local/bin/g++-4.9With this:	CXX = /usr/local/bin/g++-4.9 -std=c++11This will eliminate some compiler warnings about C++11 constructs.
-
-[--back to top--](#top)
+		mkdir build_hybrid
+		cd build_hybrid
+
+For the first step of the installation, we need to fix a few problems with the CMake configuration files. Open the following file in a text editor:
+
+		Elemental-<version>/cmake/tests/OpenMP.cmake
+
+On the first line of the file, change
+
+		if(HYBRID)
+
+to this:
+
+		if(ELEM_HYBRID)
+
+Next, open this file in a text editor:
+
+		Elemental-<version>/cmake/tests/Math.cmake
+Near the first line of the file, change
+
+		if(PURE)
+
+to this:
+
+		if(ELEM_PURE)
+
+Save both files.
+
+Run the following command to create a local build folder for the HybridRelease build:
+
+		mkdir build_hybrid
+		cd build_hybrid
+
+Use the following CMake command for the HybridRelease build:
+
+	cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.84-p1/HybridRelease
+	-D CMAKE_BUILD_TYPE=HybridRelease -D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9
+	-D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9
+	-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-4.9
+	-D MATH_LIBS="/usr/local/flame/lib/libflame.a;-L/usr/local/openblas/0.2.8/ –lopenblas –lm"
+	–D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON  ..
+
+Note that we have installed g++-4.9 into /usr/local/bin and libFLAME into /usr/local/flame. Alter these paths, if necessary, to match the installation location on your system.
+
+If this command does not work on your system, you may need to define the BLAS_LIBS and/or GFORTRAN_LIB config options.
+
+Once the CMake configuration step completes, you can build Elemental from the generated Makefiles with the following command:
+
+		make –j4
+
+The –j4 option tells Make to use four processes to perform the build. This number can be increased if you have a more capable system.
+
+After the build completes, install elemental as follows:
+
+		make install
+
+As a final step, if you installed a version of Elemental other than one of the 0.84 series releases, edit the file /usr/local/elemental/<version>/HybridRelease/conf/ElemVars and replace the line
+
+		CXX = /usr/local/bin/g++-4.9
+
+With this:
+
+		CXX = /usr/local/bin/g++-4.9 -std=c++11
+
+This will eliminate some compiler warnings about C++11 constructs.
+
+If you installed Elemental version 0.85, you need to setup your system to find the Elemental shared library.  Either in your startup script (~/.bashrc) or in a terminal window, enter the following command on a single line, replacing VERSION_STRING as above:
+
+		export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/elemental/VERSION_STRING/HybridRelease/lib/
+<br>[—back to top--](#top)
 
 ###PureRelease build
-After this, run these commands to create a build folder for the PureRelease build:	cd ..
-	mkdir build_pure
-	cd build_pure Then repeat the CMake configuration process, this time with the following command for the PureRelease build:	cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.84-p1/PureRelease  	-D CMAKE_BUILD_TYPE=PureRelease -D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9  	-D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9  	-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-4.9  	-D MATH_LIBS="/usr/local/flame/lib/libflame.a;-L/usr/local/openblas/0.2.8/ –lopenblas –lm" 	–D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON  .. If this command does not work on your system, you may need to define the BLAS_LIBS and/or GFORTRAN_LIB config options.Repeat the build commands and install this build of Elemental. Then, if you installed a version of Elemental other than one of the 0.84 series releases, edit the /usr/local/elemental/<version>/PureRelease/conf/ElemVars file and replace the CXX line as indicated above.This completes the two builds of Elemental.To test the installation, follow Elemental’s [test instructions](http://libelemental.org/documentation/0.84 /build.html) for the SVD test to verify that Elemental is working correctly.
+After this, run these commands to create a build folder for the PureRelease build:
 
-[--back to top--](#top)
+		cd ..
+		mkdir build_pure
+		cd build_pure
+
+Then repeat the CMake configuration process, this time with the following command for the PureRelease build:
+
+	cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.84-p1/PureRelease
+	-D CMAKE_BUILD_TYPE=PureRelease -D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9
+	-D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9
+	-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-4.9
+	-D MATH_LIBS="/usr/local/flame/lib/libflame.a;-L/usr/local/openblas/0.2.8/ –lopenblas –lm"
+	–D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON  ..
+
+If this command does not work on your system, you may need to define the BLAS_LIBS and/or GFORTRAN_LIB config options.
+
+Repeat the build commands and install this build of Elemental. Then, if you installed a version of Elemental other than one of the 0.84 series releases, edit the /usr/local/elemental/<version>/PureRelease/conf/ElemVars file and replace the CXX line as indicated above.
+
+If you installed Elemental version 0.85, you need to setup your system to find the Elemental shared library for the PureRelease build.  Enter the following command in a terminal window on a single line, replacing VERSION_STRING as above:
+
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/elemental/VERSION_STRING/PureRelease/lib/
+
+Note: you will need to set this variable to point to either the HybridRelease or the PureRelease build of the Elemental shared library whenever you want to use smallk.
+
+This completes the two builds of Elemental.
+
+To test the installation, follow Elemental’s [test instructions](http://libelemental.org/documentation/<version> /build.html) for the SVD test to verify that Elemental is working correctly.
+<br>[—back to top--](#top)
 
 <h1 id="python_install"> Installation of Python libraries </h1>
 
@@ -370,29 +462,60 @@ Run these commands to create the required directories for the build types:
 
 ###Install Python scientific packages
 Assuming that you have used brew to install gcc, as indicated earlier, you can run the following commands to install the necessary libraries:
-	brew install python	brew install numpy	brew install scipy
-	To check your installation, run:
-	brew test numpyIMPORTANT: Check to see that your numpy installation has correctly linked to the needed BLAS libraries.
-Ensure that you are running the correct python:
-	which python
-	This should print out /usr/local/bin/python. Open a python terminal and run the following:
-	import numpy as np	np.__config__.show()
 
-You should see something similar to the following:	lapack_opt_info:
-	extra_link_args = ['-Wl,-framework', '-Wl,Accelerate']	extra_compile_args = ['-msse3']	define_macros = [('NO_ATLAS_INFO', 3)]
-	    blas_opt_info:
-		extra_link_args = ['-Wl,-framework', '-Wl,Accelerate']	extra_compile_args = ['-msse3', '-I/System/Library/Frameworks/vecLib.framework/Headers']
-	define_macros = [('NO_ATLAS_INFO', 3)]
-	    If you are using OpenBLAS, you should see that indicated as well. 
-###Install Cython: a Python interface to C/C++First install the Python Package Index utility, pip. Many Python packages are configured to use this package manager, Cython being one.
-	brew install pipTo install Cython:
-	pip install cythonThe Makefile assumes an installation path of /usr/local/lib/python2.7/site-packages for the compiled library file. If you are not using brew to install your packages, you will need to tell the Makefile where the appropriate site-packages directory is located on your system. Setting the SITE_PACKAGES_DIR command line variable when running make accomplishes this. Also, make sure that there is not another site-packages directory in your PATH before the site-packages you intend to use since ‘make install’ will copy pysmallk.so to /usr/local/lib/python2.7/site-packages by default. Other Python distributions will probably interfere with the pysmallk installation.
+		brew install python
+		brew install numpy
+		brew install scipy
+
+To check your installation, run:
+
+		brew test numpy
+
+IMPORTANT: Check to see that your numpy installation has correctly linked to the needed BLAS libraries.
+
+Ensure that you are running the correct python:
+
+		which python
+
+This should print out /usr/local/bin/python. Open a python terminal and run the following:
+
+		import numpy as np
+		np.__config__.show()
+
+You should see something similar to the following:
+
+		lapack_opt_info:
+		extra_link_args = ['-Wl,-framework', '-Wl,Accelerate']
+		extra_compile_args = ['-msse3']
+		define_macros = [('NO_ATLAS_INFO', 3)]
+
+		blas_opt_info:
+		extra_link_args = ['-Wl,-framework', '-Wl,Accelerate']
+		extra_compile_args = ['-msse3', '-I/System/Library/Frameworks/vecLib.framework/Header’]
+		define_macros = [('NO_ATLAS_INFO', 3)]
+
+If you are using OpenBLAS, you should see that indicated as well.
+
+###Install Cython: a Python interface to C/C++
+
+First install the Python Package Index utility, pip. Many Python packages are configured to use this package manager, Cython being one.
+
+		brew install pip
+
+To install Cython:
+
+		pip install cython
+
+The Makefile assumes an installation path of /usr/local/lib/python2.7/site-packages for the compiled library file. If you are not using brew to install your packages, you will need to tell the Makefile where the appropriate site-packages directory is located on your system. Setting the SITE_PACKAGES_DIR command line variable when running make accomplishes this. Also, make sure that there is not another site-packages directory in your PATH before the site-packages you intend to use since ‘make install’ will copy pysmallk.so to /usr/local/lib/python2.7/site-packages by default. Other Python distributions will probably interfere with the pysmallk installation.
+<br>[—back to top--](#top)
 <h2 id="lin_python"> Linux:Intall Python libraries</h2>
 The Python libraries can easily be installed via pip and apt-get with the following commands:
-	pip install numpy	apt-get install python-scipy	pip install cython[--back to top--](#top)
 
+		pip install numpy
+		apt-get install python-scipy
+		pip install cython
 
-<h1 id="smallk"> Building and Installing the SmallK Source Code </h1>
+<h1 id="smallk"> Build and Installation of SmallK </h1>
 
 <h2 id="source_code"> Obtain the Source Code </h2>
 The source code for the SmallK library can be downloaded from the [SmallK repository](https://github.com/smallk/smallk.github.io/tree/master/code) on github.
@@ -403,14 +526,17 @@ Once downloaded uncompress the tar ball and follow the installation instructions
 <h2 id="build_smallk"> Build the SmallK library </h2>
 
 After downloading and unpacking the code tarball cd into the top-level SmallK directory.  The makefiles assume that you followed our suggested installation plan for Elemental.  If this is not the case you will need to do one of the following:
-	1. Create an environment variable called ELEMENTAL_INSTALL_DIR which contains the 
-		path to the root folder of your Elemental installation
-	2. Define the variable ELEMENTAL_INSTALL_DIR on the make command line
-	3. Edit the SmallK makefile so that it can find your Elemental installation
+
+		1. Create an environment variable called ELEMENTAL_INSTALL_DIR which contains the 
+			path to the root folder of your Elemental installation
+		2. Define the variable ELEMENTAL_INSTALL_DIR on the make command line
+		3. Edit the SmallK makefile so that it can find your Elemental installation
 Assuming that the default install locations are acceptable, build the SmallK code by running this command from the root directory of the distribution:
-		make all
+
+		make all
 This will build the SmallK library and several command-line applications.  These are:
-	1. libsmallk.a, the SmallK library
+
+	1. libsmallk.a, the SmallK library
 	2. preprocess_tf, a command-line application for processing and scoring term-frequency matrices
 	3. matrixgen, a command-line application for generating random matrices
 	4. nmf, a command-line application for NMF
@@ -418,26 +544,40 @@ After downloading and unpacking the code tarball cd into the top-level SmallK di
 	6. flatclust, a command-line application for flat clustering via NMF
 	7. pysmallk.so, the Python-wrapped SmallK library, making SmallK available via Python
 To install the code, run this command to install to the default location, which is /usr/local/smallk:
-		make install
+
+		make install
 This will install the binary files listed above into the /usr/local/smallk/bin directory, which needs to be on your path to run the executables from anywhere on your system and avoid prepending with the entire path. This will install pysmallk.so into the site-packages directory associated with the Python binary, which is determined by ‘brew install python’ as discussed above. To install the binary code to a different location, either create an environment variable called SMALLK_INSTALL_DIR and set it equal to the desired installation location prior to running the install command, or supply a prefix argument:
-		make prefix=/path/to/smallk  install
+
+		make prefix=/path/to/smallk  install
 To install the Python library to a different location, create an environment variable called SITE_PACKAGES_DIR and set it equal to the desired installation location prior to running the install command, or supply this as an argument for make:
-	make SITE_PACKAGES_DIR=/path/to/site-packages installOr, as a last resort, you can edit the top-level SmallK makefile to conform to the installation scheme of your system.  You may need root privileges to do the installation, depending on where you choose to install it.
-To test the installation, run this command:
-		make check
+
+		make SITE_PACKAGES_DIR=/path/to/site-packages install
+
+Or, as a last resort, you can edit the top-level SmallK makefile to conform to the installation scheme of your system.  You may need root privileges to do the installation, depending on where you choose to install it.
+
+Before testing the installation, the test code needs to access data. The data is located in a separate github repository so that when cloning the code, the large amount of data is not included. The data repository is located on github at [smallk_data](https://github.com/smallk/smallk_data):
+
+To test the build, run this command with DATA_DIR set to wherever the smallk data repository was cloned:
+
+		make check DATA_DIR=../smallk_data
 This will run a series of tests, none of which should report a failure.  Sample output from a run of these tests can be found in section [SmallK Test Results](http://smallk.github.io/documentation/tests/#smalk_tests).
-The command-line applications can be built individually by running the appropriate make command from the top-level smallk folder.  These commands are:
-	To build the smallk library only: 		make libsmallk
-	To build the preprocessor only:			make preprocessor
-	To build the matrix generator only:		make matrixgen
-	To build the nmf only:				make nmf
-	To build hierclust only:			make hierclust
-	To build flatclust only:			make flatclust
-	To build pysmallk only:				make pysmallk*Note: Pysmallk requires builds of libsmallk, preprocessor, matrixgen, hierclust, and flatclust.* This completes the SmallK NMF library installation.
 
-[--back to top--](#top)
+Note: if you installed Elemental version 0.85, you will need to configure your system to find the Elemental shared library.  See the Elemental installation instructions above for information on how to do this.
 
+The command-line applications can be built individually by running the appropriate make command from the top-level smallk folder.  These commands are:
 
+		To build the smallk library only: 		make libsmallk
+		To build the preprocessor only:			make preprocessor
+		To build the matrix generator only:		make matrixgen
+		To build the nmf only:					make nmf
+		To build hierclust only:				make hierclust
+		To build flatclust only:				make flatclust
+		To build pysmallk only:					make pysmallk
+
+*Note: Pysmallk requires builds of libsmallk, preprocessor, matrixgen, hierclust, and flatclust.*
+
+This completes the SmallK NMF library installation.
+<br>[—back to top--](#top)
 
 <h2 id="example_api"> Examples of API Usage </h2>
 
@@ -749,8 +889,7 @@ Note: the output will be *similar* to the following not identical since some pro
 	Writing output files...
 
 The output files are written to the default directory or the directory specified on the command line.
-
-[--back to top--](#top)
+<br>[—back to top--](#top)
 
 <h2 id="matrix_files"> Matrix file formats </h2>
 
@@ -773,14 +912,17 @@ would be stored in a CSV file as follows:
 		46,51,56
 
 The matrix is loaded exactly as it appears in the file.  **Internally, SmallK stores dense matrices in column-major order**.  Sparse matrices are stored in **compressed column format**.
-
-[--back to top--](#top)
+<br>[—back to top--](#top)
 
 <h2 id="smallk_api"> SmallK API </h2>
 
 The SmallK API is an extremely simplistic API for basic NMF and clustering.  Users who require more control over the factorization or clustering algorithms can instead run one of the command-line applications in the SmallK distribution.
 
-The SmallK API is exposed by the file smallk.hpp, which can be found in this location: SMALLK_INSTALL_DIR/include/smallk.hpp.  All API functions are contained within the smallk namespace. 
+The SmallK API is exposed by the file smallk.hpp, which can be found in this location: 
+
+		SMALLK_INSTALL_DIR/include/smallk.hpp.  
+
+All API functions are contained within the smallk namespace. 
 
 An example of how to use the API can be found in the file examples/smallk_example.cpp.
 
