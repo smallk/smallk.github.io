@@ -202,10 +202,10 @@ Choose a folder for the root of the Elemental installation.  For our systems, th
 
 		/usr/local/elemental
 
-Download the [0.84-p1 release](http://libelemental.org/releases/0.84/index.html) of Elemental, unzip and untar the distribution, and cd to the top-level folder (Elemental-0.84-p1).
-For the first step of the installation, we need to fix a few problems with the CMake configuration files. Open the following file in a text editor:
+Download one of the smallk-supported releases of Elemental (see above), unzip and untar the distribution, and cd to the top-level folder of the unzipped distribution.  This folder will be denoted by UNZIP_DIR in the following instructions.
+For the first step of the installation, for Elemental versions prior to 0.85, we need to fix a few problems with the CMake configuration files. Open the following file in a text editor:
 
-		Elemental-0.84-p1/cmake/tests/OpenMP.cmake
+		UNZIP_DIR/cmake/tests/OpenMP.cmake
 
 On the first line of the file, change
 
@@ -217,7 +217,7 @@ to this:
 
 Next, open this file in a text editor:
 
-		Elemental-0.84-p1/cmake/tests/Math.cmake
+		UNZIP_DIR/cmake/tests/Math.cmake
 
 Near the first line of the file, change
 
