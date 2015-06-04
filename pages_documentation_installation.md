@@ -82,8 +82,7 @@ If you want to work with the VM again, from any of the above states you can run
 		vagrant up
 		
 again and the VM will be resumed or recreated.
-
-[--back to top--](#top)
+<br>[--back to top--](#top)
 
 <h1 id="standard"> Standard Build Instructions </h1>
 
@@ -109,20 +108,26 @@ We **strongly** recommend that users install both the HybridRelease and PureRele
 
 Thus, two versions of Elemental need to be built.  One is a hybrid release build with OpenMP parallelization, and the other is the pure release build without OpenMP parallelization.  A separate build folder will be created for each build.  The build that uses internal OpenMP parallelization is called a ‘HybridRelease’ build; the build that doesn’t is called a ‘PureRelease’ build.  The debug build is called a ‘PureDebug’ build.  The HybridRelease build is best for large problems, where the problem size is large enough to overcome the OpenMP parallel overhead. The following is for the 0.84 version of elemental. Set the version to that specified in the README.html file. Note that the files will be installed in **/usr/local/elemental/[version]/[build type]**.
 
-**The SmallK software supports the latest stable release of Elemental, version 0.84-p1.**
+**The SmallK software supports the latest stable release of Elemental, version 0.81, 0.83, 0.84, 0.84-p1, and 0.85.**
 
 **A note of caution: copying the command lines from this website and pasting them into a terminal may result in the commands not properly executing due to how characters are interpreted: the double dash --, “double quotes”, etc. For pasting the commands to a terminal, first copy the command lines to a text editor and copy/paste from there.**
-
-[--back to top--](#top)
+<br>[--back to top--](#top)
 
 <h1 id="MacOSX"> How to Install Elemental on MacOSX </h1>
 
 On MacOSX we recommend using [Homebrew](http://mxcl.github.io/homebrew/) as the package manager. Homebrew does not require sudo privileges for package installation, unlike other package managers such as MacPorts. Thus the chances of corrupting vital system files are greatly reduced with Homebrew.
 
-It is convenient to be able to view hidden files (like .file) in the MacOSX Finder. To do so run the following at the command line:	defaults write com.apple.finder AppleShowAllFiles -bool YES
-	To hide hidden files, set the Boolean flag to NO:
-	defaults write com.apple.finder AppleShowAllFiles -bool NOIf you use Homebrew, ensure that your PATH is configured to search Homebrew’s installation directory first. Homebrew’s default installation location is /usr/local/bin, so that location needs to be first on your path. To check, run this command from a terminal window:
-	cat /etc/paths
+It is convenient to be able to view hidden files (like .file) in the MacOSX Finder. To do so run the following at the command line:
+
+	defaults write com.apple.finder AppleShowAllFiles -bool YES
+
+To hide hidden files, set the Boolean flag to NO:
+
+	defaults write com.apple.finder AppleShowAllFiles -bool NO
+
+If you use Homebrew, ensure that your PATH is configured to search Homebrew’s installation directory first. Homebrew’s default installation location is /usr/local/bin, so that location needs to be first on your path. To check, run this command from a terminal window:
+
+	cat /etc/paths
 
 We also recommend running the following commands on a daily basis to refresh your brewed installations:
 
@@ -133,21 +138,38 @@ We also recommend running the following commands on a daily basis to refresh you
 
 This will maintain your Homebrew installed software and diagnose any issues with the installations.
 If the first entry is not /usr/local/bin, you will need to edit this file.  This is a system file, so first create a backup. Move the line /usr/local/bin so that it is on the first line of the file. Save the file, then close the terminal session and start a new terminal session so that the path changes will take effect.
-
-[--back to top--](#top)
+<br>[--back to top--](#top)
 <h2 id="mac_GNU"> OSX:Install the latest GNU compilers </h2>
-Elemental and SmallK both require a modern C++ compiler compliant with the C++11 standard.  We recommend that you install the latest stable version of the clang and GNU C++ compilers.  To do this, first install the XCode command line tools with this command:	xcode-select --install
-If this command produces an error, download and install XCode from the AppStore, then repeat the command.  If that should still fail, install the command line tools from the XCode preferences menu.  After the installation completes, run this command from a terminal window:
-	clang++ --version
-You should see output similar to this:
-	Apple LLVM version 6.0 (clang-600.0.51) (based on LLVM 3.5svn)	Target: x86-64-apple-darwin13.4.0	Thread model: posixThe latest version of the GNU compiler at the time of writing is g++-4.9.1, which is provided by the ‘gcc’ homebrew package. In addition to the gcc package, homebrew also provides a gcc49 package from the homebrew/versions tap. If this alternative gcc49 package is installed on your system it will prevent homebrew from symlinking the gcc package correctly. We recommend uninstalling the gcc49 versioned package and just using the gcc package instead. The Fortran compiler provided with the gcc package will also be configured to properly build numpy, which is required for the python interface to smallk.If you need to uninstall the gcc49 package, run the following commands:
-	brew uninstall gcc49	brew cleanup	brew doctorThen install the gcc package as follows:
-	brew install gccThe Apple-provided gcc and g++ will not be overwritten by this installation. The new compilers will be installed into /usr/local/bin as gcc-4.9, g++-4.9, and gfortran-4.9. The Fortran compiler is needed for the installation of MPI and for building the python interface to smallk.
-[--back to top--](#top)
-<h2 id="mac_open_mpi"> OSX:Install OpenMPI </h2>
-Install the latest version of OpenMPI with Homebrew as follows:	brew install open-mpi –-c++11The Homebrew install formula provides an option for “thread-multiple” support, but do not enable this option, as it is still experimental, not optimized for performance, and may have bugs.
+Elemental and SmallK both require a modern C++ compiler compliant with the C++11 standard.  We recommend that you install the latest stable version of the clang and GNU C++ compilers.  To do this, first install the XCode command line tools with this command:
 
-[--back to top--](#top)
+		xcode-select --install
+If this command produces an error, download and install XCode from the AppStore, then repeat the command.  If that should still fail, install the command line tools from the XCode preferences menu.  After the installation completes, run this command from a terminal window:
+
+		clang++ --version
+You should see output similar to this:
+
+		Apple LLVM version 6.0 (clang-600.0.51) (based on LLVM 3.5svn)
+		Target: x86-64-apple-darwin13.4.0
+		Thread model: posix
+
+The latest version of the GNU compiler at the time of writing is g++-4.9.1, which is provided by the ‘gcc’ homebrew package. In addition to the gcc package, homebrew also provides a gcc49 package from the homebrew/versions tap. If this alternative gcc49 package is installed on your system it will prevent homebrew from symlinking the gcc package correctly. We recommend uninstalling the gcc49 versioned package and just using the gcc package instead. The Fortran compiler provided with the gcc package will also be configured to properly build numpy, which is required for the python interface to smallk.
+If you need to uninstall the gcc49 package, run the following commands:
+
+		brew uninstall gcc49
+		brew cleanup
+		brew doctor
+Then install the gcc package as follows:
+
+		brew install gcc
+The Apple-provided gcc and g++ will not be overwritten by this installation. The new compilers will be installed into /usr/local/bin as gcc-4.9, g++-4.9, and gfortran-4.9. The Fortran compiler is needed for the installation of MPI and for building the python interface to smallk.
+<br>[--back to top--](#top)
+<h2 id="mac_open_mpi"> OSX:Install OpenMPI </h2>
+Install the latest version of OpenMPI with Homebrew as follows:
+
+		brew install open-mpi –-c++11
+
+The Homebrew install formula provides an option for “thread-multiple” support, but do not enable this option, as it is still experimental, not optimized for performance, and may have bugs.
+<br>[--back to top--](#top)
 
 <h2 id="mac_libflame"> OSX:Install libFlame </h2>
 Next we detail the installation of the high performance numerical library libflame. The library can be gotten from the libflame git repository on github.
@@ -155,49 +177,116 @@ This will maintain your Homebrew installed software and diagnose any issues with
 It’s important to perform the git clone into a subdirectory NOT called ‘flame’ since this can cause name conflicts with the installation. We normally do a git clone into a directory called ‘libflame’. However, other directory names will work as well, but not ‘flame’.
 
 To obtain the latest version of the FLAME library, clone the FLAME git repository with this command:
-	git clone https://github.com/flame/libflame.git
+
+		git clone https://github.com/flame/libflame.git
 Run the configure script in the top-level FLAME folder as follows (assuming the install path is /usr/local/flame):
-	./configure –-prefix=/usr/local/flame –-with-cc=/usr/local/bin/gcc-4.9 –-with-ranlib=/usr/local/bin/gcc-ranlib-4.9
+
+	./configure –-prefix=/usr/local/flame –-with-cc=/usr/local/bin/gcc-4.9 –-with-ranlib=/usr/local/bin/gcc-ranlib-4.9
 A complete list of configuration options can be obtained by running ./configure –-help.
 
 After the configuration process completes, build the FLAME library as follows:
-	make –j4
+
+		make –j4
 
 The –j4 option tells Make to use four processes to perform the build.  This number can be increased if you have a more capable system.
 
-	make install
+		make install
 
 The FLAME library is now installed.
-[--back to top--](#top)
+<br>[--back to top--](#top)
 <h2 id="mac_elemental"> OSX:Install Elemental </h2>
 
 ###Here is our suggested installation scheme for Elemental:###
 
 Choose a folder for the root of the Elemental installation.  For our systems, this is
 
-	/usr/local/elemental
+		/usr/local/elemental
 
 Download the [0.84-p1 release](http://libelemental.org/releases/0.84/index.html) of Elemental, unzip and untar the distribution, and cd to the top-level folder (Elemental-0.84-p1).
 For the first step of the installation, we need to fix a few problems with the CMake configuration files. Open the following file in a text editor:
-	Elemental-0.84-p1/cmake/tests/OpenMP.cmake
-	On the first line of the file, change
-	if(HYBRID)
-	to this:
-	if(ELEM_HYBRID)
-	Next, open this file in a text editor:
-	Elemental-0.84-p1/cmake/tests/Math.cmake
-	Near the first line of the file, change
-	if(PURE)
-	to this:
-	if(ELEM_PURE)
-	Save both files.From the Elemental-0.84-p1 folder, run the following command to create a local build folder for the HybridRelease build:
-	mkdir build_hybrid	cd build_hybrid
-	Use the following CMake command for the HybridRelease build:	cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.84-p1/HybridRelease 	-D CMAKE_BUILD_TYPE=HybridRelease 	-D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9 	-D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9 	-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-4.9 	-D MATH_LIBS="/usr/local/flame/lib/libflame.a;-framework Accelerate" 	–D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON  ..Note that we have installed g++-4.9 into /usr/local/bin and libFLAME into /usr/local/flame. Alter these paths, if necessary, to match the installation location on your system.Once the CMake configuration step completes, you can build Elemental from the generated Makefiles with the following command:	make –j4The –j4 option tells Make to use four processes to perform the build. This number can be increased if you have a more capable system.After the build completes, install elemental as follows:	make install
-	As a final step, if you installed a version of Elemental other than one of the 0.84 series releases, edit the file /usr/local/elemental/<version>/HybridRelease/conf/ElemVars and replace the line 	CXX = /usr/local/bin/g++-4.9With this:	CXX = /usr/local/bin/g++-4.9 -std=c++11This will eliminate some compiler warnings about C++11 constructs.After this, run these commands to create a build folder for the PureRelease build:	cd ..
-	mkdir build_pure
-	cd build_pure Then repeat the CMake configuration process, this time with the following command for the PureRelease build:	cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.84-p1/PureRelease 	-D CMAKE_BUILD_TYPE=PureRelease -D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9 	-D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9 	-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-4.9 	-D MATH_LIBS="/usr/local/flame/lib/libflame.a;-framework Accelerate"  	–D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON  ..Repeat the build commands and install this build of Elemental. Then, if you installed a version of Elemental other than one of the 0.84 series releases, edit the /usr/local/elemental/<version>/PureRelease/conf/ElemVars file and replace the CXX line as indicated above.This completes the two builds of Elemental.To test the installation, follow Elemental’s [test instructions](http://libelemental.org/documentation/0.84/build.html) for the SVD test to verify that Elemental is working correctly.
-
-[--back to top--](#top)
+
+		Elemental-0.84-p1/cmake/tests/OpenMP.cmake
+
+On the first line of the file, change
+
+		if(HYBRID)
+
+to this:
+
+		if(ELEM_HYBRID)
+
+Next, open this file in a text editor:
+
+		Elemental-0.84-p1/cmake/tests/Math.cmake
+
+Near the first line of the file, change
+
+		if(PURE)
+
+to this:
+
+		if(ELEM_PURE)
+
+Save both files.
+
+From the Elemental-0.84-p1 folder, run the following command to create a local build folder for the HybridRelease build:
+
+		mkdir build_hybrid
+		cd build_hybrid
+
+Use the following CMake command for the HybridRelease build:
+
+	cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.84-p1/HybridRelease
+	-D CMAKE_BUILD_TYPE=HybridRelease 
+	-D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9 
+	-D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9 
+	-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-4.9 
+	-D MATH_LIBS="/usr/local/flame/lib/libflame.a;-framework Accelerate" 
+	–D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON  ..
+
+Note that we have installed g++-4.9 into /usr/local/bin and libFLAME into /usr/local/flame. Alter these paths, if necessary, to match the installation location on your system.
+
+Once the CMake configuration step completes, you can build Elemental from the generated Makefiles with the following command:
+
+		make –j4
+
+The –j4 option tells Make to use four processes to perform the build. This number can be increased if you have a more capable system.
+
+After the build completes, install elemental as follows:
+
+	make install
+
+As a final step, if you installed a version of Elemental other than one of the 0.84 series releases, edit the file /usr/local/elemental/<version>/HybridRelease/conf/ElemVars and replace the line 
+
+		CXX = /usr/local/bin/g++-4.9
+
+With this:
+
+		CXX = /usr/local/bin/g++-4.9 -std=c++11
+
+This will eliminate some compiler warnings about C++11 constructs.
+
+After this, run these commands to create a build folder for the PureRelease build:
+
+		cd ..
+
+mkdir build_pure
+
+		cd build_pure 
+
+Then repeat the CMake configuration process, this time with the following command for the PureRelease build:
+
+	cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.84-p1/PureRelease 
+	-D CMAKE_BUILD_TYPE=PureRelease -D CMAKE_CXX_COMPILER=/usr/local/bin/g++-4.9 
+	-D CMAKE_C_COMPILER=/usr/local/bin/gcc-4.9 
+	-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-4.9 
+	-D MATH_LIBS="/usr/local/flame/lib/libflame.a;-framework Accelerate"  
+	–D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON  ..
+
+Repeat the build commands and install this build of Elemental. Then, if you installed a version of Elemental other than one of the 0.84 series releases, edit the /usr/local/elemental/<version>/PureRelease/conf/ElemVars file and replace the CXX line as indicated above.
+
+This completes the two builds of Elemental.To test the installation, follow Elemental’s [test instructions](http://libelemental.org/documentation/0.84/build.html) for the SVD test to verify that Elemental is working correctly.
+<br>[--back to top--](#top)
 
 <h1 id="Linux"> How to Install Elemental on Linux </h1>
 
