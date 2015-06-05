@@ -287,5 +287,7 @@ After building the smallk library, the ‘make check’ command will run a bash 
 
 	XML file test passed
 	assignment file test passed
+	fuzzy assignment file test passed
+	***** SmallK: All tests passed. *****
 [--back to top--](#top)
 
