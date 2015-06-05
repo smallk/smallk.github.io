@@ -34,7 +34,7 @@ permalink: /documentation/tools/
 	* [Sample Runs](#sample_run_flat)
 
 <h1 id="intro"> Introduction </h1>
-The SmallK library provides a number of algorithm implementations for performing various data analytics tasks such as topic modeling, clustering, and dimension reduction.  This section will provide more in-depth description of the tools available with examples that can be expanded/modified for other application domains.
+The SmallK library provides a number of algorithm implementations for low rank approximation of a matrix. These can be used for performing various data analytics tasks such as topic modeling, clustering, and dimension reduction. This section will provide more in-depth description of the tools available with examples that can be expanded/modified for other application domains.
 
 Before diving into the various tools, it will be helpful to set up the command line environment to easily run the various executables that comprise the SmallK library. First the command line needs to know where to find the executable files to run the tools. Since while installing SmallK  ‘make_install’ was run, the executables are located in /usr/local/smallk/bin. Thus, this should be added to the ‘$PATH’ system variable or added to the environment. The following command line performs the task of modifying the path avoiding the need to cd into directories were the tools are located:
 
@@ -42,6 +42,13 @@ Before diving into the various tools, it will be helpful to set up the command l
 
 This allows the tools to be executed from any directory.
 
+A subset of these tools are also available from the pysmallk library: smallkapi (mirrors the NMF command line application), matrixgen, preprocessor, flatclust, and hierclust. The command line arguments are the same as those documented below. These tools are available within the /pysmallk/tests/ directory and can be executed as follows:
+
+		[python binary] [tool].py [command line arguments]
+
+For example:
+
+		python preprocessor.py --indir smallk_data
 
 <h1 id="preproc"> Preprocessor </h1>
 
@@ -56,8 +63,7 @@ Columns (docs) are pruned if a given document contains fewer than 'TERMS_PER_DOC
 Whenever columns (documents) are pruned the preprocessor checks the remaining columns for uniqueness.  Any duplicate columns are identified and a representative column is chosen as the survivor. The code always selects the column with the largest column index in such groups as the survivor. The preprocessor continues to prune rows and columns until it finds no further candidates for pruning. It then computes new tf-idf scores for the resulting entries and writes out the result matrix in MatrixMarket format.
 
 If the preprocessor should prune all rows or columns, it writes an error message to the screen and terminates without generating any output.
-
-[--back to top--](#top)
+<br>[—back to top--](#top)
 
 <h2 id="input_files"> Input Files </h2>
 
@@ -72,7 +78,9 @@ The second file required by the preprocessor is a ‘dictionary file’.  This i
 		circuit
 		...
 
-The third file required by the preprocessor is a ‘documents file’.  This is another simple ASCII text file containing one entry per line.  Entries represent document names or other unique identifiers.  The smallk/data folder also contains a sample documents file called ‘documents.txt’.  The first few entries of this file are:		52828-11101.txt
+The third file required by the preprocessor is a ‘documents file’.  This is another simple ASCII text file containing one entry per line.  Entries represent document names or other unique identifiers.  The smallk/data folder also contains a sample documents file called ‘documents.txt’.  The first few entries of this file are:
+
+		52828-11101.txt
 		51820-10202.txt
 		104595-959.txt
 		60259-3040.txt
@@ -81,8 +89,7 @@ The third file required by the preprocessor is a ‘documents file’.  This is 
 These are the unique document identifiers for the user who generated the file.  Your identifiers will likely have a different format.
 
 Finally, the preprocessor requires these files to have the following names: matrix.mtx, dictionary.txt, and documents.txt.  The input folder containing these files can be specified on the command line (described below).  The output of the preprocessor is a new set of files called ‘reduced_matrix.mtx’, ‘reduced_dictionary.txt’, and ‘reduced_documents.txt’.
-
-[--back to top--](#top)
+<br>[—back to top--](#top)
 
 <h2 id="cmd_options"> Command Line Options </h2>
 
@@ -97,10 +104,12 @@ The preprocessor binary is called ‘preprocess_tf’, to emphasize the fact tha
 		[--precision 4]
 		[--boolean_mode 0]
 
-Only the first parameter, --indir, is required.  All remaining params are optional and have the default values indicated.The meanings of the various options are as follows:
+Only the first parameter, --indir, is required.  All remaining params are optional and have the default values indicated.
+
+The meanings of the various options are as follows:
 
 	1. --indir: path to the folder containing the files ‘matrix.mtx’, ‘dictionary.txt’, 
-		and ‘documents.txt’
+		and ‘documents.txt’; may be in small_data for example
 	2. –-outdir: path to the folder to into which results should be written
 	3. –-docs_per_term: any rows whose entries sum to less than this value will be pruned
 	4. –-terms_per_doc: any columns whose entries sum to less than this value will be pruned
@@ -142,8 +151,7 @@ Here is a sample run of the preprocessor using the data provided in the smallk d
 	Writing dictionary file reduced_dictionary.txt
 	Writing documents file reduced_documents.txt
 	Dictionary + documents write time: 0.08s.
-
-[--back to top--](#top)
+[—back to top--](#top)
 
 <h1 id="matrix_gen"> Matrixgen </h1>
 
@@ -197,7 +205,7 @@ Suppose we want to generate a matrix of uniformly-distributed random numbers.  T
 
 	matrixgen –-height 100 –-width 16 –-filename w_init.csv
 
-[--back to top--](#top)
+<br>[—back to top--](#top)
 
 <h1 id="nmf"> Nonnegative Matrix Factorization (NMF) </h1>
 
@@ -217,7 +225,7 @@ Running the nmf application with no command line parameters will cause the appli
 	Usage: nmf
         --matrixfile <filename>  Filename of the matrix to be factored.
                                  Either CSV format for dense or MatrixMarket format for sparse.
-        --k <integer value>      The common dimension for factors W and H.
+        --k <integer value>      Inner dimension for factors W and H.
         [--algorithm  BPP]       NMF algorithms: 
                                      MU:    multiplicative updating 
                                      HALS:  hierarchical alternating least squares
@@ -244,15 +252,14 @@ Running the nmf application with no command line parameters will cause the appli
                                      1 == yes, 0 == no 
         [--verbose  1]           Whether to print updates to the screen. 
                                      1 == print updates, 0 == silent
-
-[--back to top--](#top)
+[—back to top--](#top)
 
 The –-matrixfile and –-k options are required; all others are optional and have the default values indicated.  The meanings of the various options are as follows:
 
 	1.  --matrixfile: Filename of the matrix to be factored.  CSV files are supported for 
 		dense 
 		matrices and MTX files for sparse matrices.
-	2.  –-k: the width of the W matrix (identical to the height of the H matrix)
+	2.  –-k: the width of the W matrix (inner dimension of the matrix factors)
 	3.  –-algorithm: identifier for the factorization algorithm
 	4.  –-stopping: the method used to terminate the iterations; use PG_RATIO unless you 
 		have a specific reason not to
@@ -281,15 +288,19 @@ The –-matrixfile and –-k options are required; all others are optional and h
 		scale the rows of H after convergence
 	16. –-verbose: whether to display updates to the screen as the iterations progress 
 
-[--back to top--](#top)
+[—back to top--](#top)
 
 <h2 id="sample_run_nmf"> Sample Runs </h2>
 
-The smallk distribution contains a ‘data’ directory with a matrix file ‘reuters.mtx’.  This is a tf-idf weighted matrix derived from the popular Reuters data set used in machine learning experiments.  
+The smallk distribution utilizes another repository [smallk_data](https://github.com/smallk/smallk_data) (clone this repository from github) with a matrix file ‘reuters.mtx’.  This is a tf-idf weighted matrix derived from the popular Reuters data set used in machine learning experiments.  
 
-Suppose we want to factor the Reuters matrix using a k value of 8.  We would do that as follows, assuming that we are in the top-level smallk folder after building the code:
+Suppose we want to factor the Reuters matrix using a k value of 8.  We would do that as follows, assuming that we are in the top-level smallk folder after building the code and that the smallk_data repository was cloned into ‘data’:
 
 		nmf/bin/nmf –-matrixfile data/reuters.mtx  --k 8
+
+Note that if ‘make install’ was run during installation and the $PATH variable or environment variable was set as above, this could also be called with:
+
+		usr/local/bin/nmf –-matrixfile data/reuters.mtx  --k 8
 
 If we want to instead use the HALS algorithm with k=16, a tolerance of 1.0e-4, and also perform 10 iterations prior to checking progress, we would use this command line:
 
@@ -316,18 +327,19 @@ First, we briefly describe the algorithm and the references section provides poi
 	3.  Compute a score for each of the two leaf nodes generated in step 2
 	4.  Repeat until the desired number of leaf nodes has been generated
 
-Step 2 implements the details of the node splitting into child nodes. Outlier detection plays a crucial role in hierarchical clustering to generate a tree with well-balanced and meaningful clusters. To implement this, we have two additional parameters in step 2: trial_allowance and unbalanced.
+Step 2 implements the details of the node splitting into child nodes. Outlier detection plays a crucial role in hierarchical clustering to generate a tree with well-balanced and meaningful clusters. To implement this, we have two additional parameters in step 2: *trial_allowance* and *unbalanced*.
 
-The parameter trial_allowance is the number of times that the program will try to split a node into two meaningful clusters. In each trial, the program will check if one of the two generated leaf nodes is an outlier set. If the outlier set is detected, the program will delete the items in the outlier set from the node being split and continue to the next trial. If all the trials are finished and the program still cannot find two meaningful clusters for this node, all the deleted items are “recycled” and placed into this node again, and this node will be labeled as a “permanent leaf node” that cannot be picked in step 1 in later iterations.
+The parameter *trial_allowance* is the number of times that the program will try to split a node into two meaningful clusters. In each trial, the program will check if one of the two generated leaf nodes is an outlier set. If the outlier set is detected, the program will delete the items in the outlier set from the node being split and continue to the next trial. If all the trials are finished and the program still cannot find two meaningful clusters for this node, all the deleted items are “recycled” and placed into this node again, and this node will be labeled as a “permanent leaf node” that cannot be picked in step 1 in later iterations.
 
-The parameter unbalanced is a threshold parameter to determine whether two generated leaf nodes are unbalanced. Suppose two potential leaf nodes L and R are generated from the selected node and L has fewer items than R. Let us denote the number of items in a node N as <span style="font-weight: bold;">&#124;N&#124;</span>. L and R are called unbalanced if 
+The parameter *unbalanced* is a threshold parameter to determine whether two generated leaf nodes are unbalanced. Suppose two potential leaf nodes L and R are generated from the selected node and L has fewer items than R. Let us denote the number of items in a node N as <span style="font-weight: bold;">&#124;N&#124;</span>. L and R are called *unbalanced* if 
 
 <p style="text-align: center; font-weight: bold;">|L| &lt; unbalanced * (|L|+|R|)</p>
 
 Note that if L and R are unbalanced, the potential node L with fewer items is not necessarily regarded as an outlier set. Please see the referenced paper for more details [[3](http://smallk.github.io/publications/)].
 
 Internally, NMF-RANK2 is applied to each leaf node to compute the score in step 3. The computed result matrices W and H in step 3 are cached so that we can avoid duplicate work in step 2 in later iterations.
-The score for each leaf node is based on a modified version of the NDCG (Normalized Discounted Cumulative Gain) measure, a common measure in the information retrieval community. A leaf node is associated with a “topic vector”, and we can define “top terms” based on the topic vector. A leaf node will receive a high score if its top terms are a good combination of the top terms of its two potential children; otherwise it receives a low score.
+
+The score for each leaf node is based on a modified version of the NDCG (*Normalized Discounted Cumulative Gain*) measure, a common measure in the information retrieval community. A leaf node is associated with a “topic vector”, and we can define “top terms” based on the topic vector. A leaf node will receive a high score if its top terms are a good combination of the top terms of its two potential children; otherwise it receives a low score.
 
 The hierclust application generates two output files.  One file contains the assignments of documents to clusters.  This file contains one integer for each document (column) of the original matrix.  The integers are the cluster labels for that cluster that the document was assigned to.  If the document could not be assigned to a cluster, a -1 will be entered into the file, indicating that the document is an outlier.
 
@@ -350,8 +362,7 @@ The other output file contains information for each node in the factorization bi
 	10. top_terms: the highest probability dictionary terms for this node
 
 The node id values and the left or right child indicators can be used to unambiguously reconstruct the factorization tree. 
-
-[--back to top--](#top)
+<br>[—back to top--](#top)
 
 <h2 id="cmd_options_hier"> Command Line Options </h2>
 
@@ -428,7 +439,9 @@ The –-matrixfile, --dictfile, and –-clusters options are required; all other
 
 <h2 id="sample_run_hier"> Sample Runs </h2>
 
-The smallk distribution contains a ‘data’ directory with a matrix file ‘reuters.mtx’ and an associated dictionary file ‘reuters_dictionary.txt’.  These files are derived from the popular Reuters data set used in machine learning experiments.  
+The smallk distribution has available a ‘smallk_data’ repository on github with a matrix file ‘reuters.mtx’ and an associated dictionary file ‘reuters_dictionary.txt’.  These files are derived from the popular Reuters data set used in machine learning experiments.  
+
+As above, it is assumed that the [smallk_data](https://github.com/smallk/smallk_data) repository was cloned into ‘data’ and that the commands can be run as below or from /usr/local/bin.
 
 Suppose we want to perform hierarchical clustering on this data set and generate 10 leaf nodes.  We would do that as follows, assuming that we are in the top-level smallk folder after building the code:
 
@@ -447,15 +460,13 @@ To generate a flat clustering result (in addition to the hierarchical clustering
 		hierclust/bin/hierclust –-matrixfile data/reuters.mtx  --dictfile data/reuters_dictionary.txt --clusters 10 –-maxterms 8 –-format JSON –-flat 1
 
 Two additional files will be generated this time (along with tree_10.json and assignments_10.csv): ‘clusters_10.json’, which contains the flat clustering results, and ‘assignments_flat_10.csv’, which contains the flat clustering assignments.
-
-
-[--back to top--](#top)
+<br>[—back to top--](#top)
 
 <h1 id="flat"> Flatclust </h1>
 
 <h2 id="overview_flat"> Overview </h2>
 
-The flatclust command line application factors the input matrix using either NMF-HALS or NMF-BPP and generates a flat clustering result.  A flatclust run generating k clusters will generally run more slowly than a hierclust run, of the same number of clusters, with the –-flat option enabled.  The reason for this is that the hierclust application uses the NMF-RANK2 algorithm and always generates factor matrices with two rows or columns.  The runtime of NMF scales superlinearly with k, and thus runs fastest for the smallest k value. 
+The flatclust command line application factors the input matrix using either NMF-HALS or NMF-BPP and generates a flat clustering result.  A flatclust run generating k clusters will generally run more slowly than a hierclust run, of the same number of clusters, with the –-flat option enabled.  The reason for this is that the hierclust application uses the NMF-RANK2 algorithm and always generates factor matrices with two rows or columns.  The runtime of NMF scales superlinearly with k in this case, and thus runs fastest for the smallest k value. 
 
 The flatclust application generates two output files.  The first file contains the assignments of documents to clusters and is interpreted identically to that of the hierclust application, with the exception that there are no outliers generated by flatclust.
 
@@ -471,8 +482,7 @@ Running the flatclust application with no command line parameters will cause the
 
 	Usage: flatclust
         --matrixfile <filename>      Filename of the matrix to be factored.
-                                     Either CSV format for dense or MatrixMarket format for 
-									sparse.
+                                     Either CSV format for dense or MatrixMarket format for sparse.
         --dictfile <filename>        The name of the dictionary file.
         --clusters <integer>         The number of clusters to generate.
         [--algorithm  BPP]           The NMF algorithm to use: 
@@ -506,6 +516,8 @@ Running the flatclust application with no command line parameters will cause the
                                           N is the number of clusters for this run.
                                           This filename is relative to the outdir.
 
+[--back to top--](#top)
+
 The –-matrixfile, --dictfile, and –-clusters options are required; all others are optional and have the default values indicated.  The meanings of the various options are as follows:
 
 	1.  --matrixfile: Filename of the matrix to be factored.  CSV files are supported 
@@ -532,11 +544,12 @@ The –-matrixfile, --dictfile, and –-clusters options are required; all other
 		by the format parameter
 	16. –-assignfile: name of the output file for the cluster assignments
 
-[--back to top--](#top)
 
 <h2 id="sample_run_flat"> Sample Runs </h2>
 
-The smallk distribution contains a ‘data’ directory with a matrix file ‘reuters.mtx’ and an associated dictionary file ‘reuters_dictionary.txt’.  These files are derived from the popular Reuters data set used in machine learning experiments.  
+The smallk distribution has available a ‘smallk_data’ repository on github with a matrix file ‘reuters.mtx’ and an associated dictionary file ‘reuters_dictionary.txt’.  These files are derived from the popular Reuters data set used in machine learning experiments.  
+
+As above, it is assumed that the [smallk_data](https://github.com/smallk/smallk_data) repository was cloned into ‘data’ and that the commands can be run as below or from /usr/local/bin.
 
 Suppose we want to perform flat clustering on this data set and generate 10 clusters.  We would do that as follows, assuming that we are in the top-level smallk folder after building the code:
 
@@ -549,7 +562,5 @@ If we want to instead generate 10 clusters, each with 8 terms, using JSON output
 		flatclust/bin/flatclust –-matrixfile data/reuters.mtx  --dictfile data/reuters_dictionary.txt --clusters 10 –-maxterms 8 –-format JSON
 
 Two files will be generated: clusters_10.json and assignments_10.csv.  The json file will have 8 keywords per node, whereas the clusters_10.xml file will have only 5.
-
-[--back to top--](#top)
-
+<br>[—back to top--](#top)
 
