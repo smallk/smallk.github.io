@@ -534,7 +534,7 @@ After downloading and unpacking the code tarball cd into the top-level SmallK di
 Assuming that the default install locations are acceptable, build the SmallK code by running this command from the root directory of the distribution:
 
 		make all
-This will build the SmallK library and several command-line applications.  These are:
+This will build the SmallK library and several command-line applications. These are:
 
 	1. libsmallk.a, the SmallK library
 	2. preprocess_tf, a command-line application for processing and scoring term-frequency matrices
@@ -542,7 +542,7 @@ After downloading and unpacking the code tarball cd into the top-level SmallK di
 	4. nmf, a command-line application for NMF
 	5. hierclust, a command-line application for fast hierarchical clustering
 	6. flatclust, a command-line application for flat clustering via NMF
-	7. pysmallk.so, the Python-wrapped SmallK library, making SmallK available via Python
+	7. pysmallk.so, if PYSMALLK=1 (0: default), the Python-wrapped SmallK library, making SmallK available via Python
 To install the code, run this command to install to the default location, which is /usr/local/smallk:
 
 		make install
@@ -593,7 +593,7 @@ To build the smallk example project, open a terminal window and cd to the smallk
 
 To run the example project, run this command:
 
-		./bin/example ../data
+		./bin/example ../../smallk_data
 
 Note: the output will be *similar* to the following not identical since some problems are randomly initialized:
 
@@ -948,6 +948,7 @@ The default NMF algorithm is BPP.  The Rank2 algorithm is optimized for two-colu
     		XML,  // Extensible Markup Language
     		JSON  // JavaScript Object Notation
 	};
+<br>[—back to top--](#top)
 
 <h3 id="api_functions"> API functions </h3>
 
@@ -1023,8 +1024,7 @@ Sets an upper limit to the number of threads used for NMF and clustering computa
 	void Reset()
 
 Resets all state variables to their default values. 
-
-[--back to top--](#top)
+<br>[—back to top--](#top)
 
 
 	void SeedRNG(const int seed)
@@ -1046,8 +1046,7 @@ Returns a string indicating the directory into which output files will be writte
 	void SetOutputDir(const std::string& outdir)
 
 Sets the directory into which output files should be written. The ‘outdir’ argument can either be an absolute or relative path.  The default is the current directory.
-
-[--back to top--](#top)
+<br>[—back to top--](#top)
 
 <h4 id="nmf_funcs"> NMF functions </h4>
 
@@ -1056,9 +1055,9 @@ Sets the directory into which output files should be written. The ‘outdir’ a
  		const std::string& initfile_w = std::string(“”),
  		const std::string& initfile_h = std::string(“”))
 
-This function nonnegatively factors the loaded input matrix A as follows: A ~ WH.  If a matrix is not currently loaded a std::logic_error exception will be thrown.  The default algorithm is NMF-BPP; provide one of the enumerated algorithm values to use a different algorithm.
+This function factors the input matrix A of nonnegative elements into nonnegative factors such that: A &cong; WH.  If a matrix is not currently loaded a std::logic_error exception will be thrown.  The default algorithm is NMF-BPP; provide one of the enumerated algorithm values to use a different algorithm.
 
-Matrix A has dimension mxn; matrix W has dimension mxk; matrix H has dimension kxn.  The value of k is provided as an argument.
+Where A is mxn, W is mxk, and H is kxn.  The value of k a user defined argument, e.g., for clustering applications, k is the number of clusters.
 
 Optional initializer matrices can be provided for the W and H factors via the ‘initfile_w’ and ‘initfile_h’ arguments. These files must contain fully dense matrices in .CSV format.  The W matrix initializer must have dimension mxk, and the H matrix initializer must have dimension kxn. If the initializer matrices do not match these dimensions exactly a std::logic_error exception is thrown.  If initializers are not provided, matrices W and H will be randomly initialized.
 
@@ -1087,8 +1086,7 @@ Clustering Functions
 	void LoadDictionary(const std::string& filepath)
 
 Loads the dictionary used for clustering. The dictionary is an ASCII file of text strings as described in the preprocessor input files section below.  If the dictionary file cannot be loaded a std::runtime_error exception is thrown.
-
-[--back to top--](#top)
+<br>[—back to top--](#top)
 
 	unsigned int GetMaxTerms()
 
@@ -1125,8 +1123,7 @@ The content of the files is described below in the section on the hierclust comm
 	void HierNmf2WithFlat(const unsigned int num_clusters)
 
 This function performs hierarchical clustering on the loaded matrix, exactly as described for HierNmf2. In addition, it also computes a flat clustering result.  Thus four output files are generated.  The flat clustering result files are ‘assignments_flat_N.csv’ and ‘clusters_N.{json, xml}’.  The cluster file contents are documented below in the section on the flatclust command line application.
-
-[--back to top--](#top)
+<br>[—back to top--](#top)
 
 
 Disclaimer
@@ -1145,21 +1142,21 @@ For comments, questions, bug reports, suggestions, etc., contact:
 
 Richard Boyd <br>
 Senior Research Scientist <br>
-Cyber Technology and Information Security Laboratory <br>
-Georgia Tech Research Institute <br>
-250 14th St NW <br>
-Atlanta, GA 30318 <br>
+Information and Communications Laboratory (ICL) <br>
+Information and Cyber Sciences Directorate (ICSD) <br>
+Georgia Tech Research Institute (GTRI) <br>
+75 5TH St. NW STE 900 <br>
+ATLANTA, GA 30308-1018 <br>
 <span><a href="mailto:richard.boyd@gtri.gatech.edu">richard.boyd@gtri.gatech.edu</a></span>
 
 Barry Drake <br>
 Senior Research Scientist <br>
-Cyber Technology and Information Security Laboratory <br>
-Georgia Tech Research Institute <br>
-250 14th St NW <br>
-Atlanta, GA 30318 <br>
-<span><a href="mailto:barry.drake@gtri.gatech.edu">barry.drake@gtri.gatech.edu</a></span>
-
-[--back to top--](#top)
-
+Information and Communications Laboratory (ICL) <br>
+Information and Cyber Sciences Directorate (ICSD) <br>
+Georgia Tech Research Institute (GTRI) <br>
+75 5TH St. NW STE 900 <br>
+ATLANTA, GA 30308-1018
+<br><span><a href="mailto:barry.drake@gtri.gatech.edu">barry.drake@gtri.gatech.edu</a></span>
+<br>[—back to top--](#top)
 
 
