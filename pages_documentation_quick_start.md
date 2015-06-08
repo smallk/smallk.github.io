@@ -67,6 +67,7 @@ Suppose you want to perform NMF or clustering on a matrix. The first action to t
 		smallk::LoadMatrix(filepath_matrix);
 
 Save the file and run the following commands, which should complete without error:
+
 		make clean
 		make
 
@@ -75,8 +76,7 @@ Once a matrix is loaded into SmallK it remains loaded until it is replaced with 
 <h1 id="run_nmf"> Perform NMF on the Loaded Matrix </h1>
 
 Having loaded the Reuters matrix, we can now run different NMF algorithms and factor the matrix in various ways. The SmallK code factors the loaded matrix (denoted by A) as A ~ W*H, where A is mxn, W is mxk, and H is kxn.  The NMF is a low-rank approximation where the value of k, the rank, is an input parameter to the factorization routines, and is generally much smaller than either m or n. Matrix A can be either sparse or dense; matrices W and H are always dense.
-
-[--back to top--](#top)
+<br>[—back to top--](#top)
 
 <h2 id="bpp"> NMF-BPP </h2>
 
@@ -117,7 +117,7 @@ Typically the use of initializers is not required.
 
 <h1 id="hier"> Hierarchical Clustering </h1>
 
-Now let’s perform hierarchical clustering on the Reuters matrix. To do this, we must first load the dictionary file associated with the Reuters data (a file called ‘reuters_dictionary.txt’).  A string variable containing the full path to this file is provided in the ‘filepath_dict’ variable.  Add the following line to the code to load the Reuters dictionary:
+Now let’s perform hierarchical clustering on the Reuters matrix. To do this, we must first load the dictionary (or vocabulary) file associated with the Reuters data (a file called ‘reuters_dictionary.txt’).  A string variable containing the full path to this file is provided in the ‘filepath_dict’ variable.  Add the following line to the code to load the Reuters dictionary:
 
 		smallk::LoadDictionary(filepath_dict);
 
