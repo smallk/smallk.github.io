@@ -133,9 +133,9 @@ The call to SetMaxTerms increases the number of top terms per node. The next lin
 	3.	‘tree_18.json’, the hierarchical factorization tree
 	4.	‘clusters_18.json’, the flat clustering results
  
-These examples demonstrate how easy it is to use SmallK for NMF and clustering. There are additional functions in the SmallK interface, described in the documentation, that allow users to set various parameters that affect the factorization and clustering algorithms.  The default values for all such parameters are very reasonable, and most users will likely not ever need to change these parameters.
+These examples demonstrate how easy it is to use SmallK for NMF and clustering. There are additional functions in the SmallK interface, described in the documentation, installation section, which allows users to set various parameters that affect the various NMF-based algorithms of SmallK.  The default values for all such parameters are very reasonable, and most users will likely not ever need to change these parameters.
 
-The smallk_examples.cpp file and the associated makefile can be used as starting points for your own NMF and clustering projects.  
+The smallk_examples.cpp file and the associated makefile can be used as a starting points for your own NMF and clustering projects.  
 
 [--back to top--](#top)
 
@@ -156,18 +156,20 @@ For comments, questions, bug reports, suggestions, etc., contact:
 
 Richard Boyd <br>
 Senior Research Scientist <br>
-Cyber Technology and Information Security Laboratory <br>
-Georgia Tech Research Institute <br>
-250 14th St NW <br>
-Atlanta, GA 30318 <br>
+Information and Communications Laboratory (ICL) <br>
+Information and Cyber Sciences Directorate (ICSD) <br>
+Georgia Tech Research Institute (GTRI) <br>
+75 5TH St. NW STE 900 <br>
+ATLANTA, GA 30308-1018
 <span><a href="mailto:richard.boyd@gtri.gatech.edu">richard.boyd@gtri.gatech.edu</a></span>
 
 Barry Drake <br>
 Senior Research Scientist <br>
-Cyber Technology and Information Security Laboratory <br>
-Georgia Tech Research Institute <br>
-250 14th St NW <br>
-Atlanta, GA 30318 <br>
+Information and Communications Laboratory (ICL) <br>
+Information and Cyber Sciences Directorate (ICSD) <br>
+Georgia Tech Research Institute (GTRI) <br>
+75 5TH St. NW STE 900 <br>
+ATLANTA, GA 30308-1018
 <span><a href="mailto:barry.drake@gtri.gatech.edu">barry.drake@gtri.gatech.edu</a></span>
 
 
