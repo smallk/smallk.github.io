@@ -65,7 +65,9 @@ This can take as long as an hour to build the VM, which will be based on a minim
 
 _[Note: For Windows, you will need an ssh client in order to run the above command. This can be obtained via [CygWin](https://www.cygwin.com/), [MinGW](http://sourceforge.net/projects/mingw/files/), or [Git](http://git-scm.com/downloads). If you would like to use PuTTY to connect to your virtual machine, follow [these](https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Connect-to-Your-Vagrant-Virtual-Machine-with-PuTTY) instructions.]_
 
-This will drop you into the command line of the VM that was just created. From there, you can navigate to /home/vagrant/libsmallk-<version>, e.g., libsmallk-1.6.0, and run
+This will drop you into the command line of the VM that was just created. Note that the *bootstrap.ssh* file can be modified to perform various tasks when going to the vagrant command line session. Customize bootstrap.sh to set up a custom install of libsmallk as required.
+
+From there, you can navigate to /home/vagrant/libsmallk-<version>, e.g., libsmallk-1.6.0, and run
 
 		make all
 		make check
