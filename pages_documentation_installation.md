@@ -88,7 +88,7 @@ will install smallk to the /usr/local/smallk/bin directory. Now add this directo
 		export PATH=/usr/local/smallk/bin:$PATH
 [--back to top--](#top)
 
-**5.** To test the installation, at the command line, assuming the $PATH variable has been set as above, run
+**5.** To test the installation at the command line, assuming the $PATH variable has been set as above, run
 
 		nmf
 
