@@ -22,13 +22,14 @@ permalink: /documentation/installation/
     *   [Linux:Install libFlame](#lin_libflame)
     *   [Linux:Install BLAS Library](#lin_blas)
     *   [Linux:Install Elemental](#lin_elemental)
-*   [Installation of Python libraries](#python_install)
-    *   [OSX:Install Python libraries](#osx_python)
-    *   [Linux:Install Python libraries](#lin_python)
 *   [Build and Installation of SmallK](#smalk)
     *   [Obtain the source code](#source_code)
     *   [Build the SmallK library](#build_smallk)
     *   [Matrix File Formats](#matrix_files)
+*   [Installation of Python libraries](#python_install)
+    *   [OSX:Install Python libraries](#osx_python)
+    *   [Linux:Install Python libraries](#lin_python)
+    *   [Build pysmallk shared library](#build_python)
 *   [Contact Information](#contact)
 
 
@@ -623,7 +624,7 @@ The Python libraries can easily be installed via pip and apt-get with the follow
 		pip install cython
 
 
-<h2 id="lin_python"> Build pysmallk shared library</h2>
+<h2 id="build_python"> Build pysmallk shared library</h2>
 Before building pysmallk, you must ensure that you have already built the standard SmallK library and applications: libsmallk, preprocessor, matrixgen, hierclust, and flatclust.
 
 All C++ and python libraries and applications can be built simultaneously by setting the PYSMALLK command line variable:
@@ -645,7 +646,7 @@ To install the shared library in a globally accessible location, enable the PYSM
 To uninstall the libraries:
 		make uninstall PYSMALLK=1	INSTALLATION_DIR=/usr/local/lib/python2.7/site-packages/
 
-<h2 id="matrix_files"> Matrix file formats </h2>
+<h1 id="matrix_files"> Matrix file formats </h1>
 
 The SmallK software supports comma-separated value (CSV) files for dense matrices and [Matrix Market](http://math.nist.gov/MatrixMarket/formats.html) files for sparse matrices.
 

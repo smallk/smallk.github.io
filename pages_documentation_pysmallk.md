@@ -13,7 +13,6 @@ permalink: /documentation/pysmallk/
 *   [Pysmallk Functions](#functions)
     *   [Preprocessor](#preprocessor)
     *   [Matrixgen](#matrixgen)
-    *   [SmallkAPI](#matrix_files)
     *   [SmallK API](#smallkapi)
     *   [Flatclust](#flatclust)
     *   [Heirclust](#hierclust)
