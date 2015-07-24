@@ -9,14 +9,14 @@ permalink: /documentation/smallkapi/
 
 <h1 id="top">Contents</h1>
 ---------------------
-    *   [Examples of API Usage](#example_api)
-    *   [SmallK API](#smallk_api)
-        * [Enumerations](#enums)
-        * [API functions](#api_functions)
-            * [Initialization and cleanup](#init_cleanup)
-            * [Versioning ](#versions)
-            * [Common functions](#common_funcs)
-            * [NMF functions](#nmf_funcs)
+*   [Examples of API Usage](#example_api)
+*   [SmallK API](#smallk_api)
+    * [Enumerations](#enums)
+    * [API functions](#api_functions)
+        * [Initialization and cleanup](#init_cleanup)
+        * [Versioning ](#versions)
+        * [Common functions](#common_funcs)
+        * [NMF functions](#nmf_funcs)
 
 <h2 id="example_api"> Examples of API Usage </h2>
 
