@@ -20,6 +20,7 @@ IEEE Transactions on Geoscience and Remote Sensing, 2014.](http://www.cc.gatech.
 6. [Jaegul Choo, Barry Drake, and Haesun Park, “Visual analytics for interactive exploration of large-scale document data via Nonnegative Matrix Factorization”,
 Proceedings for BigData Innovators Gathering (BIG) 2014, co-located with WWW2014, Seoul, Korea, 2014.](http://www.cc.gatech.edu/~hpark/papers//big_vanmf.pdf)  
 -----
+
 If the SmallK library is used to obtain results for publication, please use the following BibTeX citation:
 
 	@misc{SmallK,
