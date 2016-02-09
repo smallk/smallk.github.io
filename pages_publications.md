@@ -12,7 +12,7 @@ permalink: /publications/
 
 3. [Jaegul Choo, Changhyun Lee, Chandan K. Reddy, and Haesun Park, "UTOPIAN: User-driven Topic modeling based on interactive nonnegative matrix factorization", IEEE Transactions on Visualization and Computer Graphics (TVCG), 19-12, pages 1992-2001, 2013.](https://smallk.github.io/papers/2013_tvcg_utopian.pdf)
 
-4. [Da Kuang and Haesun Park, "Fast Rank-2 Nonnegative Matrix Factorization for Hierarchical Document Clustering", Proceedings 19th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '13), 2013.](https://smallk.github.io/papers/fp0269-kuang.pdf)
+4. [Da Kuang and Haesun Park, "Fast Rank-2 Nonnegative Matrix Factorization for Hierarchical Document Clustering", Proceedings 19th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '13), 2013.](https://smallk.github.io/papers/hierNMF2.pdf)
 
 5. [Nicolas Gillis, Da Kuang and Haesun Park, “Hierarchical clustering of hyperspectral images using rank-two nonnegative matrix factorization”,
 IEEE Transactions on Geoscience and Remote Sensing, 2014.](https://smallk.github.io/papers/HierNMFImage.pdf)
