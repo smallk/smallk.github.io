@@ -30,10 +30,10 @@ If the SmallK library is used to obtain results for publication, please use the 
   		title        = {SmallK is a {C++}{/}{P}ython high-performance software
 						library for nonnegative matrix factorization
 						(NMF) and hierarchical and flat clustering using 
-						the NMF; current version 1.2.0},
+						the NMF; current version 1.6.0},
   		howpublished = {\url{http://smallk.github.io/}},
   		month        = June,
-  		year         = 2014
+  		year         = 2016
 	}
 
 
