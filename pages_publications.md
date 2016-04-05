@@ -32,8 +32,8 @@ If the SmallK library is used to obtain results for publication, please use the 
 						(NMF) and hierarchical and flat clustering using 
 						the NMF; current version 1.6.0},
   		howpublished = {\url{http://smallk.github.io/}},
-  		month        = June,
-  		year         = 2016
+  		month        = {June},
+  		year         = {2016}
 	}
 
 
