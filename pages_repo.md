@@ -21,21 +21,29 @@ Installation and build instructions can be found at:
 <h2 id="contact">Contact Info</h2>
 For comments, questions, bug reports, suggestions, etc., contact:
 
-Richard Boyd <br>
-Senior Research Scientist <br>
+Ashley Beavers <br>
+Research Scientist <br>
 Information and Communications Laboratory (ICL) <br>
 Information and Cyber Sciences Directorate (ICSD) <br>
 Georgia Tech Research Institute (GTRI) <br>
 75 5TH St. NW STE 900 <br>
 ATLANTA, GA 30308-1018
-<span><a href="mailto:richard.boyd@gtri.gatech.edu">richard.boyd@gtri.gatech.edu</a></span>
+<span><a href="mailto:ashley.beavers@gtri.gatech.edu">ashley.beavers@gtri.gatech.edu</a></span>
 
 Barry Drake <br>
-Senior Research Scientist <br>
+Research Scientist <br>
 Information and Communications Laboratory (ICL) <br>
 Information and Cyber Sciences Directorate (ICSD) <br>
 Georgia Tech Research Institute (GTRI) <br>
 75 5TH St. NW STE 900 <br>
 ATLANTA, GA 30308-1018
 <span><a href="mailto:barry.drake@gtri.gatech.edu">barry.drake@gtri.gatech.edu</a></span>
+
+Richard Boyd <br>
+Research Scientist <br>
+Information and Communications Laboratory (ICL) <br>
+Information and Cyber Sciences Directorate (ICSD) <br>
+Georgia Tech Research Institute (GTRI) <br>
+75 5TH St. NW STE 900 <br>
+ATLANTA, GA 30308-1018
 

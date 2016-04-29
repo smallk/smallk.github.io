@@ -13,3 +13,32 @@ nonnegativty constraints, NMF has far superior interpretability of its results f
 Our approach to solving the NMF nonconvex optimization
 problem has proven convergence properties and is one of the most efficient 
 methods developed to date.
+
+<h2 id="contact">Contact Info</h2>
+For comments, questions, bug reports, suggestions, etc., contact:
+
+Ashley Beavers <br>
+Research Scientist <br>
+Information and Communications Laboratory (ICL) <br>
+Information and Cyber Sciences Directorate (ICSD) <br>
+Georgia Tech Research Institute (GTRI) <br>
+75 5TH St. NW STE 900 <br>
+ATLANTA, GA 30308-1018
+<span><a href="mailto:ashley.beavers@gtri.gatech.edu">ashley.beavers@gtri.gatech.edu</a></span>
+
+Barry Drake <br>
+Research Scientist <br>
+Information and Communications Laboratory (ICL) <br>
+Information and Cyber Sciences Directorate (ICSD) <br>
+Georgia Tech Research Institute (GTRI) <br>
+75 5TH St. NW STE 900 <br>
+ATLANTA, GA 30308-1018
+<span><a href="mailto:barry.drake@gtri.gatech.edu">barry.drake@gtri.gatech.edu</a></span>
+
+Richard Boyd <br>
+Research Scientist <br>
+Information and Communications Laboratory (ICL) <br>
+Information and Cyber Sciences Directorate (ICSD) <br>
+Georgia Tech Research Institute (GTRI) <br>
+75 5TH St. NW STE 900 <br>
+ATLANTA, GA 30308-1018
