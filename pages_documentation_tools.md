@@ -412,7 +412,8 @@ The –-matrixfile, --dictfile, and –-clusters options are required; all other
 		matrices used is non-deterministic, so trial-and-error may be required to find 
 		a lower bound on the matrix count. This feature is used for testing (such as 
 		comparisons with Matlab), in which each factorization problem has to proceed 
-		from a known initializer.
+		from a known initializer. The W initializer matrices must be of shape m x 2,
+		and the H initializer matrices must be of shape 2 x n.
 	5.  –-tol: tolerance value for each internal NMF-RANK2 factorization; the stopping 
 		criterion is the ratio of projected gradient method
 	6.  –-outdir: path to the folder into which to write the output files; if omitted 
