@@ -405,13 +405,14 @@ The –-matrixfile, --dictfile, and –-clusters options are required; all other
 		dense matrices and MTX files for sparse matrices.
 	2.  –-dictfile: absolute or relative path to the dictionary file
 	3.  –-clusters: the number of leaf nodes (clusters) to generate
-	4.  –-init_dir:  Initializer matrices for W and H are loaded from the init_dir directory. 
-		The matrices are assumed to have the names Winit_1.csv, Hinit_1.csv, Winit_2.csv, 
-		Hinit_2.csv, etc. It is up to the user to ensure that enough matrices are present in this dir to 
-		run the HierNMF2 code to completion.  The number of matrices used is non-deterministic, so 
-		trial-and-error may be required to find a lower bound on the matrix count. This feature is used 
-		for testing (such as comparisons with Matlab), in which each factorization problem has to 
-		proceed from a known initializer.
+	4.  –-initdir:  Initializer matrices for W and H are loaded from the initdir 
+		directory. The matrices are assumed to have the names Winit_1.csv, Hinit_1.csv, 
+		Winit_2.csv, Hinit_2.csv, etc. It is up to the user to ensure that enough matrices 
+		are present in this dir to run the HierNMF2 code to completion.  The number of 
+		matrices used is non-deterministic, so trial-and-error may be required to find 
+		a lower bound on the matrix count. This feature is used for testing (such as 
+		comparisons with Matlab), in which each factorization problem has to proceed 
+		from a known initializer.
 	5.  –-tol: tolerance value for each internal NMF-RANK2 factorization; the stopping 
 		criterion is the ratio of projected gradient method
 	6.  –-outdir: path to the folder into which to write the output files; if omitted 
