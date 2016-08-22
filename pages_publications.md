@@ -18,7 +18,12 @@ permalink: /publications/
 IEEE Transactions on Geoscience and Remote Sensing, 2014.](https://smallk.github.io/papers/HierNMFImage.pdf)
 
 6. [Jaegul Choo, Barry Drake, and Haesun Park, “Visual analytics for interactive exploration of large-scale document data via Nonnegative Matrix Factorization”,
-Proceedings for BigData Innovators Gathering (BIG) 2014, co-located with WWW2014, Seoul, Korea, 2014.](https://smallk.github.io/papers/big_vanmf.pdf)  
+Proceedings for BigData Innovators Gathering (BIG) 2014, co-located with WWW2014, Seoul, Korea, 2014.](https://smallk.github.io/papers/big_vanmf.pdf) 
+
+7. R. Kannan, M. Ishteva, B. Drake, and H. Park, Bounded Matrix Low Rank Approximation, chapter in Nonnegative Matrix Factorization Techniques: Advances in Theory and Applications, Ganesh R. Naik (Ed.), Signals and Communication Technology Series, Springer-Verlag Berlin Heidelberg, 2016.  
+DOI: 10.1007/978-3-662-48331-2, ISBN 978-3-662-48331-2
+
+8. Minsuk Choi, Jaesong Yoo, Ashley S. Beavers, Scott Longevin, Chris Bethune, Sean McIntyre, Barry Drake, Jaegul Choo, Haesun Park. “Tile-based Spatio-Temporal Visual Analytics via Topic Modeling on Social Media”, IEEE Vis 2016, Baltimore, Maryland, USA Oct 23-28, 2016
 
 -----
 
