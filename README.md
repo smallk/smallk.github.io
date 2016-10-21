@@ -20,6 +20,7 @@ SmallK home page
 Distributed NMF library
 ----------------
 Recently open sourced: MPI-FAUN!
+
 Both MPI and OPENMP implementations for MU, HALS and ANLS/BPP based NMF algorithms are available. This can run off the shelf as well easy to integrate in other source code. These are very highly tuned NMF algorithms to work on super computers. We have tested this software in NERSC as well OLCF cluster. The openmp implementation is tested on many different linux variants with intel processors. The library works well for both sparse and dense matrix. If you use this code, kindly cite the following papers appropriately.
 
 Please visit
