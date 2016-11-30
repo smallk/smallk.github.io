@@ -368,16 +368,13 @@ The node id values and the left or right child indicators can be used to unambig
 
 Running the hierclust application with no command line parameters will cause the application to display all params that it supports.  These are:
 
-	Usage: hierclust
+	Usage: hierclust/bin/hierclust
         --matrixfile <filename>     Filename of the matrix to be factored.
-                                    Either CSV format for dense or MatrixMarket format for 
-									sparse.
+                                    Either CSV format for dense or MatrixMarket format for sparse.
         --dictfile <filename>       The name of the dictionary file.
         --clusters <integer>        The number of clusters to generate.
-        [--infile_W  (empty)]       Dense m x (4*clusters) matrix to initialize W, CSV file.
-                                    If unspecified, W will be randomly initialized.
-        [--infile_H  (empty)]       Dense (4*clusters) x n matrix to initialize H, CSV file. 
-                                    If unspecified, H will be randomly initialized. 
+        [--initdir  (empty)]        Directory of initializers for all Rank2 factorizations.
+                                    If unspecified, random init will be used. 
         [--tol  0.0001]             Tolerance value for each factorization. 
         [--outdir  (empty)]         Output directory.  If unspecified, results will be 
                                     written to the current directory.
@@ -408,32 +405,37 @@ The –-matrixfile, --dictfile, and –-clusters options are required; all other
 		dense matrices and MTX files for sparse matrices.
 	2.  –-dictfile: absolute or relative path to the dictionary file
 	3.  –-clusters: the number of leaf nodes (clusters) to generate
-	4.  –-infile_W: CSV file containing the mx(4*clusters) initial values for matrix W; 
-		if omitted, W is randomly initialized
-	5.  –-infile_H:  CSV file containing the (4*clusters)xn initial values for matrix H; 
-		if omitted, H is randomly initialized
-	6.  –-tol: tolerance value for each internal NMF-RANK2 factorization; the stopping 
+	4.  –-initdir:  Initializer matrices for W and H are loaded from the initdir 
+		directory. The matrices are assumed to have the names Winit_1.csv, Hinit_1.csv, 
+		Winit_2.csv, Hinit_2.csv, etc. It is up to the user to ensure that enough matrices 
+		are present in this dir to run the HierNMF2 code to completion.  The number of 
+		matrices used is non-deterministic, so trial-and-error may be required to find 
+		a lower bound on the matrix count. This feature is used for testing (such as 
+		comparisons with Matlab), in which each factorization problem has to proceed 
+		from a known initializer. The W initializer matrices must be of shape m x 2,
+		and the H initializer matrices must be of shape 2 x n.
+	5.  –-tol: tolerance value for each internal NMF-RANK2 factorization; the stopping 
 		criterion is the ratio of projected gradient method
-	7.  –-outdir: path to the folder into which to write the output files; if omitted 
+	6.  –-outdir: path to the folder into which to write the output files; if omitted 
 		results will be written to the current directory
-	8.  –-miniter: minimum number of iterations to perform before checking progress on 
+	7.  –-miniter: minimum number of iterations to perform before checking progress on 
 		each NMF-RANK2 factorization
-	9.  –-maxiter: the maximum number of iterations to perform on each NMF-RANK2 
+	8.  –-maxiter: the maximum number of iterations to perform on each NMF-RANK2 
 		factorization
-	10. –-maxterms: the number of dictionary keywords to include in each node
-	11. –-maxthreads: the maximum number of threads to use; the default is to use as many 
+	9. –-maxterms: the number of dictionary keywords to include in each node
+	10. –-maxthreads: the maximum number of threads to use; the default is to use as many 
 		threads as the hardware can support (your number may differ from that shown) 
-	12. –-unbalanced: threshold value for declaring leaf node imbalance 
+	11. –-unbalanced: threshold value for declaring leaf node imbalance 
 		(see explanation above)
-	13. –-trial_allowance: maximum number of split attempts for any node 
+	12. –-trial_allowance: maximum number of split attempts for any node 
 		(see explanation above)
-	14. –-flat: whether to generate a flat clustering result in addition to the hierarchical 
+	13. –-flat: whether to generate a flat clustering result in addition to the hierarchical 
 		clustering result
-	15. –-verbose: whether to display updates to the screen as the iterations progress
-	16. –-format: file format to use for the clustering results
-	17. –-treefile: name of the output file for the factorization tree; uses the format 
+	14. –-verbose: whether to display updates to the screen as the iterations progress
+	15. –-format: file format to use for the clustering results
+	16. –-treefile: name of the output file for the factorization tree; uses the format 
 		specified by the format parameter
-	18. –-assignfile: name of the output file for the cluster assignments
+	17. –-assignfile: name of the output file for the cluster assignments
 
 [--back to top--](#top)
 
