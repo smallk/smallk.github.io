@@ -33,13 +33,12 @@ permalink: /documentation/installation/
 *   [Contact Information](#contact)
 
 
-
 <h1 id="vagrant"> Quickstart: Vagrant Virtual Machine </h1>
 
 Installing SmallK into a virtual machine (OSX, Linux, Windows) is intended for those who are not doing development and/or do not have a reason to do the full installation on Linux or OSX outlined in sections III.2 to III.4 (Windows full installation coming soon).
 
 The complete stack of software dependencies for SmallK as well as SmallK itself can be rapidly set up and configured through use of Vagrant and VirtualBox and the files included in the repository. To deploy the SmallK VM:
-The Vagrant install has been tested on Linux Ubuntu 14.04, Mac OSX Mavericks 10.9, and Windows 7.
+The Vagrant install has been tested on Linux Ubuntu 14.04, Mac OSX Yosemite 10.10.5, and Windows 8.
 
 **1.** Install [Vagrant](http://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
 
