@@ -32,7 +32,7 @@ Given a nonnegative matrix A, the SmallK software computes nonnegative matrices 
 
 The matrix A has m rows and n columns and can be either sparse or dense. W has m rows and k columns, and H has k rows and n columns. The value of k is an input parameter to the approximation routines; typically k << m and k << n. Where k is the reduced rank of the low rank approximation and, in applications, it represents, for example, the reduced dimension in dimension reduction, number of clusters for clustering various data sets, or the number of topics in topic discovery.
 
-NMF algorithms seek to approximate a matrix A by the product of two much smaller matrices W and H.  The idea is to choose the smallest value of k (width of W and height of H) that gives an acceptable approximation error. Due to the nonconvex nature of the optimization problem associated with finding W and H, they can only be approximated after an NMF algorithm satisfies a convergence criterion. Thus, the minimization of the objective function proceeds iteratively, attempting to reach a stationary point, which is the best possible solution. As the iterations proceed, the SmallK code computes a metric that estimates the progress and, when the metric falls below a user-specified tolerance, the iterations stop and convergence is declared [see [Publications [2]](http://smallk.github.io/publications/) for a detailed discussion].
+NMF algorithms seek to approximate a matrix A by the product of two much smaller matrices W and H.  The idea is to choose the smallest value of k (width of W and height of H) that gives an acceptable approximation error. Due to the nonconvex nature of the optimization problem associated with finding W and H, they can only be approximated after an NMF algorithm satisfies a convergence criterion to a local minimum. Thus, the minimization of the objective function proceeds iteratively, attempting to reach a stationary point, which is the best possible solution. As the iterations proceed, the SmallK code computes a metric that estimates the progress and, when the metric falls below a user-specified tolerance, the iterations stop and convergence is declared [see [Publications [2]](http://smallk.github.io/publications/) for a detailed discussion].
 
 The SmallK library provides implementations of several different NMF algorithms.  These algorithms are:
 
@@ -49,20 +49,24 @@ SmallK also provides implementations of hierarchical and flat clustering.  These
 
 The suite of SmallK implementations of NMF algorithms are suitable in many applications such as image processing, interactive visual analytics, speckle removal from SAR images, recommender systems, information fusion, outlier detection, chemometrics, and many more.
 
-The SmallK library requires either MacOSX or Linux.  A Windows version may be provided in the future.
+The SmallK library requires either MacOSX or Linux.  A Windows version via a Vagrant installation is also available.
 ### Prerequisites
 The following list is the software packages/libraries required to build the SmallK NMF library code:
 
 * A modern, C++11-compliant compiler, such as g++ 4.9 or later
 * [Elemental](http://libelemental.org/), a high-performance library for dense, distributed linear algebra, which requires:
-  * An MPI installation, such as [OpenMPI](http://www.open-mpi.org/software/ompi/v1.6/)
+  * An MPI installation, such as [OpenMPI](http://www.open-mpi.org/software/ompi/v1.6/) or [mpich](http://http://www.mpich.org/)
   * BLAS implementation, hopefully optimized/tuned for the local system
   * [libFLAME](http://www.cs.utexas.edu/~flame/web/libFLAME.html): a high-performance library for dense numerical linear algebra
-  * [OpenMP](http://openmp.org/wp/): (optional) 
   * CMake
 
-Elemental can make use of OpenMP parallelization if available, which is generally advantageous for large problems.  The SmallK code is also internally parallelized to take full advantage of multiple CPU cores for maximum performance.  SmallK does not currently support distributed computation, but this is planned for future updates.
+* Python 2.7 (optional), including the following libraries (required to build the Python interface to SmallK, which is optional):
+	* numpy
+	* scipy
+	* cython
 
-<b>The SmallK software supports the latest stable release of Elemental, version 0.84</b>.
+Elemental can make use of OpenMP or mpich  parallelization if available, which is generally advantageous for large problems.  The SmallK code is also internally parallelized to take full advantage of multiple CPU cores for maximum performance.  SmallK does not currently support distributed computation, but this is planned for future updates.
 
-Check the documentation links on this page for additional detailed instructions for installation of the SmallK library software and dependencies. If desired, Installation instructions for Elemental can be found [here](http://libelemental.org/documentation/).
+<b>The SmallK software supports the latest stable release of Elemental, version 0.85</b>.
+
+Check the documentation links on this page for additional detailed instructions for installation of the SmallK library software and dependencies. If desired, installation instructions for Elemental can be found [here](http://libelemental.org/documentation/).
