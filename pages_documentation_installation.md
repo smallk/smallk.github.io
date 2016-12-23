@@ -272,7 +272,7 @@ The FLAME library is now installed.
 <br>[--back to top--](#top)
 <h2 id="mac_elemental"> OSX:Install Elemental </h2>
 
-###Here is a recommended installation scheme for Elemental:###
+### Here is a recommended installation scheme for Elemental: ###
 
 Choose a directory for the root of the Elemental installation.  For example, this may be
 
@@ -629,7 +629,7 @@ This completes the SmallK NMF library installation.
 
 <h2 id="osx_python"> OSX:Install Python libraries</h2>
 
-###Install Python scientific packages
+### Install Python scientific packages
 Assuming that you have used brew to install gcc, as indicated earlier, you can run the following commands to install the necessary libraries:
 
 		brew install python
@@ -665,7 +665,7 @@ You should see something similar to the following:
 
 If you are using OpenBLAS, you should see that indicated as well.
 
-###Install Cython: a Python interface to C/C++
+### Install Cython: a Python interface to C/C++
 
 First install the Python Package Index utility, pip. Many Python packages are configured to use this package manager, Cython being one.
 
