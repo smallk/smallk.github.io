@@ -397,7 +397,7 @@ Install with this command, assuming the installation directory is /usr/local/ope
 <br>[--back to top--](#top)
 <h2 id="lin_elemental"> Linux:Install Elemental </h2>
 
-###Here is our suggested installation scheme for Elemental:###
+### Here is our suggested installation scheme for Elemental: ###
 
 We strongly recommend that users install both the HybridRelease and PureRelease builds of Elemental. MPI tools are enabled in the HybridRelease build and disabled in the PureRelease build. So why install both? For smaller problems the overhead of MPI can actually cause code to run slower than without it. On the other hand, for large problems, MPI parallelization generally helps. However, there is no clear transition point between where it helps and where it hurts. Thus, we encourage users to experiment with both builds to find the one that performs best for their typical problems.Another strong recommendation is that users clearly separate the different build types as well as the versions of Elemental on their systems. Elemental is under active development, and new releases can introduce changes to the API that are not backwards compatible with previous releases. To minimize build problems and overall hassle, we recommend that Elemental be installed so that the different versions and build types are cleanly separated.
 Choose a directory for the root of the Elemental installation. A good choice is
