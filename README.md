@@ -38,6 +38,6 @@ Georgia Institute of Technology.
 
 SmallK Copyright and Software License
 ======================================
-SmallK is under copyright by the Georgia Institute of Technology, 2014. 
+SmallK is under copyright by the Georgia Institute of Technology, 2014, 2015, 2016. 
 All source code is released under the 
 [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) license.
