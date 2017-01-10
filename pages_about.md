@@ -16,7 +16,18 @@ methods developed to date.
 <h2 id="distributed">Distributed Versions</h2>
 Recently open sourced: MPI-FAUN! Both MPI and OPENMP implementations for MU, HALS and ANLS/BPP based NMF algorithms are now available. The implementations can run off the shelf or can be easily integrated into other source code. These are very highly tuned NMF algorithms to work on super computers. We have tested this software in NERSC as well OLCF cluster. The openmp implementation is tested on many different linux variants with intel processors. The library works well for both sparse and dense matrices.
 
-Please visit [MPI-FAUN](https://github.com/ramkikannan/nmflibrary) for more information and source code.
+Please visit [MPI-FAUN text](https://github.com/ramkikannan/nmflibrary) for more information and source code.
+
+<h2>
+<a name="dblp" class="anchor" href="#dist"><span class="octicon octicon-link"></span></a>Ground truth data for graph clustering and community detection</h2>
+
+Community discovery is an important task for revealing structures in large
+networks. The massive size of contemporary social networks poses a tremendous
+challenge to the scalability of traditional graph clustering algorithms and the
+evaluation of discovered communities. 
+
+Please visit 
+[dblp ground truth data](https://github.com/smallk/smallk_data/tree/master/dblp_ground_truth) to obtain the data.
 
 <h2 id="contact">Contact Info</h2>
 For comments, questions, bug reports, suggestions, etc., contact:
