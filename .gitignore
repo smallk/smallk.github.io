@@ -2,3 +2,4 @@ _site
 images/Thumbs.db
 .DS_Store
 .Archive
+*.docx
