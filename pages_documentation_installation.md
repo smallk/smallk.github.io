@@ -37,107 +37,98 @@ permalink: /documentation/installation/
 
 Installing SmallK into a virtual machine (OSX, Linux, Windows) is intended for those who are not doing development and/or do not have a reason to do the full installation on Linux or OSX outlined in the sections to follow.
 
-The complete stack of software dependencies for SmallK as well as SmallK itself can be rapidly set up and configured through use of Vagrant and VirtualBox and the files included in the repository. To deploy the SmallK VM:
-The Vagrant install has been tested on Linux Ubuntu 14.04, Mac OSX Yosemite 10.10.5, and Windows 8.
+The complete stack of software dependencies for SmallK as well as SmallK itself can be rapidly set up and configured through use of Vagrant and VirtualBox and the files included in the repository. The Vagrant install has been tested on Linux Ubuntu 16.04, Mac OSX Sierra 10.12.6, and Windows 10. 
+
+Note that the *smallk/vagrant/bootstrap.sh* file can be modified to perform various tasks when provisioning the vagrant session. Consider customizing *bootstrap.sh* to set up a custom install of libsmallk as required.
+
+To deploy the SmallK VM:
+
 
 **1.** Install [Vagrant](http://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
 
-**2.** ’git clone’ the [smallk_data](https://github.com/smallk/smallk_data) repository so that it is parallel with the smallk repository. This will be important for testing the installation and starting to work with SmallK. This directory will be synced with a directory of the same name in the VM.
-
 _[Note: For Windows, ensure that you have a VirtualBox version >= 4.3.12. After installing Vagrant, you may need to log out and log back in to ensure that you can run vagrant commands in the command prompt.]_
 
-**3..** From within the vagrant/ directory in the repository, run:
+**Optional:** `git clone` the [smallk_data](https://github.com/smallk/smallk_data) repository so that it is parallel with the smallk repository. This is an alternate way to test the installation and begin to work with SmallK. This directory can be synced with a directory of the same name in the VM by adding or uncommenting the following line in `smallk/vagrant/Vagrantfile`:
+
+		config.vm.synced_folder "../../smallk_data", "/home/vagrant/smallk_data"	
+
+**2.** From within the vagrant/ directory in the repository, run:
 		
 		vagrant up
 		
-This can take as long as an hour to build the VM, which will be based on a minimal Ubuntu 14.04 installation. The Vagrantfile can be customized in many ways to change the specifications for the VM that is built. See more information [here](http://docs.vagrantup.com/v2/). The default configuration provides the VM with 4 GB of memory and 2 CPUs. Increasing these allocations will improve the performance of the application. This can be done by modifying this line in the Vagrantfile:
+This can take as long as an hour to build the VM, which will be based on a minimal Ubuntu 16.04 installation. The Vagrantfile can be customized in many ways to change the specifications for the VM that is built. See more information [here](http://docs.vagrantup.com/v2/). The default configuration provides the VM with 4 GB of memory and 3 CPUs. Increasing these allocations will improve the performance of the application. This can be done by modifying these lines in the Vagrantfile:
 
-		vb.customize ["modifyvm", :id, "--memory", "4056", "--cpus", "2"]
+		vb.memory = 4096
+		vb.cpus = 3
 
-After ‘vagrant up’ has completed, the SmallK library will have been built and the smallk_data directory, cloned as in **2.** above, will have been synced into the VM.
-<br>[--back to top--](#top)
+After ‘vagrant up’ has completed, the SmallK and pysmallk libraries will have been built and tested. Additionally, the smallk_data directory, if cloned as in the optional step above, will have been synced into the VM.
 
-**4..** Once the VM has been built, run:
+[--back to top--](#top)
+
+**3.** Once the VM has been built, run:
 
 		vagrant ssh
 
 _[Note: For Windows, you will need an ssh client in order to run the above command. This can be obtained via [CygWin](https://www.cygwin.com/), [MinGW](http://sourceforge.net/projects/mingw/files/), or [Git](http://git-scm.com/downloads). If you would like to use PuTTY to connect to your virtual machine, follow [these](https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Connect-to-Your-Vagrant-Virtual-Machine-with-PuTTY) instructions.]_
 
-This will drop you into the command line of the VM that was just created. Note that the *bootstrap.sh* file can be modified to perform various tasks when going to the vagrant command line session. Customize bootstrap.sh to set up a custom install of libsmallk as required.
-
-From there, you can navigate to /home/vagrant/libsmallk-<version>, e.g., libsmallk-1.6.2, and run
-
-		make check DATA_DIR=../smallk_data
-		
-make check will verify your installation was successful. 
-
-To check the installation of pysmallk, run
-
-		make pysmallk_check DATA_DIR=../smallk_data
-
 In case you need it, the username/password for the VM created will be vagrant/vagrant.
 
-The command
+This will drop you into the command line of the VM that was just created, in a working directory at */home/vagrant*. From there, you can navigate to */home/vagrant/libsmallk-<version>*, (e.g., libsmallk-1.6.2), and run
 
-		sudo make install
-
-will install smallk to the /usr/local/smallk/bin directory. If you want to install pysmallk as well, run
-
-		sudo make install PYSMALLK=1 INSTALLATION_DIR=/usr/local/lib/python2.7/site-packages/
-
-To add smallk to your PATH variable: 
-
-		export PATH=/usr/local/smallk/bin:$PATH
+		make check PYSMALLK=1 ELEMVER=0.85 DATA_DIR=../smallk_data		
 		
+to verify your installation was successful. 
+
 [--back to top--](#top)
 
-**5.** To test the installation at the command line, assuming the $PATH variable has been set as above, run
+**4.** To test the installation at the command line, run:
 
 		nmf
 
-This will produce the help out put for the nmf library function:
+This will produce the help output for the nmf library function:
 
 	Usage: nmf
-        --matrixfile <filename>  Filename of the matrix to be factored.
-                                 Either CSV format for dense or MatrixMarket format for sparse.
-        --k <integer value>      The common dimension for factors W and H.
-        [--algorithm  BPP]       NMF algorithms: 
-                                     MU:    multiplicative updating 
-                                     HALS:  hierarchical alternating least squares
-                                     RANK2: rank2 with optimal active set selection
-                                     BPP:   block principal pivoting
-        [--stopping  PG_RATIO]   Stopping criterion: 
-                                     PG_RATIO: Ratio of projected gradients
-                                     DELTA:    Change in relative F-norm of W
-        [--tol  0.005]           Tolerance for the selected stopping criterion.
-        [--tolcount  1]          Tolerance count; declare convergence after this many 
-                                 iterations with metric < tolerance; default is to 
-                                 declare convergence on the first such iteration.
-        [--infile_W  (empty)]    Dense mxk matrix to initialize W; CSV file.
-                                 If unspecified, W will be randomly initialized.
-        [--infile_H  (empty)]    Dense kxn matrix to initialize H; CSV file. 
-                                 If unspecified, H will be randomly initialized. 
-        [--outfile_W  w.csv]     Filename for the W matrix result.
-        [--outfile_H  h.csv]     Filename for the H matrix result.
-        [--miniter  5]           Minimum number of iterations to perform. 
-        [--maxiter  5000]        Maximum number of iterations to perform.
-        [--outprecision  6]      Write results with this many digits of precision.
-        [--maxthreads    4]      Upper limit to thread count. 
-        [--normalize  1]         Whether to normalize W and scale H.
-                                     1 == yes, 0 == no 
-        [--verbose  1]           Whether to print updates to the screen. 
-                                     1 == print updates, 0 == silent 
+	        --matrixfile <filename>  Filename of the matrix to be factored.
+	                                 Either CSV format for dense or MatrixMarket format for sparse.
+	        --k <integer value>      The common dimension for factors W and H.
+	        [--algorithm  BPP]       NMF algorithms:
+	                                     MU:    multiplicative updating
+	                                     HALS:  hierarchical alternating least squares
+	                                     RANK2: rank2 with optimal active set selection
+	                                     BPP:   block principal pivoting
+	        [--stopping  PG_RATIO]   Stopping criterion:
+	                                     PG_RATIO: Ratio of projected gradients
+	                                     DELTA:    Change in relative F-norm of W
+	        [--tol  0.005]           Tolerance for the selected stopping criterion.
+	        [--tolcount  1]          Tolerance count; declare convergence after this many
+	                                 iterations with metric < tolerance; default is to
+	                                 declare convergence on the first such iteration.
+	        [--infile_W  (empty)]    Dense mxk matrix to initialize W; CSV file.
+	                                 If unspecified, W will be randomly initialized.
+	        [--infile_H  (empty)]    Dense kxn matrix to initialize H; CSV file.
+	                                 If unspecified, H will be randomly initialized.
+	        [--outfile_W  w.csv]     Filename for the W matrix result.
+	        [--outfile_H  h.csv]     Filename for the H matrix result.
+	        [--miniter  5]           Minimum number of iterations to perform.
+	        [--maxiter  5000]        Maximum number of iterations to perform.
+	        [--outprecision  6]      Write results with this many digits of precision.
+	        [--maxthreads    3]      Upper limit to thread count.
+	        [--normalize  1]         Whether to normalize W and scale H.
+	                                     1 == yes, 0 == no
+	        [--verbose  1]           Whether to print updates to the screen.
+	                                     1 == print updates, 0 == silent
 
-**6.** To test the installation of pysmallk, open a python terminal and import numpy and pysmallk. Numpy must be imported BEFORE pysmallk is imported.
+[--back to top--](#top)
 
-		python
-		import numpy
-		import pysmallk
+**5.** To test the installation of pysmallk, attempt to import numpy and pysmallk; numpy must be imported BEFORE pysmallk is imported. Running the following command from the command line should produce no output:
+
+		python –c "import numpy; import pysmallk"
 		
 If there is no import error, pysmallk was installed correctly and is globally available.
-		
 
-**7.** When you are ready to shut down the VM, run one of the following.
+[--back to top--](#top)
+
+**6.** When you are ready to shut down the VM, run `exit` from within the vagrant machine, then run one of the following from the command line of your host machine (wherever `vagrant up` was executed):
 
 Save the current running state:
 
@@ -157,7 +148,7 @@ If you want to work with the VM again, from any of the above states you can run
 		
 again and the VM will be resumed or recreated.
 
-<br>[--back to top--](#top)
+[--back to top--](#top)
 
 <h1 id="standard"> Standard Build Instructions </h1>
 
