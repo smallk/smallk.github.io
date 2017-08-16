@@ -25,6 +25,14 @@ DOI: 10.1007/978-3-662-48331-2, ISBN 978-3-662-48331-2
 
 8. Minsuk Choi, Jaesong Yoo, Ashley S. Beavers, Scott Longevin, Chris Bethune, Sean McIntyre, Barry Drake, Jaegul Choo, Haesun Park. “Tile-based Spatio-Temporal Visual Analytics via Topic Modeling on Social Media”, IEEE Vis 2016, Baltimore, Maryland, USA Oct 23-28, 2016.
 
+9. Rundong Du, Da Kuang, Barry Drake, and Haesun Park. “DC-NMF: Nonnegative Matrix Factorization based on Divide-and-Conquer for Fast Clustering and Topic Modeling”, Journal of Global Optimization, April 2017.
+
+10. Barry Drake, Tiffany Huang, Ashley Scripka Beavers, Rundong Du, and Haesun Park. “Event Detection based on Nonnegative Matrix Factorization: Ceasefire Violation, Environmental, and Malware Events”, Proceedings of the 8th International Conference on Applied Human Factors and Ergonomics (AHFE 2017), The Westin Bonaventure Hotel, Los Angeles, California, USA, AHFE, Human Factors in Cyber Warfare, (invited paper), July 17-21, DOI 10.1007/978-3-319-60585-2_16, Springer, 2017.
+
+11. Rundong Du, Barry Drake, and Haesun Park. “Hybrid Clustering based on Content and Connection Structure using Joint Nonnegative Matrix Factorization”. Journal of Global Optimization, 33(6), to appear, 2017.
+
+12. Sungbok Shin, Minsuk Choi, Jinho Choi, Scott Langevin, Christopher Bethune, Philippe Horne, Nathan Kronenfeld, Ramakrishnan Kannan, Barry Drake, Haesun Park, and Jaegul Choo, “STExNMF: Spatio-Temporally Exclusive Topic Discovery for Anomalous Event Detection”, submitted, IEEE International Conference on Data Mining, New Orleans, USA, November 18-21, 2017.
+
 -----
 
 If the SmallK library is used to obtain results for publication, please use the following BibTeX citation:
