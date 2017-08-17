@@ -38,8 +38,7 @@ DOI: 10.1007/978-3-662-48331-2, ISBN 978-3-662-48331-2](https://link.springer.co
 If the SmallK library is used to obtain results for publication, please use the following BibTeX citation:
 
 	@misc{SmallK,
-  		author       = {Richard Boyd and Barry Drake and Da Kuang and 
-						Haesun Park},
+  		author       = {Barry Drake and Stephen Lee-Urban and Haesun Park},
   		title        = {SmallK is a {C++}{/}{P}ython high-performance software
 						library for nonnegative matrix factorization
 						(NMF) and hierarchical and flat clustering using 
