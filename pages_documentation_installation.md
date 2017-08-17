@@ -670,7 +670,8 @@ To test the installation, follow Elemental’s [test instructions](http://libele
 The source code for the SmallK library can be downloaded from the [SmallK repository](https://github.com/smallk/smallk.github.io/tree/master/code) on github.
 Once downloaded uncompress the tar ball and follow the installation instructions below.
 
-###Note: the following section for installing the Python libraries can be skipped if not needed.
+
+**Note: the following section for installing the Python libraries can be skipped if not needed.**
 
 <h1 id="python_install"> Installation of Python libraries </h1>
 
