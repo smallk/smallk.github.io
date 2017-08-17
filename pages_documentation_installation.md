@@ -276,14 +276,11 @@ If this command produces an error, download and install XCode from the AppStore,
 
 You should see output similar to this:
 
-
-		Apple LLVM version 7.0.2 (clang-700.1.81)
-		
-		Target: x86_64-apple-darwin14.5.0
-		
-		Thread model: posix
-
-The latest version of the GNU compiler at the time of writing is g++ 6.2.0, which is provided by the ‘gcc’ homebrew package. In addition to the gcc package, homebrew also provides a gcc49 package from the homebrew/versions tap. If this alternative gcc49 package is installed on your system it will prevent homebrew from symlinking the gcc package correctly. We recommend uninstalling the gcc49 versioned package and just using the gcc package instead. The Fortran compiler provided with the gcc package will also be configured to properly build numpy, which is required for the python interface to SmallK.
+		Apple LLVM version 8.1.0 (clang-802.0.42)
+		Target: x86_64-apple-darwin16.7.0
+		Thread model: posix
+		InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+The latest version of the GNU compiler at the time of writing is g++-7 (gcc 7.1.0), which is provided by the ‘gcc’ homebrew package. In addition to the gcc package, homebrew also provides a gcc49 package from the homebrew/versions tap. If this alternative gcc49 package is installed on your system it will prevent homebrew from symlinking the gcc package correctly. We recommend uninstalling the gcc49 versioned package and just using the gcc package instead. The Fortran compiler provided with the gcc package will also be configured to properly build numpy, which is required for the python interface to SmallK.
 
 If you need to uninstall the gcc49 package, run the following commands:
 
@@ -297,7 +294,7 @@ Then install the gcc package as follows:
 		brew install gcc
 
 
-The Apple-provided gcc and g++ will not be overwritten by this installation. The new compilers will be installed into /usr/local/bin as gcc-6, g++-6, and gfortran-6. The Fortran compiler is needed for the installation of MPI and for building the python interface to SmallK.
+The Apple-provided gcc and g++ will not be overwritten by this installation. The new compilers will be installed into /usr/local/bin as gcc-7, g++-7, and gfortran-6. The Fortran compiler is needed for the installation of MPI and for building the python interface to SmallK.
 <br>[--back to top--](#top)
 
 <h2 id="mac_mpi"> OSX:Install MPI Tools</h2>
@@ -361,13 +358,13 @@ Use the following CMake command for the HybridRelease build, substituting 0.85 f
 
 	cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/<VERSION_STRING>/HybridRelease
 	-D CMAKE_BUILD_TYPE=HybridRelease 
-	-D CMAKE_CXX_COMPILER=/usr/local/bin/g++-6 
-	-D CMAKE_C_COMPILER=/usr/local/bin/gcc-6 
-	-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-6 
+	-D CMAKE_CXX_COMPILER=/usr/local/bin/g++-7 
+	-D CMAKE_C_COMPILER=/usr/local/bin/gcc-7 
+	-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-7 
 	-D MATH_LIBS="/usr/local/flame/lib/libflame.a;-framework Accelerate" 
 	–D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON  ..
 
-Note that we have installed g++-6 into /usr/local/bin and libFLAME into /usr/local/flame. Alter these paths, if necessary, to match the installation location on your system.
+Note that we have installed g++-7 into /usr/local/bin and libFLAME into /usr/local/flame. Alter these paths, if necessary, to match the installation location on your system.
 
 Once the CMake configuration step completes, you can build Elemental from the generated Makefiles with the following command:
 
@@ -379,10 +376,19 @@ After the build completes, install elemental as follows:
 
 		make install
 
-If you installed Elemental version 0.85 or later, in order for the system to find the Elemental dynamic library insert the following in the appropriate startup script (~/.bash_profile) or in a terminal window, enter the following command on a single line, replacing <VERSION_STRING> as above:
+For Elemental version 0.85 and later, you need to setup your system to find the Elemental dynamic libraries. Method 2 below is preferred:
+
+1. If your Mac OSX is earlier than Sierra, then, in your startup script (~/.bash_profile) or in a terminal window, enter the following command on a single line, replacing VERSION_STRING as above:
 
 		export DYLD_LIBRARY_PATH=
-			$DYLD_LIBRARY_PATH:/usr/local/elemental/<VERSION_STRING>/HybridRelease/lib/
+			$DYLD_LIBRARY_PATH:/usr/local/elemental/VERSION_STRING/HybridRelease/lib/
+
+2. If your Mac OSX is Sierra or higher Apple’s System Integrity Protection (SIP) will prevent using the DYLD_LIBRARY_PATH variable. We highly discourage disabling SIP as a workaround. Instead, in your startup script (~/.bash_profile) or in a terminal window, enter the following command on a single line, replacing VERSION_STRING as above:
+
+		ln -s /usr/local/elemental/<VERSION_STRING>/HybridRelease/lib/*.dylib* /usr/local/lib
+
+This will symlink the required Elemental libraries.
+
 
 **<u>PureRelease Build</u>**
 
@@ -395,24 +401,31 @@ Run these commands to create a build directory for the PureRelease build:
 Then repeat the CMake configuration process, this time with the following command for the PureRelease build:
 
 	cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/<VERSION_STRING>/PureRelease 
-	-D CMAKE_BUILD_TYPE=PureRelease -D CMAKE_CXX_COMPILER=/usr/local/bin/g++-6 
-	-D CMAKE_C_COMPILER=/usr/local/bin/gcc-6 
-	-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-6 
+	-D CMAKE_BUILD_TYPE=PureRelease -D CMAKE_CXX_COMPILER=/usr/local/bin/g++-7 
+	-D CMAKE_C_COMPILER=/usr/local/bin/gcc-7 
+	-D CMAKE_Fortran_COMPILER=/usr/local/bin/gfortran-7 
 	-D MATH_LIBS="/usr/local/flame/lib/libflame.a;-framework Accelerate"  
 	–D ELEM_EXAMPLES=ON –D ELEM_TESTS=ON ..
 
 Repeat the build commands and install this build of Elemental. 
 
-If you installed Elemental version 0.85 or later, in order for the system to find the Elemental dynamic library insert the following in the appropriate startup script (~/.bash_profile) or in a terminal window, enter the following command on a single line, replacing <VERSION_STRING> as above:
+For Elemental version 0.85 and later, you need to setup your system to find the Elemental dynamic libraries. Method 2 below is preferred:
+
+1. If your Mac OSX is earlier than Sierra, then, in your startup script (~/.bash_profile) or in a terminal window, enter the following command on a single line, replacing VERSION_STRING as above:
 
 		export DYLD_LIBRARY_PATH=
-			$DYLD_LIBRARY_PATH:/usr/local/elemental/<VERSION_STRING>/PureRelease/lib/
+			$DYLD_LIBRARY_PATH:/usr/local/elemental/VERSION_STRING/HybridRelease/lib/
 
-Note: you will need to set this variable to point to either the HybridRelease or the PureRelease build of the Elemental dynamic library whenever you want to use SmallK.
+2. If your Mac OSX is Sierra or higher Apple’s System Integrity Protection (SIP) will prevent using the DYLD_LIBRARY_PATH variable. We highly discourage disabling SIP as a workaround. Instead, in your startup script (~/.bash_profile) or in a terminal window, enter the following command on a single line, replacing VERSION_STRING as above:
 
-This completes the two builds of the Hybrid and Pure releases of Elemental.
+		ln -s /usr/local/elemental/<VERSION_STRING>/HybridRelease/lib/*.dylib* /usr/local/lib
 
-To test the installation, follow Elemental’s [test instructions](http://libelemental.org/documentation/0.85/build.html) for the SVD test to verify that Elemental is working correctly.
+This will symlink the required Elemental libraries.
+
+The two builds of Elemental are now complete.
+
+To test the installation, follow Elemental’s [test instructions](http://libelemental.org/documentation/0.85/build.html)  for the SVD test to verify that Elemental is working correctly.
+
 <br>[--back to top--](#top)
 
 <h1 id="Linux"> How to Install Elemental on Linux </h1>
@@ -657,67 +670,7 @@ To test the installation, follow Elemental’s [test instructions](http://libele
 The source code for the SmallK library can be downloaded from the [SmallK repository](https://github.com/smallk/smallk.github.io/tree/master/code) on github.
 Once downloaded uncompress the tar ball and follow the installation instructions below.
 
-
-<h2 id="build_smallk"> Build the SmallK library </h2>
-
-After downloading and unpacking the code tarball cd into the top-level libsmallk1_<version> directory, where version is MAJOR.MINOR.PATCH (for example 1.6.2). The makefiles assume that you followed our suggested installation plan for Elemental. If this is NOT the case you will need to do one of the following:
-
-		1. Create an environment variable called ELEMENTAL_INSTALL_DIR which contains the 
-			path to the root folder of your Elemental installation
-		2. Define the variable ELEMENTAL_INSTALL_DIR on the make command line
-		3. Edit the SmallK makefile so that it can find your Elemental installation
-
-Assuming that the default install locations are acceptable, build the SmallK code by running this command from the root directory of the distribution:
-
-		make all
-
-This will build the SmallK and pysmallk (optional; see section [Installation of Python libraries](#python_install)) below for setup of the Python libraries) libraries and several command-line applications. These are:
-
-	1. libsmallk.a, the SmallK library
-	2. preprocess_tf, a command-line application for processing and scoring term-frequency matrices
-	3. matrixgen, a command-line application for generating random matrices
-	4. nmf, a command-line application for NMF
-	5. hierclust, a command-line application for fast hierarchical clustering
-	6. flatclust, a command-line application for flat clustering via NMF
-	7. pysmallk.so, if PYSMALLK=1 (0: default), the Python-wrapped SmallK library, making SmallK available via Python
-
-To install the code, run this command to install to the default location, which is /usr/local/smallk:
-
-		make install
-
-This will install the binary files listed above into the /usr/local/smallk/bin directory, which needs to be on your path to run the executables from anywhere on your system and avoid prepending with the entire path. To install the binary code to a different location, either create an environment variable called SMALLK_INSTALL_DIR and set it equal to the desired installation location prior to running the install command, or supply a prefix argument:
-
-		make prefix=/path/to/smallk  install
-
-If PYSMALLK=1, this will install pysmallk.so into the site-packages directory associated with the Python binary, which is determined by ‘brew install python’ as discussed above or wherever the python distribution is installed on the system, e.g., [Continuum’s Anaconda Python](https://www.continuum.io/) distribution is installed in the user’s home directory. To install the Python library to a different location, create an environment variable called SITE_PACKAGES_DIR and set it equal to the desired installation location prior to running the install command, or supply this as an argument for make:
-
-		make SITE_PACKAGES_DIR=/path/to/site-packages install
-
-Or, as a last resort, you can edit the top-level SmallK makefile to conform to the installation scheme of your system.  You may need root privileges to do the installation, depending on where you choose to install it.
-
-Before testing the installation, the test code needs to access data. The data is located in a separate github repository so that when cloning the code, the large amount of data is not included. The data repository is located on github at [smallk_data](https://github.com/smallk/smallk_data):
-
-To test the build, run this command with DATA_DIR set to wherever the SmallK data repository was cloned:
-
-		make check DATA_DIR=../smallk_data
-
-This will run a series of tests, none of which should report a failure.  Sample output from a run of these tests can be found in section [SmallK Test Results](http://smallk.github.io/documentation/tests/#smalk_tests).
-
-Note: if you installed Elemental version 0.85, you will need to configure your system to find the Elemental shared library.  See the Elemental installation instructions above for information on how to do this.
-
-The command-line applications can be built individually by running the appropriate make command from the top-level SmallK directory.  These commands are:
-
-		To build the smallk library only: 		make libsmallk
-		To build the preprocessor only:			make preprocessor
-		To build the matrix generator only:		make matrixgen
-		To build the nmf only:					make nmf
-		To build hierclust only:				make hierclust
-		To build flatclust only:				make flatclust
-
-This completes the SmallK NMF library installation.
-
-*Note: Pysmallk requires builds of libsmallk, preprocessor, matrixgen, hierclust, and flatclust*.
-<br>[—back to top--](#top)
+###Note: the following section for installing the Python libraries can be skipped if not needed.
 
 <h1 id="python_install"> Installation of Python libraries </h1>
 
@@ -797,6 +750,81 @@ This also ensures that cython version 0.22 is installed, which is the currently 
 		export SITE_PACKAGES_DIR="<path to lib/python2.7>/site-packages/"
 
 This allows for special installations of Python such as [Continuum Analytics’ [Anaconda](https://www.continuum.io/) distribution site-packages to be accessed.
+
+
+<h2 id="build_smallk"> Build the SmallK library </h2>
+
+After downloading and unpacking the code tarball cd into the top-level libsmallk1_<version> directory, where version is MAJOR.MINOR.PATCH (for example 1.6.2). The makefiles assume that you followed our suggested installation plan for Elemental. If this is NOT the case you will need to do one of the following:
+
+		1. Create an environment variable called ELEMENTAL_INSTALL_DIR which contains the 
+			path to the root folder of your Elemental installation
+		2. Define the variable ELEMENTAL_INSTALL_DIR on the make command line
+		3. Edit the SmallK makefile so that it can find your Elemental installation
+
+####Build
+Assuming that the default install locations are acceptable, build the SmallK code by running this command from the root directory of the distribution:
+
+		make all PYSMALLK=1 ELEMVER=0.85
+or
+
+		make all PYSMALLK=0 ELEMVER=0.85
+
+This will build the SmallK and pysmallk (optional; see section [Installation of Python libraries](#python_install)) below for setup of the Python libraries) libraries and several command-line applications. These are:
+
+	1. libsmallk.a, the SmallK library
+	2. preprocess_tf, a command-line application for processing and scoring term-frequency matrices
+	3. matrixgen, a command-line application for generating random matrices
+	4. nmf, a command-line application for NMF
+	5. hierclust, a command-line application for fast hierarchical clustering
+	6. flatclust, a command-line application for flat clustering via NMF
+	7. pysmallk.so, if PYSMALLK=1 (0: default), the Python-wrapped SmallK library, making SmallK available via Python
+
+####Install
+To install the code, run this command to install to the default location, which is /usr/local/smallk:
+
+		make install PYSMALLK=1 ELEMVER=0.85
+or
+
+		make install PYSMALLK=0 ELEMVER=0.85
+
+This will install the binary files listed above into the /usr/local/smallk/bin directory, which needs to be on your path to run the executables from anywhere on your system and avoid prepending with the entire path. To install the binary code to a different location, either create an environment variable called SMALLK_INSTALL_DIR and set it equal to the desired installation location prior to running the install command, or supply a prefix argument:
+
+		make prefix=/path/to/smallk  install
+
+If PYSMALLK=1, this will install pysmallk.so into the site-packages directory associated with the Python binary, which is determined by ‘brew install python’ as discussed above or wherever the python distribution is installed on the system, e.g., [Continuum’s Anaconda Python](https://www.continuum.io/) distribution is installed in the user’s home directory. To install the Python library to a different location, create an environment variable called SITE_PACKAGES_DIR and set it equal to the desired installation location prior to running the install command, or supply this as an argument for make:
+
+		make SITE_PACKAGES_DIR=/path/to/site-packages install
+
+Or, as a last resort, you can edit the top-level SmallK makefile to conform to the installation scheme of your system.  You may need root privileges to do the installation, depending on where you choose to install it.
+
+Before testing the installation, the test code needs to access data. The data is located in a separate github repository so that when cloning the code, the large amount of data is not included. The data repository is located on github at [smallk_data](https://github.com/smallk/smallk_data):
+
+####Check
+To test the build, run this command with DATA_DIR set to wherever the SmallK data repository was cloned:
+
+		make check PYSMALLK=1 ELEMVER=0.85 DATA_DIR=../smallk_data
+or
+
+		make check PYSMALLK=0 ELEMVER=0.85 DATA_DIR=../smallk_data
+
+This will run a series of tests, none of which should report a failure.  Sample output from a run of these tests can be found in section [SmallK Test Results](http://smallk.github.io/documentation/tests/#smalk_tests).
+
+Note: if you installed Elemental version 0.85, you will need to configure your system to find the Elemental shared library.  See the Elemental installation instructions above for information on how to do this.
+
+The command-line applications can be built individually by running the appropriate make command from the top-level SmallK directory.  These commands are:
+
+		To build the smallk library only: 		make libsmallk
+		To build the preprocessor only:			make preprocessor
+		To build the matrix generator only:		make matrixgen
+		To build the nmf only:					make nmf
+		To build hierclust only:				make hierclust
+		To build flatclust only:				make flatclust
+		To build pysmallk only:					make pysmallk
+
+This completes the SmallK NMF library installation.
+
+*Note: Pysmallk requires builds of libsmallk, preprocessor, matrixgen, hierclust, and flatclust*.
+<br>[—back to top--](#top)
 
 <h2 id="build_python"> Build pysmallk shared library</h2>
 Before building pysmallk, you must ensure that you have already built the standard SmallK library and applications: libsmallk, preprocessor, matrixgen, hierclust, and flatclust.
