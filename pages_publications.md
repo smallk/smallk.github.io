@@ -45,7 +45,7 @@ If the SmallK library is used to obtain results for publication, please use the 
 						the NMF; current version 1.6.0},
   		howpublished = {\url{http://smallk.github.io/}},
   		month        = {June},
-  		year         = {2016}
+  		year         = {2017}
 	}
 
 
