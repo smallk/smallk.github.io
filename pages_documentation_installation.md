@@ -762,7 +762,8 @@ After downloading and unpacking the code tarball cd into the top-level libsmallk
 		2. Define the variable ELEMENTAL_INSTALL_DIR on the make command line
 		3. Edit the SmallK makefile so that it can find your Elemental installation
 
-####Build
+****Build****
+
 Assuming that the default install locations are acceptable, build the SmallK code by running this command from the root directory of the distribution:
 
 		make all PYSMALLK=1 ELEMVER=0.85
@@ -780,7 +781,8 @@ This will build the SmallK and pysmallk (optional; see section [Installation of 
 	6. flatclust, a command-line application for flat clustering via NMF
 	7. pysmallk.so, if PYSMALLK=1 (0: default), the Python-wrapped SmallK library, making SmallK available via Python
 
-####Install
+****Install****
+
 To install the code, run this command to install to the default location, which is /usr/local/smallk:
 
 		make install PYSMALLK=1 ELEMVER=0.85
@@ -800,7 +802,8 @@ Or, as a last resort, you can edit the top-level SmallK makefile to conform to t
 
 Before testing the installation, the test code needs to access data. The data is located in a separate github repository so that when cloning the code, the large amount of data is not included. The data repository is located on github at [smallk_data](https://github.com/smallk/smallk_data):
 
-####Check
+****Check****
+
 To test the build, run this command with DATA_DIR set to wherever the SmallK data repository was cloned:
 
 		make check PYSMALLK=1 ELEMVER=0.85 DATA_DIR=../smallk_data
