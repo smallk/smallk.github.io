@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. Introduction &mdash; SmallK 1.6.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="SmallK 1.6.2 documentation" href="index.html"/>
+        <link rel="next" title="3. Quickstart - Installation" href="pages_quickstartInstall.html"/>
+        <link rel="prev" title="1. About" href="pages_about.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> SmallK
+          
+
+          
+            
+            <img src="_static/georgiatech.png" class="logo" />
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">SmallK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages_about.html">1. About</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#distributed-versions">1.1. Distributed Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#ground-truth-data-for-graph-clustering-and-community-detection">1.2. Ground truth data for graph clustering and community detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#acknowledgements">1.3. Acknowledgements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#contact-info">1.4. Contact Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#background">2.1. Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#low-rank-approximations-and-nmf">2.2. Low rank approximations and NMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smallk-overview">2.3. SmallK Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">2.4. Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_quickstartInstall.html">3. Quickstart - Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartInstall.html#vagrant-virtual-machine">3.1. Vagrant Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartInstall.html#docker-instructions">3.2. Docker Instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_quickstartSmallkAPI.html">4. Quickstart - Smallk API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#introduction">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#c-project-setup">4.2. C++ Project Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#load-a-matrix">4.3. Load a Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#perform-nmf-on-the-loaded-matrix">4.4. Perform NMF on the Loaded Matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_quickstartSmallkAPI.html#nmf-bpp">4.4.1. NMF-BPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_quickstartSmallkAPI.html#nmf-hals">4.4.2. NMF-HALS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_quickstartSmallkAPI.html#nmf-initialization">4.4.3. NMF Initialization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#hierarchical-clustering">4.5. Hierarchical Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#flat-clustering">4.6. Flat Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#disclaimer">4.7. Disclaimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#contact-info">4.8. Contact Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_installation.html">5. Installation Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#prerequisites">5.1. Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#id1">5.1.1. Elemental</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#how-to-install-elemental-on-macosx">5.1.1.1. How to Install Elemental on MacOSX</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-the-latest-gnu-compilers">5.1.1.1.1. OSX:Install the latest GNU compilers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-mpi-tools">5.1.1.1.2. OSX:Install MPI Tools</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-libflame">5.1.1.1.3. OSX:Install libFlame</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-elemental">5.1.1.1.4. OSX:Install Elemental</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#hybridrelease-build">5.1.1.1.4.1. HybridRelease Build</a></li>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#purerelease-build">5.1.1.1.4.2. PureRelease Build</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#how-to-install-elemental-on-linux">5.1.1.2. How to Install Elemental on Linux</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-the-latest-gnu-compilers">5.1.1.2.1. Linux:Install the latest GNU compilers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-mpi-tools">5.1.1.2.2. Linux:Install MPI Tools</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-libflame">5.1.1.2.3. Linux:Install libFlame</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-an-accelerated-blas-library">5.1.1.2.4. Linux:Install an accelerated BLAS library</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-elemental">5.1.1.2.5. Linux:Install Elemental</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#id5">5.1.1.2.5.1. HybridRelease build</a></li>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#id6">5.1.1.2.5.2. PureRelease build</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#installation-of-python-libraries">5.1.2. Installation of Python libraries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#osx-install-python-libraries">5.1.2.1. OSX:Install Python libraries</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#install-python-scientific-packages">5.1.2.1.1. Install Python scientific packages</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#install-cython-a-python-interface-to-c-c">5.1.2.1.2. Install Cython: a Python interface to C/C++</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#linux-install-python-libraries">5.1.2.2. Linux:Install Python libraries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#build-and-installation-of-smallk">5.2. Build and Installation of SmallK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#obtain-the-source-code">5.2.1. Obtain the Source Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#build-the-smallk-library">5.2.2. Build the SmallK library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#install-the-smallk-library">5.2.3. Install the SmallK library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#check-the-build-and-installation">5.2.4. Check the build and installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#build-and-installation-of-pysmallk-shared-library">5.3. Build and Installation of pysmallk shared library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#matrix-file-formats">5.4. Matrix file formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#disclaimer">5.5. Disclaimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#contact-info">5.6. Contact Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_commandLineTools.html">6. Command Line Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#introduction">6.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#preprocessor">6.2. Preprocessor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#overview">6.2.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#input-files">6.2.2. Input Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#command-line-options">6.2.3. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#sample-runs">6.2.4. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#matrixgen">6.3. Matrixgen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id1">6.3.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id2">6.3.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id3">6.3.3. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#nonnegative-matrix-factorization-nmf">6.4. Nonnegative Matrix Factorization (NMF)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id4">6.4.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id5">6.4.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id6">6.4.3. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#hierclust">6.5. Hierclust</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id7">6.5.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id9">6.5.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id10">6.5.3. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#flatclust">6.6. Flatclust</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id12">6.6.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id13">6.6.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id14">6.6.3. Sample Runs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_smallkAPI.html">7. Smallk API (C++)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_smallkAPI.html#examples-of-api-usage">7.1. Examples of API Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_smallkAPI.html#smallk-api">7.2. SmallK API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_smallkAPI.html#enumerations">7.2.1. Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_smallkAPI.html#api-functions">7.2.2. API functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#initialization-and-cleanup">7.2.2.1. Initialization and cleanup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#versioning">7.2.2.2. Versioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#common-functions">7.2.2.3. Common functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#nmf-functions">7.2.2.4. NMF functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_pysmallkAPI.html">8. Pysmallk API (Python)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_pysmallkAPI.html#introduction">8.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_pysmallkAPI.html#examples-of-pysmallk-usage">8.2. Examples of Pysmallk Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_pysmallkAPI.html#pysmallk-functions">8.3. Pysmallk Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#preprocessor">8.3.1. Preprocessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#matrixgen">8.3.2. Matrixgen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#smallkapi">8.3.3. SmallkAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#flatclust">8.3.4. Flatclust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#heirclust">8.3.5. Heirclust</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_tests.html">9. Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_tests.html#smallk-test-results">9.1. SmallK Test Results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_benchmarks_results.html">10. Benchmarks and Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages_publications.html">11. Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages_software_repo.html">12. Software Repo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_software_repo.html#getting-the-code-and-instructions">12.1. Getting the code and instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_software_repo.html#contact-info">12.2. Contact Info</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SmallK</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>2. Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pages_introduction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction">
+<h1>2. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="background">
+<h2>2.1. Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>High-dimensional data sets are ubiquitous in data science, and they often present serious problems for researchers. Our work in dimensionality reduction focuses on, but is not limited to, low rank approximations via nonnegative matrix factorization (NMF) [see <a class="reference external" href="http://smallk.github.io/publications/">Publications [1,2]</a>]. NMF is a non-convex optimization problem with important applications in data and interactive visual analytics of high-dimensional data.</p>
+<p>The impetus for this documentation is to provide a step-by-step procedure for the application of the theory to real-world large-scale data analytics problems. We have instantiated our research efforts in a software framework that includes high-level driver code via Python and a simple command line interface, SmallK, which hides most of the details of the input parameters. Our low-level code, also usable from the command line, is written in C++, which provides efficient NMF algorithms. The algorithms discussed herein have numerous practical applications; this document and the <a class="reference external" href="http://smallk.github.io/documentation/tutorials/">tutorials</a> will provide the information required to quickly begin real work.</p>
+<p>Below is a brief description of our fundamental research on NMF algorithms. Following the brief motivational introduction to the NMF are detailed installation instructions for the SmallK software library.</p>
+</div>
+<div class="section" id="low-rank-approximations-and-nmf">
+<h2>2.2. Low rank approximations and NMF<a class="headerlink" href="#low-rank-approximations-and-nmf" title="Permalink to this headline">¶</a></h2>
+<p>Algorithms that enable dimension reduction and clustering are two critical areas in data analytics and interactive visual analysis of high-dimensional data. A low rank approximation framework has the ability to facilitate faster processing times and utilize fewer resources. These approximations provide a natural way to compute only what we need for significant dimension reduction, and are analogous to singular value decomposition (SVD) and principal component analysis (PCA). Our algorithm framework also works efficiently for clustering since clustering can be viewed as a specific way of achieving a low rank approximation so that the cluster structure of the data is well represented in a few basis vectors.</p>
+<p>Matrix low rank approximations such as the SVD have played a key role as a fundamental tool in machine learning, data mining, and other areas of computational science and engineering. The NMF has recently emerged as an important constrained low rank approximation  method as well. A distinguishing feature of the NMF is the requirement of nonnegativity: NMF is considered for high-dimensional and large scale data in which the representation of each element is inherently nonnegative, and it seeks low rank factor matrices that are constrained to have only nonnegative elements. There are many examples of data with a nonnegative representation. In a standard term-frequency encoding, a text document is represented as a vector of nonnegative numbers since each element represents the number of appearances of each term in each document. In image processing, digital images are represented by pixel intensities, which are nonnegative. In the life sciences, chemical concentrations or gene expression levels are naturally represented as nonnegative data.</p>
+<p>Our algorithm framework utilizes various constraints on the non-convex optimization problem that gives rise to the nonnegative factors. With these various constraints NMF is a versatile tool for a large variety of data analytics problems. NMF algorithms have been an active area of research for several years. Since much of the data for many important problems in numerous domains is nonnegative NMF is the correct computational model for mining and/or integrating information from such data. NMF also offers enhanced interpretation of results since nonnegativity of the data is preserved.</p>
+</div>
+<div class="section" id="smallk-overview">
+<h2>2.3. SmallK Overview<a class="headerlink" href="#smallk-overview" title="Permalink to this headline">¶</a></h2>
+<p>The SmallK library provides routines for low rank matrix approximation via nonnegative matrix factorization (NMF). The term “nonnegative matrices” means that for a given matrix all of it’s elements are greater than or equal to zero, which we express as <img class="math" src="_images/math/f692c38976a791140d1226d01f3fc1446f7c24a9.svg" alt="\geq 0"/>.</p>
+<p>Given a nonnegative matrix <img class="math" src="_images/math/6b03b6e0ba1a6680037e3d0a63bab5d371000030.svg" alt="\matr{A}"/>, the SmallK software computes nonnegative matrices <img class="math" src="_images/math/7a82ffac845bf21272aa9b0d9ce8c8a31793a547.svg" alt="\matr{W}"/> and <img class="math" src="_images/math/3600c3a34eab63349a04da9b8d5d9c5cbe58f4ac.svg" alt="\matr{H}"/> such that <img class="math" src="_images/math/5cadf57469a7f3f25474e05adfed292d18fcbc63.svg" alt="\matr{A} \cong \matr{W} \matr{H}"/></p>
+<p>The matrix <img class="math" src="_images/math/6b03b6e0ba1a6680037e3d0a63bab5d371000030.svg" alt="\matr{A}"/> has m rows and n columns and can be either sparse or dense. <img class="math" src="_images/math/7a82ffac845bf21272aa9b0d9ce8c8a31793a547.svg" alt="\matr{W}"/> has m rows and k columns, and <img class="math" src="_images/math/3600c3a34eab63349a04da9b8d5d9c5cbe58f4ac.svg" alt="\matr{H}"/> has k rows and n columns. The value of k is an input parameter to the approximation routines; typically k <img class="math" src="_images/math/d9115642730e4fdf8428f226e6e456dee8a88957.svg" alt="\ll"/> m and k <img class="math" src="_images/math/d9115642730e4fdf8428f226e6e456dee8a88957.svg" alt="\ll"/> n. Where k is the reduced rank of the low rank approximation and, in applications, it represents, for example, the reduced dimension in dimension reduction, number of clusters for clustering various data sets, or the number of topics in topic discovery.</p>
+<p>NMF algorithms seek to approximate a matrix <img class="math" src="_images/math/6b03b6e0ba1a6680037e3d0a63bab5d371000030.svg" alt="\matr{A}"/> by the product of two much smaller matrices <img class="math" src="_images/math/7a82ffac845bf21272aa9b0d9ce8c8a31793a547.svg" alt="\matr{W}"/> and <img class="math" src="_images/math/3600c3a34eab63349a04da9b8d5d9c5cbe58f4ac.svg" alt="\matr{H}"/>. The idea is to choose the smallest value of k (width of <img class="math" src="_images/math/7a82ffac845bf21272aa9b0d9ce8c8a31793a547.svg" alt="\matr{W}"/> and height of <img class="math" src="_images/math/3600c3a34eab63349a04da9b8d5d9c5cbe58f4ac.svg" alt="\matr{H}"/>) that gives an acceptable approximation error. Due to the nonconvex nature of the optimization problem associated with finding <img class="math" src="_images/math/7a82ffac845bf21272aa9b0d9ce8c8a31793a547.svg" alt="\matr{W}"/> and <img class="math" src="_images/math/3600c3a34eab63349a04da9b8d5d9c5cbe58f4ac.svg" alt="\matr{H}"/>, they can only be approximated after an NMF algorithm satisfies a convergence criterion to a local minimum. Thus, the minimization of the objective function proceeds iteratively, attempting to reach a stationary point, which is the best possible solution. As the iterations proceed, the SmallK code computes a metric that estimates the progress and, when the metric falls below a user-specified tolerance, the iterations stop and convergence is declared [see <a class="reference external" href="http://smallk.github.io/publications/">[Publications [2]</a>] for a detailed discussion].</p>
+<p>The SmallK library provides implementations of several different NMF algorithms.  These algorithms are:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Multiplicative Updating (NMF-MU)</li>
+<li>Hierarchical Alternating Least Squares (NMF-HALS)</li>
+<li>Block Principal Pivoting (NMF-BPP)</li>
+<li>Rank2 Specialization (NMF-RANK2)</li>
+</ol>
+</div></blockquote>
+<p>SmallK also provides implementations of hierarchical and flat clustering.  These routines are:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Hierarchical Clustering via NMF-RANK2</li>
+<li>Flat Clustering via NMF-RANK2</li>
+<li>Flat Clustering via NMF-BPP or NMF-HALS</li>
+</ol>
+</div></blockquote>
+<p>The suite of SmallK implementations of NMF algorithms are suitable in many applications such as image processing, interactive visual analytics, speckle removal from SAR images, recommender systems, information fusion, outlier detection, chemometrics, and many more.</p>
+<p>The SmallK library requires either MacOSX or Linux. A Windows version via a Vagrant installation is also available.</p>
+</div>
+<div class="section" id="prerequisites">
+<h2>2.4. Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>The following list is the software packages/libraries required to build the SmallK NMF library code:</p>
+<ul>
+<li><p class="first">A modern, C++11-compliant compiler, such as g++ 4.9 or later</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://libelemental.org/">Elemental</a>, a high-performance library for dense, distributed linear algebra, which requires:</p>
+<blockquote>
+<div><ul class="simple">
+<li>An MPI installation, such as <a class="reference external" href="http://www.open-mpi.org/software/ompi/v1.6/">OpenMPI</a> or <a class="reference external" href="http://http://www.mpich.org/">mpich</a></li>
+<li>BLAS implementation, hopefully optimized/tuned for the local system</li>
+<li><a class="reference external" href="http://www.cs.utexas.edu/~flame/web/libFLAME.html">libFLAME</a>: a high-performance library for dense numerical linear algebra</li>
+<li>CMake</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Python 2.7 (optional), including the following libraries (required to build the Python interface to SmallK, which is optional):</p>
+<blockquote>
+<div><ul class="simple">
+<li>numpy</li>
+<li>scipy</li>
+<li>cython</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>Elemental can make use of OpenMP or mpich  parallelization if available, which is generally advantageous for large problems.  The SmallK code is also internally parallelized to take full advantage of multiple CPU cores for maximum performance.  SmallK does not currently support distributed computation, but this is planned for future updates.</p>
+<p><strong>The SmallK software supports the latest stable release of Elemental, version 0.85</strong></p>
+<p>Check the documentation links on this page for additional detailed instructions for installation of the SmallK library software and dependencies. If desired, please see also the <a class="reference external" href="http://libelemental.org/documentation/">installation instructions for Elemental</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pages_quickstartInstall.html" class="btn btn-neutral float-right" title="3. Quickstart - Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pages_about.html" class="btn btn-neutral" title="1. About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Georgia Institute of Technology.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.6.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

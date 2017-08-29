@@ -1,0 +1,549 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. Quickstart - Installation &mdash; SmallK 1.6.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="SmallK 1.6.2 documentation" href="index.html"/>
+        <link rel="next" title="4. Quickstart - Smallk API" href="pages_quickstartSmallkAPI.html"/>
+        <link rel="prev" title="2. Introduction" href="pages_introduction.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> SmallK
+          
+
+          
+            
+            <img src="_static/georgiatech.png" class="logo" />
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">SmallK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages_about.html">1. About</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#distributed-versions">1.1. Distributed Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#ground-truth-data-for-graph-clustering-and-community-detection">1.2. Ground truth data for graph clustering and community detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#acknowledgements">1.3. Acknowledgements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#contact-info">1.4. Contact Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_introduction.html">2. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#background">2.1. Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#low-rank-approximations-and-nmf">2.2. Low rank approximations and NMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#smallk-overview">2.3. SmallK Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#prerequisites">2.4. Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Quickstart - Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#vagrant-virtual-machine">3.1. Vagrant Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-instructions">3.2. Docker Instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_quickstartSmallkAPI.html">4. Quickstart - Smallk API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#introduction">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#c-project-setup">4.2. C++ Project Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#load-a-matrix">4.3. Load a Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#perform-nmf-on-the-loaded-matrix">4.4. Perform NMF on the Loaded Matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_quickstartSmallkAPI.html#nmf-bpp">4.4.1. NMF-BPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_quickstartSmallkAPI.html#nmf-hals">4.4.2. NMF-HALS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_quickstartSmallkAPI.html#nmf-initialization">4.4.3. NMF Initialization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#hierarchical-clustering">4.5. Hierarchical Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#flat-clustering">4.6. Flat Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#disclaimer">4.7. Disclaimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#contact-info">4.8. Contact Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_installation.html">5. Installation Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#prerequisites">5.1. Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#id1">5.1.1. Elemental</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#how-to-install-elemental-on-macosx">5.1.1.1. How to Install Elemental on MacOSX</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-the-latest-gnu-compilers">5.1.1.1.1. OSX:Install the latest GNU compilers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-mpi-tools">5.1.1.1.2. OSX:Install MPI Tools</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-libflame">5.1.1.1.3. OSX:Install libFlame</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-elemental">5.1.1.1.4. OSX:Install Elemental</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#hybridrelease-build">5.1.1.1.4.1. HybridRelease Build</a></li>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#purerelease-build">5.1.1.1.4.2. PureRelease Build</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#how-to-install-elemental-on-linux">5.1.1.2. How to Install Elemental on Linux</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-the-latest-gnu-compilers">5.1.1.2.1. Linux:Install the latest GNU compilers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-mpi-tools">5.1.1.2.2. Linux:Install MPI Tools</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-libflame">5.1.1.2.3. Linux:Install libFlame</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-an-accelerated-blas-library">5.1.1.2.4. Linux:Install an accelerated BLAS library</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-elemental">5.1.1.2.5. Linux:Install Elemental</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#id5">5.1.1.2.5.1. HybridRelease build</a></li>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#id6">5.1.1.2.5.2. PureRelease build</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#installation-of-python-libraries">5.1.2. Installation of Python libraries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#osx-install-python-libraries">5.1.2.1. OSX:Install Python libraries</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#install-python-scientific-packages">5.1.2.1.1. Install Python scientific packages</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#install-cython-a-python-interface-to-c-c">5.1.2.1.2. Install Cython: a Python interface to C/C++</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#linux-install-python-libraries">5.1.2.2. Linux:Install Python libraries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#build-and-installation-of-smallk">5.2. Build and Installation of SmallK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#obtain-the-source-code">5.2.1. Obtain the Source Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#build-the-smallk-library">5.2.2. Build the SmallK library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#install-the-smallk-library">5.2.3. Install the SmallK library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#check-the-build-and-installation">5.2.4. Check the build and installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#build-and-installation-of-pysmallk-shared-library">5.3. Build and Installation of pysmallk shared library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#matrix-file-formats">5.4. Matrix file formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#disclaimer">5.5. Disclaimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#contact-info">5.6. Contact Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_commandLineTools.html">6. Command Line Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#introduction">6.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#preprocessor">6.2. Preprocessor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#overview">6.2.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#input-files">6.2.2. Input Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#command-line-options">6.2.3. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#sample-runs">6.2.4. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#matrixgen">6.3. Matrixgen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id1">6.3.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id2">6.3.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id3">6.3.3. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#nonnegative-matrix-factorization-nmf">6.4. Nonnegative Matrix Factorization (NMF)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id4">6.4.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id5">6.4.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id6">6.4.3. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#hierclust">6.5. Hierclust</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id7">6.5.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id9">6.5.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id10">6.5.3. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#flatclust">6.6. Flatclust</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id12">6.6.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id13">6.6.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id14">6.6.3. Sample Runs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_smallkAPI.html">7. Smallk API (C++)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_smallkAPI.html#examples-of-api-usage">7.1. Examples of API Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_smallkAPI.html#smallk-api">7.2. SmallK API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_smallkAPI.html#enumerations">7.2.1. Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_smallkAPI.html#api-functions">7.2.2. API functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#initialization-and-cleanup">7.2.2.1. Initialization and cleanup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#versioning">7.2.2.2. Versioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#common-functions">7.2.2.3. Common functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#nmf-functions">7.2.2.4. NMF functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_pysmallkAPI.html">8. Pysmallk API (Python)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_pysmallkAPI.html#introduction">8.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_pysmallkAPI.html#examples-of-pysmallk-usage">8.2. Examples of Pysmallk Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_pysmallkAPI.html#pysmallk-functions">8.3. Pysmallk Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#preprocessor">8.3.1. Preprocessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#matrixgen">8.3.2. Matrixgen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#smallkapi">8.3.3. SmallkAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#flatclust">8.3.4. Flatclust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#heirclust">8.3.5. Heirclust</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_tests.html">9. Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_tests.html#smallk-test-results">9.1. SmallK Test Results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_benchmarks_results.html">10. Benchmarks and Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages_publications.html">11. Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages_software_repo.html">12. Software Repo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_software_repo.html#getting-the-code-and-instructions">12.1. Getting the code and instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_software_repo.html#contact-info">12.2. Contact Info</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SmallK</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>3. Quickstart - Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pages_quickstartInstall.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quickstart-installation">
+<h1>3. Quickstart - Installation<a class="headerlink" href="#quickstart-installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="vagrant-virtual-machine">
+<h2>3.1. Vagrant Virtual Machine<a class="headerlink" href="#vagrant-virtual-machine" title="Permalink to this headline">¶</a></h2>
+<p>Installing SmallK into a virtual machine (OSX, Linux, Windows) is intended for those who are not doing development and/or do not have a reason to do the full installation on Linux or OSX outlined in the sections to follow.</p>
+<p>The complete stack of software dependencies for SmallK as well as SmallK itself can be rapidly set up and configured through use of Vagrant and VirtualBox and the files included in the repository. The Vagrant install has been tested on Linux Ubuntu 16.04, Mac OSX Sierra 10.12.6, and Windows 10.</p>
+<p>Note that the <code class="docutils literal"><span class="pre">smallk/vagrant/bootstrap.sh</span></code> file can be modified to perform various tasks when provisioning the vagrant session. Consider customizing <code class="docutils literal"><span class="pre">bootstrap.sh</span></code> to set up a custom install of libsmallk as required.</p>
+<p>To deploy the SmallK VM:</p>
+<p><strong>1.</strong> Install <a class="reference external" href="http://www.vagrantup.com/downloads.html">Vagrant</a> and <a class="reference external" href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Note: For Windows, ensure that you have a VirtualBox version &gt;= 4.3.12. After installing Vagrant, you may need to log out and log back in to ensure that you can run vagrant commands in the command prompt.</p>
+</div>
+<p><strong>Optional:</strong> <code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></code> the <a class="reference external" href="https://github.com/smallk/smallk_data">smallk_data</a> repository so that it is parallel with the smallk repository. This is an alternate way to test the installation and begin to work with SmallK. This directory can be synced with a directory of the same name in the VM by adding or uncommenting the following line in <code class="docutils literal"><span class="pre">smallk/vagrant/Vagrantfile</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span> <span class="s2">&quot;../../smallk_data&quot;</span><span class="p">,</span> <span class="s2">&quot;/home/vagrant/smallk_data&quot;</span>
+</pre></div>
+</div>
+<p><strong>2.</strong> From within the <code class="docutils literal"><span class="pre">smallk/vagrant</span></code> directory, run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">vagrant</span> <span class="n">up</span>
+</pre></div>
+</div>
+<p>This can take as long as an hour to build the VM, which will be based on a minimal Ubuntu 16.04 installation. The <code class="docutils literal"><span class="pre">smallk/vagrant/Vagrantfile</span></code> can be customized in many ways to change the specifications for the VM that is built. See more information <a class="reference external" href="http://docs.vagrantup.com/v2/">here</a>. The default configuration provides the VM with 4 GB of memory and 3 CPUs. Increasing these allocations will improve the performance of the application. This can be done by modifying these lines in the Vagrantfile:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">vb</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="mi">4096</span>
+<span class="n">vb</span><span class="o">.</span><span class="n">cpus</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>After <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">up</span></code> has completed, the SmallK and pysmallk libraries will have been built and tested. Additionally, the smallk_data directory, if cloned as in the optional step above, will have been synced into the VM. For more details regarding what is being built and executed while provisioning the VM, please inspect <code class="docutils literal"><span class="pre">smallk/vagrant/bootstrap.sh</span></code>.</p>
+<p><strong>3.</strong> Once the VM has been built, run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">vagrant</span> <span class="n">ssh</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Note: For Windows, you will need an ssh client in order to run the above command. This can be obtained via <a class="reference external" href="https://www.cygwin.com/">CygWin</a> <a class="reference external" href="http://sourceforge.net/projects/mingw/files/">MinGW</a>, or <a class="reference external" href="http://git-scm.com/downloads">Git</a>. If you would like to use PuTTY to connect to your virtual machine, follow <a class="reference external" href="https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Connect-to-Your-Vagrant-Virtual-Machine-with-PuTTY">these</a> instructions.</p>
+</div>
+<p>In case you need it, the username/password for the VM created will be vagrant/vagrant.</p>
+<p>This will drop you into the command line of the VM that was just created, in a working directory at <code class="docutils literal"><span class="pre">/home/vagrant</span></code>. From there, you can navigate to <code class="docutils literal"><span class="pre">/home/vagrant/libsmallk-&lt;version&gt;</span></code>, (e.g., libsmallk-1.6.2), and run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">make</span> <span class="n">check</span> <span class="n">PYSMALLK</span><span class="o">=</span><span class="mi">1</span> <span class="n">ELEMVER</span><span class="o">=</span><span class="mf">0.85</span> <span class="n">DATA_DIR</span><span class="o">=../</span><span class="n">smallk_data</span>
+</pre></div>
+</div>
+<p>to verify your installation was successful.</p>
+<p><strong>4.</strong> To test the installation at the command line, run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">nmf</span>
+</pre></div>
+</div>
+<p>This will produce the help output for the nmf library function:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">Usage</span><span class="p">:</span> <span class="n">nmf</span>
+        <span class="o">--</span><span class="n">matrixfile</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>  <span class="n">Filename</span> <span class="n">of</span> <span class="n">the</span> <span class="n">matrix</span> <span class="n">to</span> <span class="n">be</span> <span class="n">factored</span><span class="o">.</span>
+                                 <span class="n">Either</span> <span class="n">CSV</span> <span class="nb">format</span> <span class="k">for</span> <span class="n">dense</span> <span class="ow">or</span> <span class="n">MatrixMarket</span> <span class="nb">format</span> <span class="k">for</span> <span class="n">sparse</span><span class="o">.</span>
+        <span class="o">--</span><span class="n">k</span> <span class="o">&lt;</span><span class="n">integer</span> <span class="n">value</span><span class="o">&gt;</span>      <span class="n">The</span> <span class="n">common</span> <span class="n">dimension</span> <span class="k">for</span> <span class="n">factors</span> <span class="n">W</span> <span class="ow">and</span> <span class="n">H</span><span class="o">.</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">algorithm</span>  <span class="n">BPP</span><span class="p">]</span>       <span class="n">NMF</span> <span class="n">algorithms</span><span class="p">:</span>
+                                     <span class="n">MU</span><span class="p">:</span>    <span class="n">multiplicative</span> <span class="n">updating</span>
+                                     <span class="n">HALS</span><span class="p">:</span>  <span class="n">hierarchical</span> <span class="n">alternating</span> <span class="n">least</span> <span class="n">squares</span>
+                                     <span class="n">RANK2</span><span class="p">:</span> <span class="n">rank2</span> <span class="k">with</span> <span class="n">optimal</span> <span class="n">active</span> <span class="nb">set</span> <span class="n">selection</span>
+                                     <span class="n">BPP</span><span class="p">:</span>   <span class="n">block</span> <span class="n">principal</span> <span class="n">pivoting</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">stopping</span>  <span class="n">PG_RATIO</span><span class="p">]</span>   <span class="n">Stopping</span> <span class="n">criterion</span><span class="p">:</span>
+                                     <span class="n">PG_RATIO</span><span class="p">:</span> <span class="n">Ratio</span> <span class="n">of</span> <span class="n">projected</span> <span class="n">gradients</span>
+                                     <span class="n">DELTA</span><span class="p">:</span>    <span class="n">Change</span> <span class="ow">in</span> <span class="n">relative</span> <span class="n">F</span><span class="o">-</span><span class="n">norm</span> <span class="n">of</span> <span class="n">W</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">tol</span>  <span class="mf">0.005</span><span class="p">]</span>           <span class="n">Tolerance</span> <span class="k">for</span> <span class="n">the</span> <span class="n">selected</span> <span class="n">stopping</span> <span class="n">criterion</span><span class="o">.</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">tolcount</span>  <span class="mi">1</span><span class="p">]</span>          <span class="n">Tolerance</span> <span class="n">count</span><span class="p">;</span> <span class="n">declare</span> <span class="n">convergence</span> <span class="n">after</span> <span class="n">this</span> <span class="n">many</span>
+                                 <span class="n">iterations</span> <span class="k">with</span> <span class="n">metric</span> <span class="o">&lt;</span> <span class="n">tolerance</span><span class="p">;</span> <span class="n">default</span> <span class="ow">is</span> <span class="n">to</span>
+                                 <span class="n">declare</span> <span class="n">convergence</span> <span class="n">on</span> <span class="n">the</span> <span class="n">first</span> <span class="n">such</span> <span class="n">iteration</span><span class="o">.</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">infile_W</span>  <span class="p">(</span><span class="n">empty</span><span class="p">)]</span>    <span class="n">Dense</span> <span class="n">mxk</span> <span class="n">matrix</span> <span class="n">to</span> <span class="n">initialize</span> <span class="n">W</span><span class="p">;</span> <span class="n">CSV</span> <span class="n">file</span><span class="o">.</span>
+                                 <span class="n">If</span> <span class="n">unspecified</span><span class="p">,</span> <span class="n">W</span> <span class="n">will</span> <span class="n">be</span> <span class="n">randomly</span> <span class="n">initialized</span><span class="o">.</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">infile_H</span>  <span class="p">(</span><span class="n">empty</span><span class="p">)]</span>    <span class="n">Dense</span> <span class="n">kxn</span> <span class="n">matrix</span> <span class="n">to</span> <span class="n">initialize</span> <span class="n">H</span><span class="p">;</span> <span class="n">CSV</span> <span class="n">file</span><span class="o">.</span>
+                                 <span class="n">If</span> <span class="n">unspecified</span><span class="p">,</span> <span class="n">H</span> <span class="n">will</span> <span class="n">be</span> <span class="n">randomly</span> <span class="n">initialized</span><span class="o">.</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">outfile_W</span>  <span class="n">w</span><span class="o">.</span><span class="n">csv</span><span class="p">]</span>     <span class="n">Filename</span> <span class="k">for</span> <span class="n">the</span> <span class="n">W</span> <span class="n">matrix</span> <span class="n">result</span><span class="o">.</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">outfile_H</span>  <span class="n">h</span><span class="o">.</span><span class="n">csv</span><span class="p">]</span>     <span class="n">Filename</span> <span class="k">for</span> <span class="n">the</span> <span class="n">H</span> <span class="n">matrix</span> <span class="n">result</span><span class="o">.</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">miniter</span>  <span class="mi">5</span><span class="p">]</span>           <span class="n">Minimum</span> <span class="n">number</span> <span class="n">of</span> <span class="n">iterations</span> <span class="n">to</span> <span class="n">perform</span><span class="o">.</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">maxiter</span>  <span class="mi">5000</span><span class="p">]</span>        <span class="n">Maximum</span> <span class="n">number</span> <span class="n">of</span> <span class="n">iterations</span> <span class="n">to</span> <span class="n">perform</span><span class="o">.</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">outprecision</span>  <span class="mi">6</span><span class="p">]</span>      <span class="n">Write</span> <span class="n">results</span> <span class="k">with</span> <span class="n">this</span> <span class="n">many</span> <span class="n">digits</span> <span class="n">of</span> <span class="n">precision</span><span class="o">.</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">maxthreads</span>    <span class="mi">3</span><span class="p">]</span>      <span class="n">Upper</span> <span class="n">limit</span> <span class="n">to</span> <span class="n">thread</span> <span class="n">count</span><span class="o">.</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">normalize</span>  <span class="mi">1</span><span class="p">]</span>         <span class="n">Whether</span> <span class="n">to</span> <span class="n">normalize</span> <span class="n">W</span> <span class="ow">and</span> <span class="n">scale</span> <span class="n">H</span><span class="o">.</span>
+                                     <span class="mi">1</span> <span class="o">==</span> <span class="n">yes</span><span class="p">,</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">no</span>
+        <span class="p">[</span><span class="o">--</span><span class="n">verbose</span>  <span class="mi">1</span><span class="p">]</span>           <span class="n">Whether</span> <span class="n">to</span> <span class="nb">print</span> <span class="n">updates</span> <span class="n">to</span> <span class="n">the</span> <span class="n">screen</span><span class="o">.</span>
+                                     <span class="mi">1</span> <span class="o">==</span> <span class="nb">print</span> <span class="n">updates</span><span class="p">,</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">silent</span>
+</pre></div>
+</div>
+<p><strong>5.</strong> To test the installation of pysmallk, attempt to import numpy and pysmallk; numpy must be imported BEFORE pysmallk is imported. Running the following command from the command line should produce no output:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;import numpy; import pysmallk&quot;</span>
+</pre></div>
+</div>
+<p>If there is no import error, pysmallk was installed correctly and is globally available.</p>
+<p><strong>6.</strong> When you are ready to shut down the VM, run <code class="docutils literal"><span class="pre">exit</span></code> from within the vagrant machine, then run one of the following from the command line of your host machine (wherever <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">up</span></code> was executed):</p>
+<p>Save the current running state:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">vagrant</span> <span class="n">suspend</span>
+</pre></div>
+</div>
+<p>Gracefully shut down the machine:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">vagrant</span> <span class="n">halt</span>
+</pre></div>
+</div>
+<p>Remove the VM from your machine (this will require rebuilding the VM to restart it):</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">vagrant</span> <span class="n">destroy</span>
+</pre></div>
+</div>
+<p>If you want to work with the VM again, from any of the above states you can run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">vagrant</span> <span class="n">up</span>
+</pre></div>
+</div>
+<p>again and the VM will be resumed or recreated.</p>
+</div>
+<div class="section" id="docker-instructions">
+<h2>3.2. Docker Instructions<a class="headerlink" href="#docker-instructions" title="Permalink to this headline">¶</a></h2>
+<p>Running SmallK in a Docker container is intended for those who would like a fast, simple install that keeps their environment unmodified, in exchange for a loss in runtime performance. The basic process is to first build the Docker image, then run the Docker container to execute the desired command.</p>
+<p><strong>1.</strong> Install <a class="reference external" href="https://docs.docker.com/engine/installation/">Docker</a>. If you are new to Docker, it may be worth exploring a <a class="reference external" href="https://docs.docker.com/get-started/)">quick introduction</a>, or at least a <a class="reference external" href="https://github.com/wsargent/docker-cheat-sheet">cheat-sheet</a>. There are <a class="reference external" href="https://docs.docker.com/manuals/">platform specific</a> installation, configuiration, and execution instructions for Mac, Windows, and Linux. The following instructions were tested on Ubuntu 16.04 with Docker version 17.06.0-ce.</p>
+<p><strong>2.</strong> Build the smallk Docker image.</p>
+<p>First, make sure you have all submodules and their own submodules. From within the root of the smallk directory, run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span> <span class="o">--</span><span class="n">init</span> <span class="o">--</span><span class="n">recursive</span>
+</pre></div>
+</div>
+<p>Now we can build the image. In the same (project root) directory, run this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">smallk</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>This will download all dependencies from the Ubuntu repositories, PyPI, GitHub, etc. Everything will be built including smallk itself. You will end up with a Docker image tagged “smallk”. At the end of the build process you should see the following:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">Step</span> <span class="mi">40</span><span class="o">/</span><span class="mi">40</span> <span class="p">:</span> <span class="n">CMD</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+ <span class="o">---&gt;</span> <span class="n">Running</span> <span class="ow">in</span> <span class="mi">3</span><span class="n">fdb5e73afdc</span>
+ <span class="o">---&gt;</span> <span class="n">f8afa9f6a532</span>
+<span class="n">Removing</span> <span class="n">intermediate</span> <span class="n">container</span> <span class="mi">3</span><span class="n">fdb5e73afdc</span>
+<span class="n">Successfully</span> <span class="n">built</span> <span class="n">f8afa9f6a532</span>
+<span class="n">Successfully</span> <span class="n">tagged</span> <span class="n">smallk</span><span class="p">:</span><span class="n">latest</span>
+</pre></div>
+</div>
+<p>This can take as long as an hour to build the image, which is based on a minimal Ubuntu 16.04 installation. The <code class="docutils literal"><span class="pre">smallk/Dockerfile</span></code> can be customized in many ways to change the specifications for the image that is built.</p>
+<p><strong>3.</strong> Run the Docker container.</p>
+<p>The Docker container may be executed from any directory. Regardless of where you run it, you will need a volume for any input/output data. As an example, you may run the built-in PySmallk tests. The instructions below assume that your work directory is named <code class="docutils literal"><span class="pre">/home/ubuntu</span></code>. Replace it with the appropriate name. (The Docker daemon requires an absolute path for the local volume reference.):</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">smallk</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">.</span><span class="n">git</span> <span class="n">smallk_data</span>
+<span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">volume</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">smallk_data</span><span class="p">:</span><span class="o">/</span><span class="n">data</span> <span class="n">smallk</span> <span class="n">make</span> <span class="n">check</span> <span class="n">PYSMALLK</span><span class="o">=</span><span class="mi">1</span> <span class="n">ELEMVER</span><span class="o">=</span><span class="mf">0.85</span> <span class="n">DATA_DIR</span><span class="o">=/</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>Here is a breakdown of that Docker command to explain each part:</p>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">docker</span> <span class="pre">run</span></code>: Run a new container from an image</p>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">--volume</span></code>: Add a volume (persistent storage area) to the container</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">/home/ubuntu/smallk_data</span></code>: Local absolute path that will be exposed within the running container</li>
+<li><code class="docutils literal"><span class="pre">/data</span></code>: Internal path to use within the container</li>
+</ul>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">smallk</span></code>: Image tag from which to spawn the new container</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">make</span> <span class="pre">check</span> <span class="pre">PYSMALLK=1</span> <span class="pre">ELEMVER=0.85</span></code>: Command to run within the container (run the smallk test suite)</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">DATA_DIR=/data</span></code>: Tell the test suite where the local data is stored (from the perspective of the container)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p>If your execution of the PySmallk tests is successful, you should see a lot of output, ending with the following lines:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">assignment</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="o">*****</span> <span class="n">PysmallK</span><span class="p">:</span> <span class="n">All</span> <span class="n">tests</span> <span class="n">passed</span><span class="o">.</span> <span class="o">*****</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pages_quickstartSmallkAPI.html" class="btn btn-neutral float-right" title="4. Quickstart - Smallk API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pages_introduction.html" class="btn btn-neutral" title="2. Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Georgia Institute of Technology.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.6.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

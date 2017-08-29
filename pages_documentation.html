@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Documentation &mdash; SmallK 1.6.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="SmallK 1.6.2 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> SmallK
+          
+
+          
+            
+            <img src="_static/georgiatech.png" class="logo" />
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SmallK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages_about.html">1. About</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#distributed-versions">1.1. Distributed Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#ground-truth-data-for-graph-clustering-and-community-detection">1.2. Ground truth data for graph clustering and community detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#acknowledgements">1.3. Acknowledgements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#contact-info">1.4. Contact Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_introduction.html">2. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#background">2.1. Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#low-rank-approximations-and-nmf">2.2. Low rank approximations and NMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#smallk-overview">2.3. SmallK Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#prerequisites">2.4. Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_quickstartInstall.html">3. Quickstart - Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartInstall.html#vagrant-virtual-machine">3.1. Vagrant Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartInstall.html#docker-instructions">3.2. Docker Instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_quickstartSmallkAPI.html">4. Quickstart - Smallk API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#introduction">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#c-project-setup">4.2. C++ Project Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#load-a-matrix">4.3. Load a Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#perform-nmf-on-the-loaded-matrix">4.4. Perform NMF on the Loaded Matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_quickstartSmallkAPI.html#nmf-bpp">4.4.1. NMF-BPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_quickstartSmallkAPI.html#nmf-hals">4.4.2. NMF-HALS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_quickstartSmallkAPI.html#nmf-initialization">4.4.3. NMF Initialization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#hierarchical-clustering">4.5. Hierarchical Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#flat-clustering">4.6. Flat Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#disclaimer">4.7. Disclaimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#contact-info">4.8. Contact Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_installation.html">5. Installation Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#prerequisites">5.1. Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#id1">5.1.1. Elemental</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#how-to-install-elemental-on-macosx">5.1.1.1. How to Install Elemental on MacOSX</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-the-latest-gnu-compilers">5.1.1.1.1. OSX:Install the latest GNU compilers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-mpi-tools">5.1.1.1.2. OSX:Install MPI Tools</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-libflame">5.1.1.1.3. OSX:Install libFlame</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-elemental">5.1.1.1.4. OSX:Install Elemental</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#hybridrelease-build">5.1.1.1.4.1. HybridRelease Build</a></li>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#purerelease-build">5.1.1.1.4.2. PureRelease Build</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#how-to-install-elemental-on-linux">5.1.1.2. How to Install Elemental on Linux</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-the-latest-gnu-compilers">5.1.1.2.1. Linux:Install the latest GNU compilers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-mpi-tools">5.1.1.2.2. Linux:Install MPI Tools</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-libflame">5.1.1.2.3. Linux:Install libFlame</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-an-accelerated-blas-library">5.1.1.2.4. Linux:Install an accelerated BLAS library</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-elemental">5.1.1.2.5. Linux:Install Elemental</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#id5">5.1.1.2.5.1. HybridRelease build</a></li>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#id6">5.1.1.2.5.2. PureRelease build</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#installation-of-python-libraries">5.1.2. Installation of Python libraries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#osx-install-python-libraries">5.1.2.1. OSX:Install Python libraries</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#install-python-scientific-packages">5.1.2.1.1. Install Python scientific packages</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#install-cython-a-python-interface-to-c-c">5.1.2.1.2. Install Cython: a Python interface to C/C++</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#linux-install-python-libraries">5.1.2.2. Linux:Install Python libraries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#build-and-installation-of-smallk">5.2. Build and Installation of SmallK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#obtain-the-source-code">5.2.1. Obtain the Source Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#build-the-smallk-library">5.2.2. Build the SmallK library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#install-the-smallk-library">5.2.3. Install the SmallK library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#check-the-build-and-installation">5.2.4. Check the build and installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#build-and-installation-of-pysmallk-shared-library">5.3. Build and Installation of pysmallk shared library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#matrix-file-formats">5.4. Matrix file formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#disclaimer">5.5. Disclaimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#contact-info">5.6. Contact Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_commandLineTools.html">6. Command Line Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#introduction">6.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#preprocessor">6.2. Preprocessor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#overview">6.2.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#input-files">6.2.2. Input Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#command-line-options">6.2.3. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#sample-runs">6.2.4. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#matrixgen">6.3. Matrixgen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id1">6.3.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id2">6.3.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id3">6.3.3. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#nonnegative-matrix-factorization-nmf">6.4. Nonnegative Matrix Factorization (NMF)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id4">6.4.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id5">6.4.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id6">6.4.3. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#hierclust">6.5. Hierclust</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id7">6.5.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id9">6.5.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id10">6.5.3. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#flatclust">6.6. Flatclust</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id12">6.6.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id13">6.6.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id14">6.6.3. Sample Runs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_smallkAPI.html">7. Smallk API (C++)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_smallkAPI.html#examples-of-api-usage">7.1. Examples of API Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_smallkAPI.html#smallk-api">7.2. SmallK API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_smallkAPI.html#enumerations">7.2.1. Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_smallkAPI.html#api-functions">7.2.2. API functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#initialization-and-cleanup">7.2.2.1. Initialization and cleanup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#versioning">7.2.2.2. Versioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#common-functions">7.2.2.3. Common functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#nmf-functions">7.2.2.4. NMF functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_pysmallkAPI.html">8. Pysmallk API (Python)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_pysmallkAPI.html#introduction">8.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_pysmallkAPI.html#examples-of-pysmallk-usage">8.2. Examples of Pysmallk Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_pysmallkAPI.html#pysmallk-functions">8.3. Pysmallk Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#preprocessor">8.3.1. Preprocessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#matrixgen">8.3.2. Matrixgen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#smallkapi">8.3.3. SmallkAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#flatclust">8.3.4. Flatclust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#heirclust">8.3.5. Heirclust</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_tests.html">9. Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_tests.html#smallk-test-results">9.1. SmallK Test Results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_benchmarks_results.html">10. Benchmarks and Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages_publications.html">11. Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages_software_repo.html">12. Software Repo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_software_repo.html#getting-the-code-and-instructions">12.1. Getting the code and instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_software_repo.html#contact-info">12.2. Contact Info</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SmallK</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pages_documentation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound" id="installationtoc">
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Georgia Institute of Technology.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.6.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

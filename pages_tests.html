@@ -1,0 +1,914 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>9. Tests &mdash; SmallK 1.6.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="SmallK 1.6.2 documentation" href="index.html"/>
+        <link rel="next" title="10. Benchmarks and Results" href="pages_benchmarks_results.html"/>
+        <link rel="prev" title="8. Pysmallk API (Python)" href="pages_pysmallkAPI.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> SmallK
+          
+
+          
+            
+            <img src="_static/georgiatech.png" class="logo" />
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">SmallK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages_about.html">1. About</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#distributed-versions">1.1. Distributed Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#ground-truth-data-for-graph-clustering-and-community-detection">1.2. Ground truth data for graph clustering and community detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#acknowledgements">1.3. Acknowledgements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_about.html#contact-info">1.4. Contact Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_introduction.html">2. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#background">2.1. Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#low-rank-approximations-and-nmf">2.2. Low rank approximations and NMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#smallk-overview">2.3. SmallK Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#prerequisites">2.4. Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_quickstartInstall.html">3. Quickstart - Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartInstall.html#vagrant-virtual-machine">3.1. Vagrant Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartInstall.html#docker-instructions">3.2. Docker Instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_quickstartSmallkAPI.html">4. Quickstart - Smallk API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#introduction">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#c-project-setup">4.2. C++ Project Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#load-a-matrix">4.3. Load a Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#perform-nmf-on-the-loaded-matrix">4.4. Perform NMF on the Loaded Matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_quickstartSmallkAPI.html#nmf-bpp">4.4.1. NMF-BPP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_quickstartSmallkAPI.html#nmf-hals">4.4.2. NMF-HALS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_quickstartSmallkAPI.html#nmf-initialization">4.4.3. NMF Initialization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#hierarchical-clustering">4.5. Hierarchical Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#flat-clustering">4.6. Flat Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#disclaimer">4.7. Disclaimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_quickstartSmallkAPI.html#contact-info">4.8. Contact Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_installation.html">5. Installation Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#prerequisites">5.1. Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#id1">5.1.1. Elemental</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#how-to-install-elemental-on-macosx">5.1.1.1. How to Install Elemental on MacOSX</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-the-latest-gnu-compilers">5.1.1.1.1. OSX:Install the latest GNU compilers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-mpi-tools">5.1.1.1.2. OSX:Install MPI Tools</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-libflame">5.1.1.1.3. OSX:Install libFlame</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#osx-install-elemental">5.1.1.1.4. OSX:Install Elemental</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#hybridrelease-build">5.1.1.1.4.1. HybridRelease Build</a></li>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#purerelease-build">5.1.1.1.4.2. PureRelease Build</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#how-to-install-elemental-on-linux">5.1.1.2. How to Install Elemental on Linux</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-the-latest-gnu-compilers">5.1.1.2.1. Linux:Install the latest GNU compilers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-mpi-tools">5.1.1.2.2. Linux:Install MPI Tools</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-libflame">5.1.1.2.3. Linux:Install libFlame</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-an-accelerated-blas-library">5.1.1.2.4. Linux:Install an accelerated BLAS library</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#linux-install-elemental">5.1.1.2.5. Linux:Install Elemental</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#id5">5.1.1.2.5.1. HybridRelease build</a></li>
+<li class="toctree-l6"><a class="reference internal" href="pages_installation.html#id6">5.1.1.2.5.2. PureRelease build</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#installation-of-python-libraries">5.1.2. Installation of Python libraries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#osx-install-python-libraries">5.1.2.1. OSX:Install Python libraries</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#install-python-scientific-packages">5.1.2.1.1. Install Python scientific packages</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pages_installation.html#install-cython-a-python-interface-to-c-c">5.1.2.1.2. Install Cython: a Python interface to C/C++</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pages_installation.html#linux-install-python-libraries">5.1.2.2. Linux:Install Python libraries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#build-and-installation-of-smallk">5.2. Build and Installation of SmallK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#obtain-the-source-code">5.2.1. Obtain the Source Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#build-the-smallk-library">5.2.2. Build the SmallK library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#install-the-smallk-library">5.2.3. Install the SmallK library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_installation.html#check-the-build-and-installation">5.2.4. Check the build and installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#build-and-installation-of-pysmallk-shared-library">5.3. Build and Installation of pysmallk shared library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#matrix-file-formats">5.4. Matrix file formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#disclaimer">5.5. Disclaimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_installation.html#contact-info">5.6. Contact Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_commandLineTools.html">6. Command Line Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#introduction">6.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#preprocessor">6.2. Preprocessor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#overview">6.2.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#input-files">6.2.2. Input Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#command-line-options">6.2.3. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#sample-runs">6.2.4. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#matrixgen">6.3. Matrixgen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id1">6.3.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id2">6.3.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id3">6.3.3. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#nonnegative-matrix-factorization-nmf">6.4. Nonnegative Matrix Factorization (NMF)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id4">6.4.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id5">6.4.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id6">6.4.3. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#hierclust">6.5. Hierclust</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id7">6.5.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id9">6.5.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id10">6.5.3. Sample Runs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pages_commandLineTools.html#flatclust">6.6. Flatclust</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id12">6.6.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id13">6.6.2. Command Line Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_commandLineTools.html#id14">6.6.3. Sample Runs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_smallkAPI.html">7. Smallk API (C++)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_smallkAPI.html#examples-of-api-usage">7.1. Examples of API Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_smallkAPI.html#smallk-api">7.2. SmallK API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_smallkAPI.html#enumerations">7.2.1. Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_smallkAPI.html#api-functions">7.2.2. API functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#initialization-and-cleanup">7.2.2.1. Initialization and cleanup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#versioning">7.2.2.2. Versioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#common-functions">7.2.2.3. Common functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pages_smallkAPI.html#nmf-functions">7.2.2.4. NMF functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_pysmallkAPI.html">8. Pysmallk API (Python)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_pysmallkAPI.html#introduction">8.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_pysmallkAPI.html#examples-of-pysmallk-usage">8.2. Examples of Pysmallk Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_pysmallkAPI.html#pysmallk-functions">8.3. Pysmallk Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#preprocessor">8.3.1. Preprocessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#matrixgen">8.3.2. Matrixgen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#smallkapi">8.3.3. SmallkAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#flatclust">8.3.4. Flatclust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#heirclust">8.3.5. Heirclust</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#smallk-test-results">9.1. SmallK Test Results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages_benchmarks_results.html">10. Benchmarks and Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages_publications.html">11. Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages_software_repo.html">12. Software Repo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages_software_repo.html#getting-the-code-and-instructions">12.1. Getting the code and instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_software_repo.html#contact-info">12.2. Contact Info</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SmallK</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>9. Tests</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pages_tests.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tests">
+<h1>9. Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h1>
+<p>Below we provide example output for many of the tests that can be run in the SmallK library. This will provide guidance for identifying issues with your installation. Of course results will vary on different machines.</p>
+<div class="section" id="smallk-test-results">
+<h2>9.1. SmallK Test Results<a class="headerlink" href="#smallk-test-results" title="Permalink to this headline">¶</a></h2>
+<p>After building the smallk library, the <cite>make check</cite> command will run a bash script that performs a series of tests on the code.  This is a sample output of those tests:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">Build</span> <span class="n">configuration</span><span class="p">:</span> <span class="n">release</span>
+<span class="n">sh</span> <span class="n">tests</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">test_smallk</span><span class="o">.</span><span class="n">sh</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">/</span> <span class="o">|</span> <span class="n">tee</span> <span class="n">smallk_test_results</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">*****************************************************</span>
+<span class="o">*</span>                                                   <span class="o">*</span>
+<span class="o">*</span>           <span class="n">Testing</span> <span class="n">the</span> <span class="n">smallk</span> <span class="n">interface</span><span class="o">.</span>           <span class="o">*</span>
+<span class="o">*</span>                                                   <span class="o">*</span>
+<span class="o">*****************************************************</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">achieve</span> <span class="n">THREAD_MULTIPLE</span> <span class="n">support</span><span class="o">.</span>
+<span class="n">Smallk</span> <span class="n">major</span> <span class="n">version</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">Smallk</span> <span class="n">minor</span> <span class="n">version</span><span class="p">:</span> <span class="mi">6</span>
+<span class="n">Smallk</span> <span class="n">patch</span> <span class="n">level</span><span class="p">:</span>   <span class="mi">0</span>
+<span class="n">Smallk</span> <span class="n">version</span> <span class="n">string</span><span class="p">:</span> <span class="mf">1.6</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">Loading</span> <span class="n">matrix</span><span class="o">...</span>
+
+<span class="n">Running</span> <span class="n">NMF</span><span class="o">-</span><span class="n">BPP</span><span class="o">...</span>
+
+<span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">W</span><span class="o">...</span>
+<span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">H</span><span class="o">...</span>
+
+                <span class="n">parameters</span><span class="p">:</span>
+
+                 <span class="n">algorithm</span><span class="p">:</span> <span class="n">Nonnegative</span> <span class="n">Least</span> <span class="n">Squares</span> <span class="k">with</span> <span class="n">Block</span> <span class="n">Principal</span> <span class="n">Pivoting</span>
+        <span class="n">stopping</span> <span class="n">criterion</span><span class="p">:</span> <span class="n">Ratio</span> <span class="n">of</span> <span class="n">Projected</span> <span class="n">Gradients</span>
+                    <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
+                     <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
+                         <span class="n">k</span><span class="p">:</span> <span class="mi">8</span>
+                   <span class="n">miniter</span><span class="p">:</span> <span class="mi">1</span>
+                   <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
+                       <span class="n">tol</span><span class="p">:</span> <span class="mf">0.005</span>
+                <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
+                <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
+
+<span class="mi">1</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
+<span class="mi">2</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.35826</span>
+<span class="mi">3</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.172127</span>
+<span class="mi">4</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.106297</span>
+<span class="mi">5</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0696424</span>
+<span class="mi">6</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0538889</span>
+<span class="mi">7</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0559478</span>
+<span class="mi">8</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0686117</span>
+<span class="mi">9</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0788641</span>
+<span class="mi">10</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0711522</span>
+<span class="mi">20</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00568349</span>
+
+<span class="n">Solution</span> <span class="n">converged</span> <span class="n">after</span> <span class="mi">22</span> <span class="n">iterations</span><span class="o">.</span>
+
+<span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.633</span> <span class="n">sec</span><span class="o">.</span>
+
+<span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
+
+<span class="n">Running</span> <span class="n">HierNmf2</span><span class="o">...</span>
+
+<span class="n">Loading</span> <span class="n">dictionary</span><span class="o">...</span>
+
+                <span class="n">parameters</span><span class="p">:</span>
+
+                    <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
+                     <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
+                <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
+                  <span class="n">dictfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">/</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span>
+                       <span class="n">tol</span><span class="p">:</span> <span class="mf">0.0001</span>
+                   <span class="n">miniter</span><span class="p">:</span> <span class="mi">1</span>
+                   <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
+                  <span class="n">maxterms</span><span class="p">:</span> <span class="mi">5</span>
+                <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mi">551</span> <span class="n">ms</span><span class="o">.</span>
+<span class="mi">9</span><span class="o">/</span><span class="mi">9</span> <span class="n">factorizations</span> <span class="n">converged</span><span class="o">.</span>
+
+<span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
+<span class="n">W</span> <span class="n">matrix</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="n">H</span> <span class="n">matrix</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="o">*****************************************************</span>
+<span class="o">*</span>                                                   <span class="o">*</span>
+<span class="o">*</span>            <span class="n">Testing</span> <span class="n">the</span> <span class="n">preprocessor</span><span class="o">.</span>              <span class="o">*</span>
+<span class="o">*</span>                                                   <span class="o">*</span>
+<span class="o">*****************************************************</span>
+
+      <span class="n">Command</span> <span class="n">line</span> <span class="n">options</span><span class="p">:</span>
+
+                     <span class="n">indir</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">/</span>
+                    <span class="n">outdir</span><span class="p">:</span> <span class="n">current</span> <span class="n">directory</span>
+             <span class="n">docs_per_term</span><span class="p">:</span> <span class="mi">3</span>
+             <span class="n">terms_per_doc</span><span class="p">:</span> <span class="mi">5</span>
+                  <span class="n">max_iter</span><span class="p">:</span> <span class="mi">1000</span>
+                 <span class="n">precision</span><span class="p">:</span> <span class="mi">4</span>
+              <span class="n">boolean_mode</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="n">Loading</span> <span class="nb">input</span> <span class="n">matrix</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">/</span><span class="n">matrix</span><span class="o">.</span><span class="n">mtx</span>
+        <span class="n">Input</span> <span class="n">file</span> <span class="n">load</span> <span class="n">time</span><span class="p">:</span> <span class="mf">1.421</span><span class="n">s</span><span class="o">.</span>
+
+<span class="n">Starting</span> <span class="n">iterations</span><span class="o">...</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">height</span><span class="p">:</span> <span class="mi">39771</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="mi">11237</span><span class="p">,</span> <span class="n">nonzeros</span><span class="p">:</span> <span class="mi">877453</span>
+<span class="n">Iterations</span> <span class="n">finished</span><span class="o">.</span>
+        <span class="n">New</span> <span class="n">height</span><span class="p">:</span> <span class="mi">39727</span>
+        <span class="n">New</span> <span class="n">width</span><span class="p">:</span> <span class="mi">11237</span>
+        <span class="n">New</span> <span class="n">nonzero</span> <span class="n">count</span><span class="p">:</span> <span class="mi">877374</span>
+<span class="n">Processing</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.063</span><span class="n">s</span><span class="o">.</span>
+
+<span class="n">Writing</span> <span class="n">output</span> <span class="n">matrix</span> <span class="s1">&#39;reduced_matrix.mtx&#39;</span>
+<span class="n">Output</span> <span class="n">file</span> <span class="n">write</span> <span class="n">time</span><span class="p">:</span> <span class="mf">2.189</span><span class="n">s</span><span class="o">.</span>
+<span class="n">Writing</span> <span class="n">dictionary</span> <span class="n">file</span> <span class="s1">&#39;reduced_dictionary.txt&#39;</span>
+<span class="n">Writing</span> <span class="n">documents</span> <span class="n">file</span> <span class="s1">&#39;reduced_documents.txt&#39;</span>
+<span class="n">Dictionary</span> <span class="o">+</span> <span class="n">documents</span> <span class="n">write</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.083</span><span class="n">s</span><span class="o">.</span>
+<span class="n">preprocessor</span> <span class="n">matrix</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="n">preprocessor</span> <span class="n">dictionary</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="n">preprocessor</span> <span class="n">documents</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="o">*****************************************************</span>
+<span class="o">*</span>                                                   <span class="o">*</span>
+<span class="o">*</span>            <span class="n">Testing</span> <span class="n">the</span> <span class="n">NMF</span> <span class="n">routines</span><span class="o">.</span>              <span class="o">*</span>
+<span class="o">*</span>                                                   <span class="o">*</span>
+<span class="o">*****************************************************</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">achieve</span> <span class="n">THREAD_MULTIPLE</span> <span class="n">support</span><span class="o">.</span>
+<span class="n">Loading</span> <span class="n">matrix</span><span class="o">...</span>
+<span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">W</span><span class="o">...</span>
+<span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">H</span><span class="o">...</span>
+
+      <span class="n">Command</span> <span class="n">line</span> <span class="n">options</span><span class="p">:</span>
+
+                 <span class="n">algorithm</span><span class="p">:</span> <span class="n">Nonnegative</span> <span class="n">Least</span> <span class="n">Squares</span> <span class="k">with</span> <span class="n">Block</span> <span class="n">Principal</span> <span class="n">Pivoting</span>
+        <span class="n">stopping</span> <span class="n">criterion</span><span class="p">:</span> <span class="n">Ratio</span> <span class="n">of</span> <span class="n">Projected</span> <span class="n">Gradients</span>
+                    <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
+                     <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
+                         <span class="n">k</span><span class="p">:</span> <span class="mi">8</span>
+                   <span class="n">miniter</span><span class="p">:</span> <span class="mi">1</span>
+                   <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
+                       <span class="n">tol</span><span class="p">:</span> <span class="mf">0.005</span>
+                  <span class="n">tolcount</span><span class="p">:</span> <span class="mi">1</span>
+                   <span class="n">verbose</span><span class="p">:</span> <span class="mi">1</span>
+                 <span class="n">normalize</span><span class="p">:</span> <span class="mi">1</span>
+              <span class="n">outprecision</span><span class="p">:</span> <span class="mi">6</span>
+                <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
+                  <span class="n">infile_W</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">nmf_init_w</span><span class="o">.</span><span class="n">csv</span>
+                  <span class="n">infile_H</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">nmf_init_h</span><span class="o">.</span><span class="n">csv</span>
+                 <span class="n">outfile_W</span><span class="p">:</span> <span class="n">w</span><span class="o">.</span><span class="n">csv</span>
+                 <span class="n">outfile_H</span><span class="p">:</span> <span class="n">h</span><span class="o">.</span><span class="n">csv</span>
+                <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
+
+<span class="mi">1</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
+<span class="mi">2</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.35826</span>
+<span class="mi">3</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.172127</span>
+<span class="mi">4</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.106297</span>
+<span class="mi">5</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0696424</span>
+<span class="mi">6</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0538889</span>
+<span class="mi">7</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0559478</span>
+<span class="mi">8</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0686117</span>
+<span class="mi">9</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0788641</span>
+<span class="mi">10</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0711522</span>
+<span class="mi">20</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00568349</span>
+
+<span class="n">Solution</span> <span class="n">converged</span> <span class="n">after</span> <span class="mi">22</span> <span class="n">iterations</span><span class="o">.</span>
+
+<span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.673</span> <span class="n">sec</span><span class="o">.</span>
+
+<span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
+<span class="n">NMF</span> <span class="n">W</span> <span class="n">matrix</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="n">NMF</span> <span class="n">H</span> <span class="n">matrix</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="o">*****************************************************</span>
+<span class="o">*</span>                                                   <span class="o">*</span>
+<span class="o">*</span>                <span class="n">Testing</span> <span class="n">hierclust</span><span class="o">.</span>                 <span class="o">*</span>
+<span class="o">*</span>                                                   <span class="o">*</span>
+<span class="o">*****************************************************</span>
+<span class="o">-------------------------------</span>
+
+  <span class="n">Reuters</span> <span class="n">matrix</span><span class="p">,</span> <span class="mi">12</span> <span class="n">clusters</span>
+
+<span class="o">-------------------------------</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">achieve</span> <span class="n">THREAD_MULTIPLE</span> <span class="n">support</span><span class="o">.</span>
+<span class="n">loading</span> <span class="n">dictionary</span><span class="o">...</span>
+<span class="n">loading</span> <span class="n">matrix</span><span class="o">...</span>
+
+     <span class="n">Command</span> <span class="n">line</span> <span class="n">options</span><span class="p">:</span>
+
+                    <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
+                     <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
+                <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
+                   <span class="n">initdir</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">test</span><span class="o">/</span><span class="n">matrices</span><span class="o">.</span><span class="n">reuters</span><span class="o">/</span>
+                  <span class="n">dictfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span>
+                <span class="n">assignfile</span><span class="p">:</span> <span class="n">assignments_12</span><span class="o">.</span><span class="n">csv</span>
+                    <span class="nb">format</span><span class="p">:</span> <span class="n">XML</span>
+                  <span class="n">treefile</span><span class="p">:</span> <span class="n">tree_12</span><span class="o">.</span><span class="n">xml</span>
+                  <span class="n">clusters</span><span class="p">:</span> <span class="mi">12</span>
+                       <span class="n">tol</span><span class="p">:</span> <span class="mf">0.0001</span>
+                    <span class="n">outdir</span><span class="p">:</span>
+                   <span class="n">miniter</span><span class="p">:</span> <span class="mi">1</span>
+                   <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
+                  <span class="n">maxterms</span><span class="p">:</span> <span class="mi">5</span>
+                <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
+                <span class="n">unbalanced</span><span class="p">:</span> <span class="mf">0.1</span>
+           <span class="n">trial_allowance</span><span class="p">:</span> <span class="mi">3</span>
+                      <span class="n">flat</span><span class="p">:</span> <span class="mi">0</span>
+                   <span class="n">verbose</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">20</span> <span class="n">items</span> <span class="o">...</span>
+<span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="p">[</span><span class="mi">11</span><span class="p">]</span>
+
+<span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">2.758</span> <span class="n">s</span><span class="o">.</span>
+<span class="mi">26</span><span class="o">/</span><span class="mi">26</span> <span class="n">factorizations</span> <span class="n">converged</span><span class="o">.</span>
+
+<span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
+<span class="n">XML</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="n">assignment</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="o">-------------------------------</span>
+
+  <span class="mi">20</span><span class="n">News</span> <span class="n">matrix</span><span class="p">,</span> <span class="mi">15</span> <span class="n">clusters</span>
+
+<span class="o">-------------------------------</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">achieve</span> <span class="n">THREAD_MULTIPLE</span> <span class="n">support</span><span class="o">.</span>
+<span class="n">loading</span> <span class="n">dictionary</span><span class="o">...</span>
+<span class="n">loading</span> <span class="n">matrix</span><span class="o">...</span>
+
+     <span class="n">Command</span> <span class="n">line</span> <span class="n">options</span><span class="p">:</span>
+
+                    <span class="n">height</span><span class="p">:</span> <span class="mi">39727</span>
+                     <span class="n">width</span><span class="p">:</span> <span class="mi">11237</span>
+                <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">news20</span><span class="o">.</span><span class="n">mtx</span>
+                   <span class="n">initdir</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">test</span><span class="o">/</span><span class="n">matrices</span><span class="o">.</span><span class="mi">20</span><span class="n">news</span><span class="o">/</span>
+                  <span class="n">dictfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">news20_dictionary</span><span class="o">.</span><span class="n">txt</span>
+                <span class="n">assignfile</span><span class="p">:</span> <span class="n">assignments_15</span><span class="o">.</span><span class="n">csv</span>
+                    <span class="nb">format</span><span class="p">:</span> <span class="n">XML</span>
+                  <span class="n">treefile</span><span class="p">:</span> <span class="n">tree_15</span><span class="o">.</span><span class="n">xml</span>
+                  <span class="n">clusters</span><span class="p">:</span> <span class="mi">15</span>
+                       <span class="n">tol</span><span class="p">:</span> <span class="mf">0.0001</span>
+                    <span class="n">outdir</span><span class="p">:</span>
+                   <span class="n">miniter</span><span class="p">:</span> <span class="mi">1</span>
+                   <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
+                  <span class="n">maxterms</span><span class="p">:</span> <span class="mi">5</span>
+                <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
+                <span class="n">unbalanced</span><span class="p">:</span> <span class="mf">0.1</span>
+           <span class="n">trial_allowance</span><span class="p">:</span> <span class="mi">3</span>
+                      <span class="n">flat</span><span class="p">:</span> <span class="mi">0</span>
+                   <span class="n">verbose</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">30</span> <span class="n">items</span> <span class="o">...</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">132</span> <span class="n">items</span> <span class="o">...</span>
+<span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">41</span> <span class="n">items</span> <span class="o">...</span>
+<span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">51</span> <span class="n">items</span> <span class="o">...</span>
+<span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">22</span> <span class="n">items</span> <span class="o">...</span>
+<span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">85</span> <span class="n">items</span> <span class="o">...</span>
+<span class="p">[</span><span class="mi">14</span><span class="p">]</span>
+
+<span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">10.308</span> <span class="n">s</span><span class="o">.</span>
+<span class="mi">41</span><span class="o">/</span><span class="mi">41</span> <span class="n">factorizations</span> <span class="n">converged</span><span class="o">.</span>
+
+<span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
+<span class="n">XML</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="n">assignment</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="o">*****************************************************</span>
+<span class="o">*</span>                                                   <span class="o">*</span>
+<span class="o">*</span>              <span class="n">Testing</span> <span class="n">flatclust</span><span class="o">.</span>                   <span class="o">*</span>
+<span class="o">*</span>                                                   <span class="o">*</span>
+<span class="o">*****************************************************</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">achieve</span> <span class="n">THREAD_MULTIPLE</span> <span class="n">support</span><span class="o">.</span>
+<span class="n">loading</span> <span class="n">dictionary</span><span class="o">...</span>
+<span class="n">loading</span> <span class="n">matrix</span><span class="o">...</span>
+<span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">W</span><span class="o">...</span>
+<span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">H</span><span class="o">...</span>
+
+     <span class="n">Command</span> <span class="n">line</span> <span class="n">options</span><span class="p">:</span>
+
+                    <span class="n">height</span><span class="p">:</span> <span class="mi">256</span>
+                     <span class="n">width</span><span class="p">:</span> <span class="mi">256</span>
+                <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">rnd_256_256</span><span class="o">.</span><span class="n">csv</span>
+                  <span class="n">infile_W</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">flatclust_init_w</span><span class="o">.</span><span class="n">csv</span>
+                  <span class="n">infile_H</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">flatclust_init_h</span><span class="o">.</span><span class="n">csv</span>
+                  <span class="n">dictfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span>
+                <span class="n">assignfile</span><span class="p">:</span> <span class="n">assignments_16</span><span class="o">.</span><span class="n">csv</span>
+                 <span class="n">fuzzyfile</span><span class="p">:</span> <span class="n">assignments_fuzzy_16</span><span class="o">.</span><span class="n">csv</span>
+                    <span class="nb">format</span><span class="p">:</span> <span class="n">XML</span>
+                 <span class="n">clustfile</span><span class="p">:</span> <span class="n">clusters_16</span><span class="o">.</span><span class="n">xml</span>
+                 <span class="n">algorithm</span><span class="p">:</span> <span class="n">HALS</span>
+                  <span class="n">clusters</span><span class="p">:</span> <span class="mi">16</span>
+                       <span class="n">tol</span><span class="p">:</span> <span class="mf">0.0001</span>
+                    <span class="n">outdir</span><span class="p">:</span>
+                   <span class="n">miniter</span><span class="p">:</span> <span class="mi">1</span>
+                   <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
+                  <span class="n">maxterms</span><span class="p">:</span> <span class="mi">5</span>
+                <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
+                   <span class="n">verbose</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="mi">1</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
+<span class="mi">2</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.635556</span>
+<span class="mi">3</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.490817</span>
+<span class="mi">4</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.479135</span>
+<span class="mi">5</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.474986</span>
+<span class="mi">6</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.44968</span>
+<span class="mi">7</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.422542</span>
+<span class="mi">8</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.407662</span>
+<span class="mi">9</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.395145</span>
+<span class="mi">10</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.379238</span>
+<span class="mi">20</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.272868</span>
+<span class="mi">30</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.168386</span>
+<span class="mi">40</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.109147</span>
+<span class="mi">50</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0767327</span>
+<span class="mi">60</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0488545</span>
+<span class="mi">70</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.036226</span>
+<span class="mi">80</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0307648</span>
+<span class="mi">90</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0266116</span>
+<span class="mi">100</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0226963</span>
+<span class="mi">110</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0188616</span>
+<span class="mi">120</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0158307</span>
+<span class="mi">130</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0137605</span>
+<span class="mi">140</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0127888</span>
+<span class="mi">150</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0123962</span>
+<span class="mi">160</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0124734</span>
+<span class="mi">170</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0123563</span>
+<span class="mi">180</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0122163</span>
+<span class="mi">190</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0120643</span>
+<span class="mi">200</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0117647</span>
+<span class="mi">210</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0114894</span>
+<span class="mi">220</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0110467</span>
+<span class="mi">230</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0107816</span>
+<span class="mi">240</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0105239</span>
+<span class="mi">250</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0103824</span>
+<span class="mi">260</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0100915</span>
+<span class="mi">270</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00965073</span>
+<span class="mi">280</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00938526</span>
+<span class="mi">290</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00914129</span>
+<span class="mi">300</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00896701</span>
+<span class="mi">310</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00886729</span>
+<span class="mi">320</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00841059</span>
+<span class="mi">330</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.007793</span>
+<span class="mi">340</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00740095</span>
+<span class="mi">350</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00708869</span>
+<span class="mi">360</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00683069</span>
+<span class="mi">370</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00672093</span>
+<span class="mi">380</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00687906</span>
+<span class="mi">390</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00703777</span>
+<span class="mi">400</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00721928</span>
+<span class="mi">410</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00729384</span>
+<span class="mi">420</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00718332</span>
+<span class="mi">430</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00722893</span>
+<span class="mi">440</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00726766</span>
+<span class="mi">450</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00739665</span>
+<span class="mi">460</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00769819</span>
+<span class="mi">470</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00814673</span>
+<span class="mi">480</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.008566</span>
+<span class="mi">490</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00877955</span>
+<span class="mi">500</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00884221</span>
+<span class="mi">510</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0088057</span>
+<span class="mi">520</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00852345</span>
+<span class="mi">530</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00797952</span>
+<span class="mi">540</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00749354</span>
+<span class="mi">550</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00689316</span>
+<span class="mi">560</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00623287</span>
+<span class="mi">570</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00576619</span>
+<span class="mi">580</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00541125</span>
+<span class="mi">590</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00501715</span>
+<span class="mi">600</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00466547</span>
+<span class="mi">610</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00432811</span>
+<span class="mi">620</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00412669</span>
+<span class="mi">630</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00383406</span>
+<span class="mi">640</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00352802</span>
+<span class="mi">650</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00331556</span>
+<span class="mi">660</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00315735</span>
+<span class="mi">670</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00304253</span>
+<span class="mi">680</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00296627</span>
+<span class="mi">690</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00289013</span>
+<span class="mi">700</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00279647</span>
+<span class="mi">710</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00271036</span>
+<span class="mi">720</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00261087</span>
+<span class="mi">730</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0025158</span>
+<span class="mi">740</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00245123</span>
+<span class="mi">750</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00237435</span>
+<span class="mi">760</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00231126</span>
+<span class="mi">770</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00228199</span>
+<span class="mi">780</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00227623</span>
+<span class="mi">790</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00228185</span>
+<span class="mi">800</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00227993</span>
+<span class="mi">810</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00228216</span>
+<span class="mi">820</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00228018</span>
+<span class="mi">830</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00229096</span>
+<span class="mi">840</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00232403</span>
+<span class="mi">850</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00234957</span>
+<span class="mi">860</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00227868</span>
+<span class="mi">870</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00210786</span>
+<span class="mi">880</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00195462</span>
+<span class="mi">890</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00183587</span>
+<span class="mi">900</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00173358</span>
+<span class="mi">910</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0016405</span>
+<span class="mi">920</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00156422</span>
+<span class="mi">930</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00150835</span>
+<span class="mi">940</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00146594</span>
+<span class="mi">950</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00143261</span>
+<span class="mi">960</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00137378</span>
+<span class="mi">970</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00131989</span>
+<span class="mi">980</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00126626</span>
+<span class="mi">990</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0012164</span>
+<span class="mi">1000</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00117061</span>
+<span class="mi">1010</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00112539</span>
+<span class="mi">1020</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00108626</span>
+<span class="mi">1030</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00105192</span>
+<span class="mi">1040</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00102131</span>
+<span class="mi">1050</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000992069</span>
+<span class="mi">1060</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000965259</span>
+<span class="mi">1070</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000938949</span>
+<span class="mi">1080</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000911962</span>
+<span class="mi">1090</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000884505</span>
+<span class="mi">1100</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000854904</span>
+<span class="mi">1110</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000820121</span>
+<span class="mi">1120</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000785245</span>
+<span class="mi">1130</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000752513</span>
+<span class="mi">1140</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000723279</span>
+<span class="mi">1150</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000697698</span>
+<span class="mi">1160</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000680904</span>
+<span class="mi">1170</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000652152</span>
+<span class="mi">1180</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000628268</span>
+<span class="mi">1190</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000612413</span>
+<span class="mi">1200</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000596834</span>
+<span class="mi">1210</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000580674</span>
+<span class="mi">1220</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000556549</span>
+<span class="mi">1230</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000535666</span>
+<span class="mi">1240</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00051492</span>
+<span class="mi">1250</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000496234</span>
+<span class="mi">1260</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000481147</span>
+<span class="mi">1270</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000461294</span>
+<span class="mi">1280</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000440802</span>
+<span class="mi">1290</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000419049</span>
+<span class="mi">1300</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000398007</span>
+<span class="mi">1310</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000376203</span>
+<span class="mi">1320</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000355811</span>
+<span class="mi">1330</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00033729</span>
+<span class="mi">1340</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000318932</span>
+<span class="mi">1350</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000302528</span>
+<span class="mi">1360</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000287961</span>
+<span class="mi">1370</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00027486</span>
+<span class="mi">1380</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00026403</span>
+<span class="mi">1390</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000255504</span>
+<span class="mi">1400</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000248646</span>
+<span class="mi">1410</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000242996</span>
+<span class="mi">1420</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000239243</span>
+<span class="mi">1430</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000236852</span>
+<span class="mi">1440</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000235313</span>
+<span class="mi">1450</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000234465</span>
+<span class="mi">1460</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000234154</span>
+<span class="mi">1470</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000234253</span>
+<span class="mi">1480</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00023487</span>
+<span class="mi">1490</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000237223</span>
+<span class="mi">1500</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000240043</span>
+<span class="mi">1510</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000243896</span>
+<span class="mi">1520</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00024867</span>
+<span class="mi">1530</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000253981</span>
+<span class="mi">1540</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000260239</span>
+<span class="mi">1550</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000266795</span>
+<span class="mi">1560</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000273529</span>
+<span class="mi">1570</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000280678</span>
+<span class="mi">1580</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000287273</span>
+<span class="mi">1590</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000292288</span>
+<span class="mi">1600</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000296475</span>
+<span class="mi">1610</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000299556</span>
+<span class="mi">1620</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00030244</span>
+<span class="mi">1630</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000306148</span>
+<span class="mi">1640</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000310299</span>
+<span class="mi">1650</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000314674</span>
+<span class="mi">1660</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000319052</span>
+<span class="mi">1670</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000323906</span>
+<span class="mi">1680</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000329536</span>
+<span class="mi">1690</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000335913</span>
+<span class="mi">1700</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000342834</span>
+<span class="mi">1710</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000351167</span>
+<span class="mi">1720</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000352515</span>
+<span class="mi">1730</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000348749</span>
+<span class="mi">1740</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000345684</span>
+<span class="mi">1750</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000343139</span>
+<span class="mi">1760</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000340867</span>
+<span class="mi">1770</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000339052</span>
+<span class="mi">1780</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000337038</span>
+<span class="mi">1790</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000335244</span>
+<span class="mi">1800</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000333452</span>
+<span class="mi">1810</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000332111</span>
+<span class="mi">1820</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000330198</span>
+<span class="mi">1830</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000325983</span>
+<span class="mi">1840</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000321473</span>
+<span class="mi">1850</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000316999</span>
+<span class="mi">1860</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000312054</span>
+<span class="mi">1870</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000305176</span>
+<span class="mi">1880</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000294684</span>
+<span class="mi">1890</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000284482</span>
+<span class="mi">1900</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000274905</span>
+<span class="mi">1910</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000265684</span>
+<span class="mi">1920</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000256761</span>
+<span class="mi">1930</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000248203</span>
+<span class="mi">1940</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000239613</span>
+<span class="mi">1950</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000230677</span>
+<span class="mi">1960</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00022218</span>
+<span class="mi">1970</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000214089</span>
+<span class="mi">1980</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00020621</span>
+<span class="mi">1990</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000196915</span>
+<span class="mi">2000</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000187712</span>
+<span class="mi">2010</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000179199</span>
+<span class="mi">2020</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00017137</span>
+<span class="mi">2030</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000164158</span>
+<span class="mi">2040</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000157751</span>
+<span class="mi">2050</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000152485</span>
+<span class="mi">2060</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000147217</span>
+<span class="mi">2070</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000142083</span>
+<span class="mi">2080</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000137148</span>
+<span class="mi">2090</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000132379</span>
+<span class="mi">2100</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000127922</span>
+<span class="mi">2110</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000123617</span>
+<span class="mi">2120</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000119548</span>
+<span class="mi">2130</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000115684</span>
+<span class="mi">2140</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000111997</span>
+<span class="mi">2150</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000108389</span>
+<span class="mi">2160</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000104838</span>
+<span class="mi">2170</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000101387</span>
+
+<span class="n">Solution</span> <span class="n">converged</span> <span class="n">after</span> <span class="mi">2175</span> <span class="n">iterations</span><span class="o">.</span>
+
+<span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">1.022</span> <span class="n">sec</span><span class="o">.</span>
+
+<span class="n">XML</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="n">assignment</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="n">fuzzy</span> <span class="n">assignment</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
+<span class="o">*****</span> <span class="n">SmallK</span><span class="p">:</span> <span class="n">All</span> <span class="n">tests</span> <span class="n">passed</span><span class="o">.</span> <span class="o">*****</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pages_benchmarks_results.html" class="btn btn-neutral float-right" title="10. Benchmarks and Results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pages_pysmallkAPI.html" class="btn btn-neutral" title="8. Pysmallk API (Python)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Georgia Institute of Technology.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.6.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
