@@ -334,307 +334,307 @@
 <h2><a class="toc-backref" href="#id1">7.1. Examples of API Usage</a><a class="headerlink" href="#examples-of-api-usage" title="Permalink to this headline">¶</a></h2>
 <p>In the examples folder you will find a file called <code class="docutils literal"><span class="pre">smallk_example.cpp</span></code>. This file contains several examples of how to use the SmallK library.  Also included in the examples folder is a makefile that you can customize for your use.  Note that the SmallK library must first be installed before the example project can be built.</p>
 <p>As an example of how to use the sample project, assume the smallk software has been installed into <code class="docutils literal"><span class="pre">/usr/local/smallk</span></code>.  Also assume that the user chose to create the recommended environment variable <code class="docutils literal"><span class="pre">SMALLK_INSTALL_DIR</span></code> that stores the location of the top-level install folder, i.e. the user’s <code class="docutils literal"><span class="pre">.bashrc</span></code> file contains this statement:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">export</span> <span class="n">SMALLK_INSTALL_DIR</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">smallk</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export</span> <span class="nv">SMALLK_INSTALL_DIR</span><span class="o">=</span>/usr/local/smallk
 </pre></div>
 </div>
 <p>To build the smallk example project, open a terminal window and cd to the smallk/examples folder and run this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">make</span>
+<div class="highlight-none"><div class="highlight"><pre>make
 </pre></div>
 </div>
 <p>To run the example project, run this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">example</span> <span class="o">../../</span><span class="n">smallk_data</span>
+<div class="highlight-none"><div class="highlight"><pre>./bin/example ../../smallk_data
 </pre></div>
 </div>
 <p>Note: the output will be <em>similar</em> to the following not identical since some problems are randomly initialized:</p>
-<div class="highlight-default"><div class="highlight"><pre>    <span class="n">Smallk</span> <span class="n">major</span> <span class="n">version</span><span class="p">:</span> <span class="mi">1</span>
-    <span class="n">Smallk</span> <span class="n">minor</span> <span class="n">version</span><span class="p">:</span> <span class="mi">0</span>
-    <span class="n">Smallk</span> <span class="n">patch</span> <span class="n">level</span><span class="p">:</span>   <span class="mi">0</span>
-    <span class="n">Smallk</span> <span class="n">version</span> <span class="n">string</span><span class="p">:</span> <span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">Loading</span> <span class="n">matrix</span><span class="o">...</span>
+<div class="highlight-none"><div class="highlight"><pre>    Smallk major version: 1
+    Smallk minor version: 0
+    Smallk patch level:   0
+    Smallk version string: 1.0.0
+    Loading matrix...
 
-    <span class="o">************************************************************</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">*</span>                <span class="n">Running</span> <span class="n">NMF</span><span class="o">-</span><span class="n">BPP</span> <span class="n">using</span> <span class="n">k</span><span class="o">=</span><span class="mi">32</span>                <span class="o">*</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">************************************************************</span>
-    <span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">W</span><span class="o">...</span>
-    <span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">H</span><span class="o">...</span>
+    ************************************************************
+    *                                                          *
+    *                Running NMF-BPP using k=32                *
+    *                                                          *
+    ************************************************************
+    Initializing matrix W...
+    Initializing matrix H...
 
-            <span class="n">parameters</span><span class="p">:</span>
+            parameters:
 
-         <span class="n">algorithm</span><span class="p">:</span> <span class="n">Nonnegative</span> <span class="n">Least</span> <span class="n">Squares</span> <span class="k">with</span> <span class="n">Block</span> <span class="n">Principal</span> <span class="n">Pivoting</span>
-<span class="n">stopping</span> <span class="n">criterion</span><span class="p">:</span> <span class="n">Ratio</span> <span class="n">of</span> <span class="n">Projected</span> <span class="n">Gradients</span>
-            <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
-             <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
-                 <span class="n">k</span><span class="p">:</span> <span class="mi">32</span>
-           <span class="n">miniter</span><span class="p">:</span> <span class="mi">5</span>
-           <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
-               <span class="n">tol</span><span class="p">:</span> <span class="mf">0.005</span>
-        <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
-        <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
+         algorithm: Nonnegative Least Squares with Block Principal Pivoting
+stopping criterion: Ratio of Projected Gradients
+            height: 12411
+             width: 7984
+                 k: 32
+           miniter: 5
+           maxiter: 5000
+               tol: 0.005
+        matrixfile: ../data/reuters.mtx
+        maxthreads: 8
 
-    <span class="mi">1</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">2</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">3</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">4</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">5</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">6</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0747031</span>
-    <span class="mi">7</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0597987</span>
-    <span class="mi">8</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0462878</span>
-    <span class="mi">9</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0362883</span>
-    <span class="mi">10</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.030665</span>
-    <span class="mi">11</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0281802</span>
-    <span class="mi">12</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0267987</span>
-    <span class="mi">13</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0236731</span>
-    <span class="mi">14</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0220778</span>
-    <span class="mi">15</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0227083</span>
-    <span class="mi">16</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0244029</span>
-    <span class="mi">17</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0247552</span>
-    <span class="mi">18</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0220007</span>
-    <span class="mi">19</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0173831</span>
-    <span class="mi">20</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0137033</span>
+    1:  progress metric:    (min_iter)
+    2:  progress metric:    (min_iter)
+    3:  progress metric:    (min_iter)
+    4:  progress metric:    (min_iter)
+    5:  progress metric:    (min_iter)
+    6:  progress metric:    0.0747031
+    7:  progress metric:    0.0597987
+    8:  progress metric:    0.0462878
+    9:  progress metric:    0.0362883
+    10: progress metric:    0.030665
+    11: progress metric:    0.0281802
+    12: progress metric:    0.0267987
+    13: progress metric:    0.0236731
+    14: progress metric:    0.0220778
+    15: progress metric:    0.0227083
+    16: progress metric:    0.0244029
+    17: progress metric:    0.0247552
+    18: progress metric:    0.0220007
+    19: progress metric:    0.0173831
+    20: progress metric:    0.0137033
 
-    <span class="n">Solution</span> <span class="n">converged</span> <span class="n">after</span> <span class="mi">39</span> <span class="n">iterations</span><span class="o">.</span>
+    Solution converged after 39 iterations.
 
-    <span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">4.354</span> <span class="n">sec</span><span class="o">.</span>
+    Elapsed wall clock time: 4.354 sec.
 
-    <span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
+    Writing output files...
 
-    <span class="o">************************************************************</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">*</span>               <span class="n">Running</span> <span class="n">NMF</span><span class="o">-</span><span class="n">HALS</span> <span class="n">using</span> <span class="n">k</span><span class="o">=</span><span class="mi">16</span>                <span class="o">*</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">************************************************************</span>
-    <span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">W</span><span class="o">...</span>
-    <span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">H</span><span class="o">...</span>
+    ************************************************************
+    *                                                          *
+    *               Running NMF-HALS using k=16                *
+    *                                                          *
+    ************************************************************
+    Initializing matrix W...
+    Initializing matrix H...
 
-            <span class="n">parameters</span><span class="p">:</span>
+            parameters:
 
-         <span class="n">algorithm</span><span class="p">:</span> <span class="n">HALS</span>
-<span class="n">stopping</span> <span class="n">criterion</span><span class="p">:</span> <span class="n">Ratio</span> <span class="n">of</span> <span class="n">Projected</span> <span class="n">Gradients</span>
-            <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
-             <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
-                 <span class="n">k</span><span class="p">:</span> <span class="mi">16</span>
-           <span class="n">miniter</span><span class="p">:</span> <span class="mi">5</span>
-           <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
-               <span class="n">tol</span><span class="p">:</span> <span class="mf">0.005</span>
-        <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
-        <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
+         algorithm: HALS
+stopping criterion: Ratio of Projected Gradients
+            height: 12411
+             width: 7984
+                 k: 16
+           miniter: 5
+           maxiter: 5000
+               tol: 0.005
+        matrixfile: ../data/reuters.mtx
+        maxthreads: 8
 
-    <span class="mi">1</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">2</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">3</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">4</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">5</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">6</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.710219</span>
-    <span class="mi">7</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.580951</span>
-    <span class="mi">8</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.471557</span>
-    <span class="mi">9</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.491855</span>
-    <span class="mi">10</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.531999</span>
-    <span class="mi">11</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.353302</span>
-    <span class="mi">12</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.201634</span>
-    <span class="mi">13</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.1584</span>
-    <span class="mi">14</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.142572</span>
-    <span class="mi">15</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.12588</span>
-    <span class="mi">16</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.113239</span>
-    <span class="mi">17</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0976934</span>
-    <span class="mi">18</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0821207</span>
-    <span class="mi">19</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0746089</span>
-    <span class="mi">20</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0720616</span>
-    <span class="mi">40</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0252854</span>
-    <span class="mi">60</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0142085</span>
-    <span class="mi">80</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0153269</span>
+    1:  progress metric:    (min_iter)
+    2:  progress metric:    (min_iter)
+    3:  progress metric:    (min_iter)
+    4:  progress metric:    (min_iter)
+    5:  progress metric:    (min_iter)
+    6:  progress metric:    0.710219
+    7:  progress metric:    0.580951
+    8:  progress metric:    0.471557
+    9:  progress metric:    0.491855
+    10: progress metric:    0.531999
+    11: progress metric:    0.353302
+    12: progress metric:    0.201634
+    13: progress metric:    0.1584
+    14: progress metric:    0.142572
+    15: progress metric:    0.12588
+    16: progress metric:    0.113239
+    17: progress metric:    0.0976934
+    18: progress metric:    0.0821207
+    19: progress metric:    0.0746089
+    20: progress metric:    0.0720616
+    40: progress metric:    0.0252854
+    60: progress metric:    0.0142085
+    80: progress metric:    0.0153269
 
-    <span class="n">Solution</span> <span class="n">converged</span> <span class="n">after</span> <span class="mi">88</span> <span class="n">iterations</span><span class="o">.</span>
+    Solution converged after 88 iterations.
 
-    <span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">1.560</span> <span class="n">sec</span><span class="o">.</span>
+    Elapsed wall clock time: 1.560 sec.
 
-    <span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
+    Writing output files...
 
-    <span class="o">************************************************************</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">*</span>       <span class="n">Running</span> <span class="n">NMF</span><span class="o">-</span><span class="n">RANK2</span> <span class="k">with</span> <span class="n">W</span> <span class="ow">and</span> <span class="n">H</span> <span class="n">initializers</span>        <span class="o">*</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">************************************************************</span>
-    <span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">W</span><span class="o">...</span>
-    <span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">H</span><span class="o">...</span>
+    ************************************************************
+    *                                                          *
+    *       Running NMF-RANK2 with W and H initializers        *
+    *                                                          *
+    ************************************************************
+    Initializing matrix W...
+    Initializing matrix H...
 
-            <span class="n">parameters</span><span class="p">:</span>
+            parameters:
 
-         <span class="n">algorithm</span><span class="p">:</span> <span class="n">Rank</span> <span class="mi">2</span>
-<span class="n">stopping</span> <span class="n">criterion</span><span class="p">:</span> <span class="n">Ratio</span> <span class="n">of</span> <span class="n">Projected</span> <span class="n">Gradients</span>
-            <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
-             <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
-                 <span class="n">k</span><span class="p">:</span> <span class="mi">2</span>
-           <span class="n">miniter</span><span class="p">:</span> <span class="mi">5</span>
-           <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
-               <span class="n">tol</span><span class="p">:</span> <span class="mf">0.005</span>
-        <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
-        <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
+         algorithm: Rank 2
+stopping criterion: Ratio of Projected Gradients
+            height: 12411
+             width: 7984
+                 k: 2
+           miniter: 5
+           maxiter: 5000
+               tol: 0.005
+        matrixfile: ../data/reuters.mtx
+        maxthreads: 8
 
-    <span class="mi">1</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">2</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">3</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">4</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">5</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">6</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0374741</span>
-    <span class="mi">7</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0252389</span>
-    <span class="mi">8</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0169805</span>
-    <span class="mi">9</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0113837</span>
-    <span class="mi">10</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.00761077</span>
-    <span class="mi">11</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0050782</span>
-    <span class="mi">12</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.00338569</span>
+    1:  progress metric:    (min_iter)
+    2:  progress metric:    (min_iter)
+    3:  progress metric:    (min_iter)
+    4:  progress metric:    (min_iter)
+    5:  progress metric:    (min_iter)
+    6:  progress metric:    0.0374741
+    7:  progress metric:    0.0252389
+    8:  progress metric:    0.0169805
+    9:  progress metric:    0.0113837
+    10: progress metric:    0.00761077
+    11: progress metric:    0.0050782
+    12: progress metric:    0.00338569
 
-    <span class="n">Solution</span> <span class="n">converged</span> <span class="n">after</span> <span class="mi">12</span> <span class="n">iterations</span><span class="o">.</span>
+    Solution converged after 12 iterations.
 
-    <span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.028</span> <span class="n">sec</span><span class="o">.</span>
+    Elapsed wall clock time: 0.028 sec.
 
-    <span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
+    Writing output files...
 
-    <span class="o">************************************************************</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">*</span>       <span class="n">Repeating</span> <span class="n">the</span> <span class="n">previous</span> <span class="n">run</span> <span class="k">with</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1.0e-5</span>       <span class="o">*</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">************************************************************</span>
-    <span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">W</span><span class="o">...</span>
-    <span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">H</span><span class="o">...</span>
+    ************************************************************
+    *                                                          *
+    *       Repeating the previous run with tol = 1.0e-5       *
+    *                                                          *
+    ************************************************************
+    Initializing matrix W...
+    Initializing matrix H...
 
-            <span class="n">parameters</span><span class="p">:</span>
+            parameters:
 
-         <span class="n">algorithm</span><span class="p">:</span> <span class="n">Rank</span> <span class="mi">2</span>
-<span class="n">stopping</span> <span class="n">criterion</span><span class="p">:</span> <span class="n">Ratio</span> <span class="n">of</span> <span class="n">Projected</span> <span class="n">Gradients</span>
-            <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
-             <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
-                 <span class="n">k</span><span class="p">:</span> <span class="mi">2</span>
-           <span class="n">miniter</span><span class="p">:</span> <span class="mi">5</span>
-           <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
-               <span class="n">tol</span><span class="p">:</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">05</span>
-        <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
-        <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
+         algorithm: Rank 2
+stopping criterion: Ratio of Projected Gradients
+            height: 12411
+             width: 7984
+                 k: 2
+           miniter: 5
+           maxiter: 5000
+               tol: 1e-05
+        matrixfile: ../data/reuters.mtx
+        maxthreads: 8
 
-    <span class="mi">1</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">2</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">3</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">4</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">5</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-    <span class="mi">6</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0374741</span>
-    <span class="mi">7</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0252389</span>
-    <span class="mi">8</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0169805</span>
-    <span class="mi">9</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0113837</span>
-    <span class="mi">10</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.00761077</span>
-    <span class="mi">11</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0050782</span>
-    <span class="mi">12</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.00338569</span>
-    <span class="mi">13</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.00225761</span>
-    <span class="mi">14</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.00150429</span>
-    <span class="mi">15</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.00100167</span>
-    <span class="mi">16</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.000666691</span>
-    <span class="mi">17</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.000443654</span>
-    <span class="mi">18</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.000295213</span>
-    <span class="mi">19</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.000196411</span>
-    <span class="mi">20</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.000130604</span>
+    1:  progress metric:    (min_iter)
+    2:  progress metric:    (min_iter)
+    3:  progress metric:    (min_iter)
+    4:  progress metric:    (min_iter)
+    5:  progress metric:    (min_iter)
+    6:  progress metric:    0.0374741
+    7:  progress metric:    0.0252389
+    8:  progress metric:    0.0169805
+    9:  progress metric:    0.0113837
+    10: progress metric:    0.00761077
+    11: progress metric:    0.0050782
+    12: progress metric:    0.00338569
+    13: progress metric:    0.00225761
+    14: progress metric:    0.00150429
+    15: progress metric:    0.00100167
+    16: progress metric:    0.000666691
+    17: progress metric:    0.000443654
+    18: progress metric:    0.000295213
+    19: progress metric:    0.000196411
+    20: progress metric:    0.000130604
 
-    <span class="n">Solution</span> <span class="n">converged</span> <span class="n">after</span> <span class="mi">27</span> <span class="n">iterations</span><span class="o">.</span>
+    Solution converged after 27 iterations.
 
-    <span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.061</span> <span class="n">sec</span><span class="o">.</span>
+    Elapsed wall clock time: 0.061 sec.
 
-    <span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
-    <span class="n">Minimum</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">W</span> <span class="n">matrix</span><span class="p">:</span> <span class="mf">0.</span>
-    <span class="n">Maximum</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">W</span> <span class="n">matrix</span><span class="p">:</span> <span class="mf">0.397027</span><span class="o">.</span>
+    Writing output files...
+    Minimum value in W matrix: 0.
+    Maximum value in W matrix: 0.397027.
 
 
-    <span class="o">************************************************************</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">*</span>      <span class="n">Running</span> <span class="n">HierNMF2</span> <span class="k">with</span> <span class="mi">5</span> <span class="n">clusters</span><span class="p">,</span> <span class="n">JSON</span> <span class="nb">format</span>       <span class="o">*</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">************************************************************</span>
-    <span class="n">loading</span> <span class="n">dictionary</span><span class="o">...</span>
-    <span class="n">creating</span> <span class="n">random</span> <span class="n">W</span> <span class="n">initializers</span><span class="o">...</span>
-    <span class="n">creating</span> <span class="n">random</span> <span class="n">H</span> <span class="n">initializers</span><span class="o">...</span>
+    ************************************************************
+    *                                                          *
+    *      Running HierNMF2 with 5 clusters, JSON format       *
+    *                                                          *
+    ************************************************************
+    loading dictionary...
+    creating random W initializers...
+    creating random H initializers...
 
-        <span class="n">parameters</span><span class="p">:</span>
+        parameters:
 
-            <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
-             <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
-        <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
-          <span class="n">dictfile</span><span class="p">:</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span>
-               <span class="n">tol</span><span class="p">:</span> <span class="mf">0.0001</span>
-           <span class="n">miniter</span><span class="p">:</span> <span class="mi">5</span>
-           <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
-          <span class="n">maxterms</span><span class="p">:</span> <span class="mi">5</span>
-        <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+            height: 12411
+             width: 7984
+        matrixfile: ../data/reuters.mtx
+          dictfile: ../data/reuters_dictionary.txt
+               tol: 0.0001
+           miniter: 5
+           maxiter: 5000
+          maxterms: 5
+        maxthreads: 8
+    [1] [2] [3] [4]
 
-    <span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mi">391</span> <span class="n">ms</span><span class="o">.</span>
-    <span class="mi">9</span><span class="o">/</span><span class="mi">9</span> <span class="n">factorizations</span> <span class="n">converged</span><span class="o">.</span>
+    Elapsed wall clock time: 391 ms.
+    9/9 factorizations converged.
 
-    <span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
+    Writing output files...
 
-    <span class="o">************************************************************</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">*</span> <span class="n">Running</span> <span class="n">HierNMF2</span> <span class="k">with</span> <span class="mi">10</span> <span class="n">clusters</span><span class="p">,</span> <span class="mi">12</span> <span class="n">terms</span><span class="p">,</span> <span class="n">XML</span> <span class="nb">format</span>  <span class="o">*</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">************************************************************</span>
-    <span class="n">creating</span> <span class="n">random</span> <span class="n">W</span> <span class="n">initializers</span><span class="o">...</span>
-    <span class="n">creating</span> <span class="n">random</span> <span class="n">H</span> <span class="n">initializers</span><span class="o">...</span>
+    ************************************************************
+    *                                                          *
+    * Running HierNMF2 with 10 clusters, 12 terms, XML format  *
+    *                                                          *
+    ************************************************************
+    creating random W initializers...
+    creating random H initializers...
 
-        <span class="n">parameters</span><span class="p">:</span>
+        parameters:
 
-            <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
-             <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
-        <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
-          <span class="n">dictfile</span><span class="p">:</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span>
-               <span class="n">tol</span><span class="p">:</span> <span class="mf">0.0001</span>
-           <span class="n">miniter</span><span class="p">:</span> <span class="mi">5</span>
-           <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
-          <span class="n">maxterms</span><span class="p">:</span> <span class="mi">12</span>
-        <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">20</span> <span class="n">items</span> <span class="o">...</span>
-    <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="p">[</span><span class="mi">9</span><span class="p">]</span>
+            height: 12411
+             width: 7984
+        matrixfile: ../data/reuters.mtx
+          dictfile: ../data/reuters_dictionary.txt
+               tol: 0.0001
+           miniter: 5
+           maxiter: 5000
+          maxterms: 12
+        maxthreads: 8
+    [1] [2] [3] [4] [5] [6] dropping 20 items ...
+    [7] [8] [9]
 
-    <span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mi">837</span> <span class="n">ms</span><span class="o">.</span>
-    <span class="mi">21</span><span class="o">/</span><span class="mi">21</span> <span class="n">factorizations</span> <span class="n">converged</span><span class="o">.</span>
+    Elapsed wall clock time: 837 ms.
+    21/21 factorizations converged.
 
-    <span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
+    Writing output files...
 
-    <span class="o">************************************************************</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">*</span>  <span class="n">Running</span> <span class="n">HierNmf2</span> <span class="k">with</span> <span class="mi">18</span> <span class="n">clusters</span><span class="p">,</span> <span class="mi">8</span> <span class="n">terms</span><span class="p">,</span> <span class="k">with</span> <span class="n">flat</span>   <span class="o">*</span>
-    <span class="o">*</span>                                                          <span class="o">*</span>
-    <span class="o">************************************************************</span>
-    <span class="n">creating</span> <span class="n">random</span> <span class="n">W</span> <span class="n">initializers</span><span class="o">...</span>
-    <span class="n">creating</span> <span class="n">random</span> <span class="n">H</span> <span class="n">initializers</span><span class="o">...</span>
+    ************************************************************
+    *                                                          *
+    *  Running HierNmf2 with 18 clusters, 8 terms, with flat   *
+    *                                                          *
+    ************************************************************
+    creating random W initializers...
+    creating random H initializers...
 
-        <span class="n">parameters</span><span class="p">:</span>
+        parameters:
 
-            <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
-             <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
-        <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
-          <span class="n">dictfile</span><span class="p">:</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span>
-               <span class="n">tol</span><span class="p">:</span> <span class="mf">0.0001</span>
-           <span class="n">miniter</span><span class="p">:</span> <span class="mi">5</span>
-           <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
-          <span class="n">maxterms</span><span class="p">:</span> <span class="mi">8</span>
-        <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">20</span> <span class="n">items</span> <span class="o">...</span>
-    <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">25</span> <span class="n">items</span> <span class="o">...</span>
-    <span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="p">[</span><span class="mi">17</span><span class="p">]</span>
+            height: 12411
+             width: 7984
+        matrixfile: ../data/reuters.mtx
+          dictfile: ../data/reuters_dictionary.txt
+               tol: 0.0001
+           miniter: 5
+           maxiter: 5000
+          maxterms: 8
+        maxthreads: 8
+    [1] [2] [3] [4] [5] [6] dropping 20 items ...
+    [7] [8] [9] dropping 25 items ...
+    [10] [11] [12] [13] [14] [15] [16] [17]
 
-    <span class="n">Running</span> <span class="n">NNLS</span> <span class="n">solver</span><span class="o">...</span>
-    <span class="mi">1</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mi">1</span>
-    <span class="mi">2</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.264152</span>
-    <span class="mi">3</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0760648</span>
-    <span class="mi">4</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.0226758</span>
-    <span class="mi">5</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.00743562</span>
-    <span class="mi">6</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.00280826</span>
-    <span class="mi">7</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.00103682</span>
-    <span class="mi">8</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.000361738</span>
-    <span class="mi">9</span><span class="p">:</span>  <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">0.000133087</span>
-    <span class="mi">10</span><span class="p">:</span> <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>    <span class="mf">5.84849e-05</span>
+    Running NNLS solver...
+    1:  progress metric:    1
+    2:  progress metric:    0.264152
+    3:  progress metric:    0.0760648
+    4:  progress metric:    0.0226758
+    5:  progress metric:    0.00743562
+    6:  progress metric:    0.00280826
+    7:  progress metric:    0.00103682
+    8:  progress metric:    0.000361738
+    9:  progress metric:    0.000133087
+    10: progress metric:    5.84849e-05
 
-    <span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">1.362</span> <span class="n">s</span><span class="o">.</span>
-    <span class="mi">40</span><span class="o">/</span><span class="mi">40</span> <span class="n">factorizations</span> <span class="n">converged</span><span class="o">.</span>
+    Elapsed wall clock time: 1.362 s.
+    40/40 factorizations converged.
 
-    <span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
+    Writing output files...
 </pre></div>
 </div>
 <p>The output files are written to the default directory or the directory specified on the command line.</p>
@@ -643,30 +643,30 @@
 <h2><a class="toc-backref" href="#id2">7.2. SmallK API</a><a class="headerlink" href="#smallk-api" title="Permalink to this headline">¶</a></h2>
 <p>The SmallK API is an extremely simplistic API for basic NMF and clustering.  Users who require more control over the factorization or clustering algorithms can instead run one of the command-line applications in the SmallK distribution.</p>
 <p>The SmallK API is exposed by the file smallk.hpp, which can be found in this location:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">SMALLK_INSTALL_DIR</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">smallk</span><span class="o">.</span><span class="n">hpp</span><span class="o">.</span>
+<div class="highlight-none"><div class="highlight"><pre>SMALLK_INSTALL_DIR/include/smallk.hpp.
 </pre></div>
 </div>
 <p>All API functions are contained within the smallk namespace.</p>
-<p>An example of how to use the API can be found in the file examples/smallk_example.cpp.</p>
+<p>An example of how to use the API can be found in the file <code class="docutils literal"><span class="pre">examples/smallk_example.cpp</span></code>.</p>
 <p>The smallk library maintains a set of state variables that are used to control the Nmf and clustering routines.  Once set, the state variables maintain their values until changed by an API function.  For instance, one state variable represents the matrix to be factored (or used for clustering).  The API provides a function to load this matrix; once loaded, it can be repeatedly factored without the need for reloading.  The state variables and their default values are documented below.</p>
 <p>All computations with the smallk library are performed in double precision.</p>
 <div class="section" id="enumerations">
 <h3><a class="toc-backref" href="#id3">7.2.1. Enumerations</a><a class="headerlink" href="#enumerations" title="Permalink to this headline">¶</a></h3>
 <p>The SmallK API provides two enumerated types, one for the supported NMF algorithms and one for the clustering file output format.  These are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">enum</span> <span class="n">Algorithm</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="k">enum</span> <span class="n">Algorithm</span>
 <span class="p">{</span>
-        <span class="n">MU</span><span class="p">,</span>      <span class="o">//</span> <span class="n">Multiplicative</span> <span class="n">Updating</span><span class="p">,</span> <span class="n">Lee</span> <span class="o">&amp;</span> <span class="n">Seung</span>
-        <span class="n">BPP</span><span class="p">,</span>     <span class="o">//</span> <span class="n">Block</span> <span class="n">Principal</span> <span class="n">Pivoting</span><span class="p">,</span> <span class="n">Kim</span> <span class="ow">and</span> <span class="n">Park</span>
-        <span class="n">HALS</span><span class="p">,</span>    <span class="o">//</span> <span class="n">Hierarchical</span> <span class="n">Alternating</span> <span class="n">Least</span> <span class="n">Squares</span><span class="p">,</span> <span class="n">Cichocki</span> <span class="o">&amp;</span> <span class="n">Pan</span>
-        <span class="n">RANK2</span>    <span class="o">//</span> <span class="n">Rank2</span><span class="p">,</span> <span class="n">Kuang</span> <span class="ow">and</span> <span class="n">Park</span>
+        <span class="n">MU</span><span class="p">,</span>      <span class="c1">// Multiplicative Updating, Lee &amp; Seung</span>
+        <span class="n">BPP</span><span class="p">,</span>     <span class="c1">// Block Principal Pivoting, Kim and Park</span>
+        <span class="n">HALS</span><span class="p">,</span>    <span class="c1">// Hierarchical Alternating Least Squares, Cichocki &amp; Pan</span>
+        <span class="n">RANK2</span>    <span class="c1">// Rank2, Kuang and Park</span>
 <span class="p">};</span>
 </pre></div>
 </div>
 <p>The default NMF algorithm is BPP.  The Rank2 algorithm is optimized for two-column or two-row matrices and is the underlying factorization routine for the clustering code.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">enum</span> <span class="n">OutputFormat</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="k">enum</span> <span class="n">OutputFormat</span>
 <span class="p">{</span>
-        <span class="n">XML</span><span class="p">,</span>  <span class="o">//</span> <span class="n">Extensible</span> <span class="n">Markup</span> <span class="n">Language</span>
-        <span class="n">JSON</span>  <span class="o">//</span> <span class="n">JavaScript</span> <span class="n">Object</span> <span class="n">Notation</span>
+        <span class="n">XML</span><span class="p">,</span>  <span class="c1">// Extensible Markup Language</span>
+        <span class="n">JSON</span>  <span class="c1">// JavaScript Object Notation</span>
 <span class="p">};</span>
 </pre></div>
 </div>
@@ -675,104 +675,103 @@
 <h3><a class="toc-backref" href="#id4">7.2.2. API functions</a><a class="headerlink" href="#api-functions" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="initialization-and-cleanup">
 <h4><a class="toc-backref" href="#id5">7.2.2.1. Initialization and cleanup</a><a class="headerlink" href="#initialization-and-cleanup" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">Initialize</span><span class="p">(</span><span class="nb">int</span><span class="o">&amp;</span> <span class="n">argc</span><span class="p">,</span>     <span class="o">//</span> <span class="ow">in</span>
-        <span class="n">char</span><span class="o">**&amp;</span> <span class="n">argv</span><span class="p">)</span>  <span class="o">//</span> <span class="ow">in</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">Initialize</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**&amp;</span> <span class="n">argv</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Call this function first, before all others in the API; initializes Elemental and the smallk library.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="nb">bool</span> <span class="n">IsInitialized</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">bool</span> <span class="n">IsInitialized</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns true if the library has been initialized via a call to Initialize(), false otherwise.</p>
 <p>Call this function last, after all others in the API; performs cleanup for Elemental and the smallk library:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">Finalize</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">Finalize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="versioning">
 <h4><a class="toc-backref" href="#id6">7.2.2.2. Versioning</a><a class="headerlink" href="#versioning" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">GetMajorVersion</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMajorVersion</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the major release version number of the library as an unsigned integer.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">GetMinorVersion</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMinorVersion</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the minor release version number of the library as an unsigned integer.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">GetPatchLevel</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetPatchLevel</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the patch version number of the library as an unsigned integer.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">GetVersionString</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetVersionString</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the version of the library as a string, formatted as major.minor.patch.</p>
 </div>
 <div class="section" id="common-functions">
 <h4><a class="toc-backref" href="#id7">7.2.2.3. Common functions</a><a class="headerlink" href="#common-functions" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">GetOutputPrecision</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetOutputPrecision</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the floating point precision with which numerical output will be written (i.e., the computed W and H matrix factors from the Nmf routine).  The default precision is six digits.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">SetOutputPrecision</span><span class="p">(</span><span class="n">const</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">num_digits</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetOutputPrecision</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">num_digits</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the floating point precision with which numerical output will be written.  Input values should be within the range [1, precision(double)].  Any inputs outside of this range will be adjusted.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">GetMaxIter</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMaxIter</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the maximum number of iterations allowed for NMF computations.  The default value is 5000.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">SetMaxIter</span><span class="p">(</span><span class="n">const</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetMaxIter</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the maximum number of iterations allowed for NMF computations.  The default of 5000 should be more than sufficient for most computations.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">GetMinIter</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMinIter</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the minimum number of NMF iterations. The default value is 5.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">SetMinIter</span><span class="p">(</span><span class="n">const</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">min_iterations</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetMinIter</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">min_iterations</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the minimum number of NMF iterations to perform before checking for convergence. The convergence and progress estimation routines are non-trivial calculations, so increasing this value may result in faster performance.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">GetMaxThreads</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMaxThreads</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the maximum number of threads used for NMF or clustering computations. The default value is hardware-dependent, but is generally the maximum number allowed by the hardware.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">SetMaxThreads</span><span class="p">(</span><span class="n">const</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">max_threads</span><span class="p">);</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">SetMaxThreads</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_threads</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Sets an upper limit to the number of threads used for NMF and clustering computations.  Inputs that exceed the capabilities of the hardware will be adjusted. This function is provided for scaling and performance studies.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">Reset</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">Reset</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Resets all state variables to their default values.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">SeedRNG</span><span class="p">(</span><span class="n">const</span> <span class="nb">int</span> <span class="n">seed</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SeedRNG</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">seed</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Seeds the random number generator (RNG) within the smallk library. Normally this RNG is seeded from the system time whenever the library is initialized.  The RNG is the <code class="docutils literal"><span class="pre">19937</span></code> Mersenne Twister implementation provided by the C++ standard library.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">LoadMatrix</span><span class="p">(</span><span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">filepath</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">LoadMatrix</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">filepath</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Loads a matrix contained in the given file.  The file must either be a comma-separated value (.CSV) file for a dense matrix, or a MatrixMarket-format file (.MTX) for a sparse matrix. If the matrix cannot be loaded the library throws a std::runtime_error exception.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="nb">bool</span> <span class="n">IsMatrixLoaded</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">bool</span> <span class="n">IsMatrixLoaded</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns true if a matrix is currently loaded, false if not.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">GetOuputDir</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetOuputDir</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns a string indicating the directory into which output files will be written.  The default is the current directory.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">SetOutputDir</span><span class="p">(</span><span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">outdir</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetOutputDir</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">outdir</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the directory into which output files should be written. The <code class="docutils literal"><span class="pre">outdir</span></code> argument can either be an absolute or relative path.  The default is the current directory.</p>
 </div>
 <div class="section" id="nmf-functions">
 <h4><a class="toc-backref" href="#id8">7.2.2.4. NMF functions</a><a class="headerlink" href="#nmf-functions" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre>void Nmf(const unsigned int k,
-        const Algorithm algorithm     = Algorithm::BPP,
-        const std::string&amp; initfile_w = std::string(“”),
-        const std::string&amp; initfile_h = std::string(“”))
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">Nmf</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">Algorithm</span> <span class="n">algorithm</span>     <span class="o">=</span> <span class="n">Algorithm</span><span class="o">::</span><span class="n">BPP</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">initfile_w</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">),</span>
+        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">initfile_h</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>This function factors the input matrix A of nonnegative elements into nonnegative factors such that: <img class="math" src="_images/math/5cadf57469a7f3f25474e05adfed292d18fcbc63.svg" alt="\matr{A} \cong \matr{W} \matr{H}"/>.  If a matrix is not currently loaded a std::logic_error exception will be thrown.  The default algorithm is NMF-BPP; provide one of the enumerated algorithm values to use a different algorithm.</p>
@@ -780,58 +779,58 @@
 <p>Optional initializer matrices can be provided for the W and H factors via the <code class="docutils literal"><span class="pre">initfile_w</span></code> and <code class="docutils literal"><span class="pre">initfile_h</span></code> arguments. These files must contain fully dense matrices in .CSV format.  The W matrix initializer must have dimension mxk, and the H matrix initializer must have dimension kxn. If the initializer matrices do not match these dimensions exactly a std::logic_error exception is thrown.  If initializers are not provided, matrices W and H will be randomly initialized.</p>
 <p>The computed factors W and H will be written to the output directory in the files <code class="docutils literal"><span class="pre">w.csv</span></code> and <code class="docutils literal"><span class="pre">h.csv</span></code>.</p>
 <p>Exceptions will be thrown (either from Elemental or smallk) in case of error.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">const</span> <span class="n">double</span><span class="o">*</span> <span class="n">LockedBufferW</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span><span class="o">&amp;</span> <span class="n">ldim</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span><span class="o">&amp;</span> <span class="n">height</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span><span class="o">&amp;</span> <span class="n">width</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">LockedBufferW</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">ldim</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">height</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">width</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This function returns a READONLY pointer to the buffer containing the W factor computed by the Nmf routine, along with buffer and matrix dimensions.  The <code class="docutils literal"><span class="pre">ldim</span></code>, <code class="docutils literal"><span class="pre">height</span></code>, and <code class="docutils literal"><span class="pre">width</span></code> arguments are all out parameters.  The buffer has a height of <code class="docutils literal"><span class="pre">ldim</span></code> and a width of <code class="docutils literal"><span class="pre">width</span></code>.  The matrix W has the same width but a height of <code class="docutils literal"><span class="pre">height</span></code>, which may differ from ldim.  The W matrix is stored in the buffer in column-major order.  See the examples/smallk_example.cpp file for an illustration of how to use this function.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">const</span> <span class="n">double</span><span class="o">*</span> <span class="n">LockedBufferH</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span><span class="o">&amp;</span> <span class="n">ldim</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span><span class="o">&amp;</span> <span class="n">height</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span><span class="o">&amp;</span> <span class="n">width</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">LockedBufferH</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">ldim</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">height</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">width</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Same as LockedBufferW, but for the H matrix.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">double</span> <span class="n">GetNmfTolerance</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">double</span> <span class="n">GetNmfTolerance</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the tolerance value used to determine NMF convergence. The default value is 0.005.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">SetNmfTolerance</span><span class="p">(</span><span class="n">const</span> <span class="n">double</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetNmfTolerance</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Sets the tolerance value used to determine NMF convergence.  The NMF algorithms are iterative, and at each iteration a progress metric is computed and compared with the tolerance value.  When the metric falls below the tolerance value the iterations stop and convergence is declared.  The tolerance value should satisfy 0.0 &lt; tolerance &lt; 1.0.  Any inputs outside this range will cause a <cite>std::logic_error</cite> exception to be thrown.
+<p>Sets the tolerance value used to determine NMF convergence.  The NMF algorithms are iterative, and at each iteration a progress metric is computed and compared with the tolerance value.  When the metric falls below the tolerance value the iterations stop and convergence is declared.  The tolerance value should satisfy 0.0 &lt; tolerance &lt; 1.0.  Any inputs outside this range will cause a std::logic_error exception to be thrown.
 Clustering Functions</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">LoadDictionary</span><span class="p">(</span><span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">filepath</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">LoadDictionary</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">filepath</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Loads the dictionary used for clustering. The dictionary is an ASCII file of text strings as described in the preprocessor input files section below.  If the dictionary file cannot be loaded a <cite>std::runtime_error</cite> exception is thrown.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">GetMaxTerms</span><span class="p">()</span>
+<p>Loads the dictionary used for clustering. The dictionary is an ASCII file of text strings as described in the preprocessor input files section below.  If the dictionary file cannot be loaded a std::runtime_error exception is thrown.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMaxTerms</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the number of highest-probability dictionary terms to store per cluster. The default value is 5.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">SetMaxTerms</span><span class="p">(</span><span class="n">const</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">max_terms</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetMaxTerms</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_terms</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the number of highest-probability dictionary terms to store per cluster.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">OutputFormat</span> <span class="n">GetOutputFormat</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="n">OutputFormat</span> <span class="n">GetOutputFormat</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns a member of the OutputFormat enumerated type; this is the file format for the clustering results.  The default output format is JSON.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">SetOutputFormat</span><span class="p">(</span><span class="n">const</span> <span class="n">OutputFormat</span> <span class="o">=</span> <span class="n">OutputFormat</span><span class="p">::</span><span class="n">JSON</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetOutputFormat</span><span class="p">(</span><span class="k">const</span> <span class="n">OutputFormat</span> <span class="o">=</span> <span class="n">OutputFormat</span><span class="o">::</span><span class="n">JSON</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the output format for the clustering result file. The argument must be one of the values in the OutputFormat enumerated type.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">double</span> <span class="n">GetHierNmf2Tolerance</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">double</span> <span class="n">GetHierNmf2Tolerance</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the tolerance value used by the NMF-RANK2 algorithm for hierarchical clustering.  The default value is 1.0e-4.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">SetHierNmf2Tolerance</span><span class="p">(</span><span class="n">const</span> <span class="n">double</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-4</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetHierNmf2Tolerance</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-4</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the tolerance value used by the NMF-RANK2 algorithm for hierarchical clustering.  The tolerance value should satisfy 0.0 &lt; tolerance &lt; 1.0.  Any inputs outside this range will cause a <code class="docutils literal"><span class="pre">std::logic_error</span></code> exception to be thrown.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">HierNmf2</span><span class="p">(</span><span class="n">const</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">num_clusters</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">HierNmf2</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">num_clusters</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This function performs hierarchical clustering on the loaded matrix, generating the number of clusters specified by the <code class="docutils literal"><span class="pre">num_clusters</span></code> argument.  For an overview of the hierarchical clustering process, see the description below for the hierclust command line application.</p>
 <p>This function generates two output files in the output directory: <cite>assignments_N.csv</cite> and <cite>tree_N.{json, xml}</cite>.  Here N is the number of clusters specified as an argument, and the tree file can be in either JSON XML format.</p>
 <p>The content of the files is described below in the section on the hierclust command line application.</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">void</span> <span class="n">HierNmf2WithFlat</span><span class="p">(</span><span class="n">const</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">num_clusters</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">HierNmf2WithFlat</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">num_clusters</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This function performs hierarchical clustering on the loaded matrix, exactly as described for HierNmf2. In addition, it also computes a flat clustering result.  Thus four output files are generated.  The flat clustering result files are <code class="docutils literal"><span class="pre">assignments_flat_N.csv</span></code> and <code class="docutils literal"><span class="pre">clusters_N.{json,</span> <span class="pre">xml}</span></code>.  The cluster file contents are documented below in the section on the flatclust command line application.</p>

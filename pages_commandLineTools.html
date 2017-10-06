@@ -320,16 +320,16 @@
 <h2>6.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>The SmallK library provides a number of algorithm implementations for low rank approximation of a matrix. These can be used for performing various data analytics tasks such as topic modeling, clustering, and dimension reduction. This section will provide more in-depth description of the tools available with examples that can be expanded/modified for other application domains.</p>
 <p>Before diving into the various tools, it will be helpful to set up the command line environment to easily run the various executables that comprise the SmallK library. First the command line needs to know where to find the executable files to run the tools. Since while installing SmallK  <code class="docutils literal"><span class="pre">make_install</span></code> was run, the executables are located in <code class="docutils literal"><span class="pre">/usr/local/smallk/bin</span></code>. Thus, this should be added to the <code class="docutils literal"><span class="pre">$PATH</span></code> system variable or added to the environment. The following command line performs the task of modifying the path avoiding the need to cd into directories were the tools are located:</p>
-<div class="highlight-default"><div class="highlight"><pre>export PATH=/usr/local/smallk/bin:$PATH
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/smallk/bin:$PATH
 </pre></div>
 </div>
 <p>This allows the tools to be executed from any directory.</p>
-<p>A subset of these tools are also available from the pysmallk library: smallkapi (mirrors the NMF command line application), matrixgen, preprocessor, flatclust, and hierclust. The command line arguments are the same as those documented below. These tools are available within the /pysmallk/tests/ directory and can be executed as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="p">[</span><span class="n">python</span> <span class="n">binary</span><span class="p">]</span> <span class="p">[</span><span class="n">tool</span><span class="p">]</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="n">command</span> <span class="n">line</span> <span class="n">arguments</span><span class="p">]</span>
+<p>A subset of these tools are also available from the pysmallk library: smallkapi (mirrors the NMF command line application), matrixgen, preprocessor, flatclust, and hierclust. The command line arguments are the same as those documented below. These tools are available within the <code class="docutils literal"><span class="pre">/pysmallk/tests/</span> <span class="pre">directory</span></code> and can be executed as follows:</p>
+<div class="highlight-none"><div class="highlight"><pre>[python binary] [tool].py [command line arguments]
 </pre></div>
 </div>
 <p>For example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">python</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">indir</span> <span class="n">smallk_data</span>
+<div class="highlight-bash"><div class="highlight"><pre>python preprocessor.py --indir smallk_data
 </pre></div>
 </div>
 </div>
@@ -348,20 +348,20 @@ input matrix, in which the matrix elements represent occurrence counts for the t
 <h3>6.2.2. Input Files<a class="headerlink" href="#input-files" title="Permalink to this headline">¶</a></h3>
 <p>The preprocessor requires three input files: a matrix file, a dictionary file, and a document file.  The matrix file contains a sparse matrix in MatrixMarket format (.mtx).  This is a term-frequency matrix, and all entries should be positive integers. The preprocessor can also read in matrices containing floating-point inputs, but only if <code class="docutils literal"><span class="pre">boolean</span> <span class="pre">mode</span></code> is enabled; this will be described below. The preprocessor does not support dense matrices, since the typical matrices encountered in topic modeling problems are extremely sparse, with occupancies generally less than 1%.</p>
 <p>The second file required by the preprocessor is a <code class="docutils literal"><span class="pre">dictionary</span> <span class="pre">file</span></code>.  This is a simple ASCII text file containing one entry per line.  Entries represent keywords, bigrams, or other general text strings the user is interested in.  Each line of the file is treated as a <code class="docutils literal"><span class="pre">keyword</span></code>, so multi-word keywords are supported as well.  The smallk/data folder contains a sample dictionary file called <code class="docutils literal"><span class="pre">dictionary.txt</span></code>.  The first few entries are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">triumph</span>
-<span class="n">dey</span>
-<span class="n">canada</span>
-<span class="n">finger</span>
-<span class="n">circuit</span>
-<span class="o">...</span>
+<div class="highlight-none"><div class="highlight"><pre>triumph
+dey
+canada
+finger
+circuit
+...
 </pre></div>
 </div>
 <p>The third file required by the preprocessor is a <code class="docutils literal"><span class="pre">documents</span> <span class="pre">file</span></code>.  This is another simple ASCII text file containing one entry per line.  Entries represent document names or other unique identifiers.  The smallk/data folder also contains a sample documents file called <code class="docutils literal"><span class="pre">documents.txt</span></code>.  The first few entries of this file are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="mi">52828</span><span class="o">-</span><span class="mf">11101.</span><span class="n">txt</span>
-<span class="mi">51820</span><span class="o">-</span><span class="mf">10202.</span><span class="n">txt</span>
-<span class="mi">104595</span><span class="o">-</span><span class="mf">959.</span><span class="n">txt</span>
-<span class="mi">60259</span><span class="o">-</span><span class="mf">3040.</span><span class="n">txt</span>
-<span class="o">...</span>
+<div class="highlight-none"><div class="highlight"><pre>52828-11101.txt
+51820-10202.txt
+104595-959.txt
+60259-3040.txt
+...
 </pre></div>
 </div>
 <p>These are the unique document identifiers for the user who generated the file.  Your identifiers will likely have a different format.</p>
@@ -370,14 +370,14 @@ input matrix, in which the matrix elements represent occurrence counts for the t
 <div class="section" id="command-line-options">
 <h3>6.2.3. Command Line Options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h3>
 <p>The preprocessor binary is called <code class="docutils literal"><span class="pre">preprocess_tf</span></code>, to emphasize the fact that it operates on term-frequency matrices.  If the binary is run with no arguments, it prints out the following information:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">preprocess_tf</span>
-        <span class="o">--</span><span class="n">indir</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">&gt;</span>
-        <span class="p">[</span><span class="o">--</span><span class="n">outdir</span> <span class="p">(</span><span class="n">defaults</span> <span class="n">to</span> <span class="n">current</span> <span class="n">directory</span><span class="p">)]</span>
-        <span class="p">[</span><span class="o">--</span><span class="n">docs_per_term</span> <span class="mi">3</span><span class="p">]</span>
-        <span class="p">[</span><span class="o">--</span><span class="n">terms_per_doc</span> <span class="mi">5</span><span class="p">]</span>
-        <span class="p">[</span><span class="o">--</span><span class="n">maxiter</span> <span class="mi">1000</span><span class="p">]</span>
-        <span class="p">[</span><span class="o">--</span><span class="n">precision</span> <span class="mi">4</span><span class="p">]</span>
-        <span class="p">[</span><span class="o">--</span><span class="n">boolean_mode</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight-none"><div class="highlight"><pre>preprocess_tf
+     --indir &lt;path&gt;
+     [--outdir (defaults to current directory)]
+     [--docs_per_term 3]
+     [--terms_per_doc 5]
+     [--maxiter 1000]
+     [--precision 4]
+     [--boolean_mode 0]
 </pre></div>
 </div>
 <p>Only the first parameter, <code class="docutils literal"><span class="pre">--indir</span></code>, is required.  All remaining params are optional and have the default values indicated.</p>
@@ -397,34 +397,34 @@ input matrix, in which the matrix elements represent occurrence counts for the t
 <div class="section" id="sample-runs">
 <h3>6.2.4. Sample Runs<a class="headerlink" href="#sample-runs" title="Permalink to this headline">¶</a></h3>
 <p>Here is a sample run of the preprocessor using the data provided in the smallk distribution.  This run was performed from the top-level smallk folder after building the code:</p>
-<div class="highlight-default"><div class="highlight"><pre>  <span class="n">preprocessor</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">preprocess_tf</span> <span class="o">--</span><span class="n">indir</span> <span class="n">data</span>
+<div class="highlight-none"><div class="highlight"><pre>preprocessor/bin/preprocess_tf --indir data
 
-<span class="n">Command</span> <span class="n">line</span> <span class="n">options</span><span class="p">:</span>
+  Command line options:
 
-           <span class="n">indir</span><span class="p">:</span> <span class="n">data</span><span class="o">/</span>
-          <span class="n">outdir</span><span class="p">:</span> <span class="n">current</span> <span class="n">directory</span>
-   <span class="n">docs_per_term</span><span class="p">:</span> <span class="mi">3</span>
-   <span class="n">terms_per_doc</span><span class="p">:</span> <span class="mi">5</span>
-        <span class="n">max_iter</span><span class="p">:</span> <span class="mi">1000</span>
-       <span class="n">precision</span><span class="p">:</span> <span class="mi">4</span>
-    <span class="n">boolean_mode</span><span class="p">:</span> <span class="mi">0</span>
+              indir: data/
+             outdir: current directory
+      docs_per_term: 3
+      terms_per_doc: 5
+           max_iter: 1000
+          precision: 4
+       boolean_mode: 0
 
-  <span class="n">Loading</span> <span class="nb">input</span> <span class="n">matrix</span> <span class="n">data</span><span class="o">/</span><span class="n">matrix</span><span class="o">.</span><span class="n">mtx</span>
-          <span class="n">Input</span> <span class="n">file</span> <span class="n">load</span> <span class="n">time</span><span class="p">:</span> <span class="mf">1.176</span><span class="n">s</span><span class="o">.</span>
+     Loading input matrix data/matrix.mtx
+             Input file load time: 1.176s.
 
-  <span class="n">Starting</span> <span class="n">iterations</span><span class="o">...</span>
-          <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">height</span><span class="p">:</span> <span class="mi">39771</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="mi">11237</span><span class="p">,</span> <span class="n">nonzeros</span><span class="p">:</span> <span class="mi">877453</span>
-  <span class="n">Iterations</span> <span class="n">finished</span><span class="o">.</span>
-  <span class="n">New</span> <span class="n">height</span><span class="p">:</span> <span class="mi">39727</span>
-  <span class="n">New</span> <span class="n">width</span><span class="p">:</span> <span class="mi">11237</span>
-  <span class="n">New</span> <span class="n">nonzero</span> <span class="n">count</span><span class="p">:</span> <span class="mi">877374</span>
-  <span class="n">Processing</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.074</span><span class="n">s</span><span class="o">.</span>
+     Starting iterations...
+             [1] height: 39771, width: 11237, nonzeros: 877453
+     Iterations finished.
+     New height: 39727
+     New width: 11237
+     New nonzero count: 877374
+     Processing time: 0.074s.
 
-  <span class="n">Writing</span> <span class="n">output</span> <span class="n">matrix</span> <span class="n">reduced_matrix</span><span class="o">.</span><span class="n">mtx</span>
-  <span class="n">Output</span> <span class="n">file</span> <span class="n">write</span> <span class="n">time</span><span class="p">:</span> <span class="mf">2.424</span><span class="n">s</span><span class="o">.</span>
-  <span class="n">Writing</span> <span class="n">dictionary</span> <span class="n">file</span> <span class="n">reduced_dictionary</span><span class="o">.</span><span class="n">txt</span>
-  <span class="n">Writing</span> <span class="n">documents</span> <span class="n">file</span> <span class="n">reduced_documents</span><span class="o">.</span><span class="n">txt</span>
-  <span class="n">Dictionary</span> <span class="o">+</span> <span class="n">documents</span> <span class="n">write</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.08</span><span class="n">s</span><span class="o">.</span>
+     Writing output matrix reduced_matrix.mtx
+     Output file write time: 2.424s.
+     Writing dictionary file reduced_dictionary.txt
+     Writing documents file reduced_documents.txt
+     Dictionary + documents write time: 0.08s.
 </pre></div>
 </div>
 </div>
@@ -438,25 +438,25 @@ input matrix, in which the matrix elements represent occurrence counts for the t
 <div class="section" id="id2">
 <h3>6.3.2. Command Line Options<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Running the matrixgen binary with no options generates the following output:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">matrixgen</span>
+<div class="highlight-none"><div class="highlight"><pre>matrixgen
 
-<span class="n">Usage</span><span class="p">:</span> <span class="n">matrixgen</span>
-        <span class="o">--</span><span class="n">height</span> <span class="o">&lt;</span><span class="n">number</span> <span class="n">of</span> <span class="n">rows</span><span class="o">&gt;</span>
-        <span class="o">--</span><span class="n">width</span>  <span class="o">&lt;</span><span class="n">number</span> <span class="n">of</span> <span class="n">cols</span><span class="o">&gt;</span>
-        <span class="o">--</span><span class="n">filename</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">&gt;</span>
-        <span class="p">[</span><span class="o">--</span><span class="nb">type</span>  <span class="n">UNIFORM</span><span class="p">]</span>  <span class="n">UNIFORM</span><span class="p">:</span>     <span class="n">matrix</span> <span class="k">with</span> <span class="n">uniformly</span><span class="o">-</span><span class="n">distributed</span> <span class="n">random</span> <span class="n">entries</span>
-                   <span class="n">DENSE_DIAG</span><span class="p">:</span>  <span class="n">dense</span> <span class="n">diagonal</span> <span class="n">matrix</span> <span class="k">with</span> <span class="n">uniform</span> <span class="n">random</span> <span class="n">entries</span>
-                   <span class="n">SPARSE_DIAG</span><span class="p">:</span> <span class="n">sparse</span> <span class="n">diagonal</span> <span class="n">matrix</span> <span class="k">with</span> <span class="n">uniform</span> <span class="n">random</span> <span class="n">entries</span>
-                   <span class="n">IDENTITY</span><span class="p">:</span>    <span class="n">identity</span> <span class="n">matrix</span>
-                   <span class="n">ONES</span><span class="p">:</span>        <span class="n">matrix</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">ones</span>
-                   <span class="n">ZEROS</span><span class="p">:</span>       <span class="n">matrix</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">zeros</span>
-                   <span class="n">SPARSE</span><span class="p">:</span>      <span class="n">sparse</span> <span class="n">matrix</span> <span class="k">with</span> <span class="n">uniform</span> <span class="n">random</span> <span class="n">entries</span>
-                                <span class="n">specify</span> <span class="s1">&#39;nz_per_col&#39;</span> <span class="n">to</span> <span class="n">control</span> <span class="n">occupancy</span>
+Usage: matrixgen
+        --height &lt;number of rows&gt;
+        --width  &lt;number of cols&gt;
+        --filename &lt;path&gt;
+        [--type  UNIFORM]  UNIFORM:     matrix with uniformly-distributed random entries
+                   DENSE_DIAG:  dense diagonal matrix with uniform random entries
+                   SPARSE_DIAG: sparse diagonal matrix with uniform random entries
+                   IDENTITY:    identity matrix
+                   ONES:        matrix of all ones
+                   ZEROS:       matrix of all zeros
+                   SPARSE:      sparse matrix with uniform random entries
+                                specify &#39;nz_per_col&#39; to control occupancy
 
-        <span class="p">[</span><span class="o">--</span><span class="n">rng_center</span>  <span class="mf">0.5</span><span class="p">]</span>   <span class="n">center</span> <span class="n">of</span> <span class="n">random</span> <span class="n">numbers</span>
-        <span class="p">[</span><span class="o">--</span><span class="n">rng_radius</span>  <span class="mf">0.5</span><span class="p">]</span>   <span class="n">radius</span> <span class="n">of</span> <span class="n">random</span> <span class="n">numbers</span>
-        <span class="p">[</span><span class="o">--</span><span class="n">precision</span>   <span class="mi">6</span><span class="p">]</span>     <span class="n">digits</span> <span class="n">of</span> <span class="n">precision</span>
-        <span class="p">[</span><span class="o">--</span><span class="n">nz_per_col</span>  <span class="mi">1</span><span class="p">]</span>     <span class="p">(</span><span class="n">SPARSE</span> <span class="n">only</span><span class="p">)</span> <span class="n">nonzeros</span> <span class="n">per</span> <span class="n">column</span>
+        [--rng_center  0.5]   center of random numbers
+        [--rng_radius  0.5]   radius of random numbers
+        [--precision   6]     digits of precision
+        [--nz_per_col  1]     (SPARSE only) nonzeros per column
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">--height</span></code>, <code class="docutils literal"><span class="pre">--width</span></code>, and <code class="docutils literal"><span class="pre">--filename</span></code> options are required.  All others are optional and have the default values indicated.</p>
@@ -477,7 +477,7 @@ input matrix, in which the matrix elements represent occurrence counts for the t
 <div class="section" id="id3">
 <h3>6.3.3. Sample Runs<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>Suppose we want to generate a matrix of uniformly-distributed random numbers.  The matrix should have a height of 100 and a width of 16, and should be written to a file called <code class="docutils literal"><span class="pre">w_init.csv</span></code>.  Use the matrix generator as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">matrixgen</span> <span class="o">--</span><span class="n">height</span> <span class="mi">100</span> <span class="o">--</span><span class="n">width</span> <span class="mi">16</span> <span class="o">--</span><span class="n">filename</span> <span class="n">w_init</span><span class="o">.</span><span class="n">csv</span>
+<div class="highlight-none"><div class="highlight"><pre>matrixgen --height 100 --width 16 --filename w_init.csv
 </pre></div>
 </div>
 </div>
@@ -492,36 +492,36 @@ input matrix, in which the matrix elements represent occurrence counts for the t
 <div class="section" id="id5">
 <h3>6.4.2. Command Line Options<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>Running the nmf application with no command line parameters will cause the application to display all params that it supports. These are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">Usage</span><span class="p">:</span> <span class="n">nmf</span>
-<span class="o">--</span><span class="n">matrixfile</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>  <span class="n">Filename</span> <span class="n">of</span> <span class="n">the</span> <span class="n">matrix</span> <span class="n">to</span> <span class="n">be</span> <span class="n">factored</span><span class="o">.</span>
-                         <span class="n">Either</span> <span class="n">CSV</span> <span class="nb">format</span> <span class="k">for</span> <span class="n">dense</span> <span class="ow">or</span> <span class="n">MatrixMarket</span> <span class="nb">format</span> <span class="k">for</span> <span class="n">sparse</span><span class="o">.</span>
-<span class="o">--</span><span class="n">k</span> <span class="o">&lt;</span><span class="n">integer</span> <span class="n">value</span><span class="o">&gt;</span>      <span class="n">Inner</span> <span class="n">dimension</span> <span class="k">for</span> <span class="n">factors</span> <span class="n">W</span> <span class="ow">and</span> <span class="n">H</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">algorithm</span>  <span class="n">BPP</span><span class="p">]</span>       <span class="n">NMF</span> <span class="n">algorithms</span><span class="p">:</span>
-                             <span class="n">MU</span><span class="p">:</span>    <span class="n">multiplicative</span> <span class="n">updating</span>
-                             <span class="n">HALS</span><span class="p">:</span>  <span class="n">hierarchical</span> <span class="n">alternating</span> <span class="n">least</span> <span class="n">squares</span>
-                             <span class="n">RANK2</span><span class="p">:</span> <span class="n">rank2</span> <span class="k">with</span> <span class="n">optimal</span> <span class="n">active</span> <span class="nb">set</span> <span class="n">selection</span>
-                             <span class="n">BPP</span><span class="p">:</span>   <span class="n">block</span> <span class="n">principal</span> <span class="n">pivoting</span>
-<span class="p">[</span><span class="o">--</span><span class="n">stopping</span>  <span class="n">PG_RATIO</span><span class="p">]</span>   <span class="n">Stopping</span> <span class="n">criterion</span><span class="p">:</span>
-                             <span class="n">PG_RATIO</span><span class="p">:</span> <span class="n">Ratio</span> <span class="n">of</span> <span class="n">projected</span> <span class="n">gradients</span>
-                             <span class="n">DELTA</span><span class="p">:</span>    <span class="n">Change</span> <span class="ow">in</span> <span class="n">relative</span> <span class="n">F</span><span class="o">-</span><span class="n">norm</span> <span class="n">of</span> <span class="n">W</span>
-<span class="p">[</span><span class="o">--</span><span class="n">tol</span>  <span class="mf">0.005</span><span class="p">]</span>           <span class="n">Tolerance</span> <span class="k">for</span> <span class="n">the</span> <span class="n">selected</span> <span class="n">stopping</span> <span class="n">criterion</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">tolcount</span>  <span class="mi">1</span><span class="p">]</span>          <span class="n">Tolerance</span> <span class="n">count</span><span class="p">;</span> <span class="n">declare</span> <span class="n">convergence</span> <span class="n">after</span> <span class="n">this</span> <span class="n">many</span>
-                         <span class="n">iterations</span> <span class="k">with</span> <span class="n">metric</span> <span class="o">&lt;</span> <span class="n">tolerance</span><span class="p">;</span> <span class="n">default</span> <span class="ow">is</span> <span class="n">to</span>
-                         <span class="n">declare</span> <span class="n">convergence</span> <span class="n">on</span> <span class="n">the</span> <span class="n">first</span> <span class="n">such</span> <span class="n">iteration</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">infile_W</span>  <span class="p">(</span><span class="n">empty</span><span class="p">)]</span>    <span class="n">Dense</span> <span class="n">mxk</span> <span class="n">matrix</span> <span class="n">to</span> <span class="n">initialize</span> <span class="n">W</span><span class="p">;</span> <span class="n">CSV</span> <span class="n">file</span><span class="o">.</span>
-                         <span class="n">If</span> <span class="n">unspecified</span><span class="p">,</span> <span class="n">W</span> <span class="n">will</span> <span class="n">be</span> <span class="n">randomly</span> <span class="n">initialized</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">infile_H</span>  <span class="p">(</span><span class="n">empty</span><span class="p">)]</span>    <span class="n">Dense</span> <span class="n">kxn</span> <span class="n">matrix</span> <span class="n">to</span> <span class="n">initialize</span> <span class="n">H</span><span class="p">;</span> <span class="n">CSV</span> <span class="n">file</span><span class="o">.</span>
-                         <span class="n">If</span> <span class="n">unspecified</span><span class="p">,</span> <span class="n">H</span> <span class="n">will</span> <span class="n">be</span> <span class="n">randomly</span> <span class="n">initialized</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">outfile_W</span>  <span class="n">w</span><span class="o">.</span><span class="n">csv</span><span class="p">]</span>     <span class="n">Filename</span> <span class="k">for</span> <span class="n">the</span> <span class="n">W</span> <span class="n">matrix</span> <span class="n">result</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">outfile_H</span>  <span class="n">h</span><span class="o">.</span><span class="n">csv</span><span class="p">]</span>     <span class="n">Filename</span> <span class="k">for</span> <span class="n">the</span> <span class="n">H</span> <span class="n">matrix</span> <span class="n">result</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">miniter</span>  <span class="mi">5</span><span class="p">]</span>           <span class="n">Minimum</span> <span class="n">number</span> <span class="n">of</span> <span class="n">iterations</span> <span class="n">to</span> <span class="n">perform</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">maxiter</span>  <span class="mi">5000</span><span class="p">]</span>        <span class="n">Maximum</span> <span class="n">number</span> <span class="n">of</span> <span class="n">iterations</span> <span class="n">to</span> <span class="n">perform</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">outprecision</span>  <span class="mi">6</span><span class="p">]</span>      <span class="n">Write</span> <span class="n">results</span> <span class="k">with</span> <span class="n">this</span> <span class="n">many</span> <span class="n">digits</span> <span class="n">of</span> <span class="n">precision</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">maxthreads</span>    <span class="mi">8</span><span class="p">]</span>      <span class="n">Upper</span> <span class="n">limit</span> <span class="n">to</span> <span class="n">thread</span> <span class="n">count</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">normalize</span>  <span class="mi">1</span><span class="p">]</span>         <span class="n">Whether</span> <span class="n">to</span> <span class="n">normalize</span> <span class="n">W</span> <span class="ow">and</span> <span class="n">scale</span> <span class="n">H</span><span class="o">.</span>
-                             <span class="mi">1</span> <span class="o">==</span> <span class="n">yes</span><span class="p">,</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">no</span>
-<span class="p">[</span><span class="o">--</span><span class="n">verbose</span>  <span class="mi">1</span><span class="p">]</span>           <span class="n">Whether</span> <span class="n">to</span> <span class="nb">print</span> <span class="n">updates</span> <span class="n">to</span> <span class="n">the</span> <span class="n">screen</span><span class="o">.</span>
-                             <span class="mi">1</span> <span class="o">==</span> <span class="nb">print</span> <span class="n">updates</span><span class="p">,</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">silent</span>
+<div class="highlight-none"><div class="highlight"><pre>Usage: nmf
+--matrixfile &lt;filename&gt;  Filename of the matrix to be factored.
+                         Either CSV format for dense or MatrixMarket format for sparse.
+--k &lt;integer value&gt;      Inner dimension for factors W and H.
+[--algorithm  BPP]       NMF algorithms:
+                             MU:    multiplicative updating
+                             HALS:  hierarchical alternating least squares
+                             RANK2: rank2 with optimal active set selection
+                             BPP:   block principal pivoting
+[--stopping  PG_RATIO]   Stopping criterion:
+                             PG_RATIO: Ratio of projected gradients
+                             DELTA:    Change in relative F-norm of W
+[--tol  0.005]           Tolerance for the selected stopping criterion.
+[--tolcount  1]          Tolerance count; declare convergence after this many
+                         iterations with metric &lt; tolerance; default is to
+                         declare convergence on the first such iteration.
+[--infile_W  (empty)]    Dense mxk matrix to initialize W; CSV file.
+                         If unspecified, W will be randomly initialized.
+[--infile_H  (empty)]    Dense kxn matrix to initialize H; CSV file.
+                         If unspecified, H will be randomly initialized.
+[--outfile_W  w.csv]     Filename for the W matrix result.
+[--outfile_H  h.csv]     Filename for the H matrix result.
+[--miniter  5]           Minimum number of iterations to perform.
+[--maxiter  5000]        Maximum number of iterations to perform.
+[--outprecision  6]      Write results with this many digits of precision.
+[--maxthreads    8]      Upper limit to thread count.
+[--normalize  1]         Whether to normalize W and scale H.
+                             1 == yes, 0 == no
+[--verbose  1]           Whether to print updates to the screen.
+                             1 == print updates, 0 == silent
 </pre></div>
 </div>
 <p>The –matrixfile and –k options are required; all others are optional and have the default values indicated.  The meanings of the various options are as follows:</p>
@@ -550,20 +550,20 @@ input matrix, in which the matrix elements represent occurrence counts for the t
 <h3>6.4.3. Sample Runs<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>The smallk distribution utilizes another repository <a class="reference external" href="https://github.com/smallk/smallk_data">smallk_data</a> (clone this repository from github) with a matrix file <code class="docutils literal"><span class="pre">reuters.mtx</span></code>.  This is a tf-idf weighted matrix derived from the popular Reuters data set used in machine learning experiments.</p>
 <p>Suppose we want to factor the Reuters matrix using a k value of 8.  We would do that as follows, assuming that we are in the top-level smallk folder after building the code and that the <code class="docutils literal"><span class="pre">smallk_data</span></code> repository was cloned into <cite>data</cite>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">nmf</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nmf</span> <span class="o">--</span><span class="n">matrixfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>  <span class="o">--</span><span class="n">k</span> <span class="mi">8</span>
+<div class="highlight-none"><div class="highlight"><pre>nmf/bin/nmf --matrixfile data/reuters.mtx  --k 8
 </pre></div>
 </div>
 <p>Note that if <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> was run during installation and the $PATH variable or environment variable was set as above, this could also be called with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nmf</span> <span class="o">--</span><span class="n">matrixfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>  <span class="o">--</span><span class="n">k</span> <span class="mi">8</span>
+<div class="highlight-none"><div class="highlight"><pre>usr/local/bin/nmf --matrixfile data/reuters.mtx  --k 8
 </pre></div>
 </div>
 <p>If we want to instead use the HALS algorithm with k=16, a tolerance of 1.0e-4, and also perform 10 iterations prior to checking progress, we would use this command line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">nmf</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nmf</span> <span class="o">--</span><span class="n">matrixfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span> <span class="o">--</span><span class="n">k</span> <span class="mi">16</span> <span class="o">--</span><span class="n">algorithm</span> <span class="n">HALS</span> <span class="o">--</span><span class="n">tol</span> <span class="mf">1.0e-4</span> <span class="o">--</span><span class="n">miniter</span> <span class="mi">10</span>
+<div class="highlight-none"><div class="highlight"><pre>nmf/bin/nmf --matrixfile data/reuters.mtx --k 16 --algorithm HALS --tol 1.0e-4 --miniter 10
 </pre></div>
 </div>
 <p>To repeat the previous experiment but with new names for the output files, we would do this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">nmf</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nmf</span> <span class="o">--</span><span class="n">matrixfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span> <span class="o">--</span><span class="n">k</span> <span class="mi">16</span> <span class="o">--</span><span class="n">algorithm</span> <span class="n">HALS</span> <span class="o">--</span><span class="n">tol</span> <span class="mf">1.0e-4</span>
-        <span class="o">--</span><span class="n">miniter</span> <span class="mi">10</span> <span class="o">--</span><span class="n">outfile_W</span> <span class="n">w_hals</span><span class="o">.</span><span class="n">csv</span> <span class="o">-</span><span class="n">outfile_H</span> <span class="n">h_hals</span><span class="o">.</span><span class="n">csv</span>
+<div class="highlight-none"><div class="highlight"><pre>nmf/bin/nmf --matrixfile data/reuters.mtx --k 16 --algorithm HALS --tol 1.0e-4
+        --miniter 10 --outfile_W w_hals.csv -outfile_H h_hals.csv
 </pre></div>
 </div>
 </div>
@@ -609,36 +609,36 @@ input matrix, in which the matrix elements represent occurrence counts for the t
 <div class="section" id="id9">
 <h3>6.5.2. Command Line Options<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>Running the hierclust application with no command line parameters will cause the application to display all params that it supports.  These are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">Usage</span><span class="p">:</span> <span class="n">hierclust</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hierclust</span>
-<span class="o">--</span><span class="n">matrixfile</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>     <span class="n">Filename</span> <span class="n">of</span> <span class="n">the</span> <span class="n">matrix</span> <span class="n">to</span> <span class="n">be</span> <span class="n">factored</span><span class="o">.</span>
-                            <span class="n">Either</span> <span class="n">CSV</span> <span class="nb">format</span> <span class="k">for</span> <span class="n">dense</span> <span class="ow">or</span> <span class="n">MatrixMarket</span> <span class="nb">format</span> <span class="k">for</span> <span class="n">sparse</span><span class="o">.</span>
-<span class="o">--</span><span class="n">dictfile</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>       <span class="n">The</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">dictionary</span> <span class="n">file</span><span class="o">.</span>
-<span class="o">--</span><span class="n">clusters</span> <span class="o">&lt;</span><span class="n">integer</span><span class="o">&gt;</span>        <span class="n">The</span> <span class="n">number</span> <span class="n">of</span> <span class="n">clusters</span> <span class="n">to</span> <span class="n">generate</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">initdir</span>  <span class="p">(</span><span class="n">empty</span><span class="p">)]</span>        <span class="n">Directory</span> <span class="n">of</span> <span class="n">initializers</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">Rank2</span> <span class="n">factorizations</span><span class="o">.</span>
-                            <span class="n">If</span> <span class="n">unspecified</span><span class="p">,</span> <span class="n">random</span> <span class="n">init</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">tol</span>  <span class="mf">0.0001</span><span class="p">]</span>             <span class="n">Tolerance</span> <span class="n">value</span> <span class="k">for</span> <span class="n">each</span> <span class="n">factorization</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">outdir</span>  <span class="p">(</span><span class="n">empty</span><span class="p">)]</span>         <span class="n">Output</span> <span class="n">directory</span><span class="o">.</span>  <span class="n">If</span> <span class="n">unspecified</span><span class="p">,</span> <span class="n">results</span> <span class="n">will</span> <span class="n">be</span>
-                            <span class="n">written</span> <span class="n">to</span> <span class="n">the</span> <span class="n">current</span> <span class="n">directory</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">miniter</span>  <span class="mi">5</span><span class="p">]</span>              <span class="n">Minimum</span> <span class="n">number</span> <span class="n">of</span> <span class="n">iterations</span> <span class="n">to</span> <span class="n">perform</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">maxiter</span>  <span class="mi">5000</span><span class="p">]</span>           <span class="n">Maximum</span> <span class="n">number</span> <span class="n">of</span>  <span class="n">iterations</span> <span class="n">to</span> <span class="n">perform</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">maxterms</span>  <span class="mi">5</span><span class="p">]</span>             <span class="n">Number</span> <span class="n">of</span> <span class="n">terms</span> <span class="n">per</span> <span class="n">node</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">maxthreads</span>    <span class="mi">8</span><span class="p">]</span>         <span class="n">Upper</span> <span class="n">limit</span> <span class="n">to</span> <span class="n">thread</span> <span class="n">count</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">unbalanced</span>  <span class="mf">0.1</span><span class="p">]</span>         <span class="n">Threshold</span> <span class="k">for</span> <span class="n">determining</span> <span class="n">leaf</span> <span class="n">node</span> <span class="n">imbalance</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">trial_allowance</span>  <span class="mi">3</span><span class="p">]</span>      <span class="n">Number</span> <span class="n">of</span> <span class="n">split</span> <span class="n">attempts</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">flat</span>  <span class="mi">0</span><span class="p">]</span>                 <span class="n">Whether</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">a</span> <span class="n">flat</span> <span class="n">clustering</span> <span class="n">result</span><span class="o">.</span>
-                                <span class="mi">1</span> <span class="o">==</span> <span class="n">yes</span><span class="p">,</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">no</span>
-<span class="p">[</span><span class="o">--</span><span class="n">verbose</span>  <span class="mi">1</span><span class="p">]</span>              <span class="n">Whether</span> <span class="n">to</span> <span class="nb">print</span> <span class="n">updates</span> <span class="n">to</span> <span class="n">the</span> <span class="n">screen</span><span class="o">.</span>
-                                <span class="mi">1</span> <span class="o">==</span> <span class="n">yes</span><span class="p">,</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">no</span>
-<span class="p">[</span><span class="o">--</span><span class="nb">format</span>  <span class="n">XML</span><span class="p">]</span>             <span class="n">Format</span> <span class="n">of</span> <span class="n">the</span> <span class="n">output</span> <span class="n">file</span> <span class="n">containing</span> <span class="n">the</span> <span class="n">tree</span><span class="o">.</span>
-                                <span class="n">XML</span><span class="p">:</span> <span class="n">XML</span> <span class="nb">format</span>
-                                <span class="n">JSON</span><span class="p">:</span> <span class="n">JavaScript</span> <span class="n">Object</span> <span class="n">Notation</span>
-<span class="p">[</span><span class="o">--</span><span class="n">treefile</span>  <span class="n">tree_N</span><span class="o">.</span><span class="n">ext</span><span class="p">]</span>    <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">output</span> <span class="n">file</span> <span class="n">containing</span> <span class="n">the</span> <span class="n">tree</span><span class="o">.</span>
-                            <span class="n">N</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">clusters</span> <span class="k">for</span> <span class="n">this</span> <span class="n">run</span><span class="o">.</span>
-                            <span class="n">The</span> <span class="n">string</span> <span class="s1">&#39;ext&#39;</span> <span class="n">depends</span> <span class="n">on</span> <span class="n">the</span> <span class="n">desired</span> <span class="nb">format</span><span class="o">.</span>
-                            <span class="n">This</span> <span class="n">filename</span> <span class="ow">is</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">the</span> <span class="n">outdir</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">assignfile</span> <span class="n">assignments_N</span><span class="o">.</span><span class="n">csv</span><span class="p">]</span>  <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">file</span> <span class="n">containing</span> <span class="n">final</span> <span class="n">assignments</span><span class="o">.</span>
-                                  <span class="n">N</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">clusters</span> <span class="k">for</span> <span class="n">this</span> <span class="n">run</span><span class="o">.</span>
-                                  <span class="n">This</span> <span class="n">filename</span> <span class="ow">is</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">the</span> <span class="n">outdir</span><span class="o">.</span>
+<div class="highlight-none"><div class="highlight"><pre>Usage: hierclust/bin/hierclust
+--matrixfile &lt;filename&gt;     Filename of the matrix to be factored.
+                            Either CSV format for dense or MatrixMarket format for sparse.
+--dictfile &lt;filename&gt;       The name of the dictionary file.
+--clusters &lt;integer&gt;        The number of clusters to generate.
+[--initdir  (empty)]        Directory of initializers for all Rank2 factorizations.
+                            If unspecified, random init will be used.
+[--tol  0.0001]             Tolerance value for each factorization.
+[--outdir  (empty)]         Output directory.  If unspecified, results will be
+                            written to the current directory.
+[--miniter  5]              Minimum number of iterations to perform.
+[--maxiter  5000]           Maximum number of  iterations to perform.
+[--maxterms  5]             Number of terms per node.
+[--maxthreads    8]         Upper limit to thread count.
+[--unbalanced  0.1]         Threshold for determining leaf node imbalance.
+[--trial_allowance  3]      Number of split attempts.
+[--flat  0]                 Whether to generate a flat clustering result.
+                                1 == yes, 0 == no
+[--verbose  1]              Whether to print updates to the screen.
+                                1 == yes, 0 == no
+[--format  XML]             Format of the output file containing the tree.
+                                XML: XML format
+                                JSON: JavaScript Object Notation
+[--treefile  tree_N.ext]    Name of the output file containing the tree.
+                            N is the number of clusters for this run.
+                            The string &#39;ext&#39; depends on the desired format.
+                            This filename is relative to the outdir.
+[--assignfile assignments_N.csv]  Name of the file containing final assignments.
+                                  N is the number of clusters for this run.
+                                  This filename is relative to the outdir.
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">--matrixfile</span></code>, <code class="docutils literal"><span class="pre">--dictfile</span></code>, and <code class="docutils literal"><span class="pre">--clusters</span></code> options are required; all others are optional and have the default values indicated.  The meanings of the various options are as follows:</p>
@@ -669,17 +669,17 @@ input matrix, in which the matrix elements represent occurrence counts for the t
 <p>The smallk distribution has available a <code class="docutils literal"><span class="pre">smallk_data</span></code> repository on github with a matrix file <code class="docutils literal"><span class="pre">reuters.mtx</span></code> and an associated dictionary file <code class="docutils literal"><span class="pre">reuters_dictionary.txt</span></code>.  These files are derived from the popular Reuters data set used in machine learning experiments.</p>
 <p>As above, it is assumed that the <a class="reference external" href="https://github.com/smallk/smallk_data">smallk_data</a> repository was cloned into <code class="docutils literal"><span class="pre">data</span></code> and that the commands can be run as below or from <code class="docutils literal"><span class="pre">/usr/local/bin</span></code>.</p>
 <p>Suppose we want to perform hierarchical clustering on this data set and generate 10 leaf nodes.  We would do that as follows, assuming that we are in the top-level smallk folder after building the code:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">hierclust</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hierclust</span> <span class="o">--</span><span class="n">matrixfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>  <span class="o">--</span><span class="n">dictfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">clusters</span> <span class="mi">10</span>
+<div class="highlight-none"><div class="highlight"><pre>hierclust/bin/hierclust --matrixfile data/reuters.mtx  --dictfile data/reuters_dictionary.txt --clusters 10
 </pre></div>
 </div>
 <p>This will generate two result files in the current directory: <code class="docutils literal"><span class="pre">tree_10.xml</span></code> and <code class="docutils literal"><span class="pre">assignments_10.csv</span></code>.</p>
 <p>If we want to instead generate 10 clusters, each with 8 terms, using JSON output format, we would use this command line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">hierclust</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hierclust</span> <span class="o">--</span><span class="n">matrixfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>  <span class="o">--</span><span class="n">dictfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">clusters</span> <span class="mi">10</span> <span class="o">--</span><span class="n">maxterms</span> <span class="mi">8</span> <span class="o">--</span><span class="nb">format</span> <span class="n">JSON</span>
+<div class="highlight-none"><div class="highlight"><pre>hierclust/bin/hierclust --matrixfile data/reuters.mtx  --dictfile data/reuters_dictionary.txt --clusters 10 --maxterms 8 --format JSON
 </pre></div>
 </div>
 <p>Two files will be generated: <code class="docutils literal"><span class="pre">tree_10.json</span></code> and <code class="docutils literal"><span class="pre">assignments_10.csv</span></code>.  The json file will have 8 keywords per node, whereas the <code class="docutils literal"><span class="pre">tree_10.xml</span></code> file will have only 5.</p>
 <p>To generate a flat clustering result (in addition to the hierarchical clustering result), use this command line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">hierclust</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hierclust</span> <span class="o">--</span><span class="n">matrixfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>  <span class="o">--</span><span class="n">dictfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">clusters</span> <span class="mi">10</span> <span class="o">--</span><span class="n">maxterms</span> <span class="mi">8</span> <span class="o">--</span><span class="nb">format</span> <span class="n">JSON</span> <span class="o">--</span><span class="n">flat</span> <span class="mi">1</span>
+<div class="highlight-none"><div class="highlight"><pre>hierclust/bin/hierclust --matrixfile data/reuters.mtx  --dictfile data/reuters_dictionary.txt --clusters 10 --maxterms 8 --format JSON --flat 1
 </pre></div>
 </div>
 <p>Two additional files will be generated this time (along with <code class="docutils literal"><span class="pre">tree_10.json</span></code> and <code class="docutils literal"><span class="pre">assignments_10.csv</span></code>): <code class="docutils literal"><span class="pre">clusters_10.json</span></code>, which contains the flat clustering results, and <code class="docutils literal"><span class="pre">assignments_flat_10.csv</span></code>, which contains the flat clustering assignments.</p>
@@ -703,41 +703,41 @@ input matrix, in which the matrix elements represent occurrence counts for the t
 <div class="section" id="id13">
 <h3>6.6.2. Command Line Options<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>Running the flatclust application with no command line parameters will cause the application to display all params that it supports.  These are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">Usage</span><span class="p">:</span> <span class="n">flatclust</span>
-<span class="o">--</span><span class="n">matrixfile</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>      <span class="n">Filename</span> <span class="n">of</span> <span class="n">the</span> <span class="n">matrix</span> <span class="n">to</span> <span class="n">be</span> <span class="n">factored</span><span class="o">.</span>
-                             <span class="n">Either</span> <span class="n">CSV</span> <span class="nb">format</span> <span class="k">for</span> <span class="n">dense</span> <span class="ow">or</span> <span class="n">MatrixMarket</span> <span class="nb">format</span> <span class="k">for</span> <span class="n">sparse</span><span class="o">.</span>
-<span class="o">--</span><span class="n">dictfile</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>        <span class="n">The</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">dictionary</span> <span class="n">file</span><span class="o">.</span>
-<span class="o">--</span><span class="n">clusters</span> <span class="o">&lt;</span><span class="n">integer</span><span class="o">&gt;</span>         <span class="n">The</span> <span class="n">number</span> <span class="n">of</span> <span class="n">clusters</span> <span class="n">to</span> <span class="n">generate</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">algorithm</span>  <span class="n">BPP</span><span class="p">]</span>           <span class="n">The</span> <span class="n">NMF</span> <span class="n">algorithm</span> <span class="n">to</span> <span class="n">use</span><span class="p">:</span>
-                                 <span class="n">HALS</span><span class="p">:</span>  <span class="n">hierarchical</span> <span class="n">alternating</span> <span class="n">least</span> <span class="n">squares</span>
-                                 <span class="n">RANK2</span><span class="p">:</span> <span class="n">rank2</span> <span class="k">with</span> <span class="n">optimal</span> <span class="n">active</span> <span class="nb">set</span> <span class="n">selection</span>
-                                        <span class="p">(</span><span class="k">for</span> <span class="n">two</span> <span class="n">clusters</span> <span class="n">only</span><span class="p">)</span>
-                                 <span class="n">BPP</span><span class="p">:</span>   <span class="n">block</span> <span class="n">principal</span> <span class="n">pivoting</span>
-<span class="p">[</span><span class="o">--</span><span class="n">infile_W</span>  <span class="p">(</span><span class="n">empty</span><span class="p">)]</span>        <span class="n">Dense</span> <span class="n">matrix</span> <span class="n">to</span> <span class="n">initialize</span> <span class="n">W</span><span class="p">,</span> <span class="n">CSV</span> <span class="n">file</span><span class="o">.</span>
-                             <span class="n">The</span> <span class="n">matrix</span> <span class="n">has</span> <span class="n">m</span> <span class="n">rows</span> <span class="ow">and</span> <span class="s1">&#39;clusters&#39;</span> <span class="n">columns</span><span class="o">.</span>
-                             <span class="n">If</span> <span class="n">unspecified</span><span class="p">,</span> <span class="n">W</span> <span class="n">will</span> <span class="n">be</span> <span class="n">randomly</span> <span class="n">initialized</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">infile_H</span>  <span class="p">(</span><span class="n">empty</span><span class="p">)]</span>        <span class="n">Dense</span> <span class="n">matrix</span> <span class="n">to</span> <span class="n">initialize</span> <span class="n">H</span><span class="p">,</span> <span class="n">CSV</span> <span class="n">file</span><span class="o">.</span>
-                             <span class="n">The</span> <span class="n">matrix</span> <span class="n">has</span> <span class="s1">&#39;clusters&#39;</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">n</span> <span class="n">columns</span><span class="o">.</span>
-                             <span class="n">If</span> <span class="n">unspecified</span><span class="p">,</span> <span class="n">H</span> <span class="n">will</span> <span class="n">be</span> <span class="n">randomly</span> <span class="n">initialized</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">tol</span>  <span class="mf">0.0001</span><span class="p">]</span>              <span class="n">Tolerance</span> <span class="n">value</span> <span class="k">for</span> <span class="n">the</span> <span class="n">progress</span> <span class="n">metric</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">outdir</span>  <span class="p">(</span><span class="n">empty</span><span class="p">)]</span>          <span class="n">Output</span> <span class="n">directory</span><span class="o">.</span>  <span class="n">If</span> <span class="n">unspecified</span><span class="p">,</span> <span class="n">results</span> <span class="n">will</span> <span class="n">be</span>
-                             <span class="n">written</span> <span class="n">to</span> <span class="n">the</span> <span class="n">current</span> <span class="n">directory</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">miniter</span>  <span class="mi">5</span><span class="p">]</span>               <span class="n">Minimum</span> <span class="n">number</span> <span class="n">of</span> <span class="n">iterations</span> <span class="n">to</span> <span class="n">perform</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">maxiter</span>  <span class="mi">5000</span><span class="p">]</span>            <span class="n">Maximum</span> <span class="n">number</span> <span class="n">of</span>  <span class="n">iterations</span> <span class="n">to</span> <span class="n">perform</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">maxterms</span>  <span class="mi">5</span><span class="p">]</span>              <span class="n">Number</span> <span class="n">of</span> <span class="n">terms</span> <span class="n">per</span> <span class="n">node</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">maxthreads</span>   <span class="mi">8</span><span class="p">]</span>           <span class="n">Upper</span> <span class="n">limit</span> <span class="n">to</span> <span class="n">thread</span> <span class="n">count</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">verbose</span>  <span class="mi">1</span><span class="p">]</span>               <span class="n">Whether</span> <span class="n">to</span> <span class="nb">print</span> <span class="n">updates</span> <span class="n">to</span> <span class="n">the</span> <span class="n">screen</span><span class="o">.</span>
-                                 <span class="mi">1</span> <span class="o">==</span> <span class="n">yes</span><span class="p">,</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">no</span>
-<span class="p">[</span><span class="o">--</span><span class="nb">format</span>  <span class="n">XML</span><span class="p">]</span>              <span class="n">Format</span> <span class="n">of</span> <span class="n">the</span> <span class="n">output</span> <span class="n">file</span> <span class="n">containing</span> <span class="n">the</span> <span class="n">tree</span><span class="o">.</span>
-                                 <span class="n">XML</span><span class="p">:</span> <span class="n">XML</span> <span class="nb">format</span>
-                                 <span class="n">JSON</span><span class="p">:</span> <span class="n">JavaScript</span> <span class="n">Object</span> <span class="n">Notation</span>
-<span class="p">[</span><span class="o">--</span><span class="n">clustfile</span> <span class="n">clusters_N</span><span class="o">.</span><span class="n">ext</span><span class="p">]</span> <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">output</span> <span class="n">XML</span> <span class="n">file</span> <span class="n">containing</span> <span class="n">the</span> <span class="n">tree</span><span class="o">.</span>
-                             <span class="n">N</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">clusters</span> <span class="k">for</span> <span class="n">this</span> <span class="n">run</span><span class="o">.</span>
-                             <span class="n">The</span> <span class="n">string</span> <span class="s1">&#39;ext&#39;</span> <span class="n">depends</span> <span class="n">on</span> <span class="n">the</span> <span class="n">desired</span> <span class="nb">format</span><span class="o">.</span>
-                             <span class="n">This</span> <span class="n">filename</span> <span class="ow">is</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">the</span> <span class="n">outdir</span><span class="o">.</span>
-<span class="p">[</span><span class="o">--</span><span class="n">assignfile</span> <span class="n">assignments_N</span><span class="o">.</span><span class="n">csv</span><span class="p">]</span>  <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">file</span> <span class="n">containing</span> <span class="n">final</span> <span class="n">assignments</span><span class="o">.</span>
-                                  <span class="n">N</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">clusters</span> <span class="k">for</span> <span class="n">this</span> <span class="n">run</span><span class="o">.</span>
-                                  <span class="n">This</span> <span class="n">filename</span> <span class="ow">is</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">the</span> <span class="n">outdir</span><span class="o">.</span>
+<div class="highlight-none"><div class="highlight"><pre>Usage: flatclust
+--matrixfile &lt;filename&gt;      Filename of the matrix to be factored.
+                             Either CSV format for dense or MatrixMarket format for sparse.
+--dictfile &lt;filename&gt;        The name of the dictionary file.
+--clusters &lt;integer&gt;         The number of clusters to generate.
+[--algorithm  BPP]           The NMF algorithm to use:
+                                 HALS:  hierarchical alternating least squares
+                                 RANK2: rank2 with optimal active set selection
+                                        (for two clusters only)
+                                 BPP:   block principal pivoting
+[--infile_W  (empty)]        Dense matrix to initialize W, CSV file.
+                             The matrix has m rows and &#39;clusters&#39; columns.
+                             If unspecified, W will be randomly initialized.
+[--infile_H  (empty)]        Dense matrix to initialize H, CSV file.
+                             The matrix has &#39;clusters&#39; rows and n columns.
+                             If unspecified, H will be randomly initialized.
+[--tol  0.0001]              Tolerance value for the progress metric.
+[--outdir  (empty)]          Output directory.  If unspecified, results will be
+                             written to the current directory.
+[--miniter  5]               Minimum number of iterations to perform.
+[--maxiter  5000]            Maximum number of  iterations to perform.
+[--maxterms  5]              Number of terms per node.
+[--maxthreads   8]           Upper limit to thread count.
+[--verbose  1]               Whether to print updates to the screen.
+                                 1 == yes, 0 == no
+[--format  XML]              Format of the output file containing the tree.
+                                 XML: XML format
+                                 JSON: JavaScript Object Notation
+[--clustfile clusters_N.ext] Name of the output XML file containing the tree.
+                             N is the number of clusters for this run.
+                             The string &#39;ext&#39; depends on the desired format.
+                             This filename is relative to the outdir.
+[--assignfile assignments_N.csv]  Name of the file containing final assignments.
+                                  N is the number of clusters for this run.
+                                  This filename is relative to the outdir.
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">--matrixfile</span></code>, <code class="docutils literal"><span class="pre">--dictfile</span></code>, and <code class="docutils literal"><span class="pre">--clusters</span></code> options are required; all others are optional and have the default values indicated.  The meanings of the various options are as follows:</p>
@@ -767,12 +767,12 @@ input matrix, in which the matrix elements represent occurrence counts for the t
 <p>The smallk distribution has available a <code class="docutils literal"><span class="pre">smallk_data</span></code> repository on github with a matrix file <code class="docutils literal"><span class="pre">reuters.mtx</span></code> and an associated dictionary file <code class="docutils literal"><span class="pre">reuters_dictionary.txt</span></code>.  These files are derived from the popular Reuters data set used in machine learning experiments.</p>
 <p>As above, it is assumed that the <a class="reference external" href="https://github.com/smallk/smallk_data">smallk_data</a> repository was cloned into <code class="docutils literal"><span class="pre">data</span></code> and that the commands can be run as below or from <code class="docutils literal"><span class="pre">/usr/local/bin</span></code>.</p>
 <p>Suppose we want to perform flat clustering on this data set and generate 10 clusters.  We would do that as follows, assuming that we are in the top-level smallk folder after building the code:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">flatclust</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">flatclust</span> <span class="o">--</span><span class="n">matrixfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>  <span class="o">--</span><span class="n">dictfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">clusters</span> <span class="mi">10</span>
+<div class="highlight-none"><div class="highlight"><pre>flatclust/bin/flatclust --matrixfile data/reuters.mtx  --dictfile data/reuters_dictionary.txt --clusters 10
 </pre></div>
 </div>
 <p>This will generate two result files in the current directory: <code class="docutils literal"><span class="pre">clusters_10.xml</span></code> and <code class="docutils literal"><span class="pre">assignments_10.csv</span></code>.</p>
 <p>If we want to instead generate 10 clusters, each with 8 terms, using JSON output format, we would use this command line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">flatclust</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">flatclust</span> <span class="o">--</span><span class="n">matrixfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>  <span class="o">--</span><span class="n">dictfile</span> <span class="n">data</span><span class="o">/</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">clusters</span> <span class="mi">10</span> <span class="o">--</span><span class="n">maxterms</span> <span class="mi">8</span> <span class="o">--</span><span class="nb">format</span> <span class="n">JSON</span>
+<div class="highlight-none"><div class="highlight"><pre>flatclust/bin/flatclust --matrixfile data/reuters.mtx  --dictfile data/reuters_dictionary.txt --clusters 10 --maxterms 8 --format JSON
 </pre></div>
 </div>
 <p>Two files will be generated: <code class="docutils literal"><span class="pre">clusters_10.json</span></code> and <code class="docutils literal"><span class="pre">assignments_10.csv</span></code>.  The json file will have 8 keywords per node, whereas the <code class="docutils literal"><span class="pre">clusters_10.xml</span></code> file will have only 5.</p>
