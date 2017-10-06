@@ -318,522 +318,522 @@
 <div class="section" id="smallk-test-results">
 <h2>9.1. SmallK Test Results<a class="headerlink" href="#smallk-test-results" title="Permalink to this headline">¶</a></h2>
 <p>After building the smallk library, the <cite>make check</cite> command will run a bash script that performs a series of tests on the code.  This is a sample output of those tests:</p>
-<div class="highlight-default"><div class="highlight"><pre><span class="n">Build</span> <span class="n">configuration</span><span class="p">:</span> <span class="n">release</span>
-<span class="n">sh</span> <span class="n">tests</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">test_smallk</span><span class="o">.</span><span class="n">sh</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">/</span> <span class="o">|</span> <span class="n">tee</span> <span class="n">smallk_test_results</span><span class="o">.</span><span class="n">txt</span>
-<span class="o">*****************************************************</span>
-<span class="o">*</span>                                                   <span class="o">*</span>
-<span class="o">*</span>           <span class="n">Testing</span> <span class="n">the</span> <span class="n">smallk</span> <span class="n">interface</span><span class="o">.</span>           <span class="o">*</span>
-<span class="o">*</span>                                                   <span class="o">*</span>
-<span class="o">*****************************************************</span>
-<span class="n">WARNING</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">achieve</span> <span class="n">THREAD_MULTIPLE</span> <span class="n">support</span><span class="o">.</span>
-<span class="n">Smallk</span> <span class="n">major</span> <span class="n">version</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">Smallk</span> <span class="n">minor</span> <span class="n">version</span><span class="p">:</span> <span class="mi">6</span>
-<span class="n">Smallk</span> <span class="n">patch</span> <span class="n">level</span><span class="p">:</span>   <span class="mi">0</span>
-<span class="n">Smallk</span> <span class="n">version</span> <span class="n">string</span><span class="p">:</span> <span class="mf">1.6</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">Loading</span> <span class="n">matrix</span><span class="o">...</span>
+<div class="highlight-none"><div class="highlight"><pre><span></span>Build configuration: release
+sh tests/scripts/test_smallk.sh ../xdata_github/smallk_data/ | tee smallk_test_results.txt
+*****************************************************
+*                                                   *
+*           Testing the smallk interface.           *
+*                                                   *
+*****************************************************
+WARNING: Could not achieve THREAD_MULTIPLE support.
+Smallk major version: 1
+Smallk minor version: 6
+Smallk patch level:   0
+Smallk version string: 1.6.0
+Loading matrix...
 
-<span class="n">Running</span> <span class="n">NMF</span><span class="o">-</span><span class="n">BPP</span><span class="o">...</span>
+Running NMF-BPP...
 
-<span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">W</span><span class="o">...</span>
-<span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">H</span><span class="o">...</span>
+Initializing matrix W...
+Initializing matrix H...
 
-                <span class="n">parameters</span><span class="p">:</span>
+                parameters:
 
-                 <span class="n">algorithm</span><span class="p">:</span> <span class="n">Nonnegative</span> <span class="n">Least</span> <span class="n">Squares</span> <span class="k">with</span> <span class="n">Block</span> <span class="n">Principal</span> <span class="n">Pivoting</span>
-        <span class="n">stopping</span> <span class="n">criterion</span><span class="p">:</span> <span class="n">Ratio</span> <span class="n">of</span> <span class="n">Projected</span> <span class="n">Gradients</span>
-                    <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
-                     <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
-                         <span class="n">k</span><span class="p">:</span> <span class="mi">8</span>
-                   <span class="n">miniter</span><span class="p">:</span> <span class="mi">1</span>
-                   <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
-                       <span class="n">tol</span><span class="p">:</span> <span class="mf">0.005</span>
-                <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
-                <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
+                 algorithm: Nonnegative Least Squares with Block Principal Pivoting
+        stopping criterion: Ratio of Projected Gradients
+                    height: 12411
+                     width: 7984
+                         k: 8
+                   miniter: 1
+                   maxiter: 5000
+                       tol: 0.005
+                matrixfile: ../xdata_github/smallk_data/reuters.mtx
+                maxthreads: 8
 
-<span class="mi">1</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-<span class="mi">2</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.35826</span>
-<span class="mi">3</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.172127</span>
-<span class="mi">4</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.106297</span>
-<span class="mi">5</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0696424</span>
-<span class="mi">6</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0538889</span>
-<span class="mi">7</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0559478</span>
-<span class="mi">8</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0686117</span>
-<span class="mi">9</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0788641</span>
-<span class="mi">10</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0711522</span>
-<span class="mi">20</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00568349</span>
+1:      progress metric:        (min_iter)
+2:      progress metric:        0.35826
+3:      progress metric:        0.172127
+4:      progress metric:        0.106297
+5:      progress metric:        0.0696424
+6:      progress metric:        0.0538889
+7:      progress metric:        0.0559478
+8:      progress metric:        0.0686117
+9:      progress metric:        0.0788641
+10:     progress metric:        0.0711522
+20:     progress metric:        0.00568349
 
-<span class="n">Solution</span> <span class="n">converged</span> <span class="n">after</span> <span class="mi">22</span> <span class="n">iterations</span><span class="o">.</span>
+Solution converged after 22 iterations.
 
-<span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.633</span> <span class="n">sec</span><span class="o">.</span>
+Elapsed wall clock time: 0.633 sec.
 
-<span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
+Writing output files...
 
-<span class="n">Running</span> <span class="n">HierNmf2</span><span class="o">...</span>
+Running HierNmf2...
 
-<span class="n">Loading</span> <span class="n">dictionary</span><span class="o">...</span>
+Loading dictionary...
 
-                <span class="n">parameters</span><span class="p">:</span>
+                parameters:
 
-                    <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
-                     <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
-                <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">/</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
-                  <span class="n">dictfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">/</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span>
-                       <span class="n">tol</span><span class="p">:</span> <span class="mf">0.0001</span>
-                   <span class="n">miniter</span><span class="p">:</span> <span class="mi">1</span>
-                   <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
-                  <span class="n">maxterms</span><span class="p">:</span> <span class="mi">5</span>
-                <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                    height: 12411
+                     width: 7984
+                matrixfile: ../xdata_github/smallk_data/reuters.mtx
+                  dictfile: ../xdata_github/smallk_data/reuters_dictionary.txt
+                       tol: 0.0001
+                   miniter: 1
+                   maxiter: 5000
+                  maxterms: 5
+                maxthreads: 8
+[1] [2] [3] [4]
 
-<span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mi">551</span> <span class="n">ms</span><span class="o">.</span>
-<span class="mi">9</span><span class="o">/</span><span class="mi">9</span> <span class="n">factorizations</span> <span class="n">converged</span><span class="o">.</span>
+Elapsed wall clock time: 551 ms.
+9/9 factorizations converged.
 
-<span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
-<span class="n">W</span> <span class="n">matrix</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="n">H</span> <span class="n">matrix</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="o">*****************************************************</span>
-<span class="o">*</span>                                                   <span class="o">*</span>
-<span class="o">*</span>            <span class="n">Testing</span> <span class="n">the</span> <span class="n">preprocessor</span><span class="o">.</span>              <span class="o">*</span>
-<span class="o">*</span>                                                   <span class="o">*</span>
-<span class="o">*****************************************************</span>
+Writing output files...
+W matrix test passed
+H matrix test passed
+*****************************************************
+*                                                   *
+*            Testing the preprocessor.              *
+*                                                   *
+*****************************************************
 
-      <span class="n">Command</span> <span class="n">line</span> <span class="n">options</span><span class="p">:</span>
+      Command line options:
 
-                     <span class="n">indir</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">/</span>
-                    <span class="n">outdir</span><span class="p">:</span> <span class="n">current</span> <span class="n">directory</span>
-             <span class="n">docs_per_term</span><span class="p">:</span> <span class="mi">3</span>
-             <span class="n">terms_per_doc</span><span class="p">:</span> <span class="mi">5</span>
-                  <span class="n">max_iter</span><span class="p">:</span> <span class="mi">1000</span>
-                 <span class="n">precision</span><span class="p">:</span> <span class="mi">4</span>
-              <span class="n">boolean_mode</span><span class="p">:</span> <span class="mi">0</span>
+                     indir: ../xdata_github/smallk_data/
+                    outdir: current directory
+             docs_per_term: 3
+             terms_per_doc: 5
+                  max_iter: 1000
+                 precision: 4
+              boolean_mode: 0
 
-<span class="n">Loading</span> <span class="nb">input</span> <span class="n">matrix</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">/</span><span class="n">matrix</span><span class="o">.</span><span class="n">mtx</span>
-        <span class="n">Input</span> <span class="n">file</span> <span class="n">load</span> <span class="n">time</span><span class="p">:</span> <span class="mf">1.421</span><span class="n">s</span><span class="o">.</span>
+Loading input matrix ../xdata_github/smallk_data/matrix.mtx
+        Input file load time: 1.421s.
 
-<span class="n">Starting</span> <span class="n">iterations</span><span class="o">...</span>
-        <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">height</span><span class="p">:</span> <span class="mi">39771</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="mi">11237</span><span class="p">,</span> <span class="n">nonzeros</span><span class="p">:</span> <span class="mi">877453</span>
-<span class="n">Iterations</span> <span class="n">finished</span><span class="o">.</span>
-        <span class="n">New</span> <span class="n">height</span><span class="p">:</span> <span class="mi">39727</span>
-        <span class="n">New</span> <span class="n">width</span><span class="p">:</span> <span class="mi">11237</span>
-        <span class="n">New</span> <span class="n">nonzero</span> <span class="n">count</span><span class="p">:</span> <span class="mi">877374</span>
-<span class="n">Processing</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.063</span><span class="n">s</span><span class="o">.</span>
+Starting iterations...
+        [1] height: 39771, width: 11237, nonzeros: 877453
+Iterations finished.
+        New height: 39727
+        New width: 11237
+        New nonzero count: 877374
+Processing time: 0.063s.
 
-<span class="n">Writing</span> <span class="n">output</span> <span class="n">matrix</span> <span class="s1">&#39;reduced_matrix.mtx&#39;</span>
-<span class="n">Output</span> <span class="n">file</span> <span class="n">write</span> <span class="n">time</span><span class="p">:</span> <span class="mf">2.189</span><span class="n">s</span><span class="o">.</span>
-<span class="n">Writing</span> <span class="n">dictionary</span> <span class="n">file</span> <span class="s1">&#39;reduced_dictionary.txt&#39;</span>
-<span class="n">Writing</span> <span class="n">documents</span> <span class="n">file</span> <span class="s1">&#39;reduced_documents.txt&#39;</span>
-<span class="n">Dictionary</span> <span class="o">+</span> <span class="n">documents</span> <span class="n">write</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.083</span><span class="n">s</span><span class="o">.</span>
-<span class="n">preprocessor</span> <span class="n">matrix</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="n">preprocessor</span> <span class="n">dictionary</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="n">preprocessor</span> <span class="n">documents</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="o">*****************************************************</span>
-<span class="o">*</span>                                                   <span class="o">*</span>
-<span class="o">*</span>            <span class="n">Testing</span> <span class="n">the</span> <span class="n">NMF</span> <span class="n">routines</span><span class="o">.</span>              <span class="o">*</span>
-<span class="o">*</span>                                                   <span class="o">*</span>
-<span class="o">*****************************************************</span>
-<span class="n">WARNING</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">achieve</span> <span class="n">THREAD_MULTIPLE</span> <span class="n">support</span><span class="o">.</span>
-<span class="n">Loading</span> <span class="n">matrix</span><span class="o">...</span>
-<span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">W</span><span class="o">...</span>
-<span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">H</span><span class="o">...</span>
+Writing output matrix &#39;reduced_matrix.mtx&#39;
+Output file write time: 2.189s.
+Writing dictionary file &#39;reduced_dictionary.txt&#39;
+Writing documents file &#39;reduced_documents.txt&#39;
+Dictionary + documents write time: 0.083s.
+preprocessor matrix test passed
+preprocessor dictionary test passed
+preprocessor documents test passed
+*****************************************************
+*                                                   *
+*            Testing the NMF routines.              *
+*                                                   *
+*****************************************************
+WARNING: Could not achieve THREAD_MULTIPLE support.
+Loading matrix...
+Initializing matrix W...
+Initializing matrix H...
 
-      <span class="n">Command</span> <span class="n">line</span> <span class="n">options</span><span class="p">:</span>
+      Command line options:
 
-                 <span class="n">algorithm</span><span class="p">:</span> <span class="n">Nonnegative</span> <span class="n">Least</span> <span class="n">Squares</span> <span class="k">with</span> <span class="n">Block</span> <span class="n">Principal</span> <span class="n">Pivoting</span>
-        <span class="n">stopping</span> <span class="n">criterion</span><span class="p">:</span> <span class="n">Ratio</span> <span class="n">of</span> <span class="n">Projected</span> <span class="n">Gradients</span>
-                    <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
-                     <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
-                         <span class="n">k</span><span class="p">:</span> <span class="mi">8</span>
-                   <span class="n">miniter</span><span class="p">:</span> <span class="mi">1</span>
-                   <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
-                       <span class="n">tol</span><span class="p">:</span> <span class="mf">0.005</span>
-                  <span class="n">tolcount</span><span class="p">:</span> <span class="mi">1</span>
-                   <span class="n">verbose</span><span class="p">:</span> <span class="mi">1</span>
-                 <span class="n">normalize</span><span class="p">:</span> <span class="mi">1</span>
-              <span class="n">outprecision</span><span class="p">:</span> <span class="mi">6</span>
-                <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
-                  <span class="n">infile_W</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">nmf_init_w</span><span class="o">.</span><span class="n">csv</span>
-                  <span class="n">infile_H</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">nmf_init_h</span><span class="o">.</span><span class="n">csv</span>
-                 <span class="n">outfile_W</span><span class="p">:</span> <span class="n">w</span><span class="o">.</span><span class="n">csv</span>
-                 <span class="n">outfile_H</span><span class="p">:</span> <span class="n">h</span><span class="o">.</span><span class="n">csv</span>
-                <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
+                 algorithm: Nonnegative Least Squares with Block Principal Pivoting
+        stopping criterion: Ratio of Projected Gradients
+                    height: 12411
+                     width: 7984
+                         k: 8
+                   miniter: 1
+                   maxiter: 5000
+                       tol: 0.005
+                  tolcount: 1
+                   verbose: 1
+                 normalize: 1
+              outprecision: 6
+                matrixfile: ../xdata_github/smallk_data//reuters.mtx
+                  infile_W: ../xdata_github/smallk_data//nmf_init_w.csv
+                  infile_H: ../xdata_github/smallk_data//nmf_init_h.csv
+                 outfile_W: w.csv
+                 outfile_H: h.csv
+                maxthreads: 8
 
-<span class="mi">1</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-<span class="mi">2</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.35826</span>
-<span class="mi">3</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.172127</span>
-<span class="mi">4</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.106297</span>
-<span class="mi">5</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0696424</span>
-<span class="mi">6</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0538889</span>
-<span class="mi">7</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0559478</span>
-<span class="mi">8</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0686117</span>
-<span class="mi">9</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0788641</span>
-<span class="mi">10</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0711522</span>
-<span class="mi">20</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00568349</span>
+1:      progress metric:        (min_iter)
+2:      progress metric:        0.35826
+3:      progress metric:        0.172127
+4:      progress metric:        0.106297
+5:      progress metric:        0.0696424
+6:      progress metric:        0.0538889
+7:      progress metric:        0.0559478
+8:      progress metric:        0.0686117
+9:      progress metric:        0.0788641
+10:     progress metric:        0.0711522
+20:     progress metric:        0.00568349
 
-<span class="n">Solution</span> <span class="n">converged</span> <span class="n">after</span> <span class="mi">22</span> <span class="n">iterations</span><span class="o">.</span>
+Solution converged after 22 iterations.
 
-<span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.673</span> <span class="n">sec</span><span class="o">.</span>
+Elapsed wall clock time: 0.673 sec.
 
-<span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
-<span class="n">NMF</span> <span class="n">W</span> <span class="n">matrix</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="n">NMF</span> <span class="n">H</span> <span class="n">matrix</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="o">*****************************************************</span>
-<span class="o">*</span>                                                   <span class="o">*</span>
-<span class="o">*</span>                <span class="n">Testing</span> <span class="n">hierclust</span><span class="o">.</span>                 <span class="o">*</span>
-<span class="o">*</span>                                                   <span class="o">*</span>
-<span class="o">*****************************************************</span>
-<span class="o">-------------------------------</span>
+Writing output files...
+NMF W matrix test passed
+NMF H matrix test passed
+*****************************************************
+*                                                   *
+*                Testing hierclust.                 *
+*                                                   *
+*****************************************************
+-------------------------------
 
-  <span class="n">Reuters</span> <span class="n">matrix</span><span class="p">,</span> <span class="mi">12</span> <span class="n">clusters</span>
+  Reuters matrix, 12 clusters
 
-<span class="o">-------------------------------</span>
-<span class="n">WARNING</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">achieve</span> <span class="n">THREAD_MULTIPLE</span> <span class="n">support</span><span class="o">.</span>
-<span class="n">loading</span> <span class="n">dictionary</span><span class="o">...</span>
-<span class="n">loading</span> <span class="n">matrix</span><span class="o">...</span>
+-------------------------------
+WARNING: Could not achieve THREAD_MULTIPLE support.
+loading dictionary...
+loading matrix...
 
-     <span class="n">Command</span> <span class="n">line</span> <span class="n">options</span><span class="p">:</span>
+     Command line options:
 
-                    <span class="n">height</span><span class="p">:</span> <span class="mi">12411</span>
-                     <span class="n">width</span><span class="p">:</span> <span class="mi">7984</span>
-                <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">reuters</span><span class="o">.</span><span class="n">mtx</span>
-                   <span class="n">initdir</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">test</span><span class="o">/</span><span class="n">matrices</span><span class="o">.</span><span class="n">reuters</span><span class="o">/</span>
-                  <span class="n">dictfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span>
-                <span class="n">assignfile</span><span class="p">:</span> <span class="n">assignments_12</span><span class="o">.</span><span class="n">csv</span>
-                    <span class="nb">format</span><span class="p">:</span> <span class="n">XML</span>
-                  <span class="n">treefile</span><span class="p">:</span> <span class="n">tree_12</span><span class="o">.</span><span class="n">xml</span>
-                  <span class="n">clusters</span><span class="p">:</span> <span class="mi">12</span>
-                       <span class="n">tol</span><span class="p">:</span> <span class="mf">0.0001</span>
-                    <span class="n">outdir</span><span class="p">:</span>
-                   <span class="n">miniter</span><span class="p">:</span> <span class="mi">1</span>
-                   <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
-                  <span class="n">maxterms</span><span class="p">:</span> <span class="mi">5</span>
-                <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
-                <span class="n">unbalanced</span><span class="p">:</span> <span class="mf">0.1</span>
-           <span class="n">trial_allowance</span><span class="p">:</span> <span class="mi">3</span>
-                      <span class="n">flat</span><span class="p">:</span> <span class="mi">0</span>
-                   <span class="n">verbose</span><span class="p">:</span> <span class="mi">1</span>
+                    height: 12411
+                     width: 7984
+                matrixfile: ../xdata_github/smallk_data//reuters.mtx
+                   initdir: ../xdata_github/smallk_data//test/matrices.reuters/
+                  dictfile: ../xdata_github/smallk_data//reuters_dictionary.txt
+                assignfile: assignments_12.csv
+                    format: XML
+                  treefile: tree_12.xml
+                  clusters: 12
+                       tol: 0.0001
+                    outdir:
+                   miniter: 1
+                   maxiter: 5000
+                  maxterms: 5
+                maxthreads: 8
+                unbalanced: 0.1
+           trial_allowance: 3
+                      flat: 0
+                   verbose: 1
 
-<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">20</span> <span class="n">items</span> <span class="o">...</span>
-<span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="p">[</span><span class="mi">11</span><span class="p">]</span>
+[1] [2] [3] [4] [5] [6] dropping 20 items ...
+[7] [8] [9] [10] [11]
 
-<span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">2.758</span> <span class="n">s</span><span class="o">.</span>
-<span class="mi">26</span><span class="o">/</span><span class="mi">26</span> <span class="n">factorizations</span> <span class="n">converged</span><span class="o">.</span>
+Elapsed wall clock time: 2.758 s.
+26/26 factorizations converged.
 
-<span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
-<span class="n">XML</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="n">assignment</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="o">-------------------------------</span>
+Writing output files...
+XML file test passed
+assignment file test passed
+-------------------------------
 
-  <span class="mi">20</span><span class="n">News</span> <span class="n">matrix</span><span class="p">,</span> <span class="mi">15</span> <span class="n">clusters</span>
+  20News matrix, 15 clusters
 
-<span class="o">-------------------------------</span>
-<span class="n">WARNING</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">achieve</span> <span class="n">THREAD_MULTIPLE</span> <span class="n">support</span><span class="o">.</span>
-<span class="n">loading</span> <span class="n">dictionary</span><span class="o">...</span>
-<span class="n">loading</span> <span class="n">matrix</span><span class="o">...</span>
+-------------------------------
+WARNING: Could not achieve THREAD_MULTIPLE support.
+loading dictionary...
+loading matrix...
 
-     <span class="n">Command</span> <span class="n">line</span> <span class="n">options</span><span class="p">:</span>
+     Command line options:
 
-                    <span class="n">height</span><span class="p">:</span> <span class="mi">39727</span>
-                     <span class="n">width</span><span class="p">:</span> <span class="mi">11237</span>
-                <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">news20</span><span class="o">.</span><span class="n">mtx</span>
-                   <span class="n">initdir</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">test</span><span class="o">/</span><span class="n">matrices</span><span class="o">.</span><span class="mi">20</span><span class="n">news</span><span class="o">/</span>
-                  <span class="n">dictfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">news20_dictionary</span><span class="o">.</span><span class="n">txt</span>
-                <span class="n">assignfile</span><span class="p">:</span> <span class="n">assignments_15</span><span class="o">.</span><span class="n">csv</span>
-                    <span class="nb">format</span><span class="p">:</span> <span class="n">XML</span>
-                  <span class="n">treefile</span><span class="p">:</span> <span class="n">tree_15</span><span class="o">.</span><span class="n">xml</span>
-                  <span class="n">clusters</span><span class="p">:</span> <span class="mi">15</span>
-                       <span class="n">tol</span><span class="p">:</span> <span class="mf">0.0001</span>
-                    <span class="n">outdir</span><span class="p">:</span>
-                   <span class="n">miniter</span><span class="p">:</span> <span class="mi">1</span>
-                   <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
-                  <span class="n">maxterms</span><span class="p">:</span> <span class="mi">5</span>
-                <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
-                <span class="n">unbalanced</span><span class="p">:</span> <span class="mf">0.1</span>
-           <span class="n">trial_allowance</span><span class="p">:</span> <span class="mi">3</span>
-                      <span class="n">flat</span><span class="p">:</span> <span class="mi">0</span>
-                   <span class="n">verbose</span><span class="p">:</span> <span class="mi">1</span>
+                    height: 39727
+                     width: 11237
+                matrixfile: ../xdata_github/smallk_data//news20.mtx
+                   initdir: ../xdata_github/smallk_data//test/matrices.20news/
+                  dictfile: ../xdata_github/smallk_data//news20_dictionary.txt
+                assignfile: assignments_15.csv
+                    format: XML
+                  treefile: tree_15.xml
+                  clusters: 15
+                       tol: 0.0001
+                    outdir:
+                   miniter: 1
+                   maxiter: 5000
+                  maxterms: 5
+                maxthreads: 8
+                unbalanced: 0.1
+           trial_allowance: 3
+                      flat: 0
+                   verbose: 1
 
-<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">30</span> <span class="n">items</span> <span class="o">...</span>
-<span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">132</span> <span class="n">items</span> <span class="o">...</span>
-<span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">41</span> <span class="n">items</span> <span class="o">...</span>
-<span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">51</span> <span class="n">items</span> <span class="o">...</span>
-<span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">22</span> <span class="n">items</span> <span class="o">...</span>
-<span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="n">dropping</span> <span class="mi">85</span> <span class="n">items</span> <span class="o">...</span>
-<span class="p">[</span><span class="mi">14</span><span class="p">]</span>
+[1] [2] [3] dropping 30 items ...
+[4] [5] dropping 132 items ...
+[6] [7] [8] [9] [10] dropping 41 items ...
+[11] dropping 51 items ...
+[12] dropping 22 items ...
+[13] dropping 85 items ...
+[14]
 
-<span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">10.308</span> <span class="n">s</span><span class="o">.</span>
-<span class="mi">41</span><span class="o">/</span><span class="mi">41</span> <span class="n">factorizations</span> <span class="n">converged</span><span class="o">.</span>
+Elapsed wall clock time: 10.308 s.
+41/41 factorizations converged.
 
-<span class="n">Writing</span> <span class="n">output</span> <span class="n">files</span><span class="o">...</span>
-<span class="n">XML</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="n">assignment</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="o">*****************************************************</span>
-<span class="o">*</span>                                                   <span class="o">*</span>
-<span class="o">*</span>              <span class="n">Testing</span> <span class="n">flatclust</span><span class="o">.</span>                   <span class="o">*</span>
-<span class="o">*</span>                                                   <span class="o">*</span>
-<span class="o">*****************************************************</span>
-<span class="n">WARNING</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">achieve</span> <span class="n">THREAD_MULTIPLE</span> <span class="n">support</span><span class="o">.</span>
-<span class="n">loading</span> <span class="n">dictionary</span><span class="o">...</span>
-<span class="n">loading</span> <span class="n">matrix</span><span class="o">...</span>
-<span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">W</span><span class="o">...</span>
-<span class="n">Initializing</span> <span class="n">matrix</span> <span class="n">H</span><span class="o">...</span>
+Writing output files...
+XML file test passed
+assignment file test passed
+*****************************************************
+*                                                   *
+*              Testing flatclust.                   *
+*                                                   *
+*****************************************************
+WARNING: Could not achieve THREAD_MULTIPLE support.
+loading dictionary...
+loading matrix...
+Initializing matrix W...
+Initializing matrix H...
 
-     <span class="n">Command</span> <span class="n">line</span> <span class="n">options</span><span class="p">:</span>
+     Command line options:
 
-                    <span class="n">height</span><span class="p">:</span> <span class="mi">256</span>
-                     <span class="n">width</span><span class="p">:</span> <span class="mi">256</span>
-                <span class="n">matrixfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">rnd_256_256</span><span class="o">.</span><span class="n">csv</span>
-                  <span class="n">infile_W</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">flatclust_init_w</span><span class="o">.</span><span class="n">csv</span>
-                  <span class="n">infile_H</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">flatclust_init_h</span><span class="o">.</span><span class="n">csv</span>
-                  <span class="n">dictfile</span><span class="p">:</span> <span class="o">../</span><span class="n">xdata_github</span><span class="o">/</span><span class="n">smallk_data</span><span class="o">//</span><span class="n">reuters_dictionary</span><span class="o">.</span><span class="n">txt</span>
-                <span class="n">assignfile</span><span class="p">:</span> <span class="n">assignments_16</span><span class="o">.</span><span class="n">csv</span>
-                 <span class="n">fuzzyfile</span><span class="p">:</span> <span class="n">assignments_fuzzy_16</span><span class="o">.</span><span class="n">csv</span>
-                    <span class="nb">format</span><span class="p">:</span> <span class="n">XML</span>
-                 <span class="n">clustfile</span><span class="p">:</span> <span class="n">clusters_16</span><span class="o">.</span><span class="n">xml</span>
-                 <span class="n">algorithm</span><span class="p">:</span> <span class="n">HALS</span>
-                  <span class="n">clusters</span><span class="p">:</span> <span class="mi">16</span>
-                       <span class="n">tol</span><span class="p">:</span> <span class="mf">0.0001</span>
-                    <span class="n">outdir</span><span class="p">:</span>
-                   <span class="n">miniter</span><span class="p">:</span> <span class="mi">1</span>
-                   <span class="n">maxiter</span><span class="p">:</span> <span class="mi">5000</span>
-                  <span class="n">maxterms</span><span class="p">:</span> <span class="mi">5</span>
-                <span class="n">maxthreads</span><span class="p">:</span> <span class="mi">8</span>
-                   <span class="n">verbose</span><span class="p">:</span> <span class="mi">1</span>
+                    height: 256
+                     width: 256
+                matrixfile: ../xdata_github/smallk_data//rnd_256_256.csv
+                  infile_W: ../xdata_github/smallk_data//flatclust_init_w.csv
+                  infile_H: ../xdata_github/smallk_data//flatclust_init_h.csv
+                  dictfile: ../xdata_github/smallk_data//reuters_dictionary.txt
+                assignfile: assignments_16.csv
+                 fuzzyfile: assignments_fuzzy_16.csv
+                    format: XML
+                 clustfile: clusters_16.xml
+                 algorithm: HALS
+                  clusters: 16
+                       tol: 0.0001
+                    outdir:
+                   miniter: 1
+                   maxiter: 5000
+                  maxterms: 5
+                maxthreads: 8
+                   verbose: 1
 
-<span class="mi">1</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="p">(</span><span class="n">min_iter</span><span class="p">)</span>
-<span class="mi">2</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.635556</span>
-<span class="mi">3</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.490817</span>
-<span class="mi">4</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.479135</span>
-<span class="mi">5</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.474986</span>
-<span class="mi">6</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.44968</span>
-<span class="mi">7</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.422542</span>
-<span class="mi">8</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.407662</span>
-<span class="mi">9</span><span class="p">:</span>      <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.395145</span>
-<span class="mi">10</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.379238</span>
-<span class="mi">20</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.272868</span>
-<span class="mi">30</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.168386</span>
-<span class="mi">40</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.109147</span>
-<span class="mi">50</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0767327</span>
-<span class="mi">60</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0488545</span>
-<span class="mi">70</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.036226</span>
-<span class="mi">80</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0307648</span>
-<span class="mi">90</span><span class="p">:</span>     <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0266116</span>
-<span class="mi">100</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0226963</span>
-<span class="mi">110</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0188616</span>
-<span class="mi">120</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0158307</span>
-<span class="mi">130</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0137605</span>
-<span class="mi">140</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0127888</span>
-<span class="mi">150</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0123962</span>
-<span class="mi">160</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0124734</span>
-<span class="mi">170</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0123563</span>
-<span class="mi">180</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0122163</span>
-<span class="mi">190</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0120643</span>
-<span class="mi">200</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0117647</span>
-<span class="mi">210</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0114894</span>
-<span class="mi">220</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0110467</span>
-<span class="mi">230</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0107816</span>
-<span class="mi">240</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0105239</span>
-<span class="mi">250</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0103824</span>
-<span class="mi">260</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0100915</span>
-<span class="mi">270</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00965073</span>
-<span class="mi">280</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00938526</span>
-<span class="mi">290</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00914129</span>
-<span class="mi">300</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00896701</span>
-<span class="mi">310</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00886729</span>
-<span class="mi">320</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00841059</span>
-<span class="mi">330</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.007793</span>
-<span class="mi">340</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00740095</span>
-<span class="mi">350</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00708869</span>
-<span class="mi">360</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00683069</span>
-<span class="mi">370</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00672093</span>
-<span class="mi">380</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00687906</span>
-<span class="mi">390</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00703777</span>
-<span class="mi">400</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00721928</span>
-<span class="mi">410</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00729384</span>
-<span class="mi">420</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00718332</span>
-<span class="mi">430</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00722893</span>
-<span class="mi">440</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00726766</span>
-<span class="mi">450</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00739665</span>
-<span class="mi">460</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00769819</span>
-<span class="mi">470</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00814673</span>
-<span class="mi">480</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.008566</span>
-<span class="mi">490</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00877955</span>
-<span class="mi">500</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00884221</span>
-<span class="mi">510</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0088057</span>
-<span class="mi">520</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00852345</span>
-<span class="mi">530</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00797952</span>
-<span class="mi">540</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00749354</span>
-<span class="mi">550</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00689316</span>
-<span class="mi">560</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00623287</span>
-<span class="mi">570</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00576619</span>
-<span class="mi">580</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00541125</span>
-<span class="mi">590</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00501715</span>
-<span class="mi">600</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00466547</span>
-<span class="mi">610</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00432811</span>
-<span class="mi">620</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00412669</span>
-<span class="mi">630</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00383406</span>
-<span class="mi">640</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00352802</span>
-<span class="mi">650</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00331556</span>
-<span class="mi">660</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00315735</span>
-<span class="mi">670</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00304253</span>
-<span class="mi">680</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00296627</span>
-<span class="mi">690</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00289013</span>
-<span class="mi">700</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00279647</span>
-<span class="mi">710</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00271036</span>
-<span class="mi">720</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00261087</span>
-<span class="mi">730</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0025158</span>
-<span class="mi">740</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00245123</span>
-<span class="mi">750</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00237435</span>
-<span class="mi">760</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00231126</span>
-<span class="mi">770</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00228199</span>
-<span class="mi">780</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00227623</span>
-<span class="mi">790</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00228185</span>
-<span class="mi">800</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00227993</span>
-<span class="mi">810</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00228216</span>
-<span class="mi">820</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00228018</span>
-<span class="mi">830</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00229096</span>
-<span class="mi">840</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00232403</span>
-<span class="mi">850</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00234957</span>
-<span class="mi">860</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00227868</span>
-<span class="mi">870</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00210786</span>
-<span class="mi">880</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00195462</span>
-<span class="mi">890</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00183587</span>
-<span class="mi">900</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00173358</span>
-<span class="mi">910</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0016405</span>
-<span class="mi">920</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00156422</span>
-<span class="mi">930</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00150835</span>
-<span class="mi">940</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00146594</span>
-<span class="mi">950</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00143261</span>
-<span class="mi">960</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00137378</span>
-<span class="mi">970</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00131989</span>
-<span class="mi">980</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00126626</span>
-<span class="mi">990</span><span class="p">:</span>    <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.0012164</span>
-<span class="mi">1000</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00117061</span>
-<span class="mi">1010</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00112539</span>
-<span class="mi">1020</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00108626</span>
-<span class="mi">1030</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00105192</span>
-<span class="mi">1040</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00102131</span>
-<span class="mi">1050</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000992069</span>
-<span class="mi">1060</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000965259</span>
-<span class="mi">1070</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000938949</span>
-<span class="mi">1080</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000911962</span>
-<span class="mi">1090</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000884505</span>
-<span class="mi">1100</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000854904</span>
-<span class="mi">1110</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000820121</span>
-<span class="mi">1120</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000785245</span>
-<span class="mi">1130</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000752513</span>
-<span class="mi">1140</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000723279</span>
-<span class="mi">1150</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000697698</span>
-<span class="mi">1160</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000680904</span>
-<span class="mi">1170</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000652152</span>
-<span class="mi">1180</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000628268</span>
-<span class="mi">1190</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000612413</span>
-<span class="mi">1200</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000596834</span>
-<span class="mi">1210</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000580674</span>
-<span class="mi">1220</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000556549</span>
-<span class="mi">1230</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000535666</span>
-<span class="mi">1240</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00051492</span>
-<span class="mi">1250</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000496234</span>
-<span class="mi">1260</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000481147</span>
-<span class="mi">1270</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000461294</span>
-<span class="mi">1280</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000440802</span>
-<span class="mi">1290</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000419049</span>
-<span class="mi">1300</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000398007</span>
-<span class="mi">1310</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000376203</span>
-<span class="mi">1320</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000355811</span>
-<span class="mi">1330</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00033729</span>
-<span class="mi">1340</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000318932</span>
-<span class="mi">1350</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000302528</span>
-<span class="mi">1360</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000287961</span>
-<span class="mi">1370</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00027486</span>
-<span class="mi">1380</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00026403</span>
-<span class="mi">1390</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000255504</span>
-<span class="mi">1400</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000248646</span>
-<span class="mi">1410</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000242996</span>
-<span class="mi">1420</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000239243</span>
-<span class="mi">1430</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000236852</span>
-<span class="mi">1440</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000235313</span>
-<span class="mi">1450</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000234465</span>
-<span class="mi">1460</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000234154</span>
-<span class="mi">1470</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000234253</span>
-<span class="mi">1480</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00023487</span>
-<span class="mi">1490</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000237223</span>
-<span class="mi">1500</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000240043</span>
-<span class="mi">1510</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000243896</span>
-<span class="mi">1520</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00024867</span>
-<span class="mi">1530</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000253981</span>
-<span class="mi">1540</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000260239</span>
-<span class="mi">1550</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000266795</span>
-<span class="mi">1560</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000273529</span>
-<span class="mi">1570</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000280678</span>
-<span class="mi">1580</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000287273</span>
-<span class="mi">1590</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000292288</span>
-<span class="mi">1600</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000296475</span>
-<span class="mi">1610</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000299556</span>
-<span class="mi">1620</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00030244</span>
-<span class="mi">1630</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000306148</span>
-<span class="mi">1640</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000310299</span>
-<span class="mi">1650</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000314674</span>
-<span class="mi">1660</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000319052</span>
-<span class="mi">1670</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000323906</span>
-<span class="mi">1680</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000329536</span>
-<span class="mi">1690</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000335913</span>
-<span class="mi">1700</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000342834</span>
-<span class="mi">1710</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000351167</span>
-<span class="mi">1720</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000352515</span>
-<span class="mi">1730</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000348749</span>
-<span class="mi">1740</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000345684</span>
-<span class="mi">1750</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000343139</span>
-<span class="mi">1760</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000340867</span>
-<span class="mi">1770</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000339052</span>
-<span class="mi">1780</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000337038</span>
-<span class="mi">1790</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000335244</span>
-<span class="mi">1800</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000333452</span>
-<span class="mi">1810</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000332111</span>
-<span class="mi">1820</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000330198</span>
-<span class="mi">1830</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000325983</span>
-<span class="mi">1840</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000321473</span>
-<span class="mi">1850</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000316999</span>
-<span class="mi">1860</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000312054</span>
-<span class="mi">1870</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000305176</span>
-<span class="mi">1880</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000294684</span>
-<span class="mi">1890</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000284482</span>
-<span class="mi">1900</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000274905</span>
-<span class="mi">1910</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000265684</span>
-<span class="mi">1920</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000256761</span>
-<span class="mi">1930</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000248203</span>
-<span class="mi">1940</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000239613</span>
-<span class="mi">1950</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000230677</span>
-<span class="mi">1960</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00022218</span>
-<span class="mi">1970</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000214089</span>
-<span class="mi">1980</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00020621</span>
-<span class="mi">1990</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000196915</span>
-<span class="mi">2000</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000187712</span>
-<span class="mi">2010</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000179199</span>
-<span class="mi">2020</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.00017137</span>
-<span class="mi">2030</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000164158</span>
-<span class="mi">2040</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000157751</span>
-<span class="mi">2050</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000152485</span>
-<span class="mi">2060</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000147217</span>
-<span class="mi">2070</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000142083</span>
-<span class="mi">2080</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000137148</span>
-<span class="mi">2090</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000132379</span>
-<span class="mi">2100</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000127922</span>
-<span class="mi">2110</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000123617</span>
-<span class="mi">2120</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000119548</span>
-<span class="mi">2130</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000115684</span>
-<span class="mi">2140</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000111997</span>
-<span class="mi">2150</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000108389</span>
-<span class="mi">2160</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000104838</span>
-<span class="mi">2170</span><span class="p">:</span>   <span class="n">progress</span> <span class="n">metric</span><span class="p">:</span>        <span class="mf">0.000101387</span>
+1:      progress metric:        (min_iter)
+2:      progress metric:        0.635556
+3:      progress metric:        0.490817
+4:      progress metric:        0.479135
+5:      progress metric:        0.474986
+6:      progress metric:        0.44968
+7:      progress metric:        0.422542
+8:      progress metric:        0.407662
+9:      progress metric:        0.395145
+10:     progress metric:        0.379238
+20:     progress metric:        0.272868
+30:     progress metric:        0.168386
+40:     progress metric:        0.109147
+50:     progress metric:        0.0767327
+60:     progress metric:        0.0488545
+70:     progress metric:        0.036226
+80:     progress metric:        0.0307648
+90:     progress metric:        0.0266116
+100:    progress metric:        0.0226963
+110:    progress metric:        0.0188616
+120:    progress metric:        0.0158307
+130:    progress metric:        0.0137605
+140:    progress metric:        0.0127888
+150:    progress metric:        0.0123962
+160:    progress metric:        0.0124734
+170:    progress metric:        0.0123563
+180:    progress metric:        0.0122163
+190:    progress metric:        0.0120643
+200:    progress metric:        0.0117647
+210:    progress metric:        0.0114894
+220:    progress metric:        0.0110467
+230:    progress metric:        0.0107816
+240:    progress metric:        0.0105239
+250:    progress metric:        0.0103824
+260:    progress metric:        0.0100915
+270:    progress metric:        0.00965073
+280:    progress metric:        0.00938526
+290:    progress metric:        0.00914129
+300:    progress metric:        0.00896701
+310:    progress metric:        0.00886729
+320:    progress metric:        0.00841059
+330:    progress metric:        0.007793
+340:    progress metric:        0.00740095
+350:    progress metric:        0.00708869
+360:    progress metric:        0.00683069
+370:    progress metric:        0.00672093
+380:    progress metric:        0.00687906
+390:    progress metric:        0.00703777
+400:    progress metric:        0.00721928
+410:    progress metric:        0.00729384
+420:    progress metric:        0.00718332
+430:    progress metric:        0.00722893
+440:    progress metric:        0.00726766
+450:    progress metric:        0.00739665
+460:    progress metric:        0.00769819
+470:    progress metric:        0.00814673
+480:    progress metric:        0.008566
+490:    progress metric:        0.00877955
+500:    progress metric:        0.00884221
+510:    progress metric:        0.0088057
+520:    progress metric:        0.00852345
+530:    progress metric:        0.00797952
+540:    progress metric:        0.00749354
+550:    progress metric:        0.00689316
+560:    progress metric:        0.00623287
+570:    progress metric:        0.00576619
+580:    progress metric:        0.00541125
+590:    progress metric:        0.00501715
+600:    progress metric:        0.00466547
+610:    progress metric:        0.00432811
+620:    progress metric:        0.00412669
+630:    progress metric:        0.00383406
+640:    progress metric:        0.00352802
+650:    progress metric:        0.00331556
+660:    progress metric:        0.00315735
+670:    progress metric:        0.00304253
+680:    progress metric:        0.00296627
+690:    progress metric:        0.00289013
+700:    progress metric:        0.00279647
+710:    progress metric:        0.00271036
+720:    progress metric:        0.00261087
+730:    progress metric:        0.0025158
+740:    progress metric:        0.00245123
+750:    progress metric:        0.00237435
+760:    progress metric:        0.00231126
+770:    progress metric:        0.00228199
+780:    progress metric:        0.00227623
+790:    progress metric:        0.00228185
+800:    progress metric:        0.00227993
+810:    progress metric:        0.00228216
+820:    progress metric:        0.00228018
+830:    progress metric:        0.00229096
+840:    progress metric:        0.00232403
+850:    progress metric:        0.00234957
+860:    progress metric:        0.00227868
+870:    progress metric:        0.00210786
+880:    progress metric:        0.00195462
+890:    progress metric:        0.00183587
+900:    progress metric:        0.00173358
+910:    progress metric:        0.0016405
+920:    progress metric:        0.00156422
+930:    progress metric:        0.00150835
+940:    progress metric:        0.00146594
+950:    progress metric:        0.00143261
+960:    progress metric:        0.00137378
+970:    progress metric:        0.00131989
+980:    progress metric:        0.00126626
+990:    progress metric:        0.0012164
+1000:   progress metric:        0.00117061
+1010:   progress metric:        0.00112539
+1020:   progress metric:        0.00108626
+1030:   progress metric:        0.00105192
+1040:   progress metric:        0.00102131
+1050:   progress metric:        0.000992069
+1060:   progress metric:        0.000965259
+1070:   progress metric:        0.000938949
+1080:   progress metric:        0.000911962
+1090:   progress metric:        0.000884505
+1100:   progress metric:        0.000854904
+1110:   progress metric:        0.000820121
+1120:   progress metric:        0.000785245
+1130:   progress metric:        0.000752513
+1140:   progress metric:        0.000723279
+1150:   progress metric:        0.000697698
+1160:   progress metric:        0.000680904
+1170:   progress metric:        0.000652152
+1180:   progress metric:        0.000628268
+1190:   progress metric:        0.000612413
+1200:   progress metric:        0.000596834
+1210:   progress metric:        0.000580674
+1220:   progress metric:        0.000556549
+1230:   progress metric:        0.000535666
+1240:   progress metric:        0.00051492
+1250:   progress metric:        0.000496234
+1260:   progress metric:        0.000481147
+1270:   progress metric:        0.000461294
+1280:   progress metric:        0.000440802
+1290:   progress metric:        0.000419049
+1300:   progress metric:        0.000398007
+1310:   progress metric:        0.000376203
+1320:   progress metric:        0.000355811
+1330:   progress metric:        0.00033729
+1340:   progress metric:        0.000318932
+1350:   progress metric:        0.000302528
+1360:   progress metric:        0.000287961
+1370:   progress metric:        0.00027486
+1380:   progress metric:        0.00026403
+1390:   progress metric:        0.000255504
+1400:   progress metric:        0.000248646
+1410:   progress metric:        0.000242996
+1420:   progress metric:        0.000239243
+1430:   progress metric:        0.000236852
+1440:   progress metric:        0.000235313
+1450:   progress metric:        0.000234465
+1460:   progress metric:        0.000234154
+1470:   progress metric:        0.000234253
+1480:   progress metric:        0.00023487
+1490:   progress metric:        0.000237223
+1500:   progress metric:        0.000240043
+1510:   progress metric:        0.000243896
+1520:   progress metric:        0.00024867
+1530:   progress metric:        0.000253981
+1540:   progress metric:        0.000260239
+1550:   progress metric:        0.000266795
+1560:   progress metric:        0.000273529
+1570:   progress metric:        0.000280678
+1580:   progress metric:        0.000287273
+1590:   progress metric:        0.000292288
+1600:   progress metric:        0.000296475
+1610:   progress metric:        0.000299556
+1620:   progress metric:        0.00030244
+1630:   progress metric:        0.000306148
+1640:   progress metric:        0.000310299
+1650:   progress metric:        0.000314674
+1660:   progress metric:        0.000319052
+1670:   progress metric:        0.000323906
+1680:   progress metric:        0.000329536
+1690:   progress metric:        0.000335913
+1700:   progress metric:        0.000342834
+1710:   progress metric:        0.000351167
+1720:   progress metric:        0.000352515
+1730:   progress metric:        0.000348749
+1740:   progress metric:        0.000345684
+1750:   progress metric:        0.000343139
+1760:   progress metric:        0.000340867
+1770:   progress metric:        0.000339052
+1780:   progress metric:        0.000337038
+1790:   progress metric:        0.000335244
+1800:   progress metric:        0.000333452
+1810:   progress metric:        0.000332111
+1820:   progress metric:        0.000330198
+1830:   progress metric:        0.000325983
+1840:   progress metric:        0.000321473
+1850:   progress metric:        0.000316999
+1860:   progress metric:        0.000312054
+1870:   progress metric:        0.000305176
+1880:   progress metric:        0.000294684
+1890:   progress metric:        0.000284482
+1900:   progress metric:        0.000274905
+1910:   progress metric:        0.000265684
+1920:   progress metric:        0.000256761
+1930:   progress metric:        0.000248203
+1940:   progress metric:        0.000239613
+1950:   progress metric:        0.000230677
+1960:   progress metric:        0.00022218
+1970:   progress metric:        0.000214089
+1980:   progress metric:        0.00020621
+1990:   progress metric:        0.000196915
+2000:   progress metric:        0.000187712
+2010:   progress metric:        0.000179199
+2020:   progress metric:        0.00017137
+2030:   progress metric:        0.000164158
+2040:   progress metric:        0.000157751
+2050:   progress metric:        0.000152485
+2060:   progress metric:        0.000147217
+2070:   progress metric:        0.000142083
+2080:   progress metric:        0.000137148
+2090:   progress metric:        0.000132379
+2100:   progress metric:        0.000127922
+2110:   progress metric:        0.000123617
+2120:   progress metric:        0.000119548
+2130:   progress metric:        0.000115684
+2140:   progress metric:        0.000111997
+2150:   progress metric:        0.000108389
+2160:   progress metric:        0.000104838
+2170:   progress metric:        0.000101387
 
-<span class="n">Solution</span> <span class="n">converged</span> <span class="n">after</span> <span class="mi">2175</span> <span class="n">iterations</span><span class="o">.</span>
+Solution converged after 2175 iterations.
 
-<span class="n">Elapsed</span> <span class="n">wall</span> <span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mf">1.022</span> <span class="n">sec</span><span class="o">.</span>
+Elapsed wall clock time: 1.022 sec.
 
-<span class="n">XML</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="n">assignment</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="n">fuzzy</span> <span class="n">assignment</span> <span class="n">file</span> <span class="n">test</span> <span class="n">passed</span>
-<span class="o">*****</span> <span class="n">SmallK</span><span class="p">:</span> <span class="n">All</span> <span class="n">tests</span> <span class="n">passed</span><span class="o">.</span> <span class="o">*****</span>
+XML file test passed
+assignment file test passed
+fuzzy assignment file test passed
+***** SmallK: All tests passed. *****
 </pre></div>
 </div>
 </div>
