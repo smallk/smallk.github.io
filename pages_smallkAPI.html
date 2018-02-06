@@ -97,7 +97,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pages_introduction.html">2. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#background">2.1. Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#low-rank-approximations-and-nmf">2.2. Low rank approximations and NMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#constrained-low-rank-approximations-and-nmf">2.2. Constrained low rank approximations and NMF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#smallk-overview">2.3. SmallK Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#prerequisites">2.4. Prerequisites</a></li>
 </ul>
@@ -233,7 +233,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#matrixgen">8.3.2. Matrixgen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#smallkapi">8.3.3. SmallkAPI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#flatclust">8.3.4. Flatclust</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#heirclust">8.3.5. Heirclust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#hierclust">8.3.5. Hierclust</a></li>
 </ul>
 </li>
 </ul>
@@ -334,19 +334,19 @@
 <h2><a class="toc-backref" href="#id1">7.1. Examples of API Usage</a><a class="headerlink" href="#examples-of-api-usage" title="Permalink to this headline">¶</a></h2>
 <p>In the examples folder you will find a file called <code class="docutils literal"><span class="pre">smallk_example.cpp</span></code>. This file contains several examples of how to use the SmallK library.  Also included in the examples folder is a makefile that you can customize for your use.  Note that the SmallK library must first be installed before the example project can be built.</p>
 <p>As an example of how to use the sample project, assume the smallk software has been installed into <code class="docutils literal"><span class="pre">/usr/local/smallk</span></code>.  Also assume that the user chose to create the recommended environment variable <code class="docutils literal"><span class="pre">SMALLK_INSTALL_DIR</span></code> that stores the location of the top-level install folder, i.e. the user’s <code class="docutils literal"><span class="pre">.bashrc</span></code> file contains this statement:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export</span> <span class="nv">SMALLK_INSTALL_DIR</span><span class="o">=</span>/usr/local/smallk
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SMALLK_INSTALL_DIR</span><span class="o">=</span>/usr/local/smallk
 </pre></div>
 </div>
 <p>To build the smallk example project, open a terminal window and cd to the smallk/examples folder and run this command:</p>
-<div class="highlight-none"><div class="highlight"><pre>make
+<div class="highlight-none"><div class="highlight"><pre><span></span>make
 </pre></div>
 </div>
 <p>To run the example project, run this command:</p>
-<div class="highlight-none"><div class="highlight"><pre>./bin/example ../../smallk_data
+<div class="highlight-none"><div class="highlight"><pre><span></span>./bin/example ../../smallk_data
 </pre></div>
 </div>
 <p>Note: the output will be <em>similar</em> to the following not identical since some problems are randomly initialized:</p>
-<div class="highlight-none"><div class="highlight"><pre>    Smallk major version: 1
+<div class="highlight-none"><div class="highlight"><pre><span></span>    Smallk major version: 1
     Smallk minor version: 0
     Smallk patch level:   0
     Smallk version string: 1.0.0
@@ -643,7 +643,7 @@ stopping criterion: Ratio of Projected Gradients
 <h2><a class="toc-backref" href="#id2">7.2. SmallK API</a><a class="headerlink" href="#smallk-api" title="Permalink to this headline">¶</a></h2>
 <p>The SmallK API is an extremely simplistic API for basic NMF and clustering.  Users who require more control over the factorization or clustering algorithms can instead run one of the command-line applications in the SmallK distribution.</p>
 <p>The SmallK API is exposed by the file smallk.hpp, which can be found in this location:</p>
-<div class="highlight-none"><div class="highlight"><pre>SMALLK_INSTALL_DIR/include/smallk.hpp.
+<div class="highlight-none"><div class="highlight"><pre><span></span>SMALLK_INSTALL_DIR/include/smallk.hpp.
 </pre></div>
 </div>
 <p>All API functions are contained within the smallk namespace.</p>
@@ -653,7 +653,7 @@ stopping criterion: Ratio of Projected Gradients
 <div class="section" id="enumerations">
 <h3><a class="toc-backref" href="#id3">7.2.1. Enumerations</a><a class="headerlink" href="#enumerations" title="Permalink to this headline">¶</a></h3>
 <p>The SmallK API provides two enumerated types, one for the supported NMF algorithms and one for the clustering file output format.  These are:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="k">enum</span> <span class="n">Algorithm</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">Algorithm</span>
 <span class="p">{</span>
         <span class="n">MU</span><span class="p">,</span>      <span class="c1">// Multiplicative Updating, Lee &amp; Seung</span>
         <span class="n">BPP</span><span class="p">,</span>     <span class="c1">// Block Principal Pivoting, Kim and Park</span>
@@ -663,7 +663,7 @@ stopping criterion: Ratio of Projected Gradients
 </pre></div>
 </div>
 <p>The default NMF algorithm is BPP.  The Rank2 algorithm is optimized for two-column or two-row matrices and is the underlying factorization routine for the clustering code.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="k">enum</span> <span class="n">OutputFormat</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">OutputFormat</span>
 <span class="p">{</span>
         <span class="n">XML</span><span class="p">,</span>  <span class="c1">// Extensible Markup Language</span>
         <span class="n">JSON</span>  <span class="c1">// JavaScript Object Notation</span>
@@ -675,162 +675,162 @@ stopping criterion: Ratio of Projected Gradients
 <h3><a class="toc-backref" href="#id4">7.2.2. API functions</a><a class="headerlink" href="#api-functions" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="initialization-and-cleanup">
 <h4><a class="toc-backref" href="#id5">7.2.2.1. Initialization and cleanup</a><a class="headerlink" href="#initialization-and-cleanup" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">Initialize</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**&amp;</span> <span class="n">argv</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">Initialize</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**&amp;</span> <span class="n">argv</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Call this function first, before all others in the API; initializes Elemental and the smallk library.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">bool</span> <span class="n">IsInitialized</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">IsInitialized</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns true if the library has been initialized via a call to Initialize(), false otherwise.</p>
 <p>Call this function last, after all others in the API; performs cleanup for Elemental and the smallk library:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">Finalize</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">Finalize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="versioning">
 <h4><a class="toc-backref" href="#id6">7.2.2.2. Versioning</a><a class="headerlink" href="#versioning" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMajorVersion</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMajorVersion</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the major release version number of the library as an unsigned integer.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMinorVersion</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMinorVersion</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the minor release version number of the library as an unsigned integer.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetPatchLevel</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetPatchLevel</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the patch version number of the library as an unsigned integer.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetVersionString</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetVersionString</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the version of the library as a string, formatted as major.minor.patch.</p>
 </div>
 <div class="section" id="common-functions">
 <h4><a class="toc-backref" href="#id7">7.2.2.3. Common functions</a><a class="headerlink" href="#common-functions" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetOutputPrecision</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetOutputPrecision</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the floating point precision with which numerical output will be written (i.e., the computed W and H matrix factors from the Nmf routine).  The default precision is six digits.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetOutputPrecision</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">num_digits</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">SetOutputPrecision</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">num_digits</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the floating point precision with which numerical output will be written.  Input values should be within the range [1, precision(double)].  Any inputs outside of this range will be adjusted.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMaxIter</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMaxIter</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the maximum number of iterations allowed for NMF computations.  The default value is 5000.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetMaxIter</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">SetMaxIter</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the maximum number of iterations allowed for NMF computations.  The default of 5000 should be more than sufficient for most computations.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMinIter</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMinIter</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the minimum number of NMF iterations. The default value is 5.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetMinIter</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">min_iterations</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">SetMinIter</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">min_iterations</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the minimum number of NMF iterations to perform before checking for convergence. The convergence and progress estimation routines are non-trivial calculations, so increasing this value may result in faster performance.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMaxThreads</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMaxThreads</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the maximum number of threads used for NMF or clustering computations. The default value is hardware-dependent, but is generally the maximum number allowed by the hardware.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">SetMaxThreads</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_threads</span><span class="p">);</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">SetMaxThreads</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_threads</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Sets an upper limit to the number of threads used for NMF and clustering computations.  Inputs that exceed the capabilities of the hardware will be adjusted. This function is provided for scaling and performance studies.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">Reset</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">Reset</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Resets all state variables to their default values.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SeedRNG</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">seed</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">SeedRNG</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">seed</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Seeds the random number generator (RNG) within the smallk library. Normally this RNG is seeded from the system time whenever the library is initialized.  The RNG is the <code class="docutils literal"><span class="pre">19937</span></code> Mersenne Twister implementation provided by the C++ standard library.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">LoadMatrix</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">filepath</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">LoadMatrix</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">filepath</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Loads a matrix contained in the given file.  The file must either be a comma-separated value (.CSV) file for a dense matrix, or a MatrixMarket-format file (.MTX) for a sparse matrix. If the matrix cannot be loaded the library throws a std::runtime_error exception.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">bool</span> <span class="n">IsMatrixLoaded</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">IsMatrixLoaded</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns true if a matrix is currently loaded, false if not.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetOuputDir</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetOuputDir</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns a string indicating the directory into which output files will be written.  The default is the current directory.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetOutputDir</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">outdir</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">SetOutputDir</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">outdir</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the directory into which output files should be written. The <code class="docutils literal"><span class="pre">outdir</span></code> argument can either be an absolute or relative path.  The default is the current directory.</p>
 </div>
 <div class="section" id="nmf-functions">
 <h4><a class="toc-backref" href="#id8">7.2.2.4. NMF functions</a><a class="headerlink" href="#nmf-functions" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">Nmf</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">Nmf</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span>
         <span class="k">const</span> <span class="n">Algorithm</span> <span class="n">algorithm</span>     <span class="o">=</span> <span class="n">Algorithm</span><span class="o">::</span><span class="n">BPP</span><span class="p">,</span>
         <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">initfile_w</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">),</span>
         <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">initfile_h</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>This function factors the input matrix A of nonnegative elements into nonnegative factors such that: <img class="math" src="_images/math/5cadf57469a7f3f25474e05adfed292d18fcbc63.svg" alt="\matr{A} \cong \matr{W} \matr{H}"/>.  If a matrix is not currently loaded a std::logic_error exception will be thrown.  The default algorithm is NMF-BPP; provide one of the enumerated algorithm values to use a different algorithm.</p>
+<p>This function factors the input matrix A of nonnegative elements into nonnegative factors such that: <span class="math">\matr{A} \cong \matr{W} \matr{H}</span>.  If a matrix is not currently loaded a std::logic_error exception will be thrown.  The default algorithm is NMF-BPP; provide one of the enumerated algorithm values to use a different algorithm.</p>
 <p>Where A is mxn, W is mxk, and H is kxn.  The value of k a user defined argument, e.g., for clustering applications, k is the number of clusters.</p>
 <p>Optional initializer matrices can be provided for the W and H factors via the <code class="docutils literal"><span class="pre">initfile_w</span></code> and <code class="docutils literal"><span class="pre">initfile_h</span></code> arguments. These files must contain fully dense matrices in .CSV format.  The W matrix initializer must have dimension mxk, and the H matrix initializer must have dimension kxn. If the initializer matrices do not match these dimensions exactly a std::logic_error exception is thrown.  If initializers are not provided, matrices W and H will be randomly initialized.</p>
 <p>The computed factors W and H will be written to the output directory in the files <code class="docutils literal"><span class="pre">w.csv</span></code> and <code class="docutils literal"><span class="pre">h.csv</span></code>.</p>
 <p>Exceptions will be thrown (either from Elemental or smallk) in case of error.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">LockedBufferW</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">ldim</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">height</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">width</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">LockedBufferW</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">ldim</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">height</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">width</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This function returns a READONLY pointer to the buffer containing the W factor computed by the Nmf routine, along with buffer and matrix dimensions.  The <code class="docutils literal"><span class="pre">ldim</span></code>, <code class="docutils literal"><span class="pre">height</span></code>, and <code class="docutils literal"><span class="pre">width</span></code> arguments are all out parameters.  The buffer has a height of <code class="docutils literal"><span class="pre">ldim</span></code> and a width of <code class="docutils literal"><span class="pre">width</span></code>.  The matrix W has the same width but a height of <code class="docutils literal"><span class="pre">height</span></code>, which may differ from ldim.  The W matrix is stored in the buffer in column-major order.  See the examples/smallk_example.cpp file for an illustration of how to use this function.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">LockedBufferH</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">ldim</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">height</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">width</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">LockedBufferH</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">ldim</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">height</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">width</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Same as LockedBufferW, but for the H matrix.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">double</span> <span class="n">GetNmfTolerance</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">GetNmfTolerance</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the tolerance value used to determine NMF convergence. The default value is 0.005.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetNmfTolerance</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">SetNmfTolerance</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the tolerance value used to determine NMF convergence.  The NMF algorithms are iterative, and at each iteration a progress metric is computed and compared with the tolerance value.  When the metric falls below the tolerance value the iterations stop and convergence is declared.  The tolerance value should satisfy 0.0 &lt; tolerance &lt; 1.0.  Any inputs outside this range will cause a std::logic_error exception to be thrown.
 Clustering Functions</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">LoadDictionary</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">filepath</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">LoadDictionary</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">filepath</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Loads the dictionary used for clustering. The dictionary is an ASCII file of text strings as described in the preprocessor input files section below.  If the dictionary file cannot be loaded a std::runtime_error exception is thrown.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMaxTerms</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">GetMaxTerms</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the number of highest-probability dictionary terms to store per cluster. The default value is 5.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetMaxTerms</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_terms</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">SetMaxTerms</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_terms</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the number of highest-probability dictionary terms to store per cluster.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="n">OutputFormat</span> <span class="n">GetOutputFormat</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">OutputFormat</span> <span class="n">GetOutputFormat</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns a member of the OutputFormat enumerated type; this is the file format for the clustering results.  The default output format is JSON.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetOutputFormat</span><span class="p">(</span><span class="k">const</span> <span class="n">OutputFormat</span> <span class="o">=</span> <span class="n">OutputFormat</span><span class="o">::</span><span class="n">JSON</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">SetOutputFormat</span><span class="p">(</span><span class="k">const</span> <span class="n">OutputFormat</span> <span class="o">=</span> <span class="n">OutputFormat</span><span class="o">::</span><span class="n">JSON</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the output format for the clustering result file. The argument must be one of the values in the OutputFormat enumerated type.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">double</span> <span class="n">GetHierNmf2Tolerance</span><span class="p">()</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">GetHierNmf2Tolerance</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the tolerance value used by the NMF-RANK2 algorithm for hierarchical clustering.  The default value is 1.0e-4.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">SetHierNmf2Tolerance</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-4</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">SetHierNmf2Tolerance</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-4</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the tolerance value used by the NMF-RANK2 algorithm for hierarchical clustering.  The tolerance value should satisfy 0.0 &lt; tolerance &lt; 1.0.  Any inputs outside this range will cause a <code class="docutils literal"><span class="pre">std::logic_error</span></code> exception to be thrown.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">HierNmf2</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">num_clusters</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">HierNmf2</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">num_clusters</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This function performs hierarchical clustering on the loaded matrix, generating the number of clusters specified by the <code class="docutils literal"><span class="pre">num_clusters</span></code> argument.  For an overview of the hierarchical clustering process, see the description below for the hierclust command line application.</p>
 <p>This function generates two output files in the output directory: <cite>assignments_N.csv</cite> and <cite>tree_N.{json, xml}</cite>.  Here N is the number of clusters specified as an argument, and the tree file can be in either JSON XML format.</p>
 <p>The content of the files is described below in the section on the hierclust command line application.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">HierNmf2WithFlat</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">num_clusters</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">HierNmf2WithFlat</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">num_clusters</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This function performs hierarchical clustering on the loaded matrix, exactly as described for HierNmf2. In addition, it also computes a flat clustering result.  Thus four output files are generated.  The flat clustering result files are <code class="docutils literal"><span class="pre">assignments_flat_N.csv</span></code> and <code class="docutils literal"><span class="pre">clusters_N.{json,</span> <span class="pre">xml}</span></code>.  The cluster file contents are documented below in the section on the flatclust command line application.</p>

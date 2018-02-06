@@ -97,7 +97,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pages_introduction.html">2. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#background">2.1. Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#low-rank-approximations-and-nmf">2.2. Low rank approximations and NMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#constrained-low-rank-approximations-and-nmf">2.2. Constrained low rank approximations and NMF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#smallk-overview">2.3. SmallK Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#prerequisites">2.4. Prerequisites</a></li>
 </ul>
@@ -233,7 +233,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#matrixgen">8.3.2. Matrixgen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#smallkapi">8.3.3. SmallkAPI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#flatclust">8.3.4. Flatclust</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#heirclust">8.3.5. Heirclust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#hierclust">8.3.5. Hierclust</a></li>
 </ul>
 </li>
 </ul>
@@ -339,11 +339,11 @@
 <h2><a class="toc-backref" href="#id2">4.2. C++ Project Setup</a><a class="headerlink" href="#c-project-setup" title="Permalink to this headline">¶</a></h2>
 <p>The SmallK distribution includes an <code class="docutils literal"><span class="pre">examples</span></code> folder containing two files: <code class="docutils literal"><span class="pre">smallk_examples.cpp</span></code> and a <code class="docutils literal"><span class="pre">Makefile</span></code>. To build the example CPP file, open a terminal window, <code class="docutils literal"><span class="pre">cd</span></code> to the <code class="docutils literal"><span class="pre">smallk/examples</span></code> folder, and run the command <code class="docutils literal"><span class="pre">make</span></code>.</p>
 <p>If the SmallK library has been installed properly and the <a class="reference external" href="https://github.com/smallk/smallk_data">smallk_data</a> repository has been cloned at the same directory level as the SmallK library repository, the project should build and the binary file bin/example will be created.  To run the example, run this command from the smallk/examples folder:</p>
-<div class="highlight-none"><div class="highlight"><pre>./bin/example ../../smallk_data
+<div class="highlight-none"><div class="highlight"><pre><span></span>./bin/example ../../smallk_data
 </pre></div>
 </div>
 <p>Results will appear for the following algorthms:</p>
-<div class="highlight-none"><div class="highlight"><pre>Running NMF-BPP using k=32
+<div class="highlight-none"><div class="highlight"><pre><span></span>Running NMF-BPP using k=32
 Running NMF-HALS using k=16
 Running NMF-RANK2 with W and H initializers
 Repeating the previous run with tol = 1.0e-5
@@ -354,7 +354,7 @@ Running HierNmf2 with 18 clusters, 8 terms, with flat
 </div>
 <p>The output files will be written to the directory where the binary <code class="docutils literal"><span class="pre">example</span></code> is run. In the above, the outputs will be written to the <code class="docutils literal"><span class="pre">&lt;SmallK</span> <span class="pre">dir&gt;/examples</span></code>.</p>
 <p>To experiment with the SmallK library, make a backup copy of <code class="docutils literal"><span class="pre">smallk_examples.cpp</span></code> as follows:</p>
-<div class="highlight-none"><div class="highlight"><pre>cp smallk_examples.cpp smallk_examples.cpp.bak
+<div class="highlight-none"><div class="highlight"><pre><span></span>cp smallk_examples.cpp smallk_examples.cpp.bak
 </pre></div>
 </div>
 <p>The file <code class="docutils literal"><span class="pre">smallk_examples.cpp</span></code> can now be used for experimentation. The original file can be restored from the backup at the user’s discretion.</p>
@@ -365,11 +365,11 @@ Running HierNmf2 with 18 clusters, 8 terms, with flat
 <div class="section" id="load-a-matrix">
 <h2><a class="toc-backref" href="#id3">4.3. Load a Matrix</a><a class="headerlink" href="#load-a-matrix" title="Permalink to this headline">¶</a></h2>
 <p>Suppose you want to perform NMF or clustering on a matrix. The first action to take is to load the matrix into SmallK using the <code class="docutils literal"><span class="pre">LoadMatrix</span></code> function. This function accepts either dense matrices in CSV format or sparse matrices in MatrixMarket format.  Since we want to perform NMF and clustering on the Reuters matrix, we need to supply the path to the Reuters matrix file (<code class="docutils literal"><span class="pre">reuters.mtx</span></code>) as an argument to LoadMatrix.  This path has already been setup in the code; the appropriate string variable is called <code class="docutils literal"><span class="pre">filepath_matrix</span></code>.  Enter the following line after the opening brace of the try block after line 61:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="n">smallk</span><span class="o">::</span><span class="n">LoadMatrix</span><span class="p">(</span><span class="n">filepath_matrix</span><span class="p">);</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">smallk</span><span class="o">::</span><span class="n">LoadMatrix</span><span class="p">(</span><span class="n">filepath_matrix</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Save the file and run the following commands, which should complete without error:</p>
-<div class="highlight-none"><div class="highlight"><pre>make clean
+<div class="highlight-none"><div class="highlight"><pre><span></span>make clean
 make
 </pre></div>
 </div>
@@ -377,16 +377,16 @@ make
 </div>
 <div class="section" id="perform-nmf-on-the-loaded-matrix">
 <h2><a class="toc-backref" href="#id4">4.4. Perform NMF on the Loaded Matrix</a><a class="headerlink" href="#perform-nmf-on-the-loaded-matrix" title="Permalink to this headline">¶</a></h2>
-<p>Having loaded the Reuters matrix, we can now run different NMF algorithms and factor the matrix in various ways. The SmallK code factors the loaded matrix (denoted by A) as <img class="math" src="_images/math/5cadf57469a7f3f25474e05adfed292d18fcbc63.svg" alt="\matr{A} \cong \matr{W} \matr{H}"/>, where A is mxn, W is mxk, and H is kxn.  The NMF is a low-rank approximation where the value of k, the rank, is an input parameter to the factorization routines, and is generally much smaller than either m or n. Matrix A can be either sparse or dense; matrices W and H are always dense.</p>
+<p>Having loaded the Reuters matrix, we can now run different NMF algorithms and factor the matrix in various ways. The SmallK code factors the loaded matrix (denoted by A) as <span class="math">\matr{A} \cong \matr{W} \matr{H}</span>, where A is mxn, W is mxk, and H is kxn.  The NMF is a low-rank approximation where the value of k, the rank, is an input parameter to the factorization routines, and is generally much smaller than either m or n. Matrix A can be either sparse or dense; matrices W and H are always dense.</p>
 <div class="section" id="nmf-bpp">
 <h3><a class="toc-backref" href="#id5">4.4.1. NMF-BPP</a><a class="headerlink" href="#nmf-bpp" title="Permalink to this headline">¶</a></h3>
 <p>Let’s use the default NMF-BPP algorithm to factor the 12411 x 7984 Reuters matrix into W and H with a k value of 32.  Add the following lines to the code:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="n">MsgBox</span><span class="p">(</span><span class="s">&quot;Running NMF-BPP using k=32&quot;</span><span class="p">);</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">MsgBox</span><span class="p">(</span><span class="s">&quot;Running NMF-BPP using k=32&quot;</span><span class="p">);</span>
 <span class="n">smallk</span><span class="o">::</span><span class="n">Nmf</span><span class="p">(</span><span class="mi">32</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Build the code as described above; then run it with this command:</p>
-<div class="highlight-none"><div class="highlight"><pre>./bin/example ../smallk_data
+<div class="highlight-none"><div class="highlight"><pre><span></span>./bin/example ../smallk_data
 </pre></div>
 </div>
 <p>The MsgBox function prints the string supplied as argument to the screen; this function is purely for annotating the output.  The Nmf function performs the factorization and generates two output files, <code class="docutils literal"><span class="pre">w.csv</span></code> and <code class="docutils literal"><span class="pre">h.csv</span></code>, which contain the matrix factors.  The files are written to the current directory.  SmallK can write these files to a specified output directory via the SetOutputDir function, but we will use the current directory for the examples in this guide.</p>
@@ -394,7 +394,7 @@ make
 <div class="section" id="nmf-hals">
 <h3><a class="toc-backref" href="#id6">4.4.2. NMF-HALS</a><a class="headerlink" href="#nmf-hals" title="Permalink to this headline">¶</a></h3>
 <p>Now suppose we want to repeat the factorization, this time using the NMF-HALS algorithm with a k value of 16.  Since the BPP algorithm is the default, we need to explicitly specify the algorithm as an argument to the Nmf function.  Add these lines to the code:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="n">MsgBox</span><span class="p">(</span><span class="s">&quot;Running NMF-HALS using k=16&quot;</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">MsgBox</span><span class="p">(</span><span class="s">&quot;Running NMF-HALS using k=16&quot;</span><span class="p">)</span>
 <span class="n">smallk</span><span class="o">::</span><span class="n">Nmf</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">smallk</span><span class="o">::</span><span class="n">Algorithm</span><span class="o">::</span><span class="n">HALS</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -403,7 +403,7 @@ make
 <div class="section" id="nmf-initialization">
 <h3><a class="toc-backref" href="#id7">4.4.3. NMF Initialization</a><a class="headerlink" href="#nmf-initialization" title="Permalink to this headline">¶</a></h3>
 <p>The SmallK library provides the capability to explicitly initialize the W and H factors.  For the previous two examples, these matrices were randomly initialized, since no initializers were provided in the call to the Nmf function. The data directory contains initializer matrices for the W and H factors of the Reuters matrix, assuming that k has a value of 2. To illustrate the use of initializers, we will use the RANK2 algorithm to factor the Reuters matrix again, using a k-value of 2, but with explicit initializers.  Add these lines to the code:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="n">MsgBox</span><span class="p">(</span><span class="s">&quot;Running NMF-RANK2 with W and H initializers&quot;</span><span class="p">);</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">MsgBox</span><span class="p">(</span><span class="s">&quot;Running NMF-RANK2 with W and H initializers&quot;</span><span class="p">);</span>
 <span class="n">smallk</span><span class="o">::</span><span class="n">Nmf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">smallk</span><span class="o">::</span><span class="n">Algorithm</span><span class="o">::</span><span class="n">RANK2</span><span class="p">,</span> <span class="n">filepath_w</span><span class="p">,</span> <span class="n">filepath_h</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -416,12 +416,12 @@ make
 <div class="section" id="hierarchical-clustering">
 <h2><a class="toc-backref" href="#id8">4.5. Hierarchical Clustering</a><a class="headerlink" href="#hierarchical-clustering" title="Permalink to this headline">¶</a></h2>
 <p>Now let’s perform hierarchical clustering on the Reuters matrix. To do this, we must first load the dictionary (or vocabulary) file associated with the Reuters data (a file called <code class="docutils literal"><span class="pre">reuters_dictionary.txt</span></code>).  A string variable containing the full path to this file is provided in the <code class="docutils literal"><span class="pre">filepath_dict</span></code> variable.  Add the following line to the code to load the Reuters dictionary:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="n">smallk</span><span class="o">::</span><span class="n">LoadDictionary</span><span class="p">(</span><span class="n">filepath_dict</span><span class="p">);</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">smallk</span><span class="o">::</span><span class="n">LoadDictionary</span><span class="p">(</span><span class="n">filepath_dict</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>As with the matrix file, the dictionary file remains loaded until it is replaced by another call to LoadDictionary.</p>
 <p>With the matrix file and the dictionary file both loaded, we can perform hierarchical clustering on the Reuters data. For the first attempt we will generate a factorization tree containing five clusters.  The number of clusters is specified as an argument to the clustering function.   Add these lines to the code:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="n">MsgBox</span><span class="p">(</span><span class="s">&quot;Running HierNMF2 with 5 clusters, JSON format&quot;</span><span class="p">);</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">MsgBox</span><span class="p">(</span><span class="s">&quot;Running HierNMF2 with 5 clusters, JSON format&quot;</span><span class="p">);</span>
 <span class="n">smallk</span><span class="o">::</span><span class="n">HierNmf2</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -432,7 +432,7 @@ make
 <div class="section" id="flat-clustering">
 <h2><a class="toc-backref" href="#id9">4.6. Flat Clustering</a><a class="headerlink" href="#flat-clustering" title="Permalink to this headline">¶</a></h2>
 <p>For the final example, let’s generate a flat clustering result in addition to the hierarchical clustering result. We will also increase the number of terms per node to 8 and the number of clusters to 18.  Add the following lines to the code:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="n">MsgBox</span><span class="p">(</span><span class="s">&quot;Running HierNmf2 with 18 clusters, 8 terms, with flat&quot;</span><span class="p">);</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">MsgBox</span><span class="p">(</span><span class="s">&quot;Running HierNmf2 with 18 clusters, 8 terms, with flat&quot;</span><span class="p">);</span>
 <span class="n">smallk</span><span class="o">::</span><span class="n">SetMaxTerms</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
 <span class="n">smallk</span><span class="o">::</span><span class="n">HierNmf2WithFlat</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
 </pre></div>

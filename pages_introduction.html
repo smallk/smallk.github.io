@@ -233,7 +233,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#matrixgen">8.3.2. Matrixgen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#smallkapi">8.3.3. SmallkAPI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#flatclust">8.3.4. Flatclust</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#heirclust">8.3.5. Heirclust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#hierclust">8.3.5. Hierclust</a></li>
 </ul>
 </li>
 </ul>
@@ -330,7 +330,7 @@
 </div>
 <div class="section" id="smallk-overview">
 <h2>2.3. SmallK Overview<a class="headerlink" href="#smallk-overview" title="Permalink to this headline">¶</a></h2>
-<p>The SmallK library provides routines for low rank matrix approximation via nonnegative matrix factorization (NMF). The term &#8220;nonnegative matrices&#8221; means that for a given matrix all of it&#8217;s elements are greater than or equal to zero, which we express as <span class="math">\geq 0</span>.</p>
+<p>The SmallK library provides routines for low rank matrix approximation via nonnegative matrix factorization (NMF). The term “nonnegative matrices” means that for a given matrix all of it’s elements are greater than or equal to zero, which we express as <span class="math">\geq 0</span>.</p>
 <p>Given a nonnegative matrix <span class="math">\matr{A}</span>, the SmallK software computes nonnegative matrices <span class="math">\matr{W}</span> and <span class="math">\matr{H}</span> such that <span class="math">\matr{A} \cong \matr{W} \matr{H}</span></p>
 <p>The matrix <span class="math">\matr{A}</span> has m rows and n columns and can be either sparse or dense. <span class="math">\matr{W}</span> has m rows and k columns, and <span class="math">\matr{H}</span> has k rows and n columns. The value of k is an input parameter to the approximation routines; typically k <span class="math">\ll</span> m and k <span class="math">\ll</span> n. Where k is the reduced rank of the low rank approximation and, in applications, it represents, for example, the reduced dimension in dimension reduction, number of clusters for clustering various data sets, or the number of topics in topic discovery.</p>
 <p>NMF algorithms seek to approximate a matrix <span class="math">\matr{A}</span> by the product of two much smaller matrices <span class="math">\matr{W}</span> and <span class="math">\matr{H}</span>. The idea is to choose the smallest value of k (width of <span class="math">\matr{W}</span> and height of <span class="math">\matr{H}</span>) that gives an acceptable approximation error. Due to the nonconvex nature of the optimization problem associated with finding <span class="math">\matr{W}</span> and <span class="math">\matr{H}</span>, they can only be approximated after an NMF algorithm satisfies a convergence criterion to a local minimum. Thus, the minimization of the objective function proceeds iteratively, attempting to reach a stationary point, which is the best possible solution. As the iterations proceed, the SmallK code computes a metric that estimates the progress and, when the metric falls below a user-specified tolerance, the iterations stop and convergence is declared [see <a class="reference external" href="http://smallk.github.io/publications/">[Publications [2]</a>] for a detailed discussion].</p>

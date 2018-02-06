@@ -97,7 +97,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pages_introduction.html">2. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#background">2.1. Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#low-rank-approximations-and-nmf">2.2. Low rank approximations and NMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#constrained-low-rank-approximations-and-nmf">2.2. Constrained low rank approximations and NMF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#smallk-overview">2.3. SmallK Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#prerequisites">2.4. Prerequisites</a></li>
 </ul>
@@ -233,7 +233,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#matrixgen">8.3.2. Matrixgen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#smallkapi">8.3.3. SmallkAPI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#flatclust">8.3.4. Flatclust</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#heirclust">8.3.5. Heirclust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pages_pysmallkAPI.html#hierclust">8.3.5. Hierclust</a></li>
 </ul>
 </li>
 </ul>
@@ -326,21 +326,21 @@
 <p class="last">Note: For Windows, ensure that you have a VirtualBox version &gt;= 4.3.12. After installing Vagrant, you may need to log out and log back in to ensure that you can run vagrant commands in the command prompt.</p>
 </div>
 <p><strong>Optional:</strong> <code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></code> the <a class="reference external" href="https://github.com/smallk/smallk_data">smallk_data</a> repository so that it is parallel with the smallk repository. This is an alternate way to test the installation and begin to work with SmallK. This directory can be synced with a directory of the same name in the VM by adding or uncommenting the following line in <code class="docutils literal"><span class="pre">smallk/vagrant/Vagrantfile</span></code>:</p>
-<div class="highlight-none"><div class="highlight"><pre>config.vm.synced_folder &quot;../../smallk_data&quot;, &quot;/home/vagrant/smallk_data&quot;
+<div class="highlight-none"><div class="highlight"><pre><span></span>config.vm.synced_folder &quot;../../smallk_data&quot;, &quot;/home/vagrant/smallk_data&quot;
 </pre></div>
 </div>
 <p><strong>2.</strong> From within the <code class="docutils literal"><span class="pre">smallk/vagrant</span></code> directory, run:</p>
-<div class="highlight-none"><div class="highlight"><pre>vagrant up
+<div class="highlight-none"><div class="highlight"><pre><span></span>vagrant up
 </pre></div>
 </div>
 <p>This can take as long as an hour to build the VM, which will be based on a minimal Ubuntu 16.04 installation. The <code class="docutils literal"><span class="pre">smallk/vagrant/Vagrantfile</span></code> can be customized in many ways to change the specifications for the VM that is built. See more information <a class="reference external" href="http://docs.vagrantup.com/v2/">here</a>. The default configuration provides the VM with 4 GB of memory and 3 CPUs. Increasing these allocations will improve the performance of the application. This can be done by modifying these lines in the Vagrantfile:</p>
-<div class="highlight-none"><div class="highlight"><pre>vb.memory = 4096
+<div class="highlight-none"><div class="highlight"><pre><span></span>vb.memory = 4096
 vb.cpus = 3
 </pre></div>
 </div>
 <p>After <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">up</span></code> has completed, the SmallK and pysmallk libraries will have been built and tested. Additionally, the smallk_data directory, if cloned as in the optional step above, will have been synced into the VM. For more details regarding what is being built and executed while provisioning the VM, please inspect <code class="docutils literal"><span class="pre">smallk/vagrant/bootstrap.sh</span></code>.</p>
 <p><strong>3.</strong> Once the VM has been built, run:</p>
-<div class="highlight-none"><div class="highlight"><pre>vagrant ssh
+<div class="highlight-none"><div class="highlight"><pre><span></span>vagrant ssh
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -349,16 +349,16 @@ vb.cpus = 3
 </div>
 <p>In case you need it, the username/password for the VM created will be vagrant/vagrant.</p>
 <p>This will drop you into the command line of the VM that was just created, in a working directory at <code class="docutils literal"><span class="pre">/home/vagrant</span></code>. From there, you can navigate to <code class="docutils literal"><span class="pre">/home/vagrant/libsmallk-&lt;version&gt;</span></code>, (e.g., libsmallk-1.6.2), and run:</p>
-<div class="highlight-none"><div class="highlight"><pre>make check PYSMALLK=1 ELEMVER=0.85 DATA_DIR=../smallk_data
+<div class="highlight-none"><div class="highlight"><pre><span></span>make check PYSMALLK=1 ELEMVER=0.85 DATA_DIR=../smallk_data
 </pre></div>
 </div>
 <p>to verify your installation was successful.</p>
 <p><strong>4.</strong> To test the installation at the command line, run:</p>
-<div class="highlight-none"><div class="highlight"><pre>nmf
+<div class="highlight-none"><div class="highlight"><pre><span></span>nmf
 </pre></div>
 </div>
 <p>This will produce the help output for the nmf library function:</p>
-<div class="highlight-none"><div class="highlight"><pre>Usage: nmf
+<div class="highlight-none"><div class="highlight"><pre><span></span>Usage: nmf
         --matrixfile &lt;filename&gt;  Filename of the matrix to be factored.
                                  Either CSV format for dense or MatrixMarket format for sparse.
         --k &lt;integer value&gt;      The common dimension for factors W and H.
@@ -391,25 +391,25 @@ vb.cpus = 3
 </pre></div>
 </div>
 <p><strong>5.</strong> To test the installation of pysmallk, attempt to import numpy and pysmallk; numpy must be imported BEFORE pysmallk is imported. Running the following command from the command line should produce no output:</p>
-<div class="highlight-none"><div class="highlight"><pre>python -c &quot;import numpy; import pysmallk&quot;
+<div class="highlight-none"><div class="highlight"><pre><span></span>python -c &quot;import numpy; import pysmallk&quot;
 </pre></div>
 </div>
 <p>If there is no import error, pysmallk was installed correctly and is globally available.</p>
 <p><strong>6.</strong> When you are ready to shut down the VM, run <code class="docutils literal"><span class="pre">exit</span></code> from within the vagrant machine, then run one of the following from the command line of your host machine (wherever <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">up</span></code> was executed):</p>
 <p>Save the current running state:</p>
-<div class="highlight-none"><div class="highlight"><pre>vagrant suspend
+<div class="highlight-none"><div class="highlight"><pre><span></span>vagrant suspend
 </pre></div>
 </div>
 <p>Gracefully shut down the machine:</p>
-<div class="highlight-none"><div class="highlight"><pre>vagrant halt
+<div class="highlight-none"><div class="highlight"><pre><span></span>vagrant halt
 </pre></div>
 </div>
 <p>Remove the VM from your machine (this will require rebuilding the VM to restart it):</p>
-<div class="highlight-none"><div class="highlight"><pre>vagrant destroy
+<div class="highlight-none"><div class="highlight"><pre><span></span>vagrant destroy
 </pre></div>
 </div>
 <p>If you want to work with the VM again, from any of the above states you can run:</p>
-<div class="highlight-none"><div class="highlight"><pre>vagrant up
+<div class="highlight-none"><div class="highlight"><pre><span></span>vagrant up
 </pre></div>
 </div>
 <p>again and the VM will be resumed or recreated.</p>
@@ -420,15 +420,15 @@ vb.cpus = 3
 <p><strong>1.</strong> Install <a class="reference external" href="https://docs.docker.com/engine/installation/">Docker</a>. If you are new to Docker, it may be worth exploring a <a class="reference external" href="https://docs.docker.com/get-started/)">quick introduction</a>, or at least a <a class="reference external" href="https://github.com/wsargent/docker-cheat-sheet">cheat-sheet</a>. There are <a class="reference external" href="https://docs.docker.com/manuals/">platform specific</a> installation, configuiration, and execution instructions for Mac, Windows, and Linux. The following instructions were tested on Ubuntu 16.04 with Docker version 17.06.0-ce.</p>
 <p><strong>2.</strong> Build the smallk Docker image.</p>
 <p>First, make sure you have all submodules and their own submodules. From within the root of the smallk directory, run:</p>
-<div class="highlight-none"><div class="highlight"><pre>git submodule update --init --recursive
+<div class="highlight-none"><div class="highlight"><pre><span></span>git submodule update --init --recursive
 </pre></div>
 </div>
 <p>Now we can build the image. In the same (project root) directory, run this:</p>
-<div class="highlight-none"><div class="highlight"><pre>docker build -t smallk .
+<div class="highlight-none"><div class="highlight"><pre><span></span>docker build -t smallk .
 </pre></div>
 </div>
 <p>This will download all dependencies from the Ubuntu repositories, PyPI, GitHub, etc. Everything will be built including smallk itself. You will end up with a Docker image tagged “smallk”. At the end of the build process you should see the following:</p>
-<div class="highlight-none"><div class="highlight"><pre>Step 40/40 : CMD /bin/bash
+<div class="highlight-none"><div class="highlight"><pre><span></span>Step 40/40 : CMD /bin/bash
  ---&gt; Running in 3fdb5e73afdc
  ---&gt; f8afa9f6a532
 Removing intermediate container 3fdb5e73afdc
@@ -439,9 +439,9 @@ Successfully tagged smallk:latest
 <p>This can take as long as an hour to build the image, which is based on a minimal Ubuntu 16.04 installation. The <code class="docutils literal"><span class="pre">smallk/Dockerfile</span></code> can be customized in many ways to change the specifications for the image that is built.</p>
 <p><strong>3.</strong> Run the Docker container.</p>
 <p>The Docker container may be executed from any directory. Regardless of where you run it, you will need a volume for any input/output data. As an example, you may run the built-in PySmallk tests. The instructions below assume that your work directory is named <code class="docutils literal"><span class="pre">/home/ubuntu</span></code>. Replace it with the appropriate name. (The Docker daemon requires an absolute path for the local volume reference.):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> /home/ubuntu
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> /home/ubuntu
 git clone https://github.com/smallk/smallk_data.git smallk_data
-docker run --volume /home/ubuntu/smallk_data:/data smallk make check <span class="nv">PYSMALLK</span><span class="o">=</span><span class="m">1</span> <span class="nv">ELEMVER</span><span class="o">=</span>0.85 <span class="nv">DATA_DIR</span><span class="o">=</span>/data
+docker run --volume /home/ubuntu/smallk_data:/data smallk make check <span class="nv">PYSMALLK</span><span class="o">=</span><span class="m">1</span> <span class="nv">ELEMVER</span><span class="o">=</span><span class="m">0</span>.85 <span class="nv">DATA_DIR</span><span class="o">=</span>/data
 </pre></div>
 </div>
 <p>Here is a breakdown of that Docker command to explain each part:</p>
@@ -467,7 +467,7 @@ docker run --volume /home/ubuntu/smallk_data:/data smallk make check <span class
 </li>
 </ul>
 <p>If your execution of the PySmallk tests is successful, you should see a lot of output, ending with the following lines:</p>
-<div class="highlight-none"><div class="highlight"><pre>assignment file test passed
+<div class="highlight-none"><div class="highlight"><pre><span></span>assignment file test passed
 ***** PysmallK: All tests passed. *****
 </pre></div>
 </div>

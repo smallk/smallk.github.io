@@ -97,7 +97,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pages_introduction.html">2. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#background">2.1. Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#low-rank-approximations-and-nmf">2.2. Low rank approximations and NMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#constrained-low-rank-approximations-and-nmf">2.2. Constrained low rank approximations and NMF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#smallk-overview">2.3. SmallK Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pages_introduction.html#prerequisites">2.4. Prerequisites</a></li>
 </ul>
@@ -233,7 +233,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#matrixgen">8.3.2. Matrixgen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#smallkapi">8.3.3. SmallkAPI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#flatclust">8.3.4. Flatclust</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#heirclust">8.3.5. Heirclust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hierclust">8.3.5. Hierclust</a></li>
 </ul>
 </li>
 </ul>
@@ -323,7 +323,7 @@
 <li><a class="reference internal" href="#matrixgen" id="id5">Matrixgen</a></li>
 <li><a class="reference internal" href="#smallkapi" id="id6">SmallkAPI</a></li>
 <li><a class="reference internal" href="#flatclust" id="id7">Flatclust</a></li>
-<li><a class="reference internal" href="#heirclust" id="id8">Heirclust</a></li>
+<li><a class="reference internal" href="#hierclust" id="id8">Hierclust</a></li>
 </ul>
 </li>
 </ul>
@@ -339,23 +339,23 @@
 <p>Pysmallk has five classes, each of which represents one of the SmallK tools: SmallkAPI (the simplistic Smallk API), Flatclust, Hierclust, Matrixgen, and Preprocessor. These tools can be strung together into various kind of applications. Examples of such applications can be found in <code class="docutils literal"><span class="pre">examples/pysmallk_example.py</span></code> and in the <code class="docutils literal"><span class="pre">pysmallk/tests/</span></code> subdirectory.</p>
 <p>The smallk_data repository contains several files (<code class="docutils literal"><span class="pre">articles_matrix.mtx</span></code>, <code class="docutils literal"><span class="pre">articles_documents.txt</span></code>, <code class="docutils literal"><span class="pre">articles_dictionary.txt</span></code>) that contain the matrix and associated text files created from 2,424 news articles.</p>
 <p>First, we will need to import numpy and the shared libary:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pysmallk</span>
 </pre></div>
 </div>
 <p>We then should apply the preprocessor to our data:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">p</span> <span class="o">=</span> <span class="n">pysmallk</span><span class="o">.</span><span class="n">Preprocessor</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">pysmallk</span><span class="o">.</span><span class="n">Preprocessor</span><span class="p">()</span>
 <span class="n">p</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;smallk_data/articles_matrix.mtx&#39;</span><span class="p">)</span>
 <span class="n">p</span><span class="o">.</span><span class="n">load_dictionary</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;smallk_data/articles_dictionary.txt&#39;</span><span class="p">)</span>
 <span class="n">p</span><span class="o">.</span><span class="n">load_documents</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;smallk_data/articles_documents.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We will begin with the default inputs and run preprocess:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">p</span><span class="o">.</span><span class="n">preprocess</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">preprocess</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Instead of writing the results to files, we can get the outputs from the Preprocessor class and pass them directly as inputs to the SmallkAPI class.:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">reduced_docs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_reduced_documents</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">reduced_docs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_reduced_documents</span><span class="p">()</span>
 <span class="n">reduced_dict</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_reduced_dictionary</span><span class="p">()</span>
 <span class="n">reduced_scores</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_reduced_scores</span><span class="p">()</span>
 <span class="n">reduced_row_indices</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_reduced_row_indices</span><span class="p">()</span>
@@ -365,36 +365,36 @@
 </pre></div>
 </div>
 <p>Now let’s instantiate the SmallkAPI object that we will use to do further computations.:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">sk</span> <span class="o">=</span> <span class="n">pysmallk</span><span class="o">.</span><span class="n">SmallkAPI</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sk</span> <span class="o">=</span> <span class="n">pysmallk</span><span class="o">.</span><span class="n">SmallkAPI</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>One of the options for matrix loading is to pass in the appropriate fields for a sparse matrix, as so:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">sk</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="nb">buffer</span><span class="o">=</span><span class="n">reduced_scores</span><span class="p">,</span> <span class="n">row_indices</span><span class="o">=</span><span class="n">reduced_row_indices</span><span class="p">,</span> <span class="n">col_offsets</span><span class="o">=</span><span class="n">reduced_col_offsets</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">reduced_height</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">reduced_width</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">reduced_scores</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sk</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="nb">buffer</span><span class="o">=</span><span class="n">reduced_scores</span><span class="p">,</span> <span class="n">row_indices</span><span class="o">=</span><span class="n">reduced_row_indices</span><span class="p">,</span> <span class="n">col_offsets</span><span class="o">=</span><span class="n">reduced_col_offsets</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">reduced_height</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">reduced_width</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">reduced_scores</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>The input matrix alone is sufficient to run NMF and compute the factor matricies.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">sk</span><span class="o">.</span><span class="n">nmf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;BPP&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sk</span><span class="o">.</span><span class="n">nmf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;BPP&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This will compute the W and H factor matrices and subsequently write them to the files w.csv and h.csv, respectively.</p>
 <p>We can continue with further calcuations using the same input matrix. For example, we can extract topic models from the input matrix if we also provide a dictionary.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">sk</span><span class="o">.</span><span class="n">load_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="o">=</span><span class="n">reduced_dict</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sk</span><span class="o">.</span><span class="n">load_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="o">=</span><span class="n">reduced_dict</span><span class="p">)</span>
 <span class="n">sk</span><span class="o">.</span><span class="n">hiernmf2</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This will use Hierarchical NMF to determine the final leaf nodes to use for the topic models and will output assignments_5.csv (cluster labels) and tree_5.xml.</p>
 <p>Now let’s say we want to create our own random matrix and pass that as a numpy matrix into SmallK.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>In order to run the Hierclust or Flatclust applications, we will need to provide a dictionary file from which to select the top terms.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">pathtodict</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">indir</span> <span class="o">+</span> <span class="s1">&#39;reuters_dictionary.txt&#39;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pathtodict</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">indir</span> <span class="o">+</span> <span class="s1">&#39;reuters_dictionary.txt&#39;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pathtodict</span><span class="p">)</span> <span class="k">as</span> <span class="n">dictionary</span><span class="p">:</span>
 <span class="n">terms</span> <span class="o">=</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>For illustration, let’s use the Flatclust object and extract the resulting assignments from running NMF.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="n">pysmallk</span><span class="o">.</span><span class="n">Flatclust</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">pysmallk</span><span class="o">.</span><span class="n">Flatclust</span><span class="p">()</span>
 
 <span class="n">f</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
 <span class="n">f</span><span class="o">.</span><span class="n">load_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="o">=</span><span class="n">terms</span><span class="p">)</span>
@@ -404,7 +404,7 @@
 </div>
 <p>Now the variable ‘a’ holds a list of the computed assignment labels for each of the 256 elements in our original matrix.</p>
 <p>When we are finished, we should clean up the environment before exiting:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">sk</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sk</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
 <span class="n">f</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -412,7 +412,7 @@
 <div class="section" id="pysmallk-functions">
 <h2><a class="toc-backref" href="#id3">8.3. Pysmallk Functions</a><a class="headerlink" href="#pysmallk-functions" title="Permalink to this headline">¶</a></h2>
 <p>Pysmallk has five classes, each of which represents one of the SmallK tools: SmallkAPI (the simplistic Smallk API), Flatclust, Hierclust, Matrixgen, and Preprocessor. Each of these classes can be imported as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pysmallk</span> <span class="kn">import</span> <span class="n">SmallkAPI</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pysmallk</span> <span class="kn">import</span> <span class="n">SmallkAPI</span>
 <span class="kn">from</span> <span class="nn">pysmallk</span> <span class="kn">import</span> <span class="n">Flatclust</span>
 <span class="kn">from</span> <span class="nn">pysmallk</span> <span class="kn">import</span> <span class="n">Hierclust</span>
 <span class="kn">from</span> <span class="nn">pysmallk</span> <span class="kn">import</span> <span class="n">Matrixgen</span>
@@ -422,24 +422,24 @@
 <p>Each class’s primary functions are documented in the sections below. The parameters are either marked [in] or [kwarg] which represent, respectively, positional and keyword arguments.</p>
 <div class="section" id="preprocessor">
 <h3><a class="toc-backref" href="#id4">8.3.1. Preprocessor</a><a class="headerlink" href="#preprocessor" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">parser</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parser</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the parsed arguments for the default command line application. The command line arguments are the same as those for the C++ binary application preprocessor.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">load_matrix</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">buffer</span><span class="o">=</span><span class="p">[],</span> <span class="n">row_indices</span><span class="o">=</span><span class="p">[],</span> <span class="n">col_offsets</span><span class="o">=</span><span class="p">[])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_matrix</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">buffer</span><span class="o">=</span><span class="p">[],</span> <span class="n">row_indices</span><span class="o">=</span><span class="p">[],</span> <span class="n">col_offsets</span><span class="o">=</span><span class="p">[])</span>
 </pre></div>
 </div>
 <p>Load an input matrix.</p>
 <ol class="arabic simple">
 <li>To load a matrix from a file:</li>
 </ol>
-<div class="highlight-none"><div class="highlight"><pre>* filepath:      The path to the input matrix
+<div class="highlight-none"><div class="highlight"><pre><span></span>* filepath:      The path to the input matrix
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li>To load a sparse matrix from Matrixgen:</li>
 </ol>
-<div class="highlight-none"><div class="highlight"><pre>* height:        The height of the sparse matrix
+<div class="highlight-none"><div class="highlight"><pre><span></span>* height:        The height of the sparse matrix
 * width:         The width of the sparse matrix
 * sparse_matrix: The sparse matrix returned from Matrixgen
 </pre></div>
@@ -447,7 +447,7 @@
 <ol class="arabic simple" start="3">
 <li>To load a sparse matrix from python:</li>
 </ol>
-<div class="highlight-none"><div class="highlight"><pre>* height:        The height of the sparse matrix
+<div class="highlight-none"><div class="highlight"><pre><span></span>* height:        The height of the sparse matrix
 * width:         The width of the sparse matrix
 * nz:            The number of non-zeros in the sparse matrix
 * buffer:        List of doubles containing the non-zero elements of the sparse matrix
@@ -455,39 +455,39 @@
 * col_offsets:   List of integers representing the column offsets of the sparse matrix
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">load_dictionary</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dictionary</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_dictionary</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dictionary</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Loads a dictionary from either a filepath or a list of dictionary strings.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">load_documents</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">documents</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_documents</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">documents</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Loads a documents from either a filepath or a list of document strings.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_reduced_documents</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_reduced_documents</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the reduced documents.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_reduced_dictionary</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_reduced_dictionary</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the reduced dictionary.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_reduced_scores</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_reduced_scores</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the non-zero scores from the reduced matrix.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_reduced_row_indices</span> <span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_reduced_row_indices</span> <span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the row indices for the reduced matrix.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_reduced_col_offsets</span> <span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_reduced_col_offsets</span> <span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the column offsets for the reduced matrix.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_reduced_field</span> <span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_reduced_field</span> <span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[])</span>
 </pre></div>
 </div>
 <p>Loads a field from either a filepath or a list of field strings. Returns the reduced fields.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">maxiter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">docsperterm</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">termsperdoc</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">boolean_mode</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">maxiter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">docsperterm</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">termsperdoc</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">boolean_mode</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Preprocesses the matrix.</p>
@@ -497,7 +497,7 @@
 <li>termsperdoc:  The number of terms requried per document (optional)</li>
 <li>boolean_mode: All nonzero matrix elements will be treated as if they had the value 1.0  (optional)</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">write_output</span><span class="p">(</span><span class="n">matrix_filepath</span><span class="p">,</span> <span class="n">dict_filepath</span><span class="p">,</span> <span class="n">docs_filepath</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">write_output</span><span class="p">(</span><span class="n">matrix_filepath</span><span class="p">,</span> <span class="n">dict_filepath</span><span class="p">,</span> <span class="n">docs_filepath</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Writes the preprocessor results to files.</p>
@@ -510,11 +510,11 @@
 </div>
 <div class="section" id="matrixgen">
 <h3><a class="toc-backref" href="#id5">8.3.2. Matrixgen</a><a class="headerlink" href="#matrixgen" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">parser</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parser</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the parsed arguments for the default command line application. The command line arguments are the same as those for the C++ binary application matrixgen.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">uniform</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">uniform</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Generates a uniform matrix. Returns a tuple of the list of values, the height, and the width.</p>
@@ -524,7 +524,7 @@
 <li>center:  Center with which to initialize the RNG</li>
 <li>radius:  Radius with which to initialize the RNG</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">densediag</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">densediag</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Generates a dense diagonal matrix. Returns a tuple of the list of values, the height, and the width.</p>
@@ -534,7 +534,7 @@
 <li>center:  Center with which to initialize the RNG</li>
 <li>radius:  Radius with which to initialize the RNG</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">identify</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">identify</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Generates an identify matrix. Returns a tuple of the list of values, the height, and the width.</p>
@@ -542,7 +542,7 @@
 <li>m:       The desired height</li>
 <li>n:       The desired width</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">sparsediag</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sparsediag</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Generates a sparse diagonal matrix. Returns a tuple of the list of values, the height, and the width.</p>
@@ -551,7 +551,7 @@
 <li>center:  Center with which to initialize the RNG</li>
 <li>radius:  Radius with which to initialize the RNG</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Generates a matrix of ones. Returns a tuple of the list of values, the height, and the width.</p>
@@ -559,7 +559,7 @@
 <li>m:       The desired height</li>
 <li>n:       The desired width</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Generates a matrix of zeros. Returns a tuple of the list of values, the height, and the width.</p>
@@ -567,7 +567,7 @@
 <li>m:       The desired height</li>
 <li>n:       The desired width</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">sparse</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">nz</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sparse</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">nz</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Generates a random sparse matrix. Returns a tuple of the list of values, the height, and the width.</p>
@@ -576,7 +576,7 @@
 <li>n:       The desired width</li>
 <li>nz:      The number of non zeros in the matrix</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">write_output</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">write_output</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Writes the generated matrix to file.</p>
@@ -587,27 +587,27 @@
 </div>
 <div class="section" id="smallkapi">
 <h3><a class="toc-backref" href="#id6">8.3.3. SmallkAPI</a><a class="headerlink" href="#smallkapi" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">parser</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parser</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the parsed arguments for the default command line application. The dictionary containing the parsed arguments.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_major_version</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_major_version</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the major version of SmallK.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_minor_version</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_minor_version</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the minor version of SmallK.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_patch_level</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_patch_level</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the patch level of SmallK.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_version_string</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_version_string</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns a string representation of the version of SmallK.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">load_matrix</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">delim</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nb">buffer</span><span class="o">=</span><span class="p">[],</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_matrix</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">delim</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nb">buffer</span><span class="o">=</span><span class="p">[],</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span>
 <span class="n">nz</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">row_indices</span><span class="o">=</span><span class="p">[],</span> <span class="n">col_offsets</span><span class="o">=</span><span class="p">[],</span> <span class="n">column_major</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">sparse_matrix</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 </pre></div>
 </div>
@@ -654,19 +654,18 @@
 <p class="first admonition-title">Note</p>
 <p class="last">Internal to SmallK, the matrix is stored in column-major order. When you are loading a numpy matrix, the assumption is that your matrix is in row-major order. If this is not the case, you can pass <code class="docutils literal"><span class="pre">column_major=True</span></code> in as a keyword argument. When directly loading a dense matrix, the assumption is that your buffer holds the data in column-major order as well.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">is_matrix_loaded</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_matrix_loaded</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Indicates whether or not a matrix has been loaded.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">nmf</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">infile_W</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">infile_H</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">min_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nmf</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">infile_W</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">infile_H</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">min_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Runs NMF on the loaded matrix using the supplied algorithm and implementation details.</p>
 <ul class="simple">
 <li>k:           The desired number of clusters</li>
 <li>algorithm:   The desired NMF algorithm</li>
-<li>infile_W:    Initialization for W (optional)</li>
-<li>infile_H:    Initialization for H (optional)</li>
+<li>initdir:     Initialization for W and H for each leaf (optional)</li>
 <li>precision:   Precision for calcuations (optional)</li>
 <li>min_iter:    Minimum number of iterations (optional)</li>
 <li>max_iter:    Maximum number of iterations (optional)</li>
@@ -674,23 +673,23 @@
 <li>max_threads: Maximum number of threads to use (optional)</li>
 <li>outdir:      Output directory for files (optional)</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_inputs</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_inputs</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns a dictionary of the supplied inputs to the nmf function.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_H</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_H</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the output H matrix.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_W</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_W</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the output W matrix.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">load_dictionary</span> <span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">dictionary</span><span class="o">=</span><span class="p">[])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_dictionary</span> <span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">dictionary</span><span class="o">=</span><span class="p">[])</span>
 </pre></div>
 </div>
 <p>Loads a dictionary from either a filepath or a list of dictionary strings.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">hiernmf2</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;XML&quot;</span><span class="p">,</span> <span class="n">maxterms</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hiernmf2</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&quot;XML&quot;</span><span class="p">,</span> <span class="n">maxterms</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Runs HierNMF2 on the loaded matrix.</p>
@@ -700,18 +699,18 @@
 <li>maxterms:    Maximum number of terms (optional)</li>
 <li>tol:         Tolerance to use for determining convergence (optional)</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">finalize</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">finalize</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Cleans up the elemental and smallk environment.</p>
 </div>
 <div class="section" id="flatclust">
 <h3><a class="toc-backref" href="#id7">8.3.4. Flatclust</a><a class="headerlink" href="#flatclust" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">parser</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parser</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the parsed arguments for the default command line application. The command line arguemnts are the same as those for the C++ binary application flatclust.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">load_matrix</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_matrix</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Load an input matrix.</p>
@@ -766,11 +765,11 @@
 <p class="first admonition-title">Note</p>
 <p class="last">Internal to SmallK, the matrix is stored in column-major order. When you are loading a numpy matrix, the assumption is that your matrix is in row-major order. If this is not the case, you can pass <code class="docutils literal"><span class="pre">column_major=True</span></code> in as a keyword argument. When directly loading a dense matrix, the assumption is that your buffer holds the data in column-major order as well.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">load_dictionary</span> <span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">dictionary</span><span class="o">=</span><span class="p">[])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_dictionary</span> <span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">dictionary</span><span class="o">=</span><span class="p">[])</span>
 </pre></div>
 </div>
 <p>Loads a dictionary from either a filepath or a list of dictionary strings.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">infile_W</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">infile_H</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;BPP&quot;</span><span class="p">,</span> <span class="n">maxterms</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">min_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">infile_W</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">infile_H</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;BPP&quot;</span><span class="p">,</span> <span class="n">maxterms</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">min_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Runs NMF on the loaded matrix using the supplied algorithm and implementation details.</p>
@@ -786,19 +785,19 @@
 <li>max_threads: Maximum number of threads to use (optional)</li>
 <li>tol:         Tolerance for determing convergence (optional)</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_top_indices</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_top_indices</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Return the top term indices for each cluster. The length of the returned array is maxterms*k, with the first maxterms elements belonging to the first cluster, the second maxterms elements belonging to the second cluster, etc.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_top_terms</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_top_terms</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Return the top terms for each cluster.The length of the returned array is maxterms*k, with the first maxterms elements belonging to the first cluster, the second maxterms elements belonging to the second cluster, etc.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_assignments</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_assignments</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Return the list of cluster assignments for each document.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">write_output</span><span class="p">(</span><span class="n">assignfile</span><span class="p">,</span> <span class="n">treefile</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="s1">&#39;./&#39;</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s1">&#39;XML&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">write_output</span><span class="p">(</span><span class="n">assignfile</span><span class="p">,</span> <span class="n">treefile</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="s1">&#39;./&#39;</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s1">&#39;XML&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Writes the flatclust results to files.</p>
@@ -809,18 +808,18 @@
 <li>outdir:         The output directory for the output files (optional)</li>
 <li>format:         The output format JSON or XML (optional)</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">finalize</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">finalize</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Cleans up the elemental and smallk environment.</p>
 </div>
-<div class="section" id="heirclust">
-<h3><a class="toc-backref" href="#id8">8.3.5. Heirclust</a><a class="headerlink" href="#heirclust" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">parser</span><span class="p">()</span>
+<div class="section" id="hierclust">
+<h3><a class="toc-backref" href="#id8">8.3.5. Hierclust</a><a class="headerlink" href="#hierclust" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parser</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Returns the parsed arguments for the default command line application. The command line arguemnts are the same as those for the C++ binary application hierclust.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">load_matrix</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_matrix</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Load an input matrix.</p>
@@ -875,18 +874,17 @@
 <p class="first admonition-title">Note</p>
 <p class="last">Internal to SmallK, the matrix is stored in column-major order. When you are loading a numpy matrix, the assumption is that your matrix is in row-major order. If this is not the case, you can pass <code class="docutils literal"><span class="pre">column_major=True</span></code> in as a keyword argument. When directly loading a dense matrix, the assumption is that your buffer holds the data in column-major order as well.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">load_dictionary</span> <span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">dictionary</span><span class="o">=</span><span class="p">[])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_dictionary</span> <span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">dictionary</span><span class="o">=</span><span class="p">[])</span>
 </pre></div>
 </div>
 <p>Loads a dictionary from either a filepath or a list of dictionary strings.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">infile_W</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">infile_H</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">maxterms</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">unbalanced</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">trial_allowance</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">min_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">indir_W</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">indir_H</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">maxterms</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">unbalanced</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">trial_allowance</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">min_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Runs NMF on the loaded matrix using the supplied algorithm and implementation details.</p>
 <ul class="simple">
 <li>k:           The desired number of clusters</li>
-<li>infile_W:    Initialization for W (optional)</li>
-<li>infile_H:    Initialization for H (optional)</li>
+<li>initdir_W:    Initialization for W (optional)</li>
 <li>maxterms:    Maximum number of terms per cluster (optional)</li>
 <li>unbalanced:      Unbalanced parameter (optional)</li>
 <li>trial_allowance: Number of trials to use (optional)</li>
@@ -897,15 +895,15 @@
 <li>max_threads: Maximum number of threads to use (optional)</li>
 <li>tol:         Tolerance for determing convergence (optional)</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_top_indices</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_top_indices</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Return the top term indices for each cluster. The length of the returned array is maxterms*k, with the first maxterms elements belonging to the first cluster, the second maxterms elements belonging to the second cluster, etc.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_assignments</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_assignments</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Return the list of cluster assignments for each document.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">write_output</span><span class="p">(</span><span class="n">assignfile</span><span class="p">,</span> <span class="n">fuzzyfile</span><span class="p">,</span> <span class="n">treefile</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="s1">&#39;./&#39;</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s1">&#39;XML&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">write_output</span><span class="p">(</span><span class="n">assignfile</span><span class="p">,</span> <span class="n">fuzzyfile</span><span class="p">,</span> <span class="n">treefile</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="s1">&#39;./&#39;</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s1">&#39;XML&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Writes the flatclust results to files.</p>
@@ -916,7 +914,7 @@
 <li>outdir:         The output directory for the output files (optional)</li>
 <li>format:         The output format JSON or XML (optional)</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">finalize</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">finalize</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Cleans up the elemental and smallk environment.</p>
